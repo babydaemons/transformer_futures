@@ -119,7 +119,7 @@ class MarketDataLoader:
                 }
             ).select(
                 [
-                    pl.col("trade_ts").cast(pl.Datetime),
+                    pl.col("trade_ts").cast(pl.Datetime("ns")),
                     pl.col(f"{prefix}_close").cast(pl.Float64),
                 ]
             )

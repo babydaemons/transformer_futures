@@ -47,7 +47,7 @@ class FeatureConfig:
     # ファイルパス
     data_dir: str = "../transformer_futures.data"
     nk225_file: str = f"{data_dir}/NK225-{BAR_SECONDS}.parquet"
-    usdjpy_file: str = f"{data_dir}s/USDJPY-{BAR_SECONDS}.parquet"
+    usdjpy_file: str = f"{data_dir}/USDJPY-{BAR_SECONDS}.parquet"
     sp500_file: str = f"{data_dir}/US500-{BAR_SECONDS}.parquet"
 
     # カラム定義
