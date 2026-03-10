@@ -5,9 +5,7 @@ File: importer/import_mt5.py
 ソースコードの役割:
 本モジュールは、MT5由来の外部指標（USDJPY, US500等）のTSV(.gz)形式のミリ秒精度歩み値データを走査し、
 指定された秒足（デフォルト1分足）に集約・タイムゾーン変換を行って、
-銘柄ごとの Parquet ファイルとして出力します。
-日経平均先物（NK225）のデータはJPXデータクラウドから別経路でインポートされるため、
-本スクリプトでは外部環境データのみを処理対象とします。
+銘柄ごとの階層化された Parquet ファイル（銘柄/年/ファイル名）として出力します。
 """
 
 import glob
@@ -61,10 +59,7 @@ def load_mt5_ticks_from_tsv(file_path: str) -> pl.DataFrame:
         )
 
         return ldf.select(
-            [
-                "mt5_ts",
-                pl.col(price_col).cast(pl.Float64).alias("price"),
-            ]
+            ["mt5_ts", pl.col(price_col).cast(pl.Float64).alias("price")]
         ).drop_nulls(subset=["mt5_ts"])
 
     except Exception as e:
@@ -128,23 +123,18 @@ def resample_to_bars(tick_df: pl.DataFrame, interval_sec: int) -> pl.DataFrame:
     return (
         df.with_columns(pl.col("trade_ts").dt.truncate(interval_str).alias("trade_ts"))
         .group_by("trade_ts")
-        .agg(
-            [
-                pl.col("price").last().alias("close"),
-            ]
-        )
+        .agg([pl.col("price").last().alias("close")])
         .sort("trade_ts")
     )
 
 
 def main():
     """インポート処理のエントリポイント。"""
-    # config.py に定義がないためのエラーを回避し、作業ディレクトリを明示
     root_tsv_dir = "C:/transformer_futures_data/tsv"
     output_base_dir = "C:/transformer_futures_data/parquet"
     external_assets = ["USDJPY", "US500", "XAUUSD", "XTIUSD"]
 
-    print(f"インポート開始: Root={root_tsv_dir}, Output={output_base_dir}")
+    print(f"MT5 インポート開始: Root={root_tsv_dir}, Output={output_base_dir}")
 
     for ext_s in external_assets:
         files = get_weekly_files(root_tsv_dir, ext_s)
@@ -152,29 +142,29 @@ def main():
             print(f"  [Skip] {ext_s} のファイルが見つかりませんでした。")
             continue
 
-        print(f"\n[Processing Asset: {ext_s}]")
+        print(f"\n[Asset: {ext_s}]")
         for file_path in files:
             target_date = extract_date_from_filename(file_path)
-
             raw_ticks = load_mt5_ticks_from_tsv(file_path)
             if raw_ticks.is_empty():
                 continue
 
-            # 指定秒足（BAR_SECONDS）への集約
             bars_df = resample_to_bars(raw_ticks, BAR_SECONDS)
 
-            # 週次 Parquet ファイルの出力
+            # --- 保存先パスの階層化 (銘柄/年/ファイル名) ---
+            year_str = target_date[:4]
+            out_dir = os.path.join(output_base_dir, ext_s, year_str)
             out_filename = f"{ext_s}-{BAR_SECONDS}-{target_date}.parquet"
-            out_path = os.path.join(output_base_dir, out_filename)
+            out_path = os.path.join(out_dir, out_filename)
 
             try:
-                os.makedirs(output_base_dir, exist_ok=True)
+                os.makedirs(out_dir, exist_ok=True)
                 bars_df.write_parquet(out_path)
-                print(f"  => Saved: {out_filename} ({len(bars_df)} rows)")
+                print(f"  => Saved: {out_path} ({len(bars_df)} rows)")
             except Exception as e:
-                print(f"  [Save Error] {out_filename}: {e}")
+                print(f"  [Save Error] {out_path}: {e}")
 
-    print("\nすべてのデータ処理が完了しました。")
+    print("\nすべての外部指標データ処理が完了しました。")
 
 
 if __name__ == "__main__":
