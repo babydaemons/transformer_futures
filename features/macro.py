@@ -9,20 +9,20 @@ Bollinger Bandスコア、および需給データ（空売り比率、外国人
 """
 
 import polars as pl
+from typing import List
 
 
-def compute_macro_features(df: pl.DataFrame) -> pl.DataFrame:
+def _compute_asset_lags(df: pl.DataFrame) -> List[pl.Expr]:
     """
-    外部資産や需給データのLag等を用いたマクロ関連の特徴量を計算します。
+    各アセットのLag特徴量リストを生成します。
 
     Args:
-        df (pl.DataFrame): メインの価格データと結合済みのマクロデータを含むデータフレーム。
+        df (pl.DataFrame): 入力データフレーム。
 
     Returns:
-        pl.DataFrame: マクロ・需給特徴量が追加されたデータフレーム。
+        List[pl.Expr]: Lag特徴量のPolars式リスト。
     """
-    # 1. 各アセットのLag特徴量を作成 (USDJPY, S&P500, XAUUSD, XTIUSD)
-    lag_cols = [
+    return [
         (
             pl.col(f"{asset}_close")
             .pct_change()
@@ -36,9 +36,17 @@ def compute_macro_features(df: pl.DataFrame) -> pl.DataFrame:
         for asset in ["usdjpy", "sp500", "xauusd", "xtiusd"]
     ]
 
-    df = df.with_columns(lag_cols)
 
-    # 2. 確定したLag特徴量を使って派生特徴量を作成 (第2段階)
+def _compute_usdjpy_derivatives(df: pl.DataFrame) -> List[pl.Expr]:
+    """
+    USD/JPY関連の相関やボリンジャーバンドスコアなどの派生特徴量リストを生成します。
+
+    Args:
+        df (pl.DataFrame): 入力データフレーム。
+
+    Returns:
+        List[pl.Expr]: USD/JPY派生特徴量のPolars式リスト。
+    """
     deriv_cols = []
 
     # --- USD/JPY 関連指標 ---
@@ -82,6 +90,21 @@ def compute_macro_features(df: pl.DataFrame) -> pl.DataFrame:
         deriv_cols.append(pl.lit(0.0).alias("usdjpy_cum_divergence_1h"))
         deriv_cols.append(pl.lit(0.0).alias("usdjpy_bb_score"))
 
+    return deriv_cols
+
+
+def _compute_supply_demand_norms(df: pl.DataFrame) -> List[pl.Expr]:
+    """
+    空売り比率・外国人動向などの需給正規化特徴量リストを生成します。
+
+    Args:
+        df (pl.DataFrame): 入力データフレーム。
+
+    Returns:
+        List[pl.Expr]: 需給関連の正規化特徴量のPolars式リスト。
+    """
+    deriv_cols = []
+
     # --- 空売り比率の正規化 ---
     if "short_selling_ratio_raw" in df.columns:
         ssr = pl.col("short_selling_ratio_raw")
@@ -112,4 +135,23 @@ def compute_macro_features(df: pl.DataFrame) -> pl.DataFrame:
     else:
         deriv_cols.append(pl.lit(0.0).alias("foreigners_balance_norm"))
 
-    return df.with_columns(deriv_cols)
+    return deriv_cols
+
+
+def compute_macro_features(df: pl.DataFrame) -> pl.DataFrame:
+    """
+    外部資産や需給データのLag等を用いたマクロ関連の特徴量を計算します。
+
+    Args:
+        df (pl.DataFrame): メインの価格データと結合済みのマクロデータを含むデータフレーム。
+
+    Returns:
+        pl.DataFrame: マクロ・需給特徴量が追加されたデータフレーム。
+    """
+    # 1. 各アセットのLag特徴量を追加 (後続の派生指標の計算に必要)
+    df = df.with_columns(_compute_asset_lags(df))
+
+    # 2. Lagに依存する派生特徴量と、需給正規化特徴量をまとめて適用
+    deriv_exprs = _compute_usdjpy_derivatives(df) + _compute_supply_demand_norms(df)
+
+    return df.with_columns(deriv_exprs)
