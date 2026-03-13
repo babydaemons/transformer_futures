@@ -7,8 +7,11 @@ File: data/data_loader.py
 メインデータ（NK225）に対して各種マクロデータ（USDJPY、S&P500、XAUUSD、XTIUSD）や
 需給データ（空売り比率、投資主体別売買動向）を時間軸ベースで結合（join_asof）する
 データローダークラスを提供します。
+tree.txt に示される階層化されたディレクトリ構造（年別フォルダごとのParquet分割）に
+対応し、ワイルドカードによる複数ファイルの一括遅延ロードを行います。
 """
 
+import os
 import logging
 import polars as pl
 from datetime import timedelta, datetime
@@ -25,16 +28,39 @@ class MarketDataLoader:
     def __init__(self):
         """
         MarketDataLoaderの初期化。
-        設定ファイル（cfg）から各種Parquet/CSVファイルのパスを読み込みます。
-        Pydantic等で型安全性が保証されている前提のため、直接プロパティアクセスを行います。
+        設定ファイル（cfg）から各種データのパス（ディレクトリまたはファイル）を読み込みます。
+        tree.txt に示される階層化されたディレクトリ構造（例: parquet/NK225/2018/*.parquet）
+        に対応するため、指定されたパスがディレクトリの場合はワイルドカードを自動補完します。
         """
-        self.nk225_path = cfg.features.nk225_file
-        self.usdjpy_path = cfg.features.usdjpy_file
-        self.sp500_path = cfg.features.sp500_file
-        self.xauusd_path = cfg.features.xauusd_file
-        self.xtiusd_path = cfg.features.xtiusd_file
+        # Parquet形式のデータパス解決
+        self.nk225_path = self._resolve_path(cfg.features.nk225_file)
+        self.usdjpy_path = self._resolve_path(cfg.features.usdjpy_file)
+        self.sp500_path = self._resolve_path(cfg.features.sp500_file)
+        self.xauusd_path = self._resolve_path(cfg.features.xauusd_file)
+        self.xtiusd_path = self._resolve_path(cfg.features.xtiusd_file)
+
+        # CSV形式のデータはワイルドカード補完を適用せずそのまま読み込む
         self.short_selling_path = cfg.features.short_selling_file
         self.investor_path = cfg.features.investor_file
+
+    def _resolve_path(self, path_str: str) -> str:
+        """
+        指定されたパスがディレクトリである場合、年別サブディレクトリ内の
+        Parquetファイルをすべて読み込めるようにワイルドカードパスを構築します。
+
+        Args:
+            path_str (str): 設定ファイルで指定されたパス文字列
+
+        Returns:
+            str: 解決済みのパス文字列（ワイルドカードを含む場合あり）
+        """
+        if os.path.isdir(path_str):
+            # 例: C:/TRANSFORMER_FUTURES_DATA/parquet/NK225 -> C:/TRANSFORMER_FUTURES_DATA/parquet/NK225/*/*.parquet
+            return os.path.join(path_str, "*", "*.parquet")
+        elif not path_str.endswith(".parquet") and "*" not in path_str:
+            # 存在しないパスだがディレクトリを意図していると推測される場合へのフォールバック
+            return os.path.join(path_str, "*", "*.parquet")
+        return path_str
 
     def get_trading_dates(self) -> List[datetime]:
         """
@@ -68,12 +94,12 @@ class MarketDataLoader:
         Returns:
             pl.LazyFrame: 全てのデータが時間軸ベースで結合されたLazyFrame
         """
-        # メインデータ（NK225）の読み込み
+        # メインデータの読み込みとフィルタリング
         lf_nk = pl.scan_parquet(self.nk225_path).filter(
             pl.col("trade_ts").is_between(start_dt, end_dt)
         )
 
-        # マクロデータ（価格データ）の準備
+        # マクロデータの準備
         lf_usd = self._prepare_macro_data(self.usdjpy_path, "usdjpy", start_dt, end_dt)
         lf_spx = self._prepare_macro_data(self.sp500_path, "sp500", start_dt, end_dt)
         lf_xau = self._prepare_macro_data(self.xauusd_path, "xauusd", start_dt, end_dt)
@@ -83,7 +109,8 @@ class MarketDataLoader:
         lf_ss = self._prepare_short_selling_data(self.short_selling_path)
         lf_inv = self._prepare_investor_data(self.investor_path)
 
-        # 全データを結合（backward方向のasof joinを使用し、未来情報の漏洩を防ぐ）
+        # 時間軸ベースでの結合（ASOF JOIN）
+        # backward方向のasof joinを使用し、未来情報の漏洩を防ぐ
         return (
             lf_nk.sort("trade_ts")
             .join_asof(lf_usd, on="trade_ts", strategy="backward")
@@ -101,7 +128,7 @@ class MarketDataLoader:
         マクロ価格データを準備します。結合時の欠損を防ぐため、開始時刻より少し前のデータも含めて読み込みます。
 
         Args:
-            path (str): マクロデータのファイルパス
+            path (str): マクロデータのファイルパスまたはワイルドカードパス
             prefix (str): 列名に付与するプレフィックス（例: 'usdjpy'）
             start_dt (datetime): 取得開始日時
             end_dt (datetime): 取得終了日時
@@ -129,7 +156,7 @@ class MarketDataLoader:
                 .sort("trade_ts")
             )
         except Exception as e:
-            logging.warning(f"Failed to load macro data {prefix}: {e}")
+            logging.warning(f"Failed to load macro data {prefix} from {path}: {e}")
             # エラー時はゼロ埋めのダミーフレームを返す
             return pl.LazyFrame(
                 {
