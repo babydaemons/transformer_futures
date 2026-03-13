@@ -5,6 +5,7 @@ File: features/macro.py
 ソースコードの役割:
 本モジュールは、外部資産（USD/JPY、S&P500など）のLag結合やLead-Lagスプレッド、
 Bollinger Bandスコアなどのマクロ経済関連の特徴量計算を提供します。
+1分足のデイトレードにおいて、外部環境の短期的なトレンドと乖離を数値化します。
 """
 
 import polars as pl
@@ -21,11 +22,13 @@ def compute_macro_features(df: pl.DataFrame) -> pl.DataFrame:
         pl.DataFrame: マクロ特徴量が追加されたデータフレーム。
     """
     # 1. まずLag特徴量を作成 (第1段階)
+    # 5期間の騰落率(pct_change)を計算後、EWMで平滑化してノイズを除去します。
     lag_cols = [
         (
             pl.col(f"{asset}_close")
-            .pct_change()
+            .pct_change(5)
             .fill_null(0)
+            .ewm_mean(span=5, adjust=False)
             .shift(1)
             .fill_null(0)
             .alias(f"{asset}_ret_lag1")
@@ -40,19 +43,22 @@ def compute_macro_features(df: pl.DataFrame) -> pl.DataFrame:
     # 2. 確定したLag特徴量を使って派生特徴量を作成 (第2段階)
     deriv_cols = []
     if "usdjpy_close" in df.columns:
+        # 相関指標 (60分ウィンドウ)
         deriv_cols.append(
             pl.rolling_corr(pl.col("close"), pl.col("usdjpy_close"), window_size=60)
             .fill_nan(0)
             .fill_null(0)
             .alias("corr_usdjpy")
         )
-        # --- Lead-Lag Spread ---
+
+        # Lead-Lag Spread: 自銘柄の対数リターンと外部資産のラグ付きリターンの差分
         deriv_cols.append(
             (pl.col("log_ret") - pl.col("usdjpy_ret_lag1"))
             .fill_null(0)
             .alias("usdjpy_lead_spread")
         )
-        # マクロ乖離の累積 (60分)
+
+        # マクロ乖離の累積 (60分合計)
         deriv_cols.append(
             (pl.col("log_ret") - pl.col("usdjpy_ret_lag1"))
             .rolling_sum(60)
@@ -60,7 +66,7 @@ def compute_macro_features(df: pl.DataFrame) -> pl.DataFrame:
             .alias("usdjpy_cum_divergence_1h")
         )
 
-        # USDJPY Bollinger Band Score (Z-score)
+        # USDJPY Bollinger Band Score (Z-scoreによる割安・割高判定)
         u_mean = pl.col("usdjpy_close").rolling_mean(20)
         u_std = pl.col("usdjpy_close").rolling_std(20) + 1e-5
         deriv_cols.append(
@@ -70,6 +76,7 @@ def compute_macro_features(df: pl.DataFrame) -> pl.DataFrame:
         )
 
     else:
+        # 外部資産データが存在しない場合のフォールバック
         deriv_cols.append(pl.lit(0.0).alias("corr_usdjpy"))
         deriv_cols.append(pl.lit(0.0).alias("usdjpy_lead_spread"))
         deriv_cols.append(pl.lit(0.0).alias("usdjpy_cum_divergence_1h"))
