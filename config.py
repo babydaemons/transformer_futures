@@ -25,11 +25,16 @@ class FeatureConfig:
 
     Attributes:
         seq_len (int): コンテキスト長 (120分 = 2時間)。VRAM制限のため調整。
-        predict_horizon (int): 予測ホライゾン (30分)。
+        predict_horizon (int): 予測ホライゾン (30分)。より直近のモメンタムを狙う。
         dataset_stride (int): データセット作成時のストライド幅。
+        data_dir (str): データファイルが格納されている基本ディレクトリ。
         nk225_file (str): 日経225先物の入力ファイルパス。
         usdjpy_file (str): USDJPYの入力ファイルパス。
         sp500_file (str): S&P500の入力ファイルパス。
+        xauusd_file (str): 金(XAUUSD)の入力ファイルパス。
+        xtiusd_file (str): 原油(XTIUSD)の入力ファイルパス。
+        short_selling_file (str): 空売り比率データ(日次)の入力ファイルパス。
+        investor_file (str): 投資主体別売買動向データの入力ファイルパス。
         ts_col (str): タイムスタンプのカラム名。
         price_col (str): 価格のカラム名。
         label_threshold_scale (float): ラベル付与時のノイズ耐性スケール。
@@ -49,6 +54,10 @@ class FeatureConfig:
     nk225_file: str = f"{data_dir}/NK225-{BAR_SECONDS}.parquet"
     usdjpy_file: str = f"{data_dir}/USDJPY-{BAR_SECONDS}.parquet"
     sp500_file: str = f"{data_dir}/US500-{BAR_SECONDS}.parquet"
+    xauusd_file: str = f"{data_dir}/XAUUSD-{BAR_SECONDS}.parquet"
+    xtiusd_file: str = f"{data_dir}/XTIUSD-{BAR_SECONDS}.parquet"
+    short_selling_file: str = f"{data_dir}/jpx_short_selling_daily.tsv"
+    investor_file: str = f"{data_dir}/jpx_investor_type_inventory.tsv"
 
     # カラム定義
     ts_col: str = "trade_ts"
@@ -109,13 +118,17 @@ class FeatureConfig:
             "adx",
             "efficiency_ratio",
             "efficiency_ratio_1h",
-            # --- Macro ---
+            # --- Macro / Cross Asset Additions ---
             "usdjpy_ret_lag1",
             "sp500_ret_lag1",
             "corr_usdjpy",
             "usdjpy_lead_spread",
             "usdjpy_bb_score",
             "usdjpy_cum_divergence_1h",
+            "xauusd_ret_lag1",
+            "xtiusd_ret_lag1",
+            "short_selling_ratio",
+            "foreigners_balance_norm",
         ]
     )
 
@@ -125,8 +138,7 @@ class FeatureConfig:
             "day_of_week_cos",
             "hour_of_day_sin",
             "hour_of_day_cos",
-            "minute_of_day_sin",
-            "minute_of_day_cos",
+            # minute_of_day_sin / cos は削除済み
             "is_market_open",
             "is_lunch_break",
             "is_closing_auction",
@@ -157,7 +169,7 @@ class ModelConfig:
         d_model (int): モデルの隠れ層の次元数。
         hidden_size (int): 内部フィードフォワード層のサイズ。
         n_heads (int): アテンションヘッド数。
-        dropout (float): ドロップアウト率。
+        dropout (float): ドロップアウト率。過学習対策。
         num_layers (int): Transformer層の数。
         num_classes (int): 分類クラス数(Up/Down/Neutral)。
         num_trade_classes (int): 取引有無クラス数。
@@ -299,10 +311,8 @@ class BacktestConfig:
     threshold_dir: float = 0.55
 
     # --- Dynamic Thresholding ---
-    use_vol_regime_scaling: bool = True  # ★追加: レジームによる閾値の動的変更
-    vol_scaling_intensity: float = (
-        0.2  # ★追加: 閑散時にどれだけ閾値を厳しくするか(0.0~1.0)
-    )
+    use_vol_regime_scaling: bool = True  # レジームによる閾値の動的変更
+    vol_scaling_intensity: float = 0.2  # 閑散時にどれだけ閾値を厳しくするか(0.0~1.0)
 
     # Tuning
     max_signal_rate_for_tuning: float = 0.50
