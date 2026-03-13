@@ -5,6 +5,7 @@ File: core/trainer.py
 ソースコードの役割:
 本モジュールは、TemporalFusionTransformerモデルの学習ループおよび検証プロセスを管理するトレーナークラスと関連ヘルパー関数を提供します。
 PnL最適化損失、Focal Lossの適用、検証バックテストの実行など、学習に特化した処理をカプセル化しています。
+設定オブジェクトによって属性参照の安全性が保証されているため、直接属性へアクセスし可読性とパフォーマンスを向上させています。
 """
 
 import time
@@ -33,6 +34,7 @@ from util.utils import (
 )
 from trade import run_vectorized_backtest
 from core.pnl_loss import calculate_train_pnl_loss, calculate_eval_pnl_loss
+
 
 def split_two_stage_targets(
     y_3cls: torch.Tensor,
@@ -109,16 +111,17 @@ class Trainer:
         self.device = device
         self.logger = logger
 
+        # 勾配スケーラーとEMA（Exponential Moving Average）の初期化
         self.scaler = torch.amp.GradScaler("cuda", enabled=self.cfg.train.use_amp)
         self.ema = (
             EMA(self.model, decay=self.cfg.train.ema_decay)
-            if getattr(self.cfg.train, "use_ema", False)
+            if self.cfg.train.use_ema
             else None
         )
         self.global_pnl_var = 1.0
 
     def _setup_optimizer_and_scheduler(self, loader_train: DataLoader):
-        """オプティマイザとスケジューラの初期化"""
+        """AdamWオプティマイザとOneCycleLRスケジューラの初期化を行います。"""
         self.optimizer = optim.AdamW(
             self.model.parameters(),
             lr=self.cfg.train.learning_rate,
@@ -136,7 +139,17 @@ class Trainer:
     def _calculate_class_weights(
         self, y_labels_tr: np.ndarray
     ) -> Tuple[torch.Tensor, torch.Tensor]:
-        """学習データから動的なクラス重みを計算"""
+        """学習データから動的なクラス重みを計算します。
+
+        不均衡データ（Neutralクラスが多数を占める）に対応するため、
+        頻度の低いTradeアクションに対してより大きな重みを動的に割り当てます。
+
+        Args:
+            y_labels_tr (np.ndarray): 学習データの正解ラベル配列
+
+        Returns:
+            Tuple[torch.Tensor, torch.Tensor]: Trade分類用とDirection分類用の重みテンソル
+        """
         y_labels_t = torch.tensor(y_labels_tr, dtype=torch.long)
         trade_y, _, _ = split_two_stage_targets(y_labels_t)
 
@@ -202,119 +215,119 @@ class Trainer:
         )
         return weight_trade, weight_dir
 
-
     def _compute_batch_loss(
-            self,
-            batch: Tuple,
-            is_train: bool,
-            criterion_trade: nn.Module,
-            criterion_dir: nn.Module,
-        ) -> torch.Tensor:
-            """
-            バッチデータに対する順伝播および損失関数の計算を行います。
-            """
-            xc, xs, y, p_curr, p_next_open, f_closes = batch[0:6]
-            curr_atr = batch[10]
+        self,
+        batch: Tuple,
+        is_train: bool,
+        criterion_trade: nn.Module,
+        criterion_dir: nn.Module,
+    ) -> torch.Tensor:
+        """
+        バッチデータに対する順伝播および損失関数の計算を行います。
+        """
+        xc, xs, y, p_curr, p_next_open, f_closes = batch[0:6]
+        curr_atr = batch[10]
 
-            # is_train時は p_exit を使用する
-            p_exit = f_closes.mean(dim=1) if is_train else None
+        # is_train時は p_exit を使用する
+        p_exit = f_closes.mean(dim=1) if is_train else None
 
-            xc = xc.to(self.device, non_blocking=True)
-            xs = xs.to(self.device, non_blocking=True)
-            y = y.to(self.device, non_blocking=True)
-            p_curr = p_curr.to(self.device, non_blocking=True)
-            p_next_open = p_next_open.to(self.device, non_blocking=True)
-            f_closes = f_closes.to(self.device, non_blocking=True)
-            curr_atr = curr_atr.to(self.device, non_blocking=True)
-            if is_train:
-                p_exit = p_exit.to(self.device, non_blocking=True)
+        xc = xc.to(self.device, non_blocking=True)
+        xs = xs.to(self.device, non_blocking=True)
+        y = y.to(self.device, non_blocking=True)
+        p_curr = p_curr.to(self.device, non_blocking=True)
+        p_next_open = p_next_open.to(self.device, non_blocking=True)
+        f_closes = f_closes.to(self.device, non_blocking=True)
+        curr_atr = curr_atr.to(self.device, non_blocking=True)
+        if is_train:
+            p_exit = p_exit.to(self.device, non_blocking=True)
 
-            trade_y, dir_y, dir_mask = split_two_stage_targets(y)
+        trade_y, dir_y, dir_mask = split_two_stage_targets(y)
 
-            # 順伝播
-            out = self.model(xc, xs)
-            if isinstance(out, (tuple, list)) and len(out) == 3:
-                trade_logits, dir_logits, sltp_preds = out
+        # 順伝播
+        out = self.model(xc, xs)
+        if isinstance(out, (tuple, list)) and len(out) == 3:
+            trade_logits, dir_logits, sltp_preds = out
+        else:
+            trade_logits, dir_logits = out
+            sltp_preds = None
+
+        trade_logit_diff = trade_logits[:, 1] - trade_logits[:, 0]
+        dir_logit_diff = dir_logits[:, 1] - dir_logits[:, 0]
+        probs_action = torch.sigmoid(trade_logit_diff)
+        probs_short = torch.sigmoid(dir_logit_diff)
+
+        # 基本的な損失計算 (Trade & Dir)
+        loss_trade = criterion_trade(trade_logits, trade_y)
+        dir_mask_f = dir_mask.to(dtype=trade_logits.dtype)
+        dir_den = dir_mask_f.sum().clamp_min(1.0)
+
+        if isinstance(criterion_dir, FocalLoss):
+            ce = nn.functional.cross_entropy(dir_logits, dir_y, reduction="none")
+            pt = torch.exp(-ce)
+            # FocalLossのコンストラクタでregister_bufferされているため属性アクセスが可能
+            if criterion_dir.alpha is not None:
+                alpha_t = criterion_dir.alpha[dir_y]
+                dir_loss_vec = alpha_t * (1 - pt) ** criterion_dir.gamma * ce
             else:
-                trade_logits, dir_logits = out
-                sltp_preds = None
-
-            trade_logit_diff = trade_logits[:, 1] - trade_logits[:, 0]
-            dir_logit_diff = dir_logits[:, 1] - dir_logits[:, 0]
-            probs_action = torch.sigmoid(trade_logit_diff)
-            probs_short = torch.sigmoid(dir_logit_diff)
-
-            # 基本的な損失計算 (Trade & Dir)
-            loss_trade = criterion_trade(trade_logits, trade_y)
-            dir_mask_f = dir_mask.to(dtype=trade_logits.dtype)
-            dir_den = dir_mask_f.sum().clamp_min(1.0)
-
-            if isinstance(criterion_dir, FocalLoss):
-                ce = nn.functional.cross_entropy(dir_logits, dir_y, reduction="none")
-                pt = torch.exp(-ce)
-                if getattr(criterion_dir, "alpha", None) is not None:
-                    alpha_t = criterion_dir.alpha[dir_y]
-                    dir_loss_vec = alpha_t * (1 - pt) ** criterion_dir.gamma * ce
-                else:
-                    dir_loss_vec = (1 - pt) ** criterion_dir.gamma * ce
-            else:
-                dir_loss_vec = nn.functional.cross_entropy(
-                    dir_logits, dir_y, reduction="none"
-                )
-
-            loss_dir = (dir_loss_vec * dir_mask_f).sum() / dir_den
-
-            # 方向性ペナルティ計算
-            dir_pen = trade_logits.new_tensor(0.0)
-            if self.cfg.train.directional_penalty > 0.0:
-                dir_pen = calculate_directional_penalty(
-                    trade_logits,
-                    dir_y,
-                    probs_short,
-                    dir_mask_f,
-                    dir_den,
-                    self.cfg.train.dir_conf_margin,
-                )
-
-            loss = (
-                self.cfg.train.trade_loss_weight * loss_trade
-                + self.cfg.train.dir_loss_weight * loss_dir
-                + self.cfg.train.directional_penalty * dir_pen
+                dir_loss_vec = (1 - pt) ** criterion_dir.gamma * ce
+        else:
+            dir_loss_vec = nn.functional.cross_entropy(
+                dir_logits, dir_y, reduction="none"
             )
 
-            # PnL Loss計算
-            if self.cfg.train.pnl_loss_weight > 0.0:
-                if is_train:
-                    pnl_loss, sltp_reg, self.global_pnl_var = calculate_train_pnl_loss(
-                        probs_short=probs_short,
-                        probs_action=probs_action,
-                        p_exit=p_exit,
-                        p_curr=p_curr,
-                        curr_atr=curr_atr,
-                        sltp_preds=sltp_preds,
-                        cost=float(self.cfg.backtest.cost),
-                        slippage_tick=float(self.cfg.backtest.slippage_tick),
-                        tp_min_after_cost=float(self.cfg.backtest.tp_min_after_cost),
-                        use_dynamic_sl_tp=bool(self.cfg.backtest.use_dynamic_sl_tp),
-                        global_pnl_var=self.global_pnl_var,
-                    )
-                else:
-                    pnl_loss, sltp_reg = calculate_eval_pnl_loss(
-                        probs_short=probs_short,
-                        probs_action=probs_action,
-                        f_closes=f_closes,
-                        p_next_open=p_next_open,
-                        curr_atr=curr_atr,
-                        sltp_preds=sltp_preds,
-                        cost=float(self.cfg.backtest.cost),
-                        slippage_tick=float(self.cfg.backtest.slippage_tick),
-                        tp_min_after_cost=float(self.cfg.backtest.tp_min_after_cost),
-                        use_dynamic_sl_tp=bool(self.cfg.backtest.use_dynamic_sl_tp),
-                    )
+        loss_dir = (dir_loss_vec * dir_mask_f).sum() / dir_den
 
-                loss = loss + self.cfg.train.pnl_loss_weight * pnl_loss + sltp_reg
+        # 方向性ペナルティ計算
+        dir_pen = trade_logits.new_tensor(0.0)
+        if self.cfg.train.directional_penalty > 0.0:
+            dir_pen = calculate_directional_penalty(
+                trade_logits,
+                dir_y,
+                probs_short,
+                dir_mask_f,
+                dir_den,
+                self.cfg.train.dir_conf_margin,
+            )
 
-            return loss
+        loss = (
+            self.cfg.train.trade_loss_weight * loss_trade
+            + self.cfg.train.dir_loss_weight * loss_dir
+            + self.cfg.train.directional_penalty * dir_pen
+        )
+
+        # PnL Loss計算
+        if self.cfg.train.pnl_loss_weight > 0.0:
+            if is_train:
+                pnl_loss, sltp_reg, self.global_pnl_var = calculate_train_pnl_loss(
+                    probs_short=probs_short,
+                    probs_action=probs_action,
+                    p_exit=p_exit,
+                    p_curr=p_curr,
+                    curr_atr=curr_atr,
+                    sltp_preds=sltp_preds,
+                    cost=float(self.cfg.backtest.cost),
+                    slippage_tick=float(self.cfg.backtest.slippage_tick),
+                    tp_min_after_cost=float(self.cfg.backtest.tp_min_after_cost),
+                    use_dynamic_sl_tp=bool(self.cfg.backtest.use_dynamic_sl_tp),
+                    global_pnl_var=self.global_pnl_var,
+                )
+            else:
+                pnl_loss, sltp_reg = calculate_eval_pnl_loss(
+                    probs_short=probs_short,
+                    probs_action=probs_action,
+                    f_closes=f_closes,
+                    p_next_open=p_next_open,
+                    curr_atr=curr_atr,
+                    sltp_preds=sltp_preds,
+                    cost=float(self.cfg.backtest.cost),
+                    slippage_tick=float(self.cfg.backtest.slippage_tick),
+                    tp_min_after_cost=float(self.cfg.backtest.tp_min_after_cost),
+                    use_dynamic_sl_tp=bool(self.cfg.backtest.use_dynamic_sl_tp),
+                )
+
+            loss = loss + self.cfg.train.pnl_loss_weight * pnl_loss + sltp_reg
+
+        return loss
 
     def evaluate_loss(
         self, loader: DataLoader, criterion_trade: nn.Module, criterion_dir: nn.Module
@@ -378,7 +391,7 @@ class Trainer:
         self._setup_optimizer_and_scheduler(loader_train)
         weight_trade, weight_dir = self._calculate_class_weights(y_labels_tr)
 
-        if getattr(self.cfg.train, "use_focal_loss", False):
+        if self.cfg.train.use_focal_loss:
             criterion_trade = FocalLoss(
                 alpha=weight_trade, gamma=self.cfg.train.focal_gamma
             )
@@ -442,8 +455,7 @@ class Trainer:
             if self.ema is not None:
                 self.ema.restore(self.model)
 
-            # Pydantic等の保証がある場合は属性アクセスに変更できる箇所ですが、
-            # 安全のため辞書のgetを簡略化して維持しています
+            # 辞書からの取得。バックテスト結果の辞書に対するものなので維持
             val_score = (
                 float(backtest_res.get("score", -float("inf")))
                 if backtest_res
