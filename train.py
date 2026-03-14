@@ -158,7 +158,7 @@ def train_main(target_year: Optional[int] = None) -> None:
     logger = logging.getLogger(__name__)
     
     # 分割された各コンポーネントを初期化
-    data_loader = MarketDataLoader()
+    data_loader = MarketDataLoader(cfg)
     pipeline = FeaturePipeline()
     ds_builder = DatasetBuilder()
 
