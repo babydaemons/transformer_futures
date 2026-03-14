@@ -582,6 +582,9 @@ class BacktestSimulator:
         base_score = math.log(pf_eff + 1e-6) * math.log(n_trades + 1) * pnl_score
         score = float(base_score - 0.25 * signal_rate + 0.05 * dir_acc)
 
+        # 少数トレードの過学習を抑えるため、20件未満はスコアを減衰
+        score *= min(1.0, n_trades / 20.0)
+
         return {
             "n_trades": n_trades,
             "win_rate": win_rate,
