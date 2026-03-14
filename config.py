@@ -27,7 +27,7 @@ class FeatureConfig:
         seq_len (int): コンテキスト長 (120分 = 2時間)。VRAM制限のため調整。
         predict_horizon (int): 予測ホライゾン (30分)。より直近のモメンタムを狙う。
         dataset_stride (int): データセット作成時のストライド幅。
-        data_dir (str): データファイルが格納されている基本ディレクトリ。
+        data_dir (str): データファイルが格納されている基本ディレクトリ。環境変数 DATA_DIR で上書き可能。
         nk225_file (str): 日経225先物の入力ファイルパス。
         usdjpy_file (str): USDJPYの入力ファイルパス。
         sp500_file (str): S&P500の入力ファイルパス。
@@ -49,8 +49,8 @@ class FeatureConfig:
     # Dataset stride
     dataset_stride: int = int(os.getenv("DATASET_STRIDE", 1))
 
-    # ファイルパス
-    data_dir: str = "../transformer_futures.data"
+    # ファイルパス: 環境変数 DATA_DIR でローカル環境のパス(例: C:/transformer_features_data)を注入できるようにする
+    data_dir: str = os.getenv("DATA_DIR", "C:/transformer_futures_data")
     nk225_file: str = f"{data_dir}/NK225-{BAR_SECONDS}.parquet"
     usdjpy_file: str = f"{data_dir}/USDJPY-{BAR_SECONDS}.parquet"
     sp500_file: str = f"{data_dir}/US500-{BAR_SECONDS}.parquet"

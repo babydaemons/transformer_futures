@@ -1,28 +1,22 @@
-# core/trainer.py
+# core/loss_calculator.py
 """
-File: core/trainer.py
+File: core/loss_calculator.py
 
 ソースコードの役割:
-本モジュールは、TemporalFusionTransformerモデルの学習ループおよび最適化プロセスを管理するトレーナークラスと関連ヘルパー関数を提供します。
-クラス不均衡対策の動的重み計算や、PnL最適化損失、Focal Lossの適用など、モデルのパラメータ更新に特化した処理をカプセル化しています。
-検証(Validation)とバックテスト評価のロジックは `core.evaluator.Evaluator` に分離し、クラスの凝集度を高めています。
+本モジュールは、モデルの出力に対する損失計算ロジックを提供します。
+不均衡データを調整するための動的クラス重み計算や、方向予測ペナルティ、
+PnLベースのカスタム損失の統合計算を行います。
 """
 
-import time
 import logging
-from typing import Tuple, Optional, Dict, Any, List
+from typing import Tuple, Optional, Any
 
 import torch
 import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import DataLoader
-from torch.optim.lr_scheduler import OneCycleLR
 import numpy as np
 
 from core.losses import FocalLoss
 from core.pnl_loss import calculate_train_pnl_loss, calculate_eval_pnl_loss
-from core.evaluator import Evaluator
-from util.utils import EMA
 
 
 def split_two_stage_targets(
@@ -74,67 +68,18 @@ def calculate_directional_penalty(
     return ((1.0 - p_true) * dir_mask_f).sum() / dir_den
 
 
-class Trainer:
+class LossCalculator:
     """
-    モデルの訓練ループと最適化状態の管理を行うクラス。
+    損失の計算やクラス重みの動的計算を行うクラス。
     """
 
-    def __init__(
-        self,
-        model: nn.Module,
-        cfg: Any,
-        device: torch.device,
-        logger: logging.Logger,
-    ):
-        """
-        Trainerの初期化。
-
-        Args:
-            model (nn.Module): 学習対象のPyTorchモデル
-            cfg (Any): 設定オブジェクト (Pydantic/Dataclass 等)
-            device (torch.device): 実行デバイス (CPU/GPU)
-            logger (logging.Logger): ロガーインスタンス
-        """
-        self.model = model
+    def __init__(self, cfg: Any, device: torch.device, logger: logging.Logger):
         self.cfg = cfg
         self.device = device
         self.logger = logger
-
-        # 勾配スケーラーとEMA（Exponential Moving Average）の初期化
-        self.scaler = torch.amp.GradScaler("cuda", enabled=self.cfg.train.use_amp)
-        self.ema = (
-            EMA(self.model, decay=self.cfg.train.ema_decay)
-            if self.cfg.train.use_ema
-            else None
-        )
         self.global_pnl_var = 1.0
 
-        # 検証およびOOS評価を担当するEvaluatorを初期化
-        self.evaluator = Evaluator(
-            model=self.model,
-            cfg=self.cfg,
-            device=self.device,
-            logger=self.logger,
-            compute_loss_fn=self._compute_batch_loss,
-        )
-
-    def _setup_optimizer_and_scheduler(self, loader_train: DataLoader):
-        """AdamWオプティマイザとOneCycleLRスケジューラの初期化を行います。"""
-        self.optimizer = optim.AdamW(
-            self.model.parameters(),
-            lr=self.cfg.train.learning_rate,
-            weight_decay=self.cfg.train.weight_decay,
-        )
-        self.scheduler = OneCycleLR(
-            self.optimizer,
-            max_lr=self.cfg.train.learning_rate,
-            steps_per_epoch=len(loader_train),
-            epochs=self.cfg.train.epochs,
-            pct_start=0.3,
-            anneal_strategy="cos",
-        )
-
-    def _calculate_class_weights(
+    def calculate_class_weights(
         self, y_labels_tr: np.ndarray
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         """学習データから動的なクラス重みを計算します。
@@ -213,8 +158,9 @@ class Trainer:
         )
         return weight_trade, weight_dir
 
-    def _compute_batch_loss(
+    def compute_batch_loss(
         self,
+        model: nn.Module,
         batch: Tuple,
         is_train: bool,
         criterion_trade: nn.Module,
@@ -242,7 +188,7 @@ class Trainer:
         trade_y, dir_y, dir_mask = split_two_stage_targets(y)
 
         # 順伝播
-        out = self.model(xc, xs)
+        out = model(xc, xs)
         if isinstance(out, (tuple, list)) and len(out) == 3:
             trade_logits, dir_logits, sltp_preds = out
         else:
@@ -326,101 +272,3 @@ class Trainer:
             loss = loss + self.cfg.train.pnl_loss_weight * pnl_loss + sltp_reg
 
         return loss
-
-    def train_fold(
-        self,
-        loader_train: DataLoader,
-        loader_val: DataLoader,
-        loader_test: Optional[DataLoader],
-        y_labels_tr: np.ndarray,
-        fold_idx: int,
-        test_dates: List[Any],
-    ) -> List[Dict[str, Any]]:
-        """
-        1Fold分の学習ループを実行し、OOSでのトレード履歴を返します。
-
-        Args:
-            loader_train (DataLoader): 学習用データローダー
-            loader_val (DataLoader): 検証用データローダー
-            loader_test (Optional[DataLoader]): テスト用データローダー
-            y_labels_tr (np.ndarray): 学習用ラベル配列
-            fold_idx (int): 現在のFold番号
-            test_dates (List[Any]): テスト期間の日付リスト
-
-        Returns:
-            List[Dict[str, Any]]: OOS(Out of Sample)での取引履歴リスト
-        """
-        self._setup_optimizer_and_scheduler(loader_train)
-        weight_trade, weight_dir = self._calculate_class_weights(y_labels_tr)
-
-        if self.cfg.train.use_focal_loss:
-            criterion_trade = FocalLoss(
-                alpha=weight_trade, gamma=self.cfg.train.focal_gamma
-            )
-            criterion_dir = FocalLoss(
-                alpha=weight_dir, gamma=self.cfg.train.focal_gamma
-            )
-        else:
-            criterion_trade = nn.CrossEntropyLoss(weight=weight_trade)
-            criterion_dir = nn.CrossEntropyLoss(weight=weight_dir)
-
-        for epoch in range(self.cfg.train.epochs):
-            self.model.train()
-            total_loss = 0.0
-            steps = 0
-
-            for batch in loader_train:
-                self.optimizer.zero_grad(set_to_none=True)
-
-                with torch.amp.autocast("cuda", enabled=self.cfg.train.use_amp):
-                    loss = self._compute_batch_loss(
-                        batch,
-                        is_train=True,
-                        criterion_trade=criterion_trade,
-                        criterion_dir=criterion_dir,
-                    )
-
-                self.scaler.scale(loss).backward()
-
-                if self.cfg.train.grad_clip > 0.0:
-                    self.scaler.unscale_(self.optimizer)
-                    torch.nn.utils.clip_grad_norm_(
-                        self.model.parameters(), self.cfg.train.grad_clip
-                    )
-
-                self.scaler.step(self.optimizer)
-                self.scaler.update()
-                self.scheduler.step()
-
-                if self.ema is not None:
-                    self.ema.update(self.model)
-
-                total_loss += float(loss.item())
-                steps += 1
-
-            self.logger.info(
-                f"Fold {fold_idx} Ep {epoch}: TrainLoss={total_loss/max(steps,1):.4f}"
-            )
-
-            # --- Validation & Early Stopping via Evaluator ---
-            should_stop = self.evaluator.evaluate_and_track_best(
-                epoch=epoch,
-                fold_idx=fold_idx,
-                loader_val=loader_val,
-                criterion_trade=criterion_trade,
-                criterion_dir=criterion_dir,
-                ema=self.ema,
-            )
-
-            if should_stop:
-                break
-
-        # --- OOS Test via Evaluator ---
-        oos_trades = self.evaluator.run_oos_test(
-            fold_idx=fold_idx,
-            loader_val=loader_val,
-            loader_test=loader_test,
-            test_dates=test_dates,
-        )
-
-        return oos_trades
