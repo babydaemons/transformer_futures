@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "atrs",
+        "autocast",
         "backtest",
         "cudnn",
         "financials",
@@ -8,6 +9,7 @@
         "klass",
         "macd",
         "OHLCV",
+        "preds",
         "Technicals",
         "usdjpy",
         "vwap",

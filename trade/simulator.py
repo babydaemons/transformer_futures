@@ -71,7 +71,6 @@ def _calculate_dynamic_sl(
 ) -> np.ndarray:
     """トレイリングストップ（動的SL）の価格パスを計算する。
 
-
     Args:
         pe (np.ndarray): エントリー価格。
         fav_px_path (np.ndarray): 有利な方向の価格推移（LongならHigh, ShortならLow）。
@@ -376,7 +375,19 @@ class BacktestSimulator:
         self.data = data
         self.cfg = cfg
 
-        self.cooldown_bars = int(cfg.features.predict_horizon)
+        self.cooldown_bars = max(0, int(cfg.backtest.cooldown_bars))
+        predict_horizon = max(1, int(cfg.features.predict_horizon))
+        max_hold_bars = (
+            max(
+                1,
+                int(
+                    math.ceil(float(cfg.backtest.max_holding_sec) / float(BAR_SECONDS))
+                ),
+            )
+            if cfg.backtest.max_holding_sec
+            else predict_horizon
+        )
+        self.hold_horizon_bars = max(1, min(predict_horizon, max_hold_bars))
         self.min_tick_speed = cfg.backtest.min_tick_speed_ratio
 
         # --- Session-Based Threshold (お昼休みのフィルタリング) ---
@@ -412,8 +423,13 @@ class BacktestSimulator:
         fl = self.data["f_lows"][entry_mask]
         fc = self.data["f_closes"][entry_mask]
 
-        t_rem = self.data["time_to_closes"][entry_mask]
-        act_horizon = np.clip(t_rem.astype(np.int32), 1, self.cooldown_bars)
+        t_rem = np.clip(
+            self.data["time_to_closes"][entry_mask].astype(np.int32, copy=False),
+            0,
+            None,
+        )
+        max_h = max(1, min(int(fc.shape[1]), int(self.hold_horizon_bars)))
+        act_horizon = np.clip(t_rem, 1, max_h)
 
         min_hold_bars = (
             max(
@@ -610,7 +626,7 @@ class BacktestSimulator:
                 if self.cfg.backtest.use_vol_regime_scaling
                 else 0.0
             ),
-            int(self.cooldown_bars),
+            int(self.hold_horizon_bars),
         )
 
         # トレードが発生しなかった場合の早期リターン
@@ -620,7 +636,7 @@ class BacktestSimulator:
                 "n_trades": 0,
                 "win_rate": 0.0,
                 "dir_acc": 0.0,
-                "score": -100.0,  # 変更: -inf から適度なペナルティ値へ
+                "score": -100.0,
                 "pnl": 0,
                 "threshold_trade": float(th_trade),
                 "threshold_dir": float(th_dir),

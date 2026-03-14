@@ -38,9 +38,9 @@ class FeatureConfig:
         ts_col (str): タイムスタンプのカラム名。
         price_col (str): 価格のカラム名。
         label_threshold_scale (float): ラベル付与時のノイズ耐性スケール。
-        label_min_limit (float): コスト負けを防ぐための最小要求変動幅。
+        label_min_limit (float): Tradeラベルをさらに絞り込み、コスト超えの値幅だけを残しやすくする。
         label_min_limit_mode (str): ラベル最小値の適用モード ("fixed", "cost", "max")。
-        label_cost_buffer (float): コスト負け回避のための追加エッジバッファ。
+        label_cost_buffer (float): コスト負け回避バッファを拡大し、薄いエッジのTradeラベルを減らす。
     """
 
     seq_len: int = 120
@@ -63,11 +63,15 @@ class FeatureConfig:
     ts_col: str = "trade_ts"
     price_col: str = "trade_price"
     label_threshold_scale: float = 1.5  # ノイズを拾いすぎないよう1.5へ戻す
-    label_min_limit: float = 60.0  # Tradeラベルが50%を超えるのを防ぐため引き上げ
+    label_min_limit: float = (
+        90.0  # Tradeラベルをさらに絞り込み、コスト超えの値幅だけを残しやすくする
+    )
 
     # ラベルの最小値適用ロジック
     label_min_limit_mode: str = "cost"
-    label_cost_buffer: float = 20.0  # コスト負け回避バッファ
+    label_cost_buffer: float = (
+        35.0  # コスト負け回避バッファを拡大し、薄いエッジのTradeラベルを減らす
+    )
 
     # ===== 特徴量定義 =====
     continuous_cols: List[str] = field(
@@ -253,7 +257,7 @@ class TrainConfig:
     trade_neg_weight_scale: float = 3.50
 
     auto_tune_label: bool = True
-    min_neutral_ratio: float = 0.60
+    min_neutral_ratio: float = 0.65
     max_neutral_ratio: float = 0.85
 
     use_triple_barrier: bool = True
@@ -308,7 +312,9 @@ class BacktestConfig:
 
     # 2段階しきい値
     threshold_trade: float = 0.505  # トレード実行確率のベースライン
-    threshold_dir: float = 0.52     # 0.55では厳しすぎるため緩和（52%の確信度でエントリー）
+    threshold_dir: float = (
+        0.50  # direction gate で全滅しないよう、まずは50%まで緩和して様子を見る
+    )
 
     # --- Dynamic Thresholding ---
     use_vol_regime_scaling: bool = True  # レジームによる閾値の動的変更
