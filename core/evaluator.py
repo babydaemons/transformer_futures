@@ -24,7 +24,7 @@ from torch.utils.data import DataLoader
 
 from util.utils import PerfTimer
 from trade.trading import run_vectorized_backtest
-from core.fallback_strategy import resolve_oos_fallback
+from core.fallback_strategy import resolve_oos_fallback, should_trigger_fallback
 
 
 @dataclass
@@ -376,18 +376,20 @@ class OutofSampleRunner:
             )
 
             # OOSでトレードが発生しなかった場合のフォールバックロジック
-            if best_oos.get("n_trades", 0) == 0:
+            if should_trigger_fallback(best_oos, self.logger):
                 fallback_res = resolve_oos_fallback(
                     model=self.model,
                     loader_test=loader_test,
                     device=self.device,
                     cfg=self.cfg,
                     fold_idx=fold_idx,
-                    min_fallback_trades=3,
-                    initial_trade_th=val_th_trade_f,
+                    initial_trade_th=float(
+                        best_oos.get("threshold_trade", val_th_trade_f)
+                    ),
                     initial_dir_th=val_th_dir_f,
                     trade_log_path=trade_log_path,
                     logger=self.logger,
+                    min_fallback_trades=3,
                 )
 
                 if fallback_res is not None:

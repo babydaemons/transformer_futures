@@ -6,15 +6,48 @@ File: core/fallback_strategy.py
 本モジュールは、Out-of-Sample (OOS) テスト等のバックテストにおいて、
 指定した初期閾値でトレードが一切発生しなかった場合に適用する
 ヒューリスティックな閾値緩和（フォールバック）ロジックを提供します。
+初期OOS結果を評価し、トレード機会が極端に少ない場合に段階的な閾値調整を行い、
+デイトレードシステムにおける機会損失を防ぐ役割を担います。
 """
 
 import logging
+import copy
 from typing import Dict, Any, Optional
 
 import torch.nn as nn
 from torch.utils.data import DataLoader
 
 from trade.trading import run_vectorized_backtest
+
+
+def should_trigger_fallback(
+    initial_oos: Dict[str, Any],
+    logger: logging.Logger,
+) -> bool:
+    """
+    初回OOS結果に対して、フォールバックを起動すべきかどうかを判定します。
+
+    現状の方針では「no-trade only（トレードが全く発生しなかった場合）」で起動します。
+
+    Args:
+        initial_oos (Dict[str, Any]): 初回OOSバックテスト結果。
+        logger (logging.Logger): ロガーインスタンス。
+
+    Returns:
+        bool: フォールバックを起動する場合は True、それ以外は False。
+    """
+    n_trades = int(initial_oos.get("n_trades", 0))
+
+    if n_trades == 0:
+        logger.warning(
+            "OOS fallback triggered: no trades with restored val thresholds."
+        )
+        return True
+
+    logger.info(
+        "OOS fallback skipped: initial OOS already has trades (n_trades=%d)", n_trades
+    )
+    return False
 
 
 def resolve_oos_fallback(
@@ -27,7 +60,7 @@ def resolve_oos_fallback(
     initial_dir_th: float,
     trade_log_path: str,
     logger: logging.Logger,
-    min_fallback_trades: int = 1,
+    min_fallback_trades: int = 3,
 ) -> Optional[Dict[str, Any]]:
     """
     OOSテストでトレードが発生しない場合に、段階的に閾値を緩和して再評価を行います。
@@ -43,17 +76,13 @@ def resolve_oos_fallback(
         initial_dir_th (float): 初期の取引方向の閾値。
         trade_log_path (str): トレードログの出力パス。
         logger (logging.Logger): ロガーインスタンス。
-        min_fallback_trades (int): フォールバック採用に必要な最小トレード数。
+        min_fallback_trades (int): 採用に必要な最小トレード数。
 
     Returns:
         Optional[Dict[str, Any]]: フォールバックによりトレードが発生した場合のバックテスト結果。
                                   すべての緩和を試しても発生しなかった場合は None。
     """
     fallback_candidates = []
-
-    logger.warning(
-        "OOS fallback triggered: no trades with restored val thresholds."
-    )
 
     # 1. 方向閾値を0.50（ニュートラル）まで緩和
     if initial_dir_th > 0.50:
@@ -78,7 +107,6 @@ def resolve_oos_fallback(
     )
 
     seen = set()
-    best_oos = None
 
     # フォールバック候補を順に試行
     for fb_th_trade, fb_th_dir, reason in fallback_candidates:
@@ -105,29 +133,24 @@ def resolve_oos_fallback(
         )
 
         candidate_n_trades = int(candidate_oos.get("n_trades", 0))
-        if candidate_n_trades <= 0:
-            continue
 
-        if candidate_n_trades >= int(min_fallback_trades):
-            candidate_oos["fallback_reason"] = reason
+        if candidate_n_trades >= min_fallback_trades:
+            adopted_oos = copy.deepcopy(candidate_oos)
+            adopted_oos["fallback_reason"] = reason
             logger.info(
                 "OOS fallback adopted: %s (n_trades=%d)",
                 reason,
                 candidate_n_trades,
             )
-            best_oos = candidate_oos
-            break
+            return adopted_oos
 
-        logger.info(
-            "OOS fallback rejected: %s (n_trades=%d < min_fallback_trades=%d)",
-            reason,
-            candidate_n_trades,
-            int(min_fallback_trades),
-        )
+        if candidate_n_trades > 0:
+            logger.info(
+                "OOS fallback rejected: %s (n_trades=%d < min_fallback_trades=%d)",
+                reason,
+                candidate_n_trades,
+                min_fallback_trades,
+            )
 
-    if best_oos is None:
-        logger.info(
-            "OOS fallback abandoned: no candidate satisfied adoption criteria."
-        )
-
-    return best_oos
+    logger.info("OOS fallback abandoned: no candidate satisfied adoption criteria.")
+    return None
