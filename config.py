@@ -344,7 +344,7 @@ class BacktestConfig:
     # Position Sizing
     contract_multiplier: float = 10.0
     base_lots: int = 1
-    max_lots: int = 3
+    max_lots: int = 1
     confidence_scale: float = 0.05
 
 
