@@ -271,6 +271,8 @@ class Evaluator:
                         "OOS fallback triggered: no trades with restored val thresholds."
                     )
 
+                    min_fallback_trades = 3
+
                     fallback_res = resolve_oos_fallback(
                         model=self.model,
                         loader_test=loader_test,
@@ -284,7 +286,26 @@ class Evaluator:
                     )
 
                     if fallback_res is not None:
-                        best_oos = fallback_res
+                        candidate_n_trades = int(fallback_res.get("n_trades", 0))
+                        # resolve_oos_fallback 側で reason を返却していると仮定（なければデフォルト文字）
+                        reason = fallback_res.get(
+                            "fallback_reason", "resolved_by_module"
+                        )
+
+                        if candidate_n_trades >= min_fallback_trades:
+                            self.logger.info(
+                                "OOS fallback adopted: %s (n_trades=%d)",
+                                reason,
+                                candidate_n_trades,
+                            )
+                            best_oos = fallback_res
+                        elif candidate_n_trades > 0:
+                            self.logger.info(
+                                "OOS fallback rejected: %s (n_trades=%d < min_fallback_trades=%d)",
+                                reason,
+                                candidate_n_trades,
+                                min_fallback_trades,
+                            )
 
                 if "trades" in best_oos:
                     oos_trades = best_oos["trades"]
