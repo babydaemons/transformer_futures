@@ -288,7 +288,7 @@ class BacktestConfig:
     sl_price: float = 100.0
     tp_price: float = 0.0
 
-    use_dynamic_sl_tp: bool = True
+    use_dynamic_sl_tp: bool = False
     use_take_profit: bool = True  # 微益撤退を防ぎつつ確実に利益を確保するためTPを復活
     tp_min_atr_mult: float = 2.0  # ATRの2倍を最低利確ラインに設定
 
