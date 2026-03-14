@@ -49,7 +49,9 @@ def set_seed(seed: int = 42) -> None:
         torch.backends.cudnn.allow_tf32 = True
 
 
-def _generate_target_year_splits(dates: List[datetime.date], target_year: int) -> List[Tuple[List[datetime.date], List[datetime.date], List[datetime.date]]]:
+def _generate_target_year_splits(
+    dates: List[datetime.date], target_year: int
+) -> List[Tuple[List[datetime.date], List[datetime.date], List[datetime.date]]]:
     """指定された対象年のための Walk-Forward 分割を生成します。
 
     指定した年に該当する取引日をテストデータとし、そのテストデータの前方を
@@ -77,10 +79,7 @@ def _generate_target_year_splits(dates: List[datetime.date], target_year: int) -
         return splits
 
     current_test_idx = first_test_idx
-    while (
-        current_test_idx < len(dates)
-        and dates[current_test_idx].year == target_year
-    ):
+    while current_test_idx < len(dates) and dates[current_test_idx].year == target_year:
         val_start_idx = current_test_idx - val_days
         train_start_idx = val_start_idx - train_days
         if train_start_idx < 0:
@@ -122,8 +121,12 @@ def save_trades_to_tsv(trades: list, output_path: str) -> None:
 
         def _ts_jst_iso(x: int) -> str:
             try:
-                dt_utc = datetime.datetime.fromtimestamp(int(x) / 1e9, tz=datetime.timezone.utc)
-                dt_jst = dt_utc.astimezone(datetime.timezone(datetime.timedelta(hours=9)))
+                dt_utc = datetime.datetime.fromtimestamp(
+                    int(x) / 1e9, tz=datetime.timezone.utc
+                )
+                dt_jst = dt_utc.astimezone(
+                    datetime.timezone(datetime.timedelta(hours=9))
+                )
                 return dt_jst.strftime("%Y-%m-%dT%H:%M:%S+09:00")
             except Exception:
                 return str(int(x))
@@ -156,7 +159,7 @@ def train_main(target_year: Optional[int] = None) -> None:
     warnings.filterwarnings("ignore", category=UserWarning)
 
     logger = logging.getLogger(__name__)
-    
+
     # 分割された各コンポーネントを初期化
     data_loader = MarketDataLoader(cfg)
     pipeline = FeaturePipeline(cfg)
@@ -194,8 +197,18 @@ def train_main(target_year: Optional[int] = None) -> None:
         )
 
         # 1. DataLoaderの構築
+        # 引数の順番間違いやシグネチャ変更によるエラーを防ぐため、キーワード引数で明示的に渡します
         loader_train, loader_val, loader_test, y_labels_tr = build_fold_dataloaders(
-            data_loader, pipeline, ds_builder, train_dates, val_dates, test_dates, cfg, logger, fold, device.type
+            data_loader=data_loader,
+            pipeline=pipeline,
+            ds_builder=ds_builder,
+            train_dates=train_dates,
+            val_dates=val_dates,
+            test_dates=test_dates,
+            cfg=cfg,
+            logger=logger,
+            fold=fold,
+            device_type=device.type,
         )
 
         # 2. Modelの初期化
