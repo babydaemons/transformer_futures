@@ -71,6 +71,7 @@ def _calculate_dynamic_sl(
 ) -> np.ndarray:
     """トレイリングストップ（動的SL）の価格パスを計算する。
 
+
     Args:
         pe (np.ndarray): エントリー価格。
         fav_px_path (np.ndarray): 有利な方向の価格推移（LongならHigh, ShortならLow）。
@@ -131,7 +132,29 @@ def _calculate_directional_pnl(
     trailing_act_mult: Optional[float] = None,
     trailing_drop_mult: Optional[float] = None,
 ) -> np.ndarray:
-    """特定の方向（ロングまたはショート）のトレードPnLを計算する共通コアロジック。"""
+    """特定の方向（ロングまたはショート）のトレードPnLを計算する共通コアロジック。
+
+    Args:
+        cfg (GlobalConfig): システム設定オブジェクト。
+        is_short (bool): ショートポジションの場合は True。
+        pe (np.ndarray): エントリー価格配列。
+        fh (np.ndarray): ホライゾン期間中の高値パス配列。
+        fl (np.ndarray): ホライゾン期間中の安値パス配列。
+        px (np.ndarray): 決済価格配列。
+        act_horizon (np.ndarray): 実効ホライゾン期間。
+        tp_arr (np.ndarray): 利確(TP)幅の配列。
+        sl_arr (np.ndarray): 損切(SL)幅の配列。
+        atr_e (np.ndarray): エントリー時点のATR配列。
+        total_cost (float): 取引コスト(スリッページ等を含む)。
+        min_hold_bars (int): 最小保持バー数。
+        min_exit_idx (int): 最小エグジットインデックス。
+        horizon (int): 最大ホライゾン期間。
+        trailing_act_mult (Optional[float]): トレイリング開始マルチプライヤー。
+        trailing_drop_mult (Optional[float]): トレイリングドロップマルチプライヤー。
+
+    Returns:
+        np.ndarray: 計算されたPnLの配列。
+    """
     n_samples = len(pe)
     h = fh.shape[1]
     idx = np.arange(h, dtype=np.int32)[None, :]
@@ -257,6 +280,28 @@ def evaluate_tp_sl(
     """Take Profit (TP) と Stop Loss (SL) の判定を行い、PnLを計算する。
 
     内部でロングとショートの個別処理を _calculate_directional_pnl に委譲する。
+
+    Args:
+        cfg (GlobalConfig): システム設定オブジェクト。
+        pe (np.ndarray): エントリー価格。
+        fh (np.ndarray): 高値パス。
+        fl (np.ndarray): 安値パス。
+        px (np.ndarray): 満期決済価格。
+        act_horizon (np.ndarray): 実効ホライゾン期間。
+        tp_arr (np.ndarray): 利確(TP)幅の配列。
+        sl_arr (np.ndarray): 損切(SL)幅の配列。
+        atrs (np.ndarray): ATRの配列。
+        entry_mask (np.ndarray): エントリー発生箇所を示すマスク。
+        is_short (np.ndarray): ショートポジションかどうかのブール配列。
+        total_cost (float): 総取引コスト。
+        min_hold_bars (int): 最小保持バー数。
+        min_exit_idx (int): 最小エグジットインデックス。
+        horizon (int): 最大ホライゾン期間。
+        trailing_act_mult (float, optional): トレイリング開始マルチプライヤー。
+        trailing_drop_mult (float, optional): トレイリングドロップマルチプライヤー。
+
+    Returns:
+        np.ndarray: 各トレードのPnL配列。
     """
     pnl = np.zeros(len(pe), dtype=np.float32)
     h = fh.shape[1] if fh.ndim == 2 else 0
@@ -348,7 +393,16 @@ class BacktestSimulator:
     def _prepare_market_paths(
         self, entry_mask: np.ndarray
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, int, int]:
-        """バックテストに必要な価格パスとホライゾン情報を準備する"""
+        """バックテストに必要な価格パスとホライゾン情報を準備する。
+
+        Args:
+            entry_mask (np.ndarray): エントリー発生箇所を示すマスク。
+
+        Returns:
+            Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, int, int]:
+            エントリー価格(pe)、高値パス(fh)、安値パス(fl)、決済価格(px)、実効ホライゾン(act_horizon)、
+            最小保持バー数(min_hold_bars)、最小エグジットインデックス(min_exit_idx)のタプル。
+        """
         pe = (
             self.data["p_next_opens"][entry_mask]
             if self.cfg.backtest.use_next_bar_entry
@@ -384,7 +438,15 @@ class BacktestSimulator:
     def _build_tp_sl_arrays(
         self, entry_mask: np.ndarray, pe: np.ndarray
     ) -> Tuple[np.ndarray, np.ndarray, float]:
-        """動的または固定のTP/SL配列と総取引コストを構築する"""
+        """動的または固定のTP/SL配列と総取引コストを構築する。
+
+        Args:
+            entry_mask (np.ndarray): エントリー発生箇所を示すマスク。
+            pe (np.ndarray): エントリー価格配列。
+
+        Returns:
+            Tuple[np.ndarray, np.ndarray, float]: TP配列、SL配列、および計算された総取引コストのタプル。
+        """
         if self.cfg.backtest.use_dynamic_sl_tp:
             atr_e = self.data["atrs"][entry_mask]
             m_sl_e = np.clip(self.data["m_sl_arr"][entry_mask], 0.5, 5.0)
@@ -438,7 +500,23 @@ class BacktestSimulator:
         min_dir_conf: float,
         entry_mask: np.ndarray,
     ) -> Dict[str, Any]:
-        """バックテスト結果から各種パフォーマンス統計指標を算出する"""
+        """バックテスト結果から各種パフォーマンス統計指標を算出する。
+
+        Args:
+            pnl (np.ndarray): 各トレードのPnL配列。
+            lots (np.ndarray): 各トレードのロット数配列。
+            executed_preds (np.ndarray): 実行された予測方向の配列。
+            executed_labels (np.ndarray): 実際の正解ラベル配列。
+            raw_signals_count (int): 生のシグナル発生回数。
+            total_cost (float): 取引コスト。
+            th_trade (float): エントリー閾値。
+            th_dir (float): 方向性閾値。
+            min_dir_conf (float): 最小方向性確信度。
+            entry_mask (np.ndarray): エントリー発生箇所を示すマスク。
+
+        Returns:
+            Dict[str, Any]: バックテストのパフォーマンス統計指標をまとめた辞書。
+        """
         pnl_jpy = pnl * lots * self.cfg.backtest.contract_multiplier
 
         n_trades = len(pnl)
