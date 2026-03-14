@@ -6,7 +6,7 @@ File: core/evaluator.py
 本モジュールは、モデルの検証(Validation)およびOut-of-Sample(OOS)テストの評価プロセスを担当する `Evaluator` クラスを提供します。
 Lossの計算や、バックテストシミュレーションを通じたスコアの算出、ベストモデルの追跡・管理を行います。
 特に、トレードが発生しない初期段階やエッジケースにおいて、スコアだけでなくLossの改善度を併用して
-モデルのポテンシャルを評価するロジックを備えており、OOSテスト時の閾値フォールバック処理も担います。
+モデルのポテンシャルを評価するロジックを備えています。
 """
 
 import math
@@ -21,6 +21,7 @@ from torch.utils.data import DataLoader
 
 from util.utils import PerfTimer
 from trade.trading import run_vectorized_backtest
+from core.fallback_strategy import resolve_oos_fallback
 
 
 class Evaluator:
@@ -235,10 +236,15 @@ class Evaluator:
                     self.cfg.output_dir, f"fold{fold_idx:04d}_test_{test_dates[0]}.tsv"
                 )
 
+                val_th_trade_f = (
+                    float(val_th_trade) if val_th_trade is not None else 0.50
+                )
+                val_th_dir_f = float(val_th_dir) if val_th_dir is not None else 0.50
+
                 self.logger.info(
                     "Running OOS test with restored val thresholds: threshold_trade=%.3f, threshold_dir=%.3f",
-                    float(val_th_trade) if val_th_trade is not None else 0.0,
-                    float(val_th_dir) if val_th_dir is not None else 0.0,
+                    val_th_trade_f,
+                    val_th_dir_f,
                 )
 
                 best_oos = run_vectorized_backtest(
@@ -247,69 +253,38 @@ class Evaluator:
                     self.device,
                     self.cfg,
                     fold_idx,
-                    fixed_threshold_trade=val_th_trade,
-                    fixed_threshold_dir=val_th_dir,
+                    fixed_threshold_trade=val_th_trade_f,
+                    fixed_threshold_dir=val_th_dir_f,
                     trade_log_path=trade_log_path,
                 )
 
                 self.logger.info(
                     "Initial OOS result: n_trades=%d, threshold_trade=%.3f, threshold_dir=%.3f",
                     int(best_oos.get("n_trades", 0)),
-                    float(best_oos.get("threshold_trade", val_th_trade)),
-                    float(best_oos.get("threshold_dir", val_th_dir)),
+                    float(best_oos.get("threshold_trade", val_th_trade_f)),
+                    float(best_oos.get("threshold_dir", val_th_dir_f)),
                 )
 
-                # OOSでトレードが発生しなかった場合のフォールバックロジック
+                # OOSでトレードが発生しなかった場合のフォールバックロジックを外部モジュールに委譲
                 if best_oos.get("n_trades", 0) == 0:
                     self.logger.warning(
                         "OOS fallback triggered: no trades with restored val thresholds."
                     )
 
-                    fallback_candidates = []
-                    # 方向閾値を0.50（ニュートラル）まで緩和
-                    if val_th_dir is not None and float(val_th_dir) > 0.50:
-                        fallback_candidates.append(
-                            (float(val_th_trade), 0.50, "relax_dir_to_0.50")
-                        )
-                    # エントリー閾値をわずかに下げ、方向閾値を0.50以下にキャップ
-                    fallback_candidates.append(
-                        (
-                            (
-                                max(0.45, float(val_th_trade) - 0.01)
-                                if val_th_trade is not None
-                                else 0.45
-                            ),
-                            (
-                                min(float(val_th_dir), 0.50)
-                                if val_th_dir is not None
-                                else 0.50
-                            ),
-                            "relax_trade_by_0.01_and_cap_dir_to_0.50",
-                        )
+                    fallback_res = resolve_oos_fallback(
+                        model=self.model,
+                        loader_test=loader_test,
+                        device=self.device,
+                        cfg=self.cfg,
+                        fold_idx=fold_idx,
+                        initial_trade_th=val_th_trade_f,
+                        initial_dir_th=val_th_dir_f,
+                        trade_log_path=trade_log_path,
+                        logger=self.logger,
                     )
 
-                    # フォールバック候補を順に試行
-                    for fb_th_trade, fb_th_dir, reason in fallback_candidates:
-                        self.logger.info(
-                            "Retrying OOS fallback (%s): threshold_trade=%.3f, threshold_dir=%.3f",
-                            reason,
-                            float(fb_th_trade),
-                            float(fb_th_dir),
-                        )
-                        candidate_oos = run_vectorized_backtest(
-                            self.model,
-                            loader_test,
-                            self.device,
-                            self.cfg,
-                            fold_idx,
-                            fixed_threshold_trade=float(fb_th_trade),
-                            fixed_threshold_dir=float(fb_th_dir),
-                            trade_log_path=trade_log_path,
-                        )
-                        if candidate_oos.get("n_trades", 0) > 0:
-                            self.logger.info("OOS fallback adopted: %s", reason)
-                            best_oos = candidate_oos
-                            break
+                    if fallback_res is not None:
+                        best_oos = fallback_res
 
                 if "trades" in best_oos:
                     oos_trades = best_oos["trades"]
