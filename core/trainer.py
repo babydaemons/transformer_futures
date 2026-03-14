@@ -6,7 +6,8 @@ File: core/trainer.py
 本モジュールは、TemporalFusionTransformerモデルの学習ループおよび最適化プロセスを管理するトレーナークラスと関連ヘルパー関数を提供します。
 クラス不均衡対策の動的重み計算や、PnL最適化損失、Focal Lossの適用など、モデルのパラメータ更新に特化した処理をカプセル化しています。
 デバイス転送や損失計算の一部をヘルパーメソッドに分離し、学習ループの可読性を高めています。
-検証(Validation)とバックテスト評価のロジックは `core.evaluator.Evaluator` に分離し、クラスの凝集度を高めています。
+検証(Validation)とバックテスト評価のロジックは `core.evaluator` の `ValidationEngine`,
+`ModelCheckpointManager`, `OutofSampleRunner` に分離し、クラスの凝集度を高めています。
 """
 
 import time
@@ -22,7 +23,7 @@ import numpy as np
 
 from core.losses import FocalLoss
 from core.pnl_loss import calculate_train_pnl_loss, calculate_eval_pnl_loss
-from core.evaluator import Evaluator
+from core.evaluator import ValidationEngine, ModelCheckpointManager, OutofSampleRunner
 from util.utils import EMA
 
 
@@ -109,13 +110,19 @@ class Trainer:
         )
         self.global_pnl_var = 1.0
 
-        # 検証およびOOS評価を担当するEvaluatorを初期化
-        self.evaluator = Evaluator(
+        # 検証、チェックポイント管理、およびOOS評価を担当するクラス群を初期化
+        self.val_engine = ValidationEngine(
             model=self.model,
             cfg=self.cfg,
             device=self.device,
             logger=self.logger,
             compute_loss_fn=self._compute_batch_loss,
+        )
+        self.checkpoint_manager = ModelCheckpointManager(
+            cfg=self.cfg, logger=self.logger
+        )
+        self.oos_runner = OutofSampleRunner(
+            model=self.model, cfg=self.cfg, device=self.device, logger=self.logger
         )
 
     def _setup_optimizer_and_scheduler(self, loader_train: DataLoader):
@@ -490,8 +497,8 @@ class Trainer:
                 f"Fold {fold_idx} Ep {epoch}: TrainLoss={total_loss / max(steps, 1):.4f}"
             )
 
-            # --- Validation & Early Stopping via Evaluator ---
-            should_stop = self.evaluator.evaluate_and_track_best(
+            # --- Validation ---
+            val_result = self.val_engine.run_validation(
                 epoch=epoch,
                 fold_idx=fold_idx,
                 loader_val=loader_val,
@@ -500,15 +507,21 @@ class Trainer:
                 ema=self.ema,
             )
 
+            # --- Early Stopping Check ---
+            should_stop = self.checkpoint_manager.update_and_check_early_stopping(
+                model=self.model, val_result=val_result, epoch=epoch, ema=self.ema
+            )
+
             if should_stop:
                 break
 
-        # --- OOS Test via Evaluator ---
-        oos_trades = self.evaluator.run_oos_test(
+        # --- OOS Test ---
+        oos_trades = self.oos_runner.run_oos_test(
             fold_idx=fold_idx,
             loader_val=loader_val,
             loader_test=loader_test,
             test_dates=test_dates,
+            checkpoint_manager=self.checkpoint_manager,
         )
 
         return oos_trades
