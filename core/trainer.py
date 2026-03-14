@@ -5,6 +5,7 @@ File: core/trainer.py
 ソースコードの役割:
 本モジュールは、TemporalFusionTransformerモデルの学習ループおよび最適化プロセスを管理するトレーナークラスと関連ヘルパー関数を提供します。
 クラス不均衡対策の動的重み計算や、PnL最適化損失、Focal Lossの適用など、モデルのパラメータ更新に特化した処理をカプセル化しています。
+デバイス転送や損失計算の一部をヘルパーメソッドに分離し、学習ループの可読性を高めています。
 検証(Validation)とバックテスト評価のロジックは `core.evaluator.Evaluator` に分離し、クラスの凝集度を高めています。
 """
 
@@ -90,7 +91,7 @@ class Trainer:
 
         Args:
             model (nn.Module): 学習対象のPyTorchモデル
-            cfg (Any): 設定オブジェクト (Pydantic/Dataclass 等)
+            cfg (Any): 設定オブジェクト
             device (torch.device): 実行デバイス (CPU/GPU)
             logger (logging.Logger): ロガーインスタンス
         """
@@ -217,6 +218,104 @@ class Trainer:
         )
         return weight_trade, weight_dir
 
+    def _transfer_batch_to_device(self, batch: Tuple, is_train: bool) -> Tuple[
+        torch.Tensor,
+        torch.Tensor,
+        torch.Tensor,
+        torch.Tensor,
+        torch.Tensor,
+        torch.Tensor,
+        torch.Tensor,
+        Optional[torch.Tensor],
+    ]:
+        """
+        バッチデータを指定されたデバイスに転送します。
+
+        Args:
+            batch (Tuple): データローダーからのバッチタプル
+            is_train (bool): 訓練モードフラグ
+
+        Returns:
+            Tuple: デバイス転送済みの各テンソル (xc, xs, y, p_curr, p_next_open, f_closes, curr_atr, p_exit)
+        """
+        xc, xs, y, p_curr, p_next_open, f_closes = batch[0:6]
+        curr_atr = batch[10]
+
+        # is_train時は p_exit を使用する
+        p_exit = f_closes.mean(dim=1) if is_train else None
+
+        xc = xc.to(self.device, non_blocking=True)
+        xs = xs.to(self.device, non_blocking=True)
+        y = y.to(self.device, non_blocking=True)
+        p_curr = p_curr.to(self.device, non_blocking=True)
+        p_next_open = p_next_open.to(self.device, non_blocking=True)
+        f_closes = f_closes.to(self.device, non_blocking=True)
+        curr_atr = curr_atr.to(self.device, non_blocking=True)
+
+        if is_train and p_exit is not None:
+            p_exit = p_exit.to(self.device, non_blocking=True)
+
+        return xc, xs, y, p_curr, p_next_open, f_closes, curr_atr, p_exit
+
+    def _compute_pnl_loss_component(
+        self,
+        is_train: bool,
+        probs_short: torch.Tensor,
+        probs_action: torch.Tensor,
+        p_exit: Optional[torch.Tensor],
+        p_curr: torch.Tensor,
+        curr_atr: torch.Tensor,
+        sltp_preds: Optional[torch.Tensor],
+        f_closes: torch.Tensor,
+        p_next_open: torch.Tensor,
+    ) -> Tuple[torch.Tensor, torch.Tensor]:
+        """
+        予測確率や価格情報からPnLベースの損失項を計算します。
+
+        Args:
+            is_train (bool): 訓練モードフラグ
+            probs_short (torch.Tensor): ショート方向の予測確率
+            probs_action (torch.Tensor): 取引アクションの予測確率
+            p_exit (Optional[torch.Tensor]): 訓練用エグジット価格
+            p_curr (torch.Tensor): 現在の価格
+            curr_atr (torch.Tensor): 現在のATR
+            sltp_preds (Optional[torch.Tensor]): SL/TPの予測値
+            f_closes (torch.Tensor): 未来の終値シーケンス
+            p_next_open (torch.Tensor): 次の足の始値
+
+        Returns:
+            Tuple[torch.Tensor, torch.Tensor]: (PnL損失, SL/TP正則化項)
+        """
+        if is_train:
+            pnl_loss, sltp_reg, self.global_pnl_var = calculate_train_pnl_loss(
+                probs_short=probs_short,
+                probs_action=probs_action,
+                p_exit=p_exit,
+                p_curr=p_curr,
+                curr_atr=curr_atr,
+                sltp_preds=sltp_preds,
+                cost=float(self.cfg.backtest.cost),
+                slippage_tick=float(self.cfg.backtest.slippage_tick),
+                tp_min_after_cost=float(self.cfg.backtest.tp_min_after_cost),
+                use_dynamic_sl_tp=bool(self.cfg.backtest.use_dynamic_sl_tp),
+                global_pnl_var=self.global_pnl_var,
+            )
+        else:
+            pnl_loss, sltp_reg = calculate_eval_pnl_loss(
+                probs_short=probs_short,
+                probs_action=probs_action,
+                f_closes=f_closes,
+                p_next_open=p_next_open,
+                curr_atr=curr_atr,
+                sltp_preds=sltp_preds,
+                cost=float(self.cfg.backtest.cost),
+                slippage_tick=float(self.cfg.backtest.slippage_tick),
+                tp_min_after_cost=float(self.cfg.backtest.tp_min_after_cost),
+                use_dynamic_sl_tp=bool(self.cfg.backtest.use_dynamic_sl_tp),
+            )
+
+        return pnl_loss, sltp_reg
+
     def _compute_batch_loss(
         self,
         batch: Tuple,
@@ -238,32 +337,14 @@ class Trainer:
         Returns:
             torch.Tensor: 計算された総合損失（スカラー値）。
         """
-        # バッチデータのアンパック
-        # xc: 連続値特徴量 (Continuous features)
-        # xs: 静的特徴量 (Static features)
-        # y: 正解ラベル (0: Neutral, 1: Long, 2: Short)
-        # p_curr: 現在の価格
-        # p_next_open: 次の足の始値 (スリッページ考慮のエントリー価格用)
-        # f_closes: 未来の終値シーケンス (Exitシミュレーション用)
-        xc, xs, y, p_curr, p_next_open, f_closes = batch[0:6]
-        curr_atr = batch[10]
-
-        # is_train時は p_exit を使用する
-        p_exit = f_closes.mean(dim=1) if is_train else None
-
-        xc = xc.to(self.device, non_blocking=True)
-        xs = xs.to(self.device, non_blocking=True)
-        y = y.to(self.device, non_blocking=True)
-        p_curr = p_curr.to(self.device, non_blocking=True)
-        p_next_open = p_next_open.to(self.device, non_blocking=True)
-        f_closes = f_closes.to(self.device, non_blocking=True)
-        curr_atr = curr_atr.to(self.device, non_blocking=True)
-        if is_train:
-            p_exit = p_exit.to(self.device, non_blocking=True)
+        # 1. デバイスへのデータ転送
+        xc, xs, y, p_curr, p_next_open, f_closes, curr_atr, p_exit = (
+            self._transfer_batch_to_device(batch, is_train)
+        )
 
         trade_y, dir_y, dir_mask = split_two_stage_targets(y)
 
-        # 順伝播
+        # 2. 順伝播
         out = self.model(xc, xs)
         if isinstance(out, (tuple, list)) and len(out) == 3:
             trade_logits, dir_logits, sltp_preds = out
@@ -271,13 +352,13 @@ class Trainer:
             trade_logits, dir_logits = out
             sltp_preds = None
 
-        # ロジットの差分からSigmoid確率を算出 (0: Neutral/Long, 1: Action/Short を想定)
+        # 3. ロジットの差分からSigmoid確率を算出 (0: Neutral/Long, 1: Action/Short を想定)
         trade_logit_diff = trade_logits[:, 1] - trade_logits[:, 0]
         dir_logit_diff = dir_logits[:, 1] - dir_logits[:, 0]
         probs_action = torch.sigmoid(trade_logit_diff)
         probs_short = torch.sigmoid(dir_logit_diff)
 
-        # 基本的な損失計算 (Trade & Dir)
+        # 4. 基本的な分類損失計算 (Trade & Dir)
         loss_trade = criterion_trade(trade_logits, trade_y)
         dir_mask_f = dir_mask.to(dtype=trade_logits.dtype)
         dir_den = dir_mask_f.sum().clamp_min(1.0)
@@ -298,7 +379,7 @@ class Trainer:
 
         loss_dir = (dir_loss_vec * dir_mask_f).sum() / dir_den
 
-        # 方向性ペナルティ計算
+        # 5. 方向性ペナルティ計算
         dir_pen = trade_logits.new_tensor(0.0)
         if self.cfg.train.directional_penalty > 0.0:
             dir_pen = calculate_directional_penalty(
@@ -316,36 +397,19 @@ class Trainer:
             + self.cfg.train.directional_penalty * dir_pen
         )
 
-        # PnL Loss計算
+        # 6. PnL Loss計算の適用
         if self.cfg.train.pnl_loss_weight > 0.0:
-            if is_train:
-                pnl_loss, sltp_reg, self.global_pnl_var = calculate_train_pnl_loss(
-                    probs_short=probs_short,
-                    probs_action=probs_action,
-                    p_exit=p_exit,
-                    p_curr=p_curr,
-                    curr_atr=curr_atr,
-                    sltp_preds=sltp_preds,
-                    cost=float(self.cfg.backtest.cost),
-                    slippage_tick=float(self.cfg.backtest.slippage_tick),
-                    tp_min_after_cost=float(self.cfg.backtest.tp_min_after_cost),
-                    use_dynamic_sl_tp=bool(self.cfg.backtest.use_dynamic_sl_tp),
-                    global_pnl_var=self.global_pnl_var,
-                )
-            else:
-                pnl_loss, sltp_reg = calculate_eval_pnl_loss(
-                    probs_short=probs_short,
-                    probs_action=probs_action,
-                    f_closes=f_closes,
-                    p_next_open=p_next_open,
-                    curr_atr=curr_atr,
-                    sltp_preds=sltp_preds,
-                    cost=float(self.cfg.backtest.cost),
-                    slippage_tick=float(self.cfg.backtest.slippage_tick),
-                    tp_min_after_cost=float(self.cfg.backtest.tp_min_after_cost),
-                    use_dynamic_sl_tp=bool(self.cfg.backtest.use_dynamic_sl_tp),
-                )
-
+            pnl_loss, sltp_reg = self._compute_pnl_loss_component(
+                is_train=is_train,
+                probs_short=probs_short,
+                probs_action=probs_action,
+                p_exit=p_exit,
+                p_curr=p_curr,
+                curr_atr=curr_atr,
+                sltp_preds=sltp_preds,
+                f_closes=f_closes,
+                p_next_open=p_next_open,
+            )
             loss = loss + self.cfg.train.pnl_loss_weight * pnl_loss + sltp_reg
 
         return loss
