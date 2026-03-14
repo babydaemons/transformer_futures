@@ -413,6 +413,14 @@ class OutofSampleRunner:
                             candidate_n_trades,
                             min_fallback_trades,
                         )
+                    else:
+                        self.logger.info(
+                            "OOS fallback abandoned: no candidate satisfied adoption criteria."
+                        )
+                else:
+                    self.logger.info(
+                        "OOS fallback abandoned: no candidate satisfied adoption criteria."
+                    )
 
             if "trades" in best_oos:
                 oos_trades = best_oos["trades"]
