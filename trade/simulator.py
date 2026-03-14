@@ -345,7 +345,9 @@ class BacktestSimulator:
             is_lunch = ((hour == 11) & (minute >= 30)) | ((hour == 12) & (minute < 30))
             self.sim_probs_action[is_lunch] = 0.0
 
-    def _prepare_market_paths(self, entry_mask: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, int, int]:
+    def _prepare_market_paths(
+        self, entry_mask: np.ndarray
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, int, int]:
         """バックテストに必要な価格パスとホライゾン情報を準備する"""
         pe = (
             self.data["p_next_opens"][entry_mask]
@@ -379,7 +381,9 @@ class BacktestSimulator:
 
         return pe, fh, fl, px, act_horizon, min_hold_bars, min_exit_idx
 
-    def _build_tp_sl_arrays(self, entry_mask: np.ndarray, pe: np.ndarray) -> Tuple[np.ndarray, np.ndarray, float]:
+    def _build_tp_sl_arrays(
+        self, entry_mask: np.ndarray, pe: np.ndarray
+    ) -> Tuple[np.ndarray, np.ndarray, float]:
         """動的または固定のTP/SL配列と総取引コストを構築する"""
         if self.cfg.backtest.use_dynamic_sl_tp:
             atr_e = self.data["atrs"][entry_mask]
@@ -469,11 +473,9 @@ class BacktestSimulator:
             else 1.0
         )
 
-        score = float(
-            math.log(pf_eff + 1e-6) * math.log(n_trades + 1) * pnl_score
-            - 0.25 * signal_rate
-            + 0.05 * dir_acc
-        )
+        # 対数を用いたスコア計算。PFと取引回数、方向性精度を総合的に評価する
+        base_score = math.log(pf_eff + 1e-6) * math.log(n_trades + 1) * pnl_score
+        score = float(base_score - 0.25 * signal_rate + 0.05 * dir_acc)
 
         return {
             "n_trades": n_trades,
@@ -533,12 +535,14 @@ class BacktestSimulator:
             int(self.cooldown_bars),
         )
 
+        # トレードが発生しなかった場合の早期リターン
+        # 完全に -inf にすると最適化が停滞するため、微小な負のスコアを与えて区別可能にする
         if entry_mask.sum() == 0:
             return {
                 "n_trades": 0,
                 "win_rate": 0.0,
                 "dir_acc": 0.0,
-                "score": -float("inf"),
+                "score": -100.0,  # 変更: -inf から適度なペナルティ値へ
                 "pnl": 0,
                 "threshold_trade": float(th_trade),
                 "threshold_dir": float(th_dir),
@@ -553,7 +557,9 @@ class BacktestSimulator:
         executed_labels = self.data["labels"][entry_mask]
 
         # 1. パスの準備
-        pe, fh, fl, px, act_horizon, min_hold_bars, min_exit_idx = self._prepare_market_paths(entry_mask)
+        pe, fh, fl, px, act_horizon, min_hold_bars, min_exit_idx = (
+            self._prepare_market_paths(entry_mask)
+        )
 
         # 2. TP/SL配列の構築
         tp_arr, sl_arr, total_cost = self._build_tp_sl_arrays(entry_mask, pe)
@@ -595,5 +601,5 @@ class BacktestSimulator:
             th_trade,
             th_dir,
             min_dir_conf,
-            entry_mask
+            entry_mask,
         )
