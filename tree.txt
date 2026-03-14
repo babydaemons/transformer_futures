@@ -1,0 +1,5089 @@
+フォルダー パスの一覧
+ボリューム シリアル番号は 14EC-CA15 です
+C:\TRANSFORMER_FUTURES_DATA
+├─excel
+│  └─InvestorType
+│      ├─2016
+│      │      stock_val_1_160101.xls
+│      │      stock_val_1_160102.xls
+│      │      stock_val_1_160103.xls
+│      │      stock_val_1_160104.xls
+│      │      stock_val_1_160201.xls
+│      │      stock_val_1_160202.xls
+│      │      stock_val_1_160203.xls
+│      │      stock_val_1_160204.xls
+│      │      stock_val_1_160301.xls
+│      │      stock_val_1_160302.xls
+│      │      stock_val_1_160303.xls
+│      │      stock_val_1_160304.xls
+│      │      stock_val_1_160305.xls
+│      │      stock_val_1_160401.xls
+│      │      stock_val_1_160402.xls
+│      │      stock_val_1_160403.xls
+│      │      stock_val_1_160404.xls
+│      │      stock_val_1_160501.xls
+│      │      stock_val_1_160502.xls
+│      │      stock_val_1_160503.xls
+│      │      stock_val_1_160504.xls
+│      │      stock_val_1_160601.xls
+│      │      stock_val_1_160602.xls
+│      │      stock_val_1_160603.xls
+│      │      stock_val_1_160604.xls
+│      │      stock_val_1_160605.xls
+│      │      stock_val_1_160701.xls
+│      │      stock_val_1_160702.xls
+│      │      stock_val_1_160703.xls
+│      │      stock_val_1_160704.xls
+│      │      stock_val_1_160801.xls
+│      │      stock_val_1_160802.xls
+│      │      stock_val_1_160803.xls
+│      │      stock_val_1_160804.xls
+│      │      stock_val_1_160805.xls
+│      │      stock_val_1_160901.xls
+│      │      stock_val_1_160902.xls
+│      │      stock_val_1_160903.xls
+│      │      stock_val_1_160904.xls
+│      │      stock_val_1_161001.xls
+│      │      stock_val_1_161002.xls
+│      │      stock_val_1_161003.xls
+│      │      stock_val_1_161004.xls
+│      │      stock_val_1_161101.xls
+│      │      stock_val_1_161102.xls
+│      │      stock_val_1_161103.xls
+│      │      stock_val_1_161104.xls
+│      │      stock_val_1_161105.xls
+│      │      stock_val_1_161201.xls
+│      │      stock_val_1_161202.xls
+│      │      stock_val_1_161203.xls
+│      │      stock_val_1_161204.xls
+│      │      stock_vol_1_160101.xls
+│      │      stock_vol_1_160102.xls
+│      │      stock_vol_1_160103.xls
+│      │      stock_vol_1_160104.xls
+│      │      stock_vol_1_160201.xls
+│      │      stock_vol_1_160202.xls
+│      │      stock_vol_1_160203.xls
+│      │      stock_vol_1_160204.xls
+│      │      stock_vol_1_160301.xls
+│      │      stock_vol_1_160302.xls
+│      │      stock_vol_1_160303.xls
+│      │      stock_vol_1_160304.xls
+│      │      stock_vol_1_160305.xls
+│      │      stock_vol_1_160401.xls
+│      │      stock_vol_1_160402.xls
+│      │      stock_vol_1_160403.xls
+│      │      stock_vol_1_160404.xls
+│      │      stock_vol_1_160501.xls
+│      │      stock_vol_1_160502.xls
+│      │      stock_vol_1_160503.xls
+│      │      stock_vol_1_160504.xls
+│      │      stock_vol_1_160601.xls
+│      │      stock_vol_1_160602.xls
+│      │      stock_vol_1_160603.xls
+│      │      stock_vol_1_160604.xls
+│      │      stock_vol_1_160605.xls
+│      │      stock_vol_1_160701.xls
+│      │      stock_vol_1_160702.xls
+│      │      stock_vol_1_160703.xls
+│      │      stock_vol_1_160704.xls
+│      │      stock_vol_1_160801.xls
+│      │      stock_vol_1_160802.xls
+│      │      stock_vol_1_160803.xls
+│      │      stock_vol_1_160804.xls
+│      │      stock_vol_1_160805.xls
+│      │      stock_vol_1_160901.xls
+│      │      stock_vol_1_160902.xls
+│      │      stock_vol_1_160903.xls
+│      │      stock_vol_1_160904.xls
+│      │      stock_vol_1_161001.xls
+│      │      stock_vol_1_161002.xls
+│      │      stock_vol_1_161003.xls
+│      │      stock_vol_1_161004.xls
+│      │      stock_vol_1_161101.xls
+│      │      stock_vol_1_161102.xls
+│      │      stock_vol_1_161103.xls
+│      │      stock_vol_1_161104.xls
+│      │      stock_vol_1_161105.xls
+│      │      stock_vol_1_161201.xls
+│      │      stock_vol_1_161202.xls
+│      │      stock_vol_1_161203.xls
+│      │      stock_vol_1_161204.xls
+│      │      
+│      ├─2017
+│      │      stock_val_1_170101.xls
+│      │      stock_val_1_170102.xls
+│      │      stock_val_1_170103.xls
+│      │      stock_val_1_170104.xls
+│      │      stock_val_1_170201.xls
+│      │      stock_val_1_170202.xls
+│      │      stock_val_1_170203.xls
+│      │      stock_val_1_170204.xls
+│      │      stock_val_1_170301.xls
+│      │      stock_val_1_170302.xls
+│      │      stock_val_1_170303.xls
+│      │      stock_val_1_170304.xls
+│      │      stock_val_1_170305.xls
+│      │      stock_val_1_170401.xls
+│      │      stock_val_1_170402.xls
+│      │      stock_val_1_170403.xls
+│      │      stock_val_1_170404.xls
+│      │      stock_val_1_170501.xls
+│      │      stock_val_1_170502.xls
+│      │      stock_val_1_170503.xls
+│      │      stock_val_1_170504.xls
+│      │      stock_val_1_170505.xls
+│      │      stock_val_1_170601.xls
+│      │      stock_val_1_170602.xls
+│      │      stock_val_1_170603.xls
+│      │      stock_val_1_170604.xls
+│      │      stock_val_1_170701.xls
+│      │      stock_val_1_170702.xls
+│      │      stock_val_1_170703.xls
+│      │      stock_val_1_170704.xls
+│      │      stock_val_1_170801.xls
+│      │      stock_val_1_170802.xls
+│      │      stock_val_1_170803.xls
+│      │      stock_val_1_170804.xls
+│      │      stock_val_1_170805.xls
+│      │      stock_val_1_170901.xls
+│      │      stock_val_1_170902.xls
+│      │      stock_val_1_170903.xls
+│      │      stock_val_1_170904.xls
+│      │      stock_val_1_171001.xls
+│      │      stock_val_1_171002.xls
+│      │      stock_val_1_171003.xls
+│      │      stock_val_1_171004.xls
+│      │      stock_val_1_171101.xls
+│      │      stock_val_1_171102.xls
+│      │      stock_val_1_171103.xls
+│      │      stock_val_1_171104.xls
+│      │      stock_val_1_171105.xls
+│      │      stock_val_1_171201.xls
+│      │      stock_val_1_171202.xls
+│      │      stock_val_1_171203.xls
+│      │      stock_val_1_171204.xls
+│      │      stock_vol_1_170101.xls
+│      │      stock_vol_1_170102.xls
+│      │      stock_vol_1_170103.xls
+│      │      stock_vol_1_170104.xls
+│      │      stock_vol_1_170201.xls
+│      │      stock_vol_1_170202.xls
+│      │      stock_vol_1_170203.xls
+│      │      stock_vol_1_170204.xls
+│      │      stock_vol_1_170301.xls
+│      │      stock_vol_1_170302.xls
+│      │      stock_vol_1_170303.xls
+│      │      stock_vol_1_170304.xls
+│      │      stock_vol_1_170305.xls
+│      │      stock_vol_1_170401.xls
+│      │      stock_vol_1_170402.xls
+│      │      stock_vol_1_170403.xls
+│      │      stock_vol_1_170404.xls
+│      │      stock_vol_1_170501.xls
+│      │      stock_vol_1_170502.xls
+│      │      stock_vol_1_170503.xls
+│      │      stock_vol_1_170504.xls
+│      │      stock_vol_1_170505.xls
+│      │      stock_vol_1_170601.xls
+│      │      stock_vol_1_170602.xls
+│      │      stock_vol_1_170603.xls
+│      │      stock_vol_1_170604.xls
+│      │      stock_vol_1_170701.xls
+│      │      stock_vol_1_170702.xls
+│      │      stock_vol_1_170703.xls
+│      │      stock_vol_1_170704.xls
+│      │      stock_vol_1_170801.xls
+│      │      stock_vol_1_170802.xls
+│      │      stock_vol_1_170803.xls
+│      │      stock_vol_1_170804.xls
+│      │      stock_vol_1_170805.xls
+│      │      stock_vol_1_170901.xls
+│      │      stock_vol_1_170902.xls
+│      │      stock_vol_1_170903.xls
+│      │      stock_vol_1_170904.xls
+│      │      stock_vol_1_171001.xls
+│      │      stock_vol_1_171002.xls
+│      │      stock_vol_1_171003.xls
+│      │      stock_vol_1_171004.xls
+│      │      stock_vol_1_171101.xls
+│      │      stock_vol_1_171102.xls
+│      │      stock_vol_1_171103.xls
+│      │      stock_vol_1_171104.xls
+│      │      stock_vol_1_171105.xls
+│      │      stock_vol_1_171201.xls
+│      │      stock_vol_1_171202.xls
+│      │      stock_vol_1_171203.xls
+│      │      stock_vol_1_171204.xls
+│      │      
+│      ├─2018
+│      │      stock_val_1_180101.xls
+│      │      stock_val_1_180102.xls
+│      │      stock_val_1_180103.xls
+│      │      stock_val_1_180104.xls
+│      │      stock_val_1_180105.xls
+│      │      stock_val_1_180201.xls
+│      │      stock_val_1_180202.xls
+│      │      stock_val_1_180203.xls
+│      │      stock_val_1_180204.xls
+│      │      stock_val_1_180301.xls
+│      │      stock_val_1_180302.xls
+│      │      stock_val_1_180303.xls
+│      │      stock_val_1_180304.xls
+│      │      stock_val_1_180401.xls
+│      │      stock_val_1_180402.xls
+│      │      stock_val_1_180403.xls
+│      │      stock_val_1_180404.xls
+│      │      stock_val_1_180501.xls
+│      │      stock_val_1_180502.xls
+│      │      stock_val_1_180503.xls
+│      │      stock_val_1_180504.xls
+│      │      stock_val_1_180505.xls
+│      │      stock_val_1_180601.xls
+│      │      stock_val_1_180602.xls
+│      │      stock_val_1_180603.xls
+│      │      stock_val_1_180604.xls
+│      │      stock_val_1_180701.xls
+│      │      stock_val_1_180702.xls
+│      │      stock_val_1_180703.xls
+│      │      stock_val_1_180704.xls
+│      │      stock_val_1_180801.xls
+│      │      stock_val_1_180802.xls
+│      │      stock_val_1_180803.xls
+│      │      stock_val_1_180804.xls
+│      │      stock_val_1_180805.xls
+│      │      stock_val_1_180901.xls
+│      │      stock_val_1_180902.xls
+│      │      stock_val_1_180903.xls
+│      │      stock_val_1_180904.xls
+│      │      stock_val_1_181001.xls
+│      │      stock_val_1_181002.xls
+│      │      stock_val_1_181003.xls
+│      │      stock_val_1_181004.xls
+│      │      stock_val_1_181005.xls
+│      │      stock_val_1_181101.xls
+│      │      stock_val_1_181102.xls
+│      │      stock_val_1_181103.xls
+│      │      stock_val_1_181104.xls
+│      │      stock_val_1_181201.xls
+│      │      stock_val_1_181202.xls
+│      │      stock_val_1_181203.xls
+│      │      stock_val_1_181204.xls
+│      │      stock_vol_1_180101.xls
+│      │      stock_vol_1_180102.xls
+│      │      stock_vol_1_180103.xls
+│      │      stock_vol_1_180104.xls
+│      │      stock_vol_1_180105.xls
+│      │      stock_vol_1_180201.xls
+│      │      stock_vol_1_180202.xls
+│      │      stock_vol_1_180203.xls
+│      │      stock_vol_1_180204.xls
+│      │      stock_vol_1_180301.xls
+│      │      stock_vol_1_180302.xls
+│      │      stock_vol_1_180303.xls
+│      │      stock_vol_1_180304.xls
+│      │      stock_vol_1_180401.xls
+│      │      stock_vol_1_180402.xls
+│      │      stock_vol_1_180403.xls
+│      │      stock_vol_1_180404.xls
+│      │      stock_vol_1_180501.xls
+│      │      stock_vol_1_180502.xls
+│      │      stock_vol_1_180503.xls
+│      │      stock_vol_1_180504.xls
+│      │      stock_vol_1_180505.xls
+│      │      stock_vol_1_180601.xls
+│      │      stock_vol_1_180602.xls
+│      │      stock_vol_1_180603.xls
+│      │      stock_vol_1_180604.xls
+│      │      stock_vol_1_180701.xls
+│      │      stock_vol_1_180702.xls
+│      │      stock_vol_1_180703.xls
+│      │      stock_vol_1_180704.xls
+│      │      stock_vol_1_180801.xls
+│      │      stock_vol_1_180802.xls
+│      │      stock_vol_1_180803.xls
+│      │      stock_vol_1_180804.xls
+│      │      stock_vol_1_180805.xls
+│      │      stock_vol_1_180901.xls
+│      │      stock_vol_1_180902.xls
+│      │      stock_vol_1_180903.xls
+│      │      stock_vol_1_180904.xls
+│      │      stock_vol_1_181001.xls
+│      │      stock_vol_1_181002.xls
+│      │      stock_vol_1_181003.xls
+│      │      stock_vol_1_181004.xls
+│      │      stock_vol_1_181005.xls
+│      │      stock_vol_1_181101.xls
+│      │      stock_vol_1_181102.xls
+│      │      stock_vol_1_181103.xls
+│      │      stock_vol_1_181104.xls
+│      │      stock_vol_1_181201.xls
+│      │      stock_vol_1_181202.xls
+│      │      stock_vol_1_181203.xls
+│      │      stock_vol_1_181204.xls
+│      │      
+│      ├─2019
+│      │      stock_val_1_190101.xls
+│      │      stock_val_1_190102.xls
+│      │      stock_val_1_190103.xls
+│      │      stock_val_1_190104.xls
+│      │      stock_val_1_190105.xls
+│      │      stock_val_1_190201.xls
+│      │      stock_val_1_190202.xls
+│      │      stock_val_1_190203.xls
+│      │      stock_val_1_190204.xls
+│      │      stock_val_1_190301.xls
+│      │      stock_val_1_190302.xls
+│      │      stock_val_1_190303.xls
+│      │      stock_val_1_190304.xls
+│      │      stock_val_1_190401.xls
+│      │      stock_val_1_190402.xls
+│      │      stock_val_1_190403.xls
+│      │      stock_val_1_190404.xls
+│      │      stock_val_1_190501.xls
+│      │      stock_val_1_190502.xls
+│      │      stock_val_1_190503.xls
+│      │      stock_val_1_190504.xls
+│      │      stock_val_1_190601.xls
+│      │      stock_val_1_190602.xls
+│      │      stock_val_1_190603.xls
+│      │      stock_val_1_190604.xls
+│      │      stock_val_1_190701.xls
+│      │      stock_val_1_190702.xls
+│      │      stock_val_1_190703.xls
+│      │      stock_val_1_190704.xls
+│      │      stock_val_1_190705.xls
+│      │      stock_val_1_190801.xls
+│      │      stock_val_1_190802.xls
+│      │      stock_val_1_190803.xls
+│      │      stock_val_1_190804.xls
+│      │      stock_val_1_190901.xls
+│      │      stock_val_1_190902.xls
+│      │      stock_val_1_190903.xls
+│      │      stock_val_1_190904.xls
+│      │      stock_val_1_191001.xls
+│      │      stock_val_1_191002.xls
+│      │      stock_val_1_191003.xls
+│      │      stock_val_1_191004.xls
+│      │      stock_val_1_191005.xls
+│      │      stock_val_1_191101.xls
+│      │      stock_val_1_191102.xls
+│      │      stock_val_1_191103.xls
+│      │      stock_val_1_191104.xls
+│      │      stock_val_1_191201.xls
+│      │      stock_val_1_191202.xls
+│      │      stock_val_1_191203.xls
+│      │      stock_val_1_191204.xls
+│      │      stock_val_1_191205.xls
+│      │      stock_vol_1_190101.xls
+│      │      stock_vol_1_190102.xls
+│      │      stock_vol_1_190103.xls
+│      │      stock_vol_1_190104.xls
+│      │      stock_vol_1_190105.xls
+│      │      stock_vol_1_190201.xls
+│      │      stock_vol_1_190202.xls
+│      │      stock_vol_1_190203.xls
+│      │      stock_vol_1_190204.xls
+│      │      stock_vol_1_190301.xls
+│      │      stock_vol_1_190302.xls
+│      │      stock_vol_1_190303.xls
+│      │      stock_vol_1_190304.xls
+│      │      stock_vol_1_190401.xls
+│      │      stock_vol_1_190402.xls
+│      │      stock_vol_1_190403.xls
+│      │      stock_vol_1_190404.xls
+│      │      stock_vol_1_190501.xls
+│      │      stock_vol_1_190502.xls
+│      │      stock_vol_1_190503.xls
+│      │      stock_vol_1_190504.xls
+│      │      stock_vol_1_190601.xls
+│      │      stock_vol_1_190602.xls
+│      │      stock_vol_1_190603.xls
+│      │      stock_vol_1_190604.xls
+│      │      stock_vol_1_190701.xls
+│      │      stock_vol_1_190702.xls
+│      │      stock_vol_1_190703.xls
+│      │      stock_vol_1_190704.xls
+│      │      stock_vol_1_190705.xls
+│      │      stock_vol_1_190801.xls
+│      │      stock_vol_1_190802.xls
+│      │      stock_vol_1_190803.xls
+│      │      stock_vol_1_190804.xls
+│      │      stock_vol_1_190901.xls
+│      │      stock_vol_1_190902.xls
+│      │      stock_vol_1_190903.xls
+│      │      stock_vol_1_190904.xls
+│      │      stock_vol_1_191001.xls
+│      │      stock_vol_1_191002.xls
+│      │      stock_vol_1_191003.xls
+│      │      stock_vol_1_191004.xls
+│      │      stock_vol_1_191005.xls
+│      │      stock_vol_1_191101.xls
+│      │      stock_vol_1_191102.xls
+│      │      stock_vol_1_191103.xls
+│      │      stock_vol_1_191104.xls
+│      │      stock_vol_1_191201.xls
+│      │      stock_vol_1_191202.xls
+│      │      stock_vol_1_191203.xls
+│      │      stock_vol_1_191204.xls
+│      │      stock_vol_1_191205.xls
+│      │      
+│      ├─2020
+│      │      stock_val_1_200101.xls
+│      │      stock_val_1_200102.xls
+│      │      stock_val_1_200103.xls
+│      │      stock_val_1_200104.xls
+│      │      stock_val_1_200201.xls
+│      │      stock_val_1_200202.xls
+│      │      stock_val_1_200203.xls
+│      │      stock_val_1_200204.xls
+│      │      stock_val_1_200301.xls
+│      │      stock_val_1_200302.xls
+│      │      stock_val_1_200303.xls
+│      │      stock_val_1_200304.xls
+│      │      stock_val_1_200401.xls
+│      │      stock_val_1_200402.xls
+│      │      stock_val_1_200403.xls
+│      │      stock_val_1_200404.xls
+│      │      stock_val_1_200405.xls
+│      │      stock_val_1_200501.xls
+│      │      stock_val_1_200502.xls
+│      │      stock_val_1_200503.xls
+│      │      stock_val_1_200504.xls
+│      │      stock_val_1_200601.xls
+│      │      stock_val_1_200602.xls
+│      │      stock_val_1_200603.xls
+│      │      stock_val_1_200604.xls
+│      │      stock_val_1_200701.xls
+│      │      stock_val_1_200702.xls
+│      │      stock_val_1_200703.xls
+│      │      stock_val_1_200704.xls
+│      │      stock_val_1_200705.xls
+│      │      stock_val_1_200801.xls
+│      │      stock_val_1_200802.xls
+│      │      stock_val_1_200803.xls
+│      │      stock_val_1_200804.xls
+│      │      stock_val_1_200901.xls
+│      │      stock_val_1_200902.xls
+│      │      stock_val_1_200903.xls
+│      │      stock_val_1_200904.xls
+│      │      stock_val_1_200905.xls
+│      │      stock_val_1_201001.xls
+│      │      stock_val_1_201002.xls
+│      │      stock_val_1_201003.xls
+│      │      stock_val_1_201004.xls
+│      │      stock_val_1_201101.xls
+│      │      stock_val_1_201102.xls
+│      │      stock_val_1_201103.xls
+│      │      stock_val_1_201104.xls
+│      │      stock_val_1_201201.xls
+│      │      stock_val_1_201202.xls
+│      │      stock_val_1_201203.xls
+│      │      stock_val_1_201204.xls
+│      │      stock_val_1_201205.xls
+│      │      stock_vol_1_200101.xls
+│      │      stock_vol_1_200102.xls
+│      │      stock_vol_1_200103.xls
+│      │      stock_vol_1_200104.xls
+│      │      stock_vol_1_200201.xls
+│      │      stock_vol_1_200202.xls
+│      │      stock_vol_1_200203.xls
+│      │      stock_vol_1_200204.xls
+│      │      stock_vol_1_200301.xls
+│      │      stock_vol_1_200302.xls
+│      │      stock_vol_1_200303.xls
+│      │      stock_vol_1_200304.xls
+│      │      stock_vol_1_200401.xls
+│      │      stock_vol_1_200402.xls
+│      │      stock_vol_1_200403.xls
+│      │      stock_vol_1_200404.xls
+│      │      stock_vol_1_200405.xls
+│      │      stock_vol_1_200501.xls
+│      │      stock_vol_1_200502.xls
+│      │      stock_vol_1_200503.xls
+│      │      stock_vol_1_200504.xls
+│      │      stock_vol_1_200601.xls
+│      │      stock_vol_1_200602.xls
+│      │      stock_vol_1_200603.xls
+│      │      stock_vol_1_200604.xls
+│      │      stock_vol_1_200701.xls
+│      │      stock_vol_1_200702.xls
+│      │      stock_vol_1_200703.xls
+│      │      stock_vol_1_200704.xls
+│      │      stock_vol_1_200705.xls
+│      │      stock_vol_1_200801.xls
+│      │      stock_vol_1_200802.xls
+│      │      stock_vol_1_200803.xls
+│      │      stock_vol_1_200804.xls
+│      │      stock_vol_1_200901.xls
+│      │      stock_vol_1_200902.xls
+│      │      stock_vol_1_200903.xls
+│      │      stock_vol_1_200904.xls
+│      │      stock_vol_1_200905.xls
+│      │      stock_vol_1_201001.xls
+│      │      stock_vol_1_201002.xls
+│      │      stock_vol_1_201003.xls
+│      │      stock_vol_1_201004.xls
+│      │      stock_vol_1_201101.xls
+│      │      stock_vol_1_201102.xls
+│      │      stock_vol_1_201103.xls
+│      │      stock_vol_1_201104.xls
+│      │      stock_vol_1_201201.xls
+│      │      stock_vol_1_201202.xls
+│      │      stock_vol_1_201203.xls
+│      │      stock_vol_1_201204.xls
+│      │      stock_vol_1_201205.xls
+│      │      
+│      ├─2021
+│      │      stock_val_1_210101.xls
+│      │      stock_val_1_210102.xls
+│      │      stock_val_1_210103.xls
+│      │      stock_val_1_210104.xls
+│      │      stock_val_1_210201.xls
+│      │      stock_val_1_210202.xls
+│      │      stock_val_1_210203.xls
+│      │      stock_val_1_210204.xls
+│      │      stock_val_1_210301.xls
+│      │      stock_val_1_210302.xls
+│      │      stock_val_1_210303.xls
+│      │      stock_val_1_210304.xls
+│      │      stock_val_1_210305.xls
+│      │      stock_val_1_210401.xls
+│      │      stock_val_1_210402.xls
+│      │      stock_val_1_210403.xls
+│      │      stock_val_1_210404.xls
+│      │      stock_val_1_210501.xls
+│      │      stock_val_1_210502.xls
+│      │      stock_val_1_210503.xls
+│      │      stock_val_1_210504.xls
+│      │      stock_val_1_210601.xls
+│      │      stock_val_1_210602.xls
+│      │      stock_val_1_210603.xls
+│      │      stock_val_1_210604.xls
+│      │      stock_val_1_210605.xls
+│      │      stock_val_1_210701.xls
+│      │      stock_val_1_210702.xls
+│      │      stock_val_1_210703.xls
+│      │      stock_val_1_210704.xls
+│      │      stock_val_1_210801.xls
+│      │      stock_val_1_210802.xls
+│      │      stock_val_1_210803.xls
+│      │      stock_val_1_210804.xls
+│      │      stock_val_1_210901.xls
+│      │      stock_val_1_210902.xls
+│      │      stock_val_1_210903.xls
+│      │      stock_val_1_210904.xls
+│      │      stock_val_1_210905.xls
+│      │      stock_val_1_211001.xls
+│      │      stock_val_1_211002.xls
+│      │      stock_val_1_211003.xls
+│      │      stock_val_1_211004.xls
+│      │      stock_val_1_211101.xls
+│      │      stock_val_1_211102.xls
+│      │      stock_val_1_211103.xls
+│      │      stock_val_1_211104.xls
+│      │      stock_val_1_211201.xls
+│      │      stock_val_1_211202.xls
+│      │      stock_val_1_211203.xls
+│      │      stock_val_1_211204.xls
+│      │      stock_val_1_211205.xls
+│      │      stock_vol_1_210101.xls
+│      │      stock_vol_1_210102.xls
+│      │      stock_vol_1_210103.xls
+│      │      stock_vol_1_210104.xls
+│      │      stock_vol_1_210201.xls
+│      │      stock_vol_1_210202.xls
+│      │      stock_vol_1_210203.xls
+│      │      stock_vol_1_210204.xls
+│      │      stock_vol_1_210301.xls
+│      │      stock_vol_1_210302.xls
+│      │      stock_vol_1_210303.xls
+│      │      stock_vol_1_210304.xls
+│      │      stock_vol_1_210305.xls
+│      │      stock_vol_1_210401.xls
+│      │      stock_vol_1_210402.xls
+│      │      stock_vol_1_210403.xls
+│      │      stock_vol_1_210404.xls
+│      │      stock_vol_1_210501.xls
+│      │      stock_vol_1_210502.xls
+│      │      stock_vol_1_210503.xls
+│      │      stock_vol_1_210504.xls
+│      │      stock_vol_1_210601.xls
+│      │      stock_vol_1_210602.xls
+│      │      stock_vol_1_210603.xls
+│      │      stock_vol_1_210604.xls
+│      │      stock_vol_1_210605.xls
+│      │      stock_vol_1_210701.xls
+│      │      stock_vol_1_210702.xls
+│      │      stock_vol_1_210703.xls
+│      │      stock_vol_1_210704.xls
+│      │      stock_vol_1_210801.xls
+│      │      stock_vol_1_210802.xls
+│      │      stock_vol_1_210803.xls
+│      │      stock_vol_1_210804.xls
+│      │      stock_vol_1_210901.xls
+│      │      stock_vol_1_210902.xls
+│      │      stock_vol_1_210903.xls
+│      │      stock_vol_1_210904.xls
+│      │      stock_vol_1_210905.xls
+│      │      stock_vol_1_211001.xls
+│      │      stock_vol_1_211002.xls
+│      │      stock_vol_1_211003.xls
+│      │      stock_vol_1_211004.xls
+│      │      stock_vol_1_211101.xls
+│      │      stock_vol_1_211102.xls
+│      │      stock_vol_1_211103.xls
+│      │      stock_vol_1_211104.xls
+│      │      stock_vol_1_211201.xls
+│      │      stock_vol_1_211202.xls
+│      │      stock_vol_1_211203.xls
+│      │      stock_vol_1_211204.xls
+│      │      stock_vol_1_211205.xls
+│      │      
+│      ├─2022
+│      │      stock_val_1_220101.xls
+│      │      stock_val_1_220102.xls
+│      │      stock_val_1_220103.xls
+│      │      stock_val_1_220104.xls
+│      │      stock_val_1_220201.xls
+│      │      stock_val_1_220202.xls
+│      │      stock_val_1_220203.xls
+│      │      stock_val_1_220204.xls
+│      │      stock_val_1_220301.xls
+│      │      stock_val_1_220302.xls
+│      │      stock_val_1_220303.xls
+│      │      stock_val_1_220304.xls
+│      │      stock_val_1_220305.xls
+│      │      stock_val_1_220401.xls
+│      │      stock_val_1_220402.xls
+│      │      stock_val_1_220403.xls
+│      │      stock_val_1_220404.xls
+│      │      stock_val_1_220501.xls
+│      │      stock_val_1_220502.xls
+│      │      stock_val_1_220503.xls
+│      │      stock_val_1_220504.xls
+│      │      stock_val_1_220601.xls
+│      │      stock_val_1_220602.xls
+│      │      stock_val_1_220603.xls
+│      │      stock_val_1_220604.xls
+│      │      stock_val_1_220605.xls
+│      │      stock_val_1_220701.xls
+│      │      stock_val_1_220702.xls
+│      │      stock_val_1_220703.xls
+│      │      stock_val_1_220704.xls
+│      │      stock_val_1_220801.xls
+│      │      stock_val_1_220802.xls
+│      │      stock_val_1_220803.xls
+│      │      stock_val_1_220804.xls
+│      │      stock_val_1_220805.xls
+│      │      stock_val_1_220901.xls
+│      │      stock_val_1_220902.xls
+│      │      stock_val_1_220903.xls
+│      │      stock_val_1_220904.xls
+│      │      stock_val_1_221001.xls
+│      │      stock_val_1_221002.xls
+│      │      stock_val_1_221003.xls
+│      │      stock_val_1_221004.xls
+│      │      stock_val_1_221101.xls
+│      │      stock_val_1_221102.xls
+│      │      stock_val_1_221103.xls
+│      │      stock_val_1_221104.xls
+│      │      stock_val_1_221105.xls
+│      │      stock_val_1_221201.xls
+│      │      stock_val_1_221202.xls
+│      │      stock_val_1_221203.xls
+│      │      stock_val_1_221204.xls
+│      │      stock_vol_1_220101.xls
+│      │      stock_vol_1_220102.xls
+│      │      stock_vol_1_220103.xls
+│      │      stock_vol_1_220104.xls
+│      │      stock_vol_1_220201.xls
+│      │      stock_vol_1_220202.xls
+│      │      stock_vol_1_220203.xls
+│      │      stock_vol_1_220204.xls
+│      │      stock_vol_1_220301.xls
+│      │      stock_vol_1_220302.xls
+│      │      stock_vol_1_220303.xls
+│      │      stock_vol_1_220304.xls
+│      │      stock_vol_1_220305.xls
+│      │      stock_vol_1_220401.xls
+│      │      stock_vol_1_220402.xls
+│      │      stock_vol_1_220403.xls
+│      │      stock_vol_1_220404.xls
+│      │      stock_vol_1_220501.xls
+│      │      stock_vol_1_220502.xls
+│      │      stock_vol_1_220503.xls
+│      │      stock_vol_1_220504.xls
+│      │      stock_vol_1_220601.xls
+│      │      stock_vol_1_220602.xls
+│      │      stock_vol_1_220603.xls
+│      │      stock_vol_1_220604.xls
+│      │      stock_vol_1_220605.xls
+│      │      stock_vol_1_220701.xls
+│      │      stock_vol_1_220702.xls
+│      │      stock_vol_1_220703.xls
+│      │      stock_vol_1_220704.xls
+│      │      stock_vol_1_220801.xls
+│      │      stock_vol_1_220802.xls
+│      │      stock_vol_1_220803.xls
+│      │      stock_vol_1_220804.xls
+│      │      stock_vol_1_220805.xls
+│      │      stock_vol_1_220901.xls
+│      │      stock_vol_1_220902.xls
+│      │      stock_vol_1_220903.xls
+│      │      stock_vol_1_220904.xls
+│      │      stock_vol_1_221001.xls
+│      │      stock_vol_1_221002.xls
+│      │      stock_vol_1_221003.xls
+│      │      stock_vol_1_221004.xls
+│      │      stock_vol_1_221101.xls
+│      │      stock_vol_1_221102.xls
+│      │      stock_vol_1_221103.xls
+│      │      stock_vol_1_221104.xls
+│      │      stock_vol_1_221105.xls
+│      │      stock_vol_1_221201.xls
+│      │      stock_vol_1_221202.xls
+│      │      stock_vol_1_221203.xls
+│      │      stock_vol_1_221204.xls
+│      │      
+│      ├─2023
+│      │      stock_val_1_230101.xls
+│      │      stock_val_1_230102.xls
+│      │      stock_val_1_230103.xls
+│      │      stock_val_1_230104.xls
+│      │      stock_val_1_230201.xls
+│      │      stock_val_1_230202.xls
+│      │      stock_val_1_230203.xls
+│      │      stock_val_1_230204.xls
+│      │      stock_val_1_230301.xls
+│      │      stock_val_1_230302.xls
+│      │      stock_val_1_230303.xls
+│      │      stock_val_1_230304.xls
+│      │      stock_val_1_230305.xls
+│      │      stock_val_1_230401.xls
+│      │      stock_val_1_230402.xls
+│      │      stock_val_1_230403.xls
+│      │      stock_val_1_230404.xls
+│      │      stock_val_1_230501.xls
+│      │      stock_val_1_230502.xls
+│      │      stock_val_1_230503.xls
+│      │      stock_val_1_230504.xls
+│      │      stock_val_1_230505.xls
+│      │      stock_val_1_230601.xls
+│      │      stock_val_1_230602.xls
+│      │      stock_val_1_230603.xls
+│      │      stock_val_1_230604.xls
+│      │      stock_val_1_230701.xls
+│      │      stock_val_1_230702.xls
+│      │      stock_val_1_230703.xls
+│      │      stock_val_1_230704.xls
+│      │      stock_val_1_230801.xls
+│      │      stock_val_1_230802.xls
+│      │      stock_val_1_230803.xls
+│      │      stock_val_1_230804.xls
+│      │      stock_val_1_230805.xls
+│      │      stock_val_1_230901.xls
+│      │      stock_val_1_230902.xls
+│      │      stock_val_1_230903.xls
+│      │      stock_val_1_230904.xls
+│      │      stock_val_1_231001.xls
+│      │      stock_val_1_231002.xls
+│      │      stock_val_1_231003.xls
+│      │      stock_val_1_231004.xls
+│      │      stock_val_1_231101.xls
+│      │      stock_val_1_231102.xls
+│      │      stock_val_1_231103.xls
+│      │      stock_val_1_231104.xls
+│      │      stock_val_1_231105.xls
+│      │      stock_val_1_231201.xls
+│      │      stock_val_1_231202.xls
+│      │      stock_val_1_231203.xls
+│      │      stock_val_1_231204.xls
+│      │      stock_vol_1_230101.xls
+│      │      stock_vol_1_230102.xls
+│      │      stock_vol_1_230103.xls
+│      │      stock_vol_1_230104.xls
+│      │      stock_vol_1_230201.xls
+│      │      stock_vol_1_230202.xls
+│      │      stock_vol_1_230203.xls
+│      │      stock_vol_1_230204.xls
+│      │      stock_vol_1_230301.xls
+│      │      stock_vol_1_230302.xls
+│      │      stock_vol_1_230303.xls
+│      │      stock_vol_1_230304.xls
+│      │      stock_vol_1_230305.xls
+│      │      stock_vol_1_230401.xls
+│      │      stock_vol_1_230402.xls
+│      │      stock_vol_1_230403.xls
+│      │      stock_vol_1_230404.xls
+│      │      stock_vol_1_230501.xls
+│      │      stock_vol_1_230502.xls
+│      │      stock_vol_1_230503.xls
+│      │      stock_vol_1_230504.xls
+│      │      stock_vol_1_230505.xls
+│      │      stock_vol_1_230601.xls
+│      │      stock_vol_1_230602.xls
+│      │      stock_vol_1_230603.xls
+│      │      stock_vol_1_230604.xls
+│      │      stock_vol_1_230701.xls
+│      │      stock_vol_1_230702.xls
+│      │      stock_vol_1_230703.xls
+│      │      stock_vol_1_230704.xls
+│      │      stock_vol_1_230801.xls
+│      │      stock_vol_1_230802.xls
+│      │      stock_vol_1_230803.xls
+│      │      stock_vol_1_230804.xls
+│      │      stock_vol_1_230805.xls
+│      │      stock_vol_1_230901.xls
+│      │      stock_vol_1_230902.xls
+│      │      stock_vol_1_230903.xls
+│      │      stock_vol_1_230904.xls
+│      │      stock_vol_1_231001.xls
+│      │      stock_vol_1_231002.xls
+│      │      stock_vol_1_231003.xls
+│      │      stock_vol_1_231004.xls
+│      │      stock_vol_1_231101.xls
+│      │      stock_vol_1_231102.xls
+│      │      stock_vol_1_231103.xls
+│      │      stock_vol_1_231104.xls
+│      │      stock_vol_1_231105.xls
+│      │      stock_vol_1_231201.xls
+│      │      stock_vol_1_231202.xls
+│      │      stock_vol_1_231203.xls
+│      │      stock_vol_1_231204.xls
+│      │      
+│      ├─2024
+│      │      revision_information_j.xls
+│      │      stock_val_1_240101.xls
+│      │      stock_val_1_240102.xls
+│      │      stock_val_1_240103.xls
+│      │      stock_val_1_240104.xls
+│      │      stock_val_1_240105.xls
+│      │      stock_val_1_240201.xls
+│      │      stock_val_1_240202.xls
+│      │      stock_val_1_240203.xls
+│      │      stock_val_1_240204.xls
+│      │      stock_val_1_240301.xls
+│      │      stock_val_1_240302.xls
+│      │      stock_val_1_240303.xls
+│      │      stock_val_1_240304.xls
+│      │      stock_val_1_240401.xls
+│      │      stock_val_1_240402.xls
+│      │      stock_val_1_240403.xls
+│      │      stock_val_1_240404.xls
+│      │      stock_val_1_240501.xls
+│      │      stock_val_1_240502.xls
+│      │      stock_val_1_240503.xls
+│      │      stock_val_1_240504.xls
+│      │      stock_val_1_240505.xls
+│      │      stock_val_1_240601.xls
+│      │      stock_val_1_240602.xls
+│      │      stock_val_1_240603.xls
+│      │      stock_val_1_240604.xls
+│      │      stock_val_1_240701.xls
+│      │      stock_val_1_240702.xls
+│      │      stock_val_1_240703.xls
+│      │      stock_val_1_240704.xls
+│      │      stock_val_1_240705.xls
+│      │      stock_val_1_240801.xls
+│      │      stock_val_1_240802.xls
+│      │      stock_val_1_240803.xls
+│      │      stock_val_1_240804.xls
+│      │      stock_val_1_240901.xls
+│      │      stock_val_1_240902.xls
+│      │      stock_val_1_240903.xls
+│      │      stock_val_1_240904.xls
+│      │      stock_val_1_241001.xls
+│      │      stock_val_1_241002.xls
+│      │      stock_val_1_241003.xls
+│      │      stock_val_1_241004.xls
+│      │      stock_val_1_241005.xls
+│      │      stock_val_1_241101.xls
+│      │      stock_val_1_241102.xls
+│      │      stock_val_1_241103.xls
+│      │      stock_val_1_241104.xls
+│      │      stock_val_1_241201.xls
+│      │      stock_val_1_241202.xls
+│      │      stock_val_1_241203.xls
+│      │      stock_val_1_241204.xls
+│      │      stock_val_1_241205.xls
+│      │      stock_vol_1_240101.xls
+│      │      stock_vol_1_240102.xls
+│      │      stock_vol_1_240103.xls
+│      │      stock_vol_1_240104.xls
+│      │      stock_vol_1_240105.xls
+│      │      stock_vol_1_240201.xls
+│      │      stock_vol_1_240202.xls
+│      │      stock_vol_1_240203.xls
+│      │      stock_vol_1_240204.xls
+│      │      stock_vol_1_240301.xls
+│      │      stock_vol_1_240302.xls
+│      │      stock_vol_1_240303.xls
+│      │      stock_vol_1_240304.xls
+│      │      stock_vol_1_240401.xls
+│      │      stock_vol_1_240402.xls
+│      │      stock_vol_1_240403.xls
+│      │      stock_vol_1_240404.xls
+│      │      stock_vol_1_240501.xls
+│      │      stock_vol_1_240502.xls
+│      │      stock_vol_1_240503.xls
+│      │      stock_vol_1_240504.xls
+│      │      stock_vol_1_240505.xls
+│      │      stock_vol_1_240601.xls
+│      │      stock_vol_1_240602.xls
+│      │      stock_vol_1_240603.xls
+│      │      stock_vol_1_240604.xls
+│      │      stock_vol_1_240701.xls
+│      │      stock_vol_1_240702.xls
+│      │      stock_vol_1_240703.xls
+│      │      stock_vol_1_240704.xls
+│      │      stock_vol_1_240705.xls
+│      │      stock_vol_1_240801.xls
+│      │      stock_vol_1_240802.xls
+│      │      stock_vol_1_240803.xls
+│      │      stock_vol_1_240804.xls
+│      │      stock_vol_1_240901.xls
+│      │      stock_vol_1_240902.xls
+│      │      stock_vol_1_240903.xls
+│      │      stock_vol_1_240904.xls
+│      │      stock_vol_1_241001.xls
+│      │      stock_vol_1_241002.xls
+│      │      stock_vol_1_241003.xls
+│      │      stock_vol_1_241004.xls
+│      │      stock_vol_1_241005.xls
+│      │      stock_vol_1_241101.xls
+│      │      stock_vol_1_241102.xls
+│      │      stock_vol_1_241103.xls
+│      │      stock_vol_1_241104.xls
+│      │      stock_vol_1_241201.xls
+│      │      stock_vol_1_241202.xls
+│      │      stock_vol_1_241203.xls
+│      │      stock_vol_1_241204.xls
+│      │      stock_vol_1_241205.xls
+│      │      
+│      ├─2025
+│      │      stock_val_1_250101.xls
+│      │      stock_val_1_250102.xls
+│      │      stock_val_1_250103.xls
+│      │      stock_val_1_250104.xls
+│      │      stock_val_1_250201.xls
+│      │      stock_val_1_250202.xls
+│      │      stock_val_1_250203.xls
+│      │      stock_val_1_250204.xls
+│      │      stock_val_1_250301.xls
+│      │      stock_val_1_250302.xls
+│      │      stock_val_1_250303.xls
+│      │      stock_val_1_250304.xls
+│      │      stock_val_1_250401.xls
+│      │      stock_val_1_250402.xls
+│      │      stock_val_1_250403.xls
+│      │      stock_val_1_250404.xls
+│      │      stock_val_1_250501.xls
+│      │      stock_val_1_250502.xls
+│      │      stock_val_1_250503.xls
+│      │      stock_val_1_250504.xls
+│      │      stock_val_1_250505.xls
+│      │      stock_val_1_250601.xls
+│      │      stock_val_1_250602.xls
+│      │      stock_val_1_250603.xls
+│      │      stock_val_1_250604.xls
+│      │      stock_val_1_250701.xls
+│      │      stock_val_1_250702.xls
+│      │      stock_val_1_250703.xls
+│      │      stock_val_1_250704.xls
+│      │      stock_val_1_250705.xls
+│      │      stock_val_1_250801.xls
+│      │      stock_val_1_250802.xls
+│      │      stock_val_1_250803.xls
+│      │      stock_val_1_250804.xls
+│      │      stock_val_1_250901.xls
+│      │      stock_val_1_250902.xls
+│      │      stock_val_1_250903.xls
+│      │      stock_val_1_250904.xls
+│      │      stock_val_1_251001.xls
+│      │      stock_val_1_251002.xls
+│      │      stock_val_1_251003.xls
+│      │      stock_val_1_251004.xls
+│      │      stock_val_1_251005.xls
+│      │      stock_val_1_251101.xls
+│      │      stock_val_1_251102.xls
+│      │      stock_val_1_251103.xls
+│      │      stock_val_1_251104.xls
+│      │      stock_val_1_251201.xls
+│      │      stock_val_1_251202.xls
+│      │      stock_val_1_251203.xls
+│      │      stock_val_1_251204.xls
+│      │      stock_val_1_251205.xls
+│      │      stock_vol_1_250101.xls
+│      │      stock_vol_1_250102.xls
+│      │      stock_vol_1_250103.xls
+│      │      stock_vol_1_250104.xls
+│      │      stock_vol_1_250201.xls
+│      │      stock_vol_1_250202.xls
+│      │      stock_vol_1_250203.xls
+│      │      stock_vol_1_250204.xls
+│      │      stock_vol_1_250301.xls
+│      │      stock_vol_1_250302.xls
+│      │      stock_vol_1_250303.xls
+│      │      stock_vol_1_250304.xls
+│      │      stock_vol_1_250401.xls
+│      │      stock_vol_1_250402.xls
+│      │      stock_vol_1_250403.xls
+│      │      stock_vol_1_250404.xls
+│      │      stock_vol_1_250501.xls
+│      │      stock_vol_1_250502.xls
+│      │      stock_vol_1_250503.xls
+│      │      stock_vol_1_250504.xls
+│      │      stock_vol_1_250505.xls
+│      │      stock_vol_1_250601.xls
+│      │      stock_vol_1_250602.xls
+│      │      stock_vol_1_250603.xls
+│      │      stock_vol_1_250604.xls
+│      │      stock_vol_1_250701.xls
+│      │      stock_vol_1_250702.xls
+│      │      stock_vol_1_250703.xls
+│      │      stock_vol_1_250704.xls
+│      │      stock_vol_1_250705.xls
+│      │      stock_vol_1_250801.xls
+│      │      stock_vol_1_250802.xls
+│      │      stock_vol_1_250803.xls
+│      │      stock_vol_1_250804.xls
+│      │      stock_vol_1_250901.xls
+│      │      stock_vol_1_250902.xls
+│      │      stock_vol_1_250903.xls
+│      │      stock_vol_1_250904.xls
+│      │      stock_vol_1_251001.xls
+│      │      stock_vol_1_251002.xls
+│      │      stock_vol_1_251003.xls
+│      │      stock_vol_1_251004.xls
+│      │      stock_vol_1_251005.xls
+│      │      stock_vol_1_251101.xls
+│      │      stock_vol_1_251102.xls
+│      │      stock_vol_1_251103.xls
+│      │      stock_vol_1_251104.xls
+│      │      stock_vol_1_251201.xls
+│      │      stock_vol_1_251202.xls
+│      │      stock_vol_1_251203.xls
+│      │      stock_vol_1_251204.xls
+│      │      stock_vol_1_251205.xls
+│      │      
+│      └─2026
+│              stock_val_1_260101.xls
+│              stock_val_1_260102.xls
+│              stock_val_1_260103.xls
+│              stock_val_1_260104.xls
+│              stock_val_1_260201.xls
+│              stock_val_1_260202.xls
+│              stock_val_1_260203.xls
+│              stock_val_1_260204.xls
+│              stock_vol_1_260101.xls
+│              stock_vol_1_260102.xls
+│              stock_vol_1_260103.xls
+│              stock_vol_1_260104.xls
+│              stock_vol_1_260201.xls
+│              stock_vol_1_260202.xls
+│              stock_vol_1_260203.xls
+│              stock_vol_1_260204.xls
+│              stock_vol_1_260204_targets.xls
+│              
+├─parquet
+│  ├─NK225
+│  │  ├─2018
+│  │  │      NK225-60-201801.parquet
+│  │  │      NK225-60-201802.parquet
+│  │  │      NK225-60-201803.parquet
+│  │  │      NK225-60-201804.parquet
+│  │  │      NK225-60-201805.parquet
+│  │  │      NK225-60-201806.parquet
+│  │  │      NK225-60-201807.parquet
+│  │  │      NK225-60-201808.parquet
+│  │  │      NK225-60-201809.parquet
+│  │  │      NK225-60-201810.parquet
+│  │  │      NK225-60-201811.parquet
+│  │  │      NK225-60-201812.parquet
+│  │  │      
+│  │  ├─2019
+│  │  │      NK225-60-201901.parquet
+│  │  │      NK225-60-201902.parquet
+│  │  │      NK225-60-201903.parquet
+│  │  │      NK225-60-201904.parquet
+│  │  │      NK225-60-201905.parquet
+│  │  │      NK225-60-201906.parquet
+│  │  │      NK225-60-201907.parquet
+│  │  │      NK225-60-201908.parquet
+│  │  │      NK225-60-201909.parquet
+│  │  │      NK225-60-201910.parquet
+│  │  │      NK225-60-201911.parquet
+│  │  │      NK225-60-201912.parquet
+│  │  │      
+│  │  ├─2020
+│  │  │      NK225-60-202001.parquet
+│  │  │      NK225-60-202002.parquet
+│  │  │      NK225-60-202003.parquet
+│  │  │      NK225-60-202004.parquet
+│  │  │      NK225-60-202005.parquet
+│  │  │      NK225-60-202006.parquet
+│  │  │      NK225-60-202007.parquet
+│  │  │      NK225-60-202008.parquet
+│  │  │      NK225-60-202009.parquet
+│  │  │      NK225-60-202010.parquet
+│  │  │      NK225-60-202011.parquet
+│  │  │      NK225-60-202012.parquet
+│  │  │      
+│  │  ├─2021
+│  │  │      NK225-60-202101.parquet
+│  │  │      NK225-60-202102.parquet
+│  │  │      NK225-60-202103.parquet
+│  │  │      NK225-60-202104.parquet
+│  │  │      NK225-60-202105.parquet
+│  │  │      NK225-60-202106.parquet
+│  │  │      NK225-60-202107.parquet
+│  │  │      NK225-60-202108.parquet
+│  │  │      NK225-60-202109.parquet
+│  │  │      NK225-60-202110.parquet
+│  │  │      NK225-60-202111.parquet
+│  │  │      NK225-60-202112.parquet
+│  │  │      
+│  │  ├─2022
+│  │  │      NK225-60-202201.parquet
+│  │  │      NK225-60-202202.parquet
+│  │  │      NK225-60-202203.parquet
+│  │  │      NK225-60-202204.parquet
+│  │  │      NK225-60-202205.parquet
+│  │  │      NK225-60-202206.parquet
+│  │  │      NK225-60-202207.parquet
+│  │  │      NK225-60-202208.parquet
+│  │  │      NK225-60-202209.parquet
+│  │  │      NK225-60-202210.parquet
+│  │  │      NK225-60-202211.parquet
+│  │  │      NK225-60-202212.parquet
+│  │  │      
+│  │  ├─2023
+│  │  │      NK225-60-202301.parquet
+│  │  │      NK225-60-202302.parquet
+│  │  │      NK225-60-202303.parquet
+│  │  │      NK225-60-202304.parquet
+│  │  │      NK225-60-202305.parquet
+│  │  │      NK225-60-202306.parquet
+│  │  │      NK225-60-202307.parquet
+│  │  │      NK225-60-202308.parquet
+│  │  │      NK225-60-202309.parquet
+│  │  │      NK225-60-202310.parquet
+│  │  │      NK225-60-202311.parquet
+│  │  │      NK225-60-202312.parquet
+│  │  │      
+│  │  ├─2024
+│  │  │      NK225-60-202401.parquet
+│  │  │      NK225-60-202402.parquet
+│  │  │      NK225-60-202403.parquet
+│  │  │      NK225-60-202404.parquet
+│  │  │      NK225-60-202405.parquet
+│  │  │      NK225-60-202406.parquet
+│  │  │      NK225-60-202407.parquet
+│  │  │      NK225-60-202408.parquet
+│  │  │      NK225-60-202409.parquet
+│  │  │      NK225-60-202410.parquet
+│  │  │      NK225-60-202411.parquet
+│  │  │      NK225-60-202412.parquet
+│  │  │      
+│  │  └─2025
+│  │          NK225-60-202501.parquet
+│  │          NK225-60-202502.parquet
+│  │          NK225-60-202503.parquet
+│  │          NK225-60-202504.parquet
+│  │          NK225-60-202505.parquet
+│  │          NK225-60-202506.parquet
+│  │          NK225-60-202507.parquet
+│  │          NK225-60-202508.parquet
+│  │          NK225-60-202509.parquet
+│  │          NK225-60-202510.parquet
+│  │          
+│  ├─US500
+│  │  ├─2018
+│  │  │      US500-60-20180618.parquet
+│  │  │      US500-60-20180625.parquet
+│  │  │      US500-60-20180702.parquet
+│  │  │      US500-60-20180709.parquet
+│  │  │      US500-60-20180716.parquet
+│  │  │      US500-60-20180723.parquet
+│  │  │      US500-60-20180730.parquet
+│  │  │      US500-60-20180806.parquet
+│  │  │      US500-60-20180813.parquet
+│  │  │      US500-60-20180820.parquet
+│  │  │      US500-60-20180827.parquet
+│  │  │      US500-60-20180903.parquet
+│  │  │      US500-60-20180910.parquet
+│  │  │      US500-60-20180917.parquet
+│  │  │      US500-60-20180924.parquet
+│  │  │      US500-60-20181001.parquet
+│  │  │      US500-60-20181008.parquet
+│  │  │      US500-60-20181015.parquet
+│  │  │      US500-60-20181022.parquet
+│  │  │      US500-60-20181029.parquet
+│  │  │      US500-60-20181105.parquet
+│  │  │      US500-60-20181112.parquet
+│  │  │      US500-60-20181119.parquet
+│  │  │      US500-60-20181126.parquet
+│  │  │      US500-60-20181203.parquet
+│  │  │      US500-60-20181210.parquet
+│  │  │      US500-60-20181217.parquet
+│  │  │      US500-60-20181224.parquet
+│  │  │      US500-60-20181231.parquet
+│  │  │      
+│  │  ├─2019
+│  │  │      US500-60-20190107.parquet
+│  │  │      US500-60-20190114.parquet
+│  │  │      US500-60-20190121.parquet
+│  │  │      US500-60-20190128.parquet
+│  │  │      US500-60-20190204.parquet
+│  │  │      US500-60-20190211.parquet
+│  │  │      US500-60-20190218.parquet
+│  │  │      US500-60-20190225.parquet
+│  │  │      US500-60-20190304.parquet
+│  │  │      US500-60-20190311.parquet
+│  │  │      US500-60-20190318.parquet
+│  │  │      US500-60-20190325.parquet
+│  │  │      US500-60-20190401.parquet
+│  │  │      US500-60-20190408.parquet
+│  │  │      US500-60-20190415.parquet
+│  │  │      US500-60-20190422.parquet
+│  │  │      US500-60-20190429.parquet
+│  │  │      US500-60-20190506.parquet
+│  │  │      US500-60-20190513.parquet
+│  │  │      US500-60-20190520.parquet
+│  │  │      US500-60-20190527.parquet
+│  │  │      US500-60-20190603.parquet
+│  │  │      US500-60-20190610.parquet
+│  │  │      US500-60-20190617.parquet
+│  │  │      US500-60-20190624.parquet
+│  │  │      US500-60-20190701.parquet
+│  │  │      US500-60-20190708.parquet
+│  │  │      US500-60-20190715.parquet
+│  │  │      US500-60-20190722.parquet
+│  │  │      US500-60-20190729.parquet
+│  │  │      US500-60-20190805.parquet
+│  │  │      US500-60-20190812.parquet
+│  │  │      US500-60-20190819.parquet
+│  │  │      US500-60-20190826.parquet
+│  │  │      US500-60-20190902.parquet
+│  │  │      US500-60-20190909.parquet
+│  │  │      US500-60-20190916.parquet
+│  │  │      US500-60-20190923.parquet
+│  │  │      US500-60-20190930.parquet
+│  │  │      US500-60-20191007.parquet
+│  │  │      US500-60-20191014.parquet
+│  │  │      US500-60-20191021.parquet
+│  │  │      US500-60-20191028.parquet
+│  │  │      US500-60-20191104.parquet
+│  │  │      US500-60-20191111.parquet
+│  │  │      US500-60-20191118.parquet
+│  │  │      US500-60-20191125.parquet
+│  │  │      US500-60-20191202.parquet
+│  │  │      US500-60-20191209.parquet
+│  │  │      US500-60-20191216.parquet
+│  │  │      US500-60-20191223.parquet
+│  │  │      US500-60-20191230.parquet
+│  │  │      
+│  │  ├─2020
+│  │  │      US500-60-20200106.parquet
+│  │  │      US500-60-20200113.parquet
+│  │  │      US500-60-20200120.parquet
+│  │  │      US500-60-20200127.parquet
+│  │  │      US500-60-20200203.parquet
+│  │  │      US500-60-20200210.parquet
+│  │  │      US500-60-20200217.parquet
+│  │  │      US500-60-20200224.parquet
+│  │  │      US500-60-20200302.parquet
+│  │  │      US500-60-20200309.parquet
+│  │  │      US500-60-20200316.parquet
+│  │  │      US500-60-20200323.parquet
+│  │  │      US500-60-20200330.parquet
+│  │  │      US500-60-20200406.parquet
+│  │  │      US500-60-20200413.parquet
+│  │  │      US500-60-20200420.parquet
+│  │  │      US500-60-20200427.parquet
+│  │  │      US500-60-20200504.parquet
+│  │  │      US500-60-20200511.parquet
+│  │  │      US500-60-20200518.parquet
+│  │  │      US500-60-20200525.parquet
+│  │  │      US500-60-20200601.parquet
+│  │  │      US500-60-20200608.parquet
+│  │  │      US500-60-20200615.parquet
+│  │  │      US500-60-20200622.parquet
+│  │  │      US500-60-20200629.parquet
+│  │  │      US500-60-20200706.parquet
+│  │  │      US500-60-20200713.parquet
+│  │  │      US500-60-20200720.parquet
+│  │  │      US500-60-20200727.parquet
+│  │  │      US500-60-20200803.parquet
+│  │  │      US500-60-20200810.parquet
+│  │  │      US500-60-20200817.parquet
+│  │  │      US500-60-20200824.parquet
+│  │  │      US500-60-20200831.parquet
+│  │  │      US500-60-20200907.parquet
+│  │  │      US500-60-20200914.parquet
+│  │  │      US500-60-20200921.parquet
+│  │  │      US500-60-20200928.parquet
+│  │  │      US500-60-20201005.parquet
+│  │  │      US500-60-20201012.parquet
+│  │  │      US500-60-20201019.parquet
+│  │  │      US500-60-20201026.parquet
+│  │  │      US500-60-20201102.parquet
+│  │  │      US500-60-20201109.parquet
+│  │  │      US500-60-20201116.parquet
+│  │  │      US500-60-20201123.parquet
+│  │  │      US500-60-20201130.parquet
+│  │  │      US500-60-20201207.parquet
+│  │  │      US500-60-20201214.parquet
+│  │  │      US500-60-20201221.parquet
+│  │  │      US500-60-20201228.parquet
+│  │  │      
+│  │  ├─2021
+│  │  │      US500-60-20210104.parquet
+│  │  │      US500-60-20210111.parquet
+│  │  │      US500-60-20210118.parquet
+│  │  │      US500-60-20210125.parquet
+│  │  │      US500-60-20210201.parquet
+│  │  │      US500-60-20210208.parquet
+│  │  │      US500-60-20210215.parquet
+│  │  │      US500-60-20210222.parquet
+│  │  │      US500-60-20210301.parquet
+│  │  │      US500-60-20210308.parquet
+│  │  │      US500-60-20210315.parquet
+│  │  │      US500-60-20210322.parquet
+│  │  │      US500-60-20210329.parquet
+│  │  │      US500-60-20210405.parquet
+│  │  │      US500-60-20210412.parquet
+│  │  │      US500-60-20210419.parquet
+│  │  │      US500-60-20210426.parquet
+│  │  │      US500-60-20210503.parquet
+│  │  │      US500-60-20210510.parquet
+│  │  │      US500-60-20210517.parquet
+│  │  │      US500-60-20210524.parquet
+│  │  │      US500-60-20210531.parquet
+│  │  │      US500-60-20210607.parquet
+│  │  │      US500-60-20210614.parquet
+│  │  │      US500-60-20210621.parquet
+│  │  │      US500-60-20210628.parquet
+│  │  │      US500-60-20210705.parquet
+│  │  │      US500-60-20210712.parquet
+│  │  │      US500-60-20210719.parquet
+│  │  │      US500-60-20210726.parquet
+│  │  │      US500-60-20210802.parquet
+│  │  │      US500-60-20210809.parquet
+│  │  │      US500-60-20210816.parquet
+│  │  │      US500-60-20210823.parquet
+│  │  │      US500-60-20210830.parquet
+│  │  │      US500-60-20210906.parquet
+│  │  │      US500-60-20210913.parquet
+│  │  │      US500-60-20210920.parquet
+│  │  │      US500-60-20210927.parquet
+│  │  │      US500-60-20211004.parquet
+│  │  │      US500-60-20211011.parquet
+│  │  │      US500-60-20211018.parquet
+│  │  │      US500-60-20211025.parquet
+│  │  │      US500-60-20211101.parquet
+│  │  │      US500-60-20211108.parquet
+│  │  │      US500-60-20211115.parquet
+│  │  │      US500-60-20211122.parquet
+│  │  │      US500-60-20211129.parquet
+│  │  │      US500-60-20211206.parquet
+│  │  │      US500-60-20211213.parquet
+│  │  │      US500-60-20211220.parquet
+│  │  │      US500-60-20211227.parquet
+│  │  │      
+│  │  ├─2022
+│  │  │      US500-60-20220103.parquet
+│  │  │      US500-60-20220110.parquet
+│  │  │      US500-60-20220117.parquet
+│  │  │      US500-60-20220124.parquet
+│  │  │      US500-60-20220131.parquet
+│  │  │      US500-60-20220207.parquet
+│  │  │      US500-60-20220214.parquet
+│  │  │      US500-60-20220221.parquet
+│  │  │      US500-60-20220228.parquet
+│  │  │      US500-60-20220307.parquet
+│  │  │      US500-60-20220314.parquet
+│  │  │      US500-60-20220321.parquet
+│  │  │      US500-60-20220328.parquet
+│  │  │      US500-60-20220404.parquet
+│  │  │      US500-60-20220411.parquet
+│  │  │      US500-60-20220418.parquet
+│  │  │      US500-60-20220425.parquet
+│  │  │      US500-60-20220502.parquet
+│  │  │      US500-60-20220509.parquet
+│  │  │      US500-60-20220516.parquet
+│  │  │      US500-60-20220523.parquet
+│  │  │      US500-60-20220530.parquet
+│  │  │      US500-60-20220606.parquet
+│  │  │      US500-60-20220613.parquet
+│  │  │      US500-60-20220620.parquet
+│  │  │      US500-60-20220627.parquet
+│  │  │      US500-60-20220704.parquet
+│  │  │      US500-60-20220711.parquet
+│  │  │      US500-60-20220718.parquet
+│  │  │      US500-60-20220725.parquet
+│  │  │      US500-60-20220801.parquet
+│  │  │      US500-60-20220808.parquet
+│  │  │      US500-60-20220815.parquet
+│  │  │      US500-60-20220822.parquet
+│  │  │      US500-60-20220829.parquet
+│  │  │      US500-60-20220905.parquet
+│  │  │      US500-60-20220912.parquet
+│  │  │      US500-60-20220919.parquet
+│  │  │      US500-60-20220926.parquet
+│  │  │      US500-60-20221003.parquet
+│  │  │      US500-60-20221010.parquet
+│  │  │      US500-60-20221017.parquet
+│  │  │      US500-60-20221024.parquet
+│  │  │      US500-60-20221031.parquet
+│  │  │      US500-60-20221107.parquet
+│  │  │      US500-60-20221114.parquet
+│  │  │      US500-60-20221121.parquet
+│  │  │      US500-60-20221128.parquet
+│  │  │      US500-60-20221205.parquet
+│  │  │      US500-60-20221212.parquet
+│  │  │      US500-60-20221219.parquet
+│  │  │      US500-60-20221226.parquet
+│  │  │      
+│  │  ├─2023
+│  │  │      US500-60-20230102.parquet
+│  │  │      US500-60-20230109.parquet
+│  │  │      US500-60-20230116.parquet
+│  │  │      US500-60-20230123.parquet
+│  │  │      US500-60-20230130.parquet
+│  │  │      US500-60-20230206.parquet
+│  │  │      US500-60-20230213.parquet
+│  │  │      US500-60-20230220.parquet
+│  │  │      US500-60-20230227.parquet
+│  │  │      US500-60-20230306.parquet
+│  │  │      US500-60-20230313.parquet
+│  │  │      US500-60-20230320.parquet
+│  │  │      US500-60-20230327.parquet
+│  │  │      US500-60-20230403.parquet
+│  │  │      US500-60-20230410.parquet
+│  │  │      US500-60-20230417.parquet
+│  │  │      US500-60-20230424.parquet
+│  │  │      US500-60-20230501.parquet
+│  │  │      US500-60-20230508.parquet
+│  │  │      US500-60-20230515.parquet
+│  │  │      US500-60-20230522.parquet
+│  │  │      US500-60-20230529.parquet
+│  │  │      US500-60-20230605.parquet
+│  │  │      US500-60-20230612.parquet
+│  │  │      US500-60-20230619.parquet
+│  │  │      US500-60-20230626.parquet
+│  │  │      US500-60-20230703.parquet
+│  │  │      US500-60-20230710.parquet
+│  │  │      US500-60-20230717.parquet
+│  │  │      US500-60-20230724.parquet
+│  │  │      US500-60-20230731.parquet
+│  │  │      US500-60-20230807.parquet
+│  │  │      US500-60-20230814.parquet
+│  │  │      US500-60-20230821.parquet
+│  │  │      US500-60-20230828.parquet
+│  │  │      US500-60-20230904.parquet
+│  │  │      US500-60-20230911.parquet
+│  │  │      US500-60-20230918.parquet
+│  │  │      US500-60-20230925.parquet
+│  │  │      US500-60-20231002.parquet
+│  │  │      US500-60-20231009.parquet
+│  │  │      US500-60-20231016.parquet
+│  │  │      US500-60-20231023.parquet
+│  │  │      US500-60-20231030.parquet
+│  │  │      US500-60-20231106.parquet
+│  │  │      US500-60-20231113.parquet
+│  │  │      US500-60-20231120.parquet
+│  │  │      US500-60-20231127.parquet
+│  │  │      US500-60-20231204.parquet
+│  │  │      US500-60-20231211.parquet
+│  │  │      US500-60-20231218.parquet
+│  │  │      US500-60-20231225.parquet
+│  │  │      
+│  │  ├─2024
+│  │  │      US500-60-20240101.parquet
+│  │  │      US500-60-20240108.parquet
+│  │  │      US500-60-20240115.parquet
+│  │  │      US500-60-20240122.parquet
+│  │  │      US500-60-20240129.parquet
+│  │  │      US500-60-20240205.parquet
+│  │  │      US500-60-20240212.parquet
+│  │  │      US500-60-20240219.parquet
+│  │  │      US500-60-20240226.parquet
+│  │  │      US500-60-20240304.parquet
+│  │  │      US500-60-20240311.parquet
+│  │  │      US500-60-20240318.parquet
+│  │  │      US500-60-20240325.parquet
+│  │  │      US500-60-20240401.parquet
+│  │  │      US500-60-20240408.parquet
+│  │  │      US500-60-20240415.parquet
+│  │  │      US500-60-20240422.parquet
+│  │  │      US500-60-20240429.parquet
+│  │  │      US500-60-20240506.parquet
+│  │  │      US500-60-20240513.parquet
+│  │  │      US500-60-20240520.parquet
+│  │  │      US500-60-20240527.parquet
+│  │  │      US500-60-20240603.parquet
+│  │  │      US500-60-20240610.parquet
+│  │  │      US500-60-20240617.parquet
+│  │  │      US500-60-20240624.parquet
+│  │  │      US500-60-20240701.parquet
+│  │  │      US500-60-20240708.parquet
+│  │  │      US500-60-20240715.parquet
+│  │  │      US500-60-20240722.parquet
+│  │  │      US500-60-20240729.parquet
+│  │  │      US500-60-20240805.parquet
+│  │  │      US500-60-20240812.parquet
+│  │  │      US500-60-20240819.parquet
+│  │  │      US500-60-20240826.parquet
+│  │  │      US500-60-20240902.parquet
+│  │  │      US500-60-20240909.parquet
+│  │  │      US500-60-20240916.parquet
+│  │  │      US500-60-20240923.parquet
+│  │  │      US500-60-20240930.parquet
+│  │  │      US500-60-20241007.parquet
+│  │  │      US500-60-20241014.parquet
+│  │  │      US500-60-20241021.parquet
+│  │  │      US500-60-20241028.parquet
+│  │  │      US500-60-20241104.parquet
+│  │  │      US500-60-20241111.parquet
+│  │  │      US500-60-20241118.parquet
+│  │  │      US500-60-20241125.parquet
+│  │  │      US500-60-20241202.parquet
+│  │  │      US500-60-20241209.parquet
+│  │  │      US500-60-20241216.parquet
+│  │  │      US500-60-20241223.parquet
+│  │  │      US500-60-20241230.parquet
+│  │  │      
+│  │  ├─2025
+│  │  │      US500-60-20250106.parquet
+│  │  │      US500-60-20250113.parquet
+│  │  │      US500-60-20250120.parquet
+│  │  │      US500-60-20250127.parquet
+│  │  │      US500-60-20250203.parquet
+│  │  │      US500-60-20250210.parquet
+│  │  │      US500-60-20250217.parquet
+│  │  │      US500-60-20250224.parquet
+│  │  │      US500-60-20250303.parquet
+│  │  │      US500-60-20250310.parquet
+│  │  │      US500-60-20250317.parquet
+│  │  │      US500-60-20250324.parquet
+│  │  │      US500-60-20250331.parquet
+│  │  │      US500-60-20250407.parquet
+│  │  │      US500-60-20250414.parquet
+│  │  │      US500-60-20250421.parquet
+│  │  │      US500-60-20250428.parquet
+│  │  │      US500-60-20250505.parquet
+│  │  │      US500-60-20250512.parquet
+│  │  │      US500-60-20250519.parquet
+│  │  │      US500-60-20250526.parquet
+│  │  │      US500-60-20250602.parquet
+│  │  │      US500-60-20250609.parquet
+│  │  │      US500-60-20250616.parquet
+│  │  │      US500-60-20250623.parquet
+│  │  │      US500-60-20250630.parquet
+│  │  │      US500-60-20250707.parquet
+│  │  │      US500-60-20250714.parquet
+│  │  │      US500-60-20250721.parquet
+│  │  │      US500-60-20250728.parquet
+│  │  │      US500-60-20250804.parquet
+│  │  │      US500-60-20250811.parquet
+│  │  │      US500-60-20250818.parquet
+│  │  │      US500-60-20250825.parquet
+│  │  │      US500-60-20250901.parquet
+│  │  │      US500-60-20250908.parquet
+│  │  │      US500-60-20250915.parquet
+│  │  │      US500-60-20250922.parquet
+│  │  │      US500-60-20250929.parquet
+│  │  │      US500-60-20251006.parquet
+│  │  │      US500-60-20251013.parquet
+│  │  │      US500-60-20251020.parquet
+│  │  │      US500-60-20251027.parquet
+│  │  │      US500-60-20251103.parquet
+│  │  │      US500-60-20251110.parquet
+│  │  │      US500-60-20251117.parquet
+│  │  │      US500-60-20251124.parquet
+│  │  │      US500-60-20251201.parquet
+│  │  │      US500-60-20251208.parquet
+│  │  │      US500-60-20251215.parquet
+│  │  │      US500-60-20251222.parquet
+│  │  │      US500-60-20251229.parquet
+│  │  │      
+│  │  └─2026
+│  │          US500-60-20260105.parquet
+│  │          US500-60-20260112.parquet
+│  │          US500-60-20260119.parquet
+│  │          US500-60-20260126.parquet
+│  │          US500-60-20260202.parquet
+│  │          US500-60-20260209.parquet
+│  │          US500-60-20260216.parquet
+│  │          US500-60-20260223.parquet
+│  │          US500-60-20260302.parquet
+│  │          
+│  ├─USDJPY
+│  │  ├─2018
+│  │  │      USDJPY-60-20180101.parquet
+│  │  │      USDJPY-60-20180108.parquet
+│  │  │      USDJPY-60-20180115.parquet
+│  │  │      USDJPY-60-20180122.parquet
+│  │  │      USDJPY-60-20180129.parquet
+│  │  │      USDJPY-60-20180205.parquet
+│  │  │      USDJPY-60-20180212.parquet
+│  │  │      USDJPY-60-20180219.parquet
+│  │  │      USDJPY-60-20180226.parquet
+│  │  │      USDJPY-60-20180305.parquet
+│  │  │      USDJPY-60-20180312.parquet
+│  │  │      USDJPY-60-20180319.parquet
+│  │  │      USDJPY-60-20180326.parquet
+│  │  │      USDJPY-60-20180402.parquet
+│  │  │      USDJPY-60-20180409.parquet
+│  │  │      USDJPY-60-20180416.parquet
+│  │  │      USDJPY-60-20180423.parquet
+│  │  │      USDJPY-60-20180430.parquet
+│  │  │      USDJPY-60-20180507.parquet
+│  │  │      USDJPY-60-20180514.parquet
+│  │  │      USDJPY-60-20180521.parquet
+│  │  │      USDJPY-60-20180528.parquet
+│  │  │      USDJPY-60-20180604.parquet
+│  │  │      USDJPY-60-20180611.parquet
+│  │  │      USDJPY-60-20180618.parquet
+│  │  │      USDJPY-60-20180625.parquet
+│  │  │      USDJPY-60-20180702.parquet
+│  │  │      USDJPY-60-20180709.parquet
+│  │  │      USDJPY-60-20180716.parquet
+│  │  │      USDJPY-60-20180723.parquet
+│  │  │      USDJPY-60-20180730.parquet
+│  │  │      USDJPY-60-20180806.parquet
+│  │  │      USDJPY-60-20180813.parquet
+│  │  │      USDJPY-60-20180820.parquet
+│  │  │      USDJPY-60-20180827.parquet
+│  │  │      USDJPY-60-20180903.parquet
+│  │  │      USDJPY-60-20180910.parquet
+│  │  │      USDJPY-60-20180917.parquet
+│  │  │      USDJPY-60-20180924.parquet
+│  │  │      USDJPY-60-20181001.parquet
+│  │  │      USDJPY-60-20181008.parquet
+│  │  │      USDJPY-60-20181015.parquet
+│  │  │      USDJPY-60-20181022.parquet
+│  │  │      USDJPY-60-20181029.parquet
+│  │  │      USDJPY-60-20181105.parquet
+│  │  │      USDJPY-60-20181112.parquet
+│  │  │      USDJPY-60-20181119.parquet
+│  │  │      USDJPY-60-20181126.parquet
+│  │  │      USDJPY-60-20181203.parquet
+│  │  │      USDJPY-60-20181210.parquet
+│  │  │      USDJPY-60-20181217.parquet
+│  │  │      USDJPY-60-20181224.parquet
+│  │  │      USDJPY-60-20181231.parquet
+│  │  │      
+│  │  ├─2019
+│  │  │      USDJPY-60-20190107.parquet
+│  │  │      USDJPY-60-20190114.parquet
+│  │  │      USDJPY-60-20190121.parquet
+│  │  │      USDJPY-60-20190128.parquet
+│  │  │      USDJPY-60-20190204.parquet
+│  │  │      USDJPY-60-20190211.parquet
+│  │  │      USDJPY-60-20190218.parquet
+│  │  │      USDJPY-60-20190225.parquet
+│  │  │      USDJPY-60-20190304.parquet
+│  │  │      USDJPY-60-20190311.parquet
+│  │  │      USDJPY-60-20190318.parquet
+│  │  │      USDJPY-60-20190325.parquet
+│  │  │      USDJPY-60-20190401.parquet
+│  │  │      USDJPY-60-20190408.parquet
+│  │  │      USDJPY-60-20190415.parquet
+│  │  │      USDJPY-60-20190422.parquet
+│  │  │      USDJPY-60-20190429.parquet
+│  │  │      USDJPY-60-20190506.parquet
+│  │  │      USDJPY-60-20190513.parquet
+│  │  │      USDJPY-60-20190520.parquet
+│  │  │      USDJPY-60-20190527.parquet
+│  │  │      USDJPY-60-20190603.parquet
+│  │  │      USDJPY-60-20190610.parquet
+│  │  │      USDJPY-60-20190617.parquet
+│  │  │      USDJPY-60-20190624.parquet
+│  │  │      USDJPY-60-20190701.parquet
+│  │  │      USDJPY-60-20190708.parquet
+│  │  │      USDJPY-60-20190715.parquet
+│  │  │      USDJPY-60-20190722.parquet
+│  │  │      USDJPY-60-20190729.parquet
+│  │  │      USDJPY-60-20190805.parquet
+│  │  │      USDJPY-60-20190812.parquet
+│  │  │      USDJPY-60-20190819.parquet
+│  │  │      USDJPY-60-20190826.parquet
+│  │  │      USDJPY-60-20190902.parquet
+│  │  │      USDJPY-60-20190909.parquet
+│  │  │      USDJPY-60-20190916.parquet
+│  │  │      USDJPY-60-20190923.parquet
+│  │  │      USDJPY-60-20190930.parquet
+│  │  │      USDJPY-60-20191007.parquet
+│  │  │      USDJPY-60-20191014.parquet
+│  │  │      USDJPY-60-20191021.parquet
+│  │  │      USDJPY-60-20191028.parquet
+│  │  │      USDJPY-60-20191104.parquet
+│  │  │      USDJPY-60-20191111.parquet
+│  │  │      USDJPY-60-20191118.parquet
+│  │  │      USDJPY-60-20191125.parquet
+│  │  │      USDJPY-60-20191202.parquet
+│  │  │      USDJPY-60-20191209.parquet
+│  │  │      USDJPY-60-20191216.parquet
+│  │  │      USDJPY-60-20191223.parquet
+│  │  │      USDJPY-60-20191230.parquet
+│  │  │      
+│  │  ├─2020
+│  │  │      USDJPY-60-20200106.parquet
+│  │  │      USDJPY-60-20200113.parquet
+│  │  │      USDJPY-60-20200120.parquet
+│  │  │      USDJPY-60-20200127.parquet
+│  │  │      USDJPY-60-20200203.parquet
+│  │  │      USDJPY-60-20200210.parquet
+│  │  │      USDJPY-60-20200217.parquet
+│  │  │      USDJPY-60-20200224.parquet
+│  │  │      USDJPY-60-20200302.parquet
+│  │  │      USDJPY-60-20200309.parquet
+│  │  │      USDJPY-60-20200316.parquet
+│  │  │      USDJPY-60-20200323.parquet
+│  │  │      USDJPY-60-20200330.parquet
+│  │  │      USDJPY-60-20200406.parquet
+│  │  │      USDJPY-60-20200413.parquet
+│  │  │      USDJPY-60-20200420.parquet
+│  │  │      USDJPY-60-20200427.parquet
+│  │  │      USDJPY-60-20200504.parquet
+│  │  │      USDJPY-60-20200511.parquet
+│  │  │      USDJPY-60-20200518.parquet
+│  │  │      USDJPY-60-20200525.parquet
+│  │  │      USDJPY-60-20200601.parquet
+│  │  │      USDJPY-60-20200608.parquet
+│  │  │      USDJPY-60-20200615.parquet
+│  │  │      USDJPY-60-20200622.parquet
+│  │  │      USDJPY-60-20200629.parquet
+│  │  │      USDJPY-60-20200706.parquet
+│  │  │      USDJPY-60-20200713.parquet
+│  │  │      USDJPY-60-20200720.parquet
+│  │  │      USDJPY-60-20200727.parquet
+│  │  │      USDJPY-60-20200803.parquet
+│  │  │      USDJPY-60-20200810.parquet
+│  │  │      USDJPY-60-20200817.parquet
+│  │  │      USDJPY-60-20200824.parquet
+│  │  │      USDJPY-60-20200831.parquet
+│  │  │      USDJPY-60-20200907.parquet
+│  │  │      USDJPY-60-20200914.parquet
+│  │  │      USDJPY-60-20200921.parquet
+│  │  │      USDJPY-60-20200928.parquet
+│  │  │      USDJPY-60-20201005.parquet
+│  │  │      USDJPY-60-20201012.parquet
+│  │  │      USDJPY-60-20201019.parquet
+│  │  │      USDJPY-60-20201026.parquet
+│  │  │      USDJPY-60-20201102.parquet
+│  │  │      USDJPY-60-20201109.parquet
+│  │  │      USDJPY-60-20201116.parquet
+│  │  │      USDJPY-60-20201123.parquet
+│  │  │      USDJPY-60-20201130.parquet
+│  │  │      USDJPY-60-20201207.parquet
+│  │  │      USDJPY-60-20201214.parquet
+│  │  │      USDJPY-60-20201221.parquet
+│  │  │      USDJPY-60-20201228.parquet
+│  │  │      
+│  │  ├─2021
+│  │  │      USDJPY-60-20210104.parquet
+│  │  │      USDJPY-60-20210111.parquet
+│  │  │      USDJPY-60-20210118.parquet
+│  │  │      USDJPY-60-20210125.parquet
+│  │  │      USDJPY-60-20210201.parquet
+│  │  │      USDJPY-60-20210208.parquet
+│  │  │      USDJPY-60-20210215.parquet
+│  │  │      USDJPY-60-20210222.parquet
+│  │  │      USDJPY-60-20210301.parquet
+│  │  │      USDJPY-60-20210308.parquet
+│  │  │      USDJPY-60-20210315.parquet
+│  │  │      USDJPY-60-20210322.parquet
+│  │  │      USDJPY-60-20210329.parquet
+│  │  │      USDJPY-60-20210405.parquet
+│  │  │      USDJPY-60-20210412.parquet
+│  │  │      USDJPY-60-20210419.parquet
+│  │  │      USDJPY-60-20210426.parquet
+│  │  │      USDJPY-60-20210503.parquet
+│  │  │      USDJPY-60-20210510.parquet
+│  │  │      USDJPY-60-20210517.parquet
+│  │  │      USDJPY-60-20210524.parquet
+│  │  │      USDJPY-60-20210531.parquet
+│  │  │      USDJPY-60-20210607.parquet
+│  │  │      USDJPY-60-20210614.parquet
+│  │  │      USDJPY-60-20210621.parquet
+│  │  │      USDJPY-60-20210628.parquet
+│  │  │      USDJPY-60-20210705.parquet
+│  │  │      USDJPY-60-20210712.parquet
+│  │  │      USDJPY-60-20210719.parquet
+│  │  │      USDJPY-60-20210726.parquet
+│  │  │      USDJPY-60-20210802.parquet
+│  │  │      USDJPY-60-20210809.parquet
+│  │  │      USDJPY-60-20210816.parquet
+│  │  │      USDJPY-60-20210823.parquet
+│  │  │      USDJPY-60-20210830.parquet
+│  │  │      USDJPY-60-20210906.parquet
+│  │  │      USDJPY-60-20210913.parquet
+│  │  │      USDJPY-60-20210920.parquet
+│  │  │      USDJPY-60-20210927.parquet
+│  │  │      USDJPY-60-20211004.parquet
+│  │  │      USDJPY-60-20211011.parquet
+│  │  │      USDJPY-60-20211018.parquet
+│  │  │      USDJPY-60-20211025.parquet
+│  │  │      USDJPY-60-20211101.parquet
+│  │  │      USDJPY-60-20211108.parquet
+│  │  │      USDJPY-60-20211115.parquet
+│  │  │      USDJPY-60-20211122.parquet
+│  │  │      USDJPY-60-20211129.parquet
+│  │  │      USDJPY-60-20211206.parquet
+│  │  │      USDJPY-60-20211213.parquet
+│  │  │      USDJPY-60-20211220.parquet
+│  │  │      USDJPY-60-20211227.parquet
+│  │  │      
+│  │  ├─2022
+│  │  │      USDJPY-60-20220103.parquet
+│  │  │      USDJPY-60-20220110.parquet
+│  │  │      USDJPY-60-20220117.parquet
+│  │  │      USDJPY-60-20220124.parquet
+│  │  │      USDJPY-60-20220131.parquet
+│  │  │      USDJPY-60-20220207.parquet
+│  │  │      USDJPY-60-20220214.parquet
+│  │  │      USDJPY-60-20220221.parquet
+│  │  │      USDJPY-60-20220228.parquet
+│  │  │      USDJPY-60-20220307.parquet
+│  │  │      USDJPY-60-20220314.parquet
+│  │  │      USDJPY-60-20220321.parquet
+│  │  │      USDJPY-60-20220328.parquet
+│  │  │      USDJPY-60-20220404.parquet
+│  │  │      USDJPY-60-20220411.parquet
+│  │  │      USDJPY-60-20220418.parquet
+│  │  │      USDJPY-60-20220425.parquet
+│  │  │      USDJPY-60-20220502.parquet
+│  │  │      USDJPY-60-20220509.parquet
+│  │  │      USDJPY-60-20220516.parquet
+│  │  │      USDJPY-60-20220523.parquet
+│  │  │      USDJPY-60-20220530.parquet
+│  │  │      USDJPY-60-20220606.parquet
+│  │  │      USDJPY-60-20220613.parquet
+│  │  │      USDJPY-60-20220620.parquet
+│  │  │      USDJPY-60-20220627.parquet
+│  │  │      USDJPY-60-20220704.parquet
+│  │  │      USDJPY-60-20220711.parquet
+│  │  │      USDJPY-60-20220718.parquet
+│  │  │      USDJPY-60-20220725.parquet
+│  │  │      USDJPY-60-20220801.parquet
+│  │  │      USDJPY-60-20220808.parquet
+│  │  │      USDJPY-60-20220815.parquet
+│  │  │      USDJPY-60-20220822.parquet
+│  │  │      USDJPY-60-20220829.parquet
+│  │  │      USDJPY-60-20220905.parquet
+│  │  │      USDJPY-60-20220912.parquet
+│  │  │      USDJPY-60-20220919.parquet
+│  │  │      USDJPY-60-20220926.parquet
+│  │  │      USDJPY-60-20221003.parquet
+│  │  │      USDJPY-60-20221010.parquet
+│  │  │      USDJPY-60-20221017.parquet
+│  │  │      USDJPY-60-20221024.parquet
+│  │  │      USDJPY-60-20221031.parquet
+│  │  │      USDJPY-60-20221107.parquet
+│  │  │      USDJPY-60-20221114.parquet
+│  │  │      USDJPY-60-20221121.parquet
+│  │  │      USDJPY-60-20221128.parquet
+│  │  │      USDJPY-60-20221205.parquet
+│  │  │      USDJPY-60-20221212.parquet
+│  │  │      USDJPY-60-20221219.parquet
+│  │  │      USDJPY-60-20221226.parquet
+│  │  │      
+│  │  ├─2023
+│  │  │      USDJPY-60-20230102.parquet
+│  │  │      USDJPY-60-20230109.parquet
+│  │  │      USDJPY-60-20230116.parquet
+│  │  │      USDJPY-60-20230123.parquet
+│  │  │      USDJPY-60-20230130.parquet
+│  │  │      USDJPY-60-20230206.parquet
+│  │  │      USDJPY-60-20230213.parquet
+│  │  │      USDJPY-60-20230220.parquet
+│  │  │      USDJPY-60-20230227.parquet
+│  │  │      USDJPY-60-20230306.parquet
+│  │  │      USDJPY-60-20230313.parquet
+│  │  │      USDJPY-60-20230320.parquet
+│  │  │      USDJPY-60-20230327.parquet
+│  │  │      USDJPY-60-20230403.parquet
+│  │  │      USDJPY-60-20230410.parquet
+│  │  │      USDJPY-60-20230417.parquet
+│  │  │      USDJPY-60-20230424.parquet
+│  │  │      USDJPY-60-20230501.parquet
+│  │  │      USDJPY-60-20230508.parquet
+│  │  │      USDJPY-60-20230515.parquet
+│  │  │      USDJPY-60-20230522.parquet
+│  │  │      USDJPY-60-20230529.parquet
+│  │  │      USDJPY-60-20230605.parquet
+│  │  │      USDJPY-60-20230612.parquet
+│  │  │      USDJPY-60-20230619.parquet
+│  │  │      USDJPY-60-20230626.parquet
+│  │  │      USDJPY-60-20230703.parquet
+│  │  │      USDJPY-60-20230710.parquet
+│  │  │      USDJPY-60-20230717.parquet
+│  │  │      USDJPY-60-20230724.parquet
+│  │  │      USDJPY-60-20230731.parquet
+│  │  │      USDJPY-60-20230807.parquet
+│  │  │      USDJPY-60-20230814.parquet
+│  │  │      USDJPY-60-20230821.parquet
+│  │  │      USDJPY-60-20230828.parquet
+│  │  │      USDJPY-60-20230904.parquet
+│  │  │      USDJPY-60-20230911.parquet
+│  │  │      USDJPY-60-20230918.parquet
+│  │  │      USDJPY-60-20230925.parquet
+│  │  │      USDJPY-60-20231002.parquet
+│  │  │      USDJPY-60-20231009.parquet
+│  │  │      USDJPY-60-20231016.parquet
+│  │  │      USDJPY-60-20231023.parquet
+│  │  │      USDJPY-60-20231030.parquet
+│  │  │      USDJPY-60-20231106.parquet
+│  │  │      USDJPY-60-20231113.parquet
+│  │  │      USDJPY-60-20231120.parquet
+│  │  │      USDJPY-60-20231127.parquet
+│  │  │      USDJPY-60-20231204.parquet
+│  │  │      USDJPY-60-20231211.parquet
+│  │  │      USDJPY-60-20231218.parquet
+│  │  │      USDJPY-60-20231225.parquet
+│  │  │      
+│  │  ├─2024
+│  │  │      USDJPY-60-20240101.parquet
+│  │  │      USDJPY-60-20240108.parquet
+│  │  │      USDJPY-60-20240115.parquet
+│  │  │      USDJPY-60-20240122.parquet
+│  │  │      USDJPY-60-20240129.parquet
+│  │  │      USDJPY-60-20240205.parquet
+│  │  │      USDJPY-60-20240212.parquet
+│  │  │      USDJPY-60-20240219.parquet
+│  │  │      USDJPY-60-20240226.parquet
+│  │  │      USDJPY-60-20240304.parquet
+│  │  │      USDJPY-60-20240311.parquet
+│  │  │      USDJPY-60-20240318.parquet
+│  │  │      USDJPY-60-20240325.parquet
+│  │  │      USDJPY-60-20240401.parquet
+│  │  │      USDJPY-60-20240408.parquet
+│  │  │      USDJPY-60-20240415.parquet
+│  │  │      USDJPY-60-20240422.parquet
+│  │  │      USDJPY-60-20240429.parquet
+│  │  │      USDJPY-60-20240506.parquet
+│  │  │      USDJPY-60-20240513.parquet
+│  │  │      USDJPY-60-20240520.parquet
+│  │  │      USDJPY-60-20240527.parquet
+│  │  │      USDJPY-60-20240603.parquet
+│  │  │      USDJPY-60-20240610.parquet
+│  │  │      USDJPY-60-20240617.parquet
+│  │  │      USDJPY-60-20240624.parquet
+│  │  │      USDJPY-60-20240701.parquet
+│  │  │      USDJPY-60-20240708.parquet
+│  │  │      USDJPY-60-20240715.parquet
+│  │  │      USDJPY-60-20240722.parquet
+│  │  │      USDJPY-60-20240729.parquet
+│  │  │      USDJPY-60-20240805.parquet
+│  │  │      USDJPY-60-20240812.parquet
+│  │  │      USDJPY-60-20240819.parquet
+│  │  │      USDJPY-60-20240826.parquet
+│  │  │      USDJPY-60-20240902.parquet
+│  │  │      USDJPY-60-20240909.parquet
+│  │  │      USDJPY-60-20240916.parquet
+│  │  │      USDJPY-60-20240923.parquet
+│  │  │      USDJPY-60-20240930.parquet
+│  │  │      USDJPY-60-20241007.parquet
+│  │  │      USDJPY-60-20241014.parquet
+│  │  │      USDJPY-60-20241021.parquet
+│  │  │      USDJPY-60-20241028.parquet
+│  │  │      USDJPY-60-20241104.parquet
+│  │  │      USDJPY-60-20241111.parquet
+│  │  │      USDJPY-60-20241118.parquet
+│  │  │      USDJPY-60-20241125.parquet
+│  │  │      USDJPY-60-20241202.parquet
+│  │  │      USDJPY-60-20241209.parquet
+│  │  │      USDJPY-60-20241216.parquet
+│  │  │      USDJPY-60-20241223.parquet
+│  │  │      USDJPY-60-20241230.parquet
+│  │  │      
+│  │  ├─2025
+│  │  │      USDJPY-60-20250106.parquet
+│  │  │      USDJPY-60-20250113.parquet
+│  │  │      USDJPY-60-20250120.parquet
+│  │  │      USDJPY-60-20250127.parquet
+│  │  │      USDJPY-60-20250203.parquet
+│  │  │      USDJPY-60-20250210.parquet
+│  │  │      USDJPY-60-20250217.parquet
+│  │  │      USDJPY-60-20250224.parquet
+│  │  │      USDJPY-60-20250303.parquet
+│  │  │      USDJPY-60-20250310.parquet
+│  │  │      USDJPY-60-20250317.parquet
+│  │  │      USDJPY-60-20250324.parquet
+│  │  │      USDJPY-60-20250331.parquet
+│  │  │      USDJPY-60-20250407.parquet
+│  │  │      USDJPY-60-20250414.parquet
+│  │  │      USDJPY-60-20250421.parquet
+│  │  │      USDJPY-60-20250428.parquet
+│  │  │      USDJPY-60-20250505.parquet
+│  │  │      USDJPY-60-20250512.parquet
+│  │  │      USDJPY-60-20250519.parquet
+│  │  │      USDJPY-60-20250526.parquet
+│  │  │      USDJPY-60-20250602.parquet
+│  │  │      USDJPY-60-20250609.parquet
+│  │  │      USDJPY-60-20250616.parquet
+│  │  │      USDJPY-60-20250623.parquet
+│  │  │      USDJPY-60-20250630.parquet
+│  │  │      USDJPY-60-20250707.parquet
+│  │  │      USDJPY-60-20250714.parquet
+│  │  │      USDJPY-60-20250721.parquet
+│  │  │      USDJPY-60-20250728.parquet
+│  │  │      USDJPY-60-20250804.parquet
+│  │  │      USDJPY-60-20250811.parquet
+│  │  │      USDJPY-60-20250818.parquet
+│  │  │      USDJPY-60-20250825.parquet
+│  │  │      USDJPY-60-20250901.parquet
+│  │  │      USDJPY-60-20250908.parquet
+│  │  │      USDJPY-60-20250915.parquet
+│  │  │      USDJPY-60-20250922.parquet
+│  │  │      USDJPY-60-20250929.parquet
+│  │  │      USDJPY-60-20251006.parquet
+│  │  │      USDJPY-60-20251013.parquet
+│  │  │      USDJPY-60-20251020.parquet
+│  │  │      USDJPY-60-20251027.parquet
+│  │  │      USDJPY-60-20251103.parquet
+│  │  │      USDJPY-60-20251110.parquet
+│  │  │      USDJPY-60-20251117.parquet
+│  │  │      USDJPY-60-20251124.parquet
+│  │  │      USDJPY-60-20251201.parquet
+│  │  │      USDJPY-60-20251208.parquet
+│  │  │      USDJPY-60-20251215.parquet
+│  │  │      USDJPY-60-20251222.parquet
+│  │  │      USDJPY-60-20251229.parquet
+│  │  │      
+│  │  └─2026
+│  │          USDJPY-60-20260105.parquet
+│  │          USDJPY-60-20260112.parquet
+│  │          USDJPY-60-20260119.parquet
+│  │          USDJPY-60-20260126.parquet
+│  │          USDJPY-60-20260202.parquet
+│  │          USDJPY-60-20260209.parquet
+│  │          USDJPY-60-20260216.parquet
+│  │          USDJPY-60-20260223.parquet
+│  │          USDJPY-60-20260302.parquet
+│  │          USDJPY-60-20260309.parquet
+│  │          
+│  ├─XAUUSD
+│  │  ├─2018
+│  │  │      XAUUSD-60-20180101.parquet
+│  │  │      XAUUSD-60-20180108.parquet
+│  │  │      XAUUSD-60-20180115.parquet
+│  │  │      XAUUSD-60-20180122.parquet
+│  │  │      XAUUSD-60-20180129.parquet
+│  │  │      XAUUSD-60-20180205.parquet
+│  │  │      XAUUSD-60-20180212.parquet
+│  │  │      XAUUSD-60-20180219.parquet
+│  │  │      XAUUSD-60-20180226.parquet
+│  │  │      XAUUSD-60-20180305.parquet
+│  │  │      XAUUSD-60-20180312.parquet
+│  │  │      XAUUSD-60-20180319.parquet
+│  │  │      XAUUSD-60-20180326.parquet
+│  │  │      XAUUSD-60-20180402.parquet
+│  │  │      XAUUSD-60-20180409.parquet
+│  │  │      XAUUSD-60-20180416.parquet
+│  │  │      XAUUSD-60-20180423.parquet
+│  │  │      XAUUSD-60-20180430.parquet
+│  │  │      XAUUSD-60-20180507.parquet
+│  │  │      XAUUSD-60-20180514.parquet
+│  │  │      XAUUSD-60-20180521.parquet
+│  │  │      XAUUSD-60-20180528.parquet
+│  │  │      XAUUSD-60-20180604.parquet
+│  │  │      XAUUSD-60-20180611.parquet
+│  │  │      XAUUSD-60-20180618.parquet
+│  │  │      XAUUSD-60-20180625.parquet
+│  │  │      XAUUSD-60-20180702.parquet
+│  │  │      XAUUSD-60-20180709.parquet
+│  │  │      XAUUSD-60-20180716.parquet
+│  │  │      XAUUSD-60-20180723.parquet
+│  │  │      XAUUSD-60-20180730.parquet
+│  │  │      XAUUSD-60-20180806.parquet
+│  │  │      XAUUSD-60-20180813.parquet
+│  │  │      XAUUSD-60-20180820.parquet
+│  │  │      XAUUSD-60-20180827.parquet
+│  │  │      XAUUSD-60-20180903.parquet
+│  │  │      XAUUSD-60-20180910.parquet
+│  │  │      XAUUSD-60-20180917.parquet
+│  │  │      XAUUSD-60-20180924.parquet
+│  │  │      XAUUSD-60-20181001.parquet
+│  │  │      XAUUSD-60-20181008.parquet
+│  │  │      XAUUSD-60-20181015.parquet
+│  │  │      XAUUSD-60-20181022.parquet
+│  │  │      XAUUSD-60-20181029.parquet
+│  │  │      XAUUSD-60-20181105.parquet
+│  │  │      XAUUSD-60-20181112.parquet
+│  │  │      XAUUSD-60-20181119.parquet
+│  │  │      XAUUSD-60-20181126.parquet
+│  │  │      XAUUSD-60-20181203.parquet
+│  │  │      XAUUSD-60-20181210.parquet
+│  │  │      XAUUSD-60-20181217.parquet
+│  │  │      XAUUSD-60-20181224.parquet
+│  │  │      XAUUSD-60-20181231.parquet
+│  │  │      
+│  │  ├─2019
+│  │  │      XAUUSD-60-20190107.parquet
+│  │  │      XAUUSD-60-20190114.parquet
+│  │  │      XAUUSD-60-20190121.parquet
+│  │  │      XAUUSD-60-20190128.parquet
+│  │  │      XAUUSD-60-20190204.parquet
+│  │  │      XAUUSD-60-20190211.parquet
+│  │  │      XAUUSD-60-20190218.parquet
+│  │  │      XAUUSD-60-20190225.parquet
+│  │  │      XAUUSD-60-20190304.parquet
+│  │  │      XAUUSD-60-20190311.parquet
+│  │  │      XAUUSD-60-20190318.parquet
+│  │  │      XAUUSD-60-20190325.parquet
+│  │  │      XAUUSD-60-20190401.parquet
+│  │  │      XAUUSD-60-20190408.parquet
+│  │  │      XAUUSD-60-20190415.parquet
+│  │  │      XAUUSD-60-20190422.parquet
+│  │  │      XAUUSD-60-20190429.parquet
+│  │  │      XAUUSD-60-20190506.parquet
+│  │  │      XAUUSD-60-20190513.parquet
+│  │  │      XAUUSD-60-20190520.parquet
+│  │  │      XAUUSD-60-20190527.parquet
+│  │  │      XAUUSD-60-20190603.parquet
+│  │  │      XAUUSD-60-20190610.parquet
+│  │  │      XAUUSD-60-20190617.parquet
+│  │  │      XAUUSD-60-20190624.parquet
+│  │  │      XAUUSD-60-20190701.parquet
+│  │  │      XAUUSD-60-20190708.parquet
+│  │  │      XAUUSD-60-20190715.parquet
+│  │  │      XAUUSD-60-20190722.parquet
+│  │  │      XAUUSD-60-20190729.parquet
+│  │  │      XAUUSD-60-20190805.parquet
+│  │  │      XAUUSD-60-20190812.parquet
+│  │  │      XAUUSD-60-20190819.parquet
+│  │  │      XAUUSD-60-20190826.parquet
+│  │  │      XAUUSD-60-20190902.parquet
+│  │  │      XAUUSD-60-20190909.parquet
+│  │  │      XAUUSD-60-20190916.parquet
+│  │  │      XAUUSD-60-20190923.parquet
+│  │  │      XAUUSD-60-20190930.parquet
+│  │  │      XAUUSD-60-20191007.parquet
+│  │  │      XAUUSD-60-20191014.parquet
+│  │  │      XAUUSD-60-20191021.parquet
+│  │  │      XAUUSD-60-20191028.parquet
+│  │  │      XAUUSD-60-20191104.parquet
+│  │  │      XAUUSD-60-20191111.parquet
+│  │  │      XAUUSD-60-20191118.parquet
+│  │  │      XAUUSD-60-20191125.parquet
+│  │  │      XAUUSD-60-20191202.parquet
+│  │  │      XAUUSD-60-20191209.parquet
+│  │  │      XAUUSD-60-20191216.parquet
+│  │  │      XAUUSD-60-20191223.parquet
+│  │  │      XAUUSD-60-20191230.parquet
+│  │  │      
+│  │  ├─2020
+│  │  │      XAUUSD-60-20200106.parquet
+│  │  │      XAUUSD-60-20200113.parquet
+│  │  │      XAUUSD-60-20200120.parquet
+│  │  │      XAUUSD-60-20200127.parquet
+│  │  │      XAUUSD-60-20200203.parquet
+│  │  │      XAUUSD-60-20200210.parquet
+│  │  │      XAUUSD-60-20200217.parquet
+│  │  │      XAUUSD-60-20200224.parquet
+│  │  │      XAUUSD-60-20200302.parquet
+│  │  │      XAUUSD-60-20200309.parquet
+│  │  │      XAUUSD-60-20200316.parquet
+│  │  │      XAUUSD-60-20200323.parquet
+│  │  │      XAUUSD-60-20200330.parquet
+│  │  │      XAUUSD-60-20200406.parquet
+│  │  │      XAUUSD-60-20200413.parquet
+│  │  │      XAUUSD-60-20200420.parquet
+│  │  │      XAUUSD-60-20200427.parquet
+│  │  │      XAUUSD-60-20200504.parquet
+│  │  │      XAUUSD-60-20200511.parquet
+│  │  │      XAUUSD-60-20200518.parquet
+│  │  │      XAUUSD-60-20200525.parquet
+│  │  │      XAUUSD-60-20200601.parquet
+│  │  │      XAUUSD-60-20200608.parquet
+│  │  │      XAUUSD-60-20200615.parquet
+│  │  │      XAUUSD-60-20200622.parquet
+│  │  │      XAUUSD-60-20200629.parquet
+│  │  │      XAUUSD-60-20200706.parquet
+│  │  │      XAUUSD-60-20200713.parquet
+│  │  │      XAUUSD-60-20200720.parquet
+│  │  │      XAUUSD-60-20200727.parquet
+│  │  │      XAUUSD-60-20200803.parquet
+│  │  │      XAUUSD-60-20200810.parquet
+│  │  │      XAUUSD-60-20200817.parquet
+│  │  │      XAUUSD-60-20200824.parquet
+│  │  │      XAUUSD-60-20200831.parquet
+│  │  │      XAUUSD-60-20200907.parquet
+│  │  │      XAUUSD-60-20200914.parquet
+│  │  │      XAUUSD-60-20200921.parquet
+│  │  │      XAUUSD-60-20200928.parquet
+│  │  │      XAUUSD-60-20201005.parquet
+│  │  │      XAUUSD-60-20201012.parquet
+│  │  │      XAUUSD-60-20201019.parquet
+│  │  │      XAUUSD-60-20201026.parquet
+│  │  │      XAUUSD-60-20201102.parquet
+│  │  │      XAUUSD-60-20201109.parquet
+│  │  │      XAUUSD-60-20201116.parquet
+│  │  │      XAUUSD-60-20201123.parquet
+│  │  │      XAUUSD-60-20201130.parquet
+│  │  │      XAUUSD-60-20201207.parquet
+│  │  │      XAUUSD-60-20201214.parquet
+│  │  │      XAUUSD-60-20201221.parquet
+│  │  │      XAUUSD-60-20201228.parquet
+│  │  │      
+│  │  ├─2021
+│  │  │      XAUUSD-60-20210104.parquet
+│  │  │      XAUUSD-60-20210111.parquet
+│  │  │      XAUUSD-60-20210118.parquet
+│  │  │      XAUUSD-60-20210125.parquet
+│  │  │      XAUUSD-60-20210201.parquet
+│  │  │      XAUUSD-60-20210208.parquet
+│  │  │      XAUUSD-60-20210215.parquet
+│  │  │      XAUUSD-60-20210222.parquet
+│  │  │      XAUUSD-60-20210301.parquet
+│  │  │      XAUUSD-60-20210308.parquet
+│  │  │      XAUUSD-60-20210315.parquet
+│  │  │      XAUUSD-60-20210322.parquet
+│  │  │      XAUUSD-60-20210329.parquet
+│  │  │      XAUUSD-60-20210405.parquet
+│  │  │      XAUUSD-60-20210412.parquet
+│  │  │      XAUUSD-60-20210419.parquet
+│  │  │      XAUUSD-60-20210426.parquet
+│  │  │      XAUUSD-60-20210503.parquet
+│  │  │      XAUUSD-60-20210510.parquet
+│  │  │      XAUUSD-60-20210517.parquet
+│  │  │      XAUUSD-60-20210524.parquet
+│  │  │      XAUUSD-60-20210531.parquet
+│  │  │      XAUUSD-60-20210607.parquet
+│  │  │      XAUUSD-60-20210614.parquet
+│  │  │      XAUUSD-60-20210621.parquet
+│  │  │      XAUUSD-60-20210628.parquet
+│  │  │      XAUUSD-60-20210705.parquet
+│  │  │      XAUUSD-60-20210712.parquet
+│  │  │      XAUUSD-60-20210719.parquet
+│  │  │      XAUUSD-60-20210726.parquet
+│  │  │      XAUUSD-60-20210802.parquet
+│  │  │      XAUUSD-60-20210809.parquet
+│  │  │      XAUUSD-60-20210816.parquet
+│  │  │      XAUUSD-60-20210823.parquet
+│  │  │      XAUUSD-60-20210830.parquet
+│  │  │      XAUUSD-60-20210906.parquet
+│  │  │      XAUUSD-60-20210913.parquet
+│  │  │      XAUUSD-60-20210920.parquet
+│  │  │      XAUUSD-60-20210927.parquet
+│  │  │      XAUUSD-60-20211004.parquet
+│  │  │      XAUUSD-60-20211011.parquet
+│  │  │      XAUUSD-60-20211018.parquet
+│  │  │      XAUUSD-60-20211025.parquet
+│  │  │      XAUUSD-60-20211101.parquet
+│  │  │      XAUUSD-60-20211108.parquet
+│  │  │      XAUUSD-60-20211115.parquet
+│  │  │      XAUUSD-60-20211122.parquet
+│  │  │      XAUUSD-60-20211129.parquet
+│  │  │      XAUUSD-60-20211206.parquet
+│  │  │      XAUUSD-60-20211213.parquet
+│  │  │      XAUUSD-60-20211220.parquet
+│  │  │      XAUUSD-60-20211227.parquet
+│  │  │      
+│  │  ├─2022
+│  │  │      XAUUSD-60-20220103.parquet
+│  │  │      XAUUSD-60-20220110.parquet
+│  │  │      XAUUSD-60-20220117.parquet
+│  │  │      XAUUSD-60-20220124.parquet
+│  │  │      XAUUSD-60-20220131.parquet
+│  │  │      XAUUSD-60-20220207.parquet
+│  │  │      XAUUSD-60-20220214.parquet
+│  │  │      XAUUSD-60-20220221.parquet
+│  │  │      XAUUSD-60-20220228.parquet
+│  │  │      XAUUSD-60-20220307.parquet
+│  │  │      XAUUSD-60-20220314.parquet
+│  │  │      XAUUSD-60-20220321.parquet
+│  │  │      XAUUSD-60-20220328.parquet
+│  │  │      XAUUSD-60-20220404.parquet
+│  │  │      XAUUSD-60-20220411.parquet
+│  │  │      XAUUSD-60-20220418.parquet
+│  │  │      XAUUSD-60-20220425.parquet
+│  │  │      XAUUSD-60-20220502.parquet
+│  │  │      XAUUSD-60-20220509.parquet
+│  │  │      XAUUSD-60-20220516.parquet
+│  │  │      XAUUSD-60-20220523.parquet
+│  │  │      XAUUSD-60-20220530.parquet
+│  │  │      XAUUSD-60-20220606.parquet
+│  │  │      XAUUSD-60-20220613.parquet
+│  │  │      XAUUSD-60-20220620.parquet
+│  │  │      XAUUSD-60-20220627.parquet
+│  │  │      XAUUSD-60-20220704.parquet
+│  │  │      XAUUSD-60-20220711.parquet
+│  │  │      XAUUSD-60-20220718.parquet
+│  │  │      XAUUSD-60-20220725.parquet
+│  │  │      XAUUSD-60-20220801.parquet
+│  │  │      XAUUSD-60-20220808.parquet
+│  │  │      XAUUSD-60-20220815.parquet
+│  │  │      XAUUSD-60-20220822.parquet
+│  │  │      XAUUSD-60-20220829.parquet
+│  │  │      XAUUSD-60-20220905.parquet
+│  │  │      XAUUSD-60-20220912.parquet
+│  │  │      XAUUSD-60-20220919.parquet
+│  │  │      XAUUSD-60-20220926.parquet
+│  │  │      XAUUSD-60-20221003.parquet
+│  │  │      XAUUSD-60-20221010.parquet
+│  │  │      XAUUSD-60-20221017.parquet
+│  │  │      XAUUSD-60-20221024.parquet
+│  │  │      XAUUSD-60-20221031.parquet
+│  │  │      XAUUSD-60-20221107.parquet
+│  │  │      XAUUSD-60-20221114.parquet
+│  │  │      XAUUSD-60-20221121.parquet
+│  │  │      XAUUSD-60-20221128.parquet
+│  │  │      XAUUSD-60-20221205.parquet
+│  │  │      XAUUSD-60-20221212.parquet
+│  │  │      XAUUSD-60-20221219.parquet
+│  │  │      XAUUSD-60-20221226.parquet
+│  │  │      
+│  │  ├─2023
+│  │  │      XAUUSD-60-20230102.parquet
+│  │  │      XAUUSD-60-20230109.parquet
+│  │  │      XAUUSD-60-20230116.parquet
+│  │  │      XAUUSD-60-20230123.parquet
+│  │  │      XAUUSD-60-20230130.parquet
+│  │  │      XAUUSD-60-20230206.parquet
+│  │  │      XAUUSD-60-20230213.parquet
+│  │  │      XAUUSD-60-20230220.parquet
+│  │  │      XAUUSD-60-20230227.parquet
+│  │  │      XAUUSD-60-20230306.parquet
+│  │  │      XAUUSD-60-20230313.parquet
+│  │  │      XAUUSD-60-20230320.parquet
+│  │  │      XAUUSD-60-20230327.parquet
+│  │  │      XAUUSD-60-20230403.parquet
+│  │  │      XAUUSD-60-20230410.parquet
+│  │  │      XAUUSD-60-20230417.parquet
+│  │  │      XAUUSD-60-20230424.parquet
+│  │  │      XAUUSD-60-20230501.parquet
+│  │  │      XAUUSD-60-20230508.parquet
+│  │  │      XAUUSD-60-20230515.parquet
+│  │  │      XAUUSD-60-20230522.parquet
+│  │  │      XAUUSD-60-20230529.parquet
+│  │  │      XAUUSD-60-20230605.parquet
+│  │  │      XAUUSD-60-20230612.parquet
+│  │  │      XAUUSD-60-20230619.parquet
+│  │  │      XAUUSD-60-20230626.parquet
+│  │  │      XAUUSD-60-20230703.parquet
+│  │  │      XAUUSD-60-20230710.parquet
+│  │  │      XAUUSD-60-20230717.parquet
+│  │  │      XAUUSD-60-20230724.parquet
+│  │  │      XAUUSD-60-20230731.parquet
+│  │  │      XAUUSD-60-20230807.parquet
+│  │  │      XAUUSD-60-20230814.parquet
+│  │  │      XAUUSD-60-20230821.parquet
+│  │  │      XAUUSD-60-20230828.parquet
+│  │  │      XAUUSD-60-20230904.parquet
+│  │  │      XAUUSD-60-20230911.parquet
+│  │  │      XAUUSD-60-20230918.parquet
+│  │  │      XAUUSD-60-20230925.parquet
+│  │  │      XAUUSD-60-20231002.parquet
+│  │  │      XAUUSD-60-20231009.parquet
+│  │  │      XAUUSD-60-20231016.parquet
+│  │  │      XAUUSD-60-20231023.parquet
+│  │  │      XAUUSD-60-20231030.parquet
+│  │  │      XAUUSD-60-20231106.parquet
+│  │  │      XAUUSD-60-20231113.parquet
+│  │  │      XAUUSD-60-20231120.parquet
+│  │  │      XAUUSD-60-20231127.parquet
+│  │  │      XAUUSD-60-20231204.parquet
+│  │  │      XAUUSD-60-20231211.parquet
+│  │  │      XAUUSD-60-20231218.parquet
+│  │  │      XAUUSD-60-20231225.parquet
+│  │  │      
+│  │  ├─2024
+│  │  │      XAUUSD-60-20240101.parquet
+│  │  │      XAUUSD-60-20240108.parquet
+│  │  │      XAUUSD-60-20240115.parquet
+│  │  │      XAUUSD-60-20240122.parquet
+│  │  │      XAUUSD-60-20240129.parquet
+│  │  │      XAUUSD-60-20240205.parquet
+│  │  │      XAUUSD-60-20240212.parquet
+│  │  │      XAUUSD-60-20240219.parquet
+│  │  │      XAUUSD-60-20240226.parquet
+│  │  │      XAUUSD-60-20240304.parquet
+│  │  │      XAUUSD-60-20240311.parquet
+│  │  │      XAUUSD-60-20240318.parquet
+│  │  │      XAUUSD-60-20240325.parquet
+│  │  │      XAUUSD-60-20240401.parquet
+│  │  │      XAUUSD-60-20240408.parquet
+│  │  │      XAUUSD-60-20240415.parquet
+│  │  │      XAUUSD-60-20240422.parquet
+│  │  │      XAUUSD-60-20240429.parquet
+│  │  │      XAUUSD-60-20240506.parquet
+│  │  │      XAUUSD-60-20240513.parquet
+│  │  │      XAUUSD-60-20240520.parquet
+│  │  │      XAUUSD-60-20240527.parquet
+│  │  │      XAUUSD-60-20240603.parquet
+│  │  │      XAUUSD-60-20240610.parquet
+│  │  │      XAUUSD-60-20240617.parquet
+│  │  │      XAUUSD-60-20240624.parquet
+│  │  │      XAUUSD-60-20240701.parquet
+│  │  │      XAUUSD-60-20240708.parquet
+│  │  │      XAUUSD-60-20240715.parquet
+│  │  │      XAUUSD-60-20240722.parquet
+│  │  │      XAUUSD-60-20240729.parquet
+│  │  │      XAUUSD-60-20240805.parquet
+│  │  │      XAUUSD-60-20240812.parquet
+│  │  │      XAUUSD-60-20240819.parquet
+│  │  │      XAUUSD-60-20240826.parquet
+│  │  │      XAUUSD-60-20240902.parquet
+│  │  │      XAUUSD-60-20240909.parquet
+│  │  │      XAUUSD-60-20240916.parquet
+│  │  │      XAUUSD-60-20240923.parquet
+│  │  │      XAUUSD-60-20240930.parquet
+│  │  │      XAUUSD-60-20241007.parquet
+│  │  │      XAUUSD-60-20241014.parquet
+│  │  │      XAUUSD-60-20241021.parquet
+│  │  │      XAUUSD-60-20241028.parquet
+│  │  │      XAUUSD-60-20241104.parquet
+│  │  │      XAUUSD-60-20241111.parquet
+│  │  │      XAUUSD-60-20241118.parquet
+│  │  │      XAUUSD-60-20241125.parquet
+│  │  │      XAUUSD-60-20241202.parquet
+│  │  │      XAUUSD-60-20241209.parquet
+│  │  │      XAUUSD-60-20241216.parquet
+│  │  │      XAUUSD-60-20241223.parquet
+│  │  │      XAUUSD-60-20241230.parquet
+│  │  │      
+│  │  ├─2025
+│  │  │      XAUUSD-60-20250106.parquet
+│  │  │      XAUUSD-60-20250113.parquet
+│  │  │      XAUUSD-60-20250120.parquet
+│  │  │      XAUUSD-60-20250127.parquet
+│  │  │      XAUUSD-60-20250203.parquet
+│  │  │      XAUUSD-60-20250210.parquet
+│  │  │      XAUUSD-60-20250217.parquet
+│  │  │      XAUUSD-60-20250224.parquet
+│  │  │      XAUUSD-60-20250303.parquet
+│  │  │      XAUUSD-60-20250310.parquet
+│  │  │      XAUUSD-60-20250317.parquet
+│  │  │      XAUUSD-60-20250324.parquet
+│  │  │      XAUUSD-60-20250331.parquet
+│  │  │      XAUUSD-60-20250407.parquet
+│  │  │      XAUUSD-60-20250414.parquet
+│  │  │      XAUUSD-60-20250421.parquet
+│  │  │      XAUUSD-60-20250428.parquet
+│  │  │      XAUUSD-60-20250505.parquet
+│  │  │      XAUUSD-60-20250512.parquet
+│  │  │      XAUUSD-60-20250519.parquet
+│  │  │      XAUUSD-60-20250526.parquet
+│  │  │      XAUUSD-60-20250602.parquet
+│  │  │      XAUUSD-60-20250609.parquet
+│  │  │      XAUUSD-60-20250616.parquet
+│  │  │      XAUUSD-60-20250623.parquet
+│  │  │      XAUUSD-60-20250630.parquet
+│  │  │      XAUUSD-60-20250707.parquet
+│  │  │      XAUUSD-60-20250714.parquet
+│  │  │      XAUUSD-60-20250721.parquet
+│  │  │      XAUUSD-60-20250728.parquet
+│  │  │      XAUUSD-60-20250804.parquet
+│  │  │      XAUUSD-60-20250811.parquet
+│  │  │      XAUUSD-60-20250818.parquet
+│  │  │      XAUUSD-60-20250825.parquet
+│  │  │      XAUUSD-60-20250901.parquet
+│  │  │      XAUUSD-60-20250908.parquet
+│  │  │      XAUUSD-60-20250915.parquet
+│  │  │      XAUUSD-60-20250922.parquet
+│  │  │      XAUUSD-60-20250929.parquet
+│  │  │      XAUUSD-60-20251006.parquet
+│  │  │      XAUUSD-60-20251013.parquet
+│  │  │      XAUUSD-60-20251020.parquet
+│  │  │      XAUUSD-60-20251027.parquet
+│  │  │      XAUUSD-60-20251103.parquet
+│  │  │      XAUUSD-60-20251110.parquet
+│  │  │      XAUUSD-60-20251117.parquet
+│  │  │      XAUUSD-60-20251124.parquet
+│  │  │      XAUUSD-60-20251201.parquet
+│  │  │      XAUUSD-60-20251208.parquet
+│  │  │      XAUUSD-60-20251215.parquet
+│  │  │      XAUUSD-60-20251222.parquet
+│  │  │      XAUUSD-60-20251229.parquet
+│  │  │      
+│  │  └─2026
+│  │          XAUUSD-60-20260105.parquet
+│  │          XAUUSD-60-20260112.parquet
+│  │          XAUUSD-60-20260119.parquet
+│  │          XAUUSD-60-20260126.parquet
+│  │          XAUUSD-60-20260202.parquet
+│  │          XAUUSD-60-20260209.parquet
+│  │          XAUUSD-60-20260216.parquet
+│  │          XAUUSD-60-20260223.parquet
+│  │          XAUUSD-60-20260302.parquet
+│  │          
+│  └─XTIUSD
+│      ├─2018
+│      │      XTIUSD-60-20180806.parquet
+│      │      XTIUSD-60-20180813.parquet
+│      │      XTIUSD-60-20180820.parquet
+│      │      XTIUSD-60-20180827.parquet
+│      │      XTIUSD-60-20180903.parquet
+│      │      XTIUSD-60-20180910.parquet
+│      │      XTIUSD-60-20180917.parquet
+│      │      XTIUSD-60-20180924.parquet
+│      │      XTIUSD-60-20181001.parquet
+│      │      XTIUSD-60-20181008.parquet
+│      │      XTIUSD-60-20181015.parquet
+│      │      XTIUSD-60-20181022.parquet
+│      │      XTIUSD-60-20181029.parquet
+│      │      XTIUSD-60-20181105.parquet
+│      │      XTIUSD-60-20181112.parquet
+│      │      XTIUSD-60-20181119.parquet
+│      │      XTIUSD-60-20181126.parquet
+│      │      XTIUSD-60-20181203.parquet
+│      │      XTIUSD-60-20181210.parquet
+│      │      XTIUSD-60-20181217.parquet
+│      │      XTIUSD-60-20181224.parquet
+│      │      XTIUSD-60-20181231.parquet
+│      │      
+│      ├─2019
+│      │      XTIUSD-60-20190107.parquet
+│      │      XTIUSD-60-20190114.parquet
+│      │      XTIUSD-60-20190121.parquet
+│      │      XTIUSD-60-20190128.parquet
+│      │      XTIUSD-60-20190204.parquet
+│      │      XTIUSD-60-20190211.parquet
+│      │      XTIUSD-60-20190218.parquet
+│      │      XTIUSD-60-20190225.parquet
+│      │      XTIUSD-60-20190304.parquet
+│      │      XTIUSD-60-20190311.parquet
+│      │      XTIUSD-60-20190318.parquet
+│      │      XTIUSD-60-20190325.parquet
+│      │      XTIUSD-60-20190401.parquet
+│      │      XTIUSD-60-20190408.parquet
+│      │      XTIUSD-60-20190415.parquet
+│      │      XTIUSD-60-20190422.parquet
+│      │      XTIUSD-60-20190429.parquet
+│      │      XTIUSD-60-20190506.parquet
+│      │      XTIUSD-60-20190513.parquet
+│      │      XTIUSD-60-20190520.parquet
+│      │      XTIUSD-60-20190527.parquet
+│      │      XTIUSD-60-20190603.parquet
+│      │      XTIUSD-60-20190610.parquet
+│      │      XTIUSD-60-20190617.parquet
+│      │      XTIUSD-60-20190624.parquet
+│      │      XTIUSD-60-20190701.parquet
+│      │      XTIUSD-60-20190708.parquet
+│      │      XTIUSD-60-20190715.parquet
+│      │      XTIUSD-60-20190722.parquet
+│      │      XTIUSD-60-20190729.parquet
+│      │      XTIUSD-60-20190805.parquet
+│      │      XTIUSD-60-20190812.parquet
+│      │      XTIUSD-60-20190819.parquet
+│      │      XTIUSD-60-20190826.parquet
+│      │      XTIUSD-60-20190902.parquet
+│      │      XTIUSD-60-20190909.parquet
+│      │      XTIUSD-60-20190916.parquet
+│      │      XTIUSD-60-20190923.parquet
+│      │      XTIUSD-60-20190930.parquet
+│      │      XTIUSD-60-20191007.parquet
+│      │      XTIUSD-60-20191014.parquet
+│      │      XTIUSD-60-20191021.parquet
+│      │      XTIUSD-60-20191028.parquet
+│      │      XTIUSD-60-20191104.parquet
+│      │      XTIUSD-60-20191111.parquet
+│      │      XTIUSD-60-20191118.parquet
+│      │      XTIUSD-60-20191125.parquet
+│      │      XTIUSD-60-20191202.parquet
+│      │      XTIUSD-60-20191209.parquet
+│      │      XTIUSD-60-20191216.parquet
+│      │      XTIUSD-60-20191223.parquet
+│      │      XTIUSD-60-20191230.parquet
+│      │      
+│      ├─2020
+│      │      XTIUSD-60-20200106.parquet
+│      │      XTIUSD-60-20200113.parquet
+│      │      XTIUSD-60-20200120.parquet
+│      │      XTIUSD-60-20200127.parquet
+│      │      XTIUSD-60-20200203.parquet
+│      │      XTIUSD-60-20200210.parquet
+│      │      XTIUSD-60-20200217.parquet
+│      │      XTIUSD-60-20200224.parquet
+│      │      XTIUSD-60-20200302.parquet
+│      │      XTIUSD-60-20200309.parquet
+│      │      XTIUSD-60-20200316.parquet
+│      │      XTIUSD-60-20200323.parquet
+│      │      XTIUSD-60-20200330.parquet
+│      │      XTIUSD-60-20200406.parquet
+│      │      XTIUSD-60-20200413.parquet
+│      │      XTIUSD-60-20200420.parquet
+│      │      XTIUSD-60-20200427.parquet
+│      │      XTIUSD-60-20200504.parquet
+│      │      XTIUSD-60-20200511.parquet
+│      │      XTIUSD-60-20200518.parquet
+│      │      XTIUSD-60-20200525.parquet
+│      │      XTIUSD-60-20200601.parquet
+│      │      XTIUSD-60-20200608.parquet
+│      │      XTIUSD-60-20200615.parquet
+│      │      XTIUSD-60-20200622.parquet
+│      │      XTIUSD-60-20200629.parquet
+│      │      XTIUSD-60-20200706.parquet
+│      │      XTIUSD-60-20200713.parquet
+│      │      XTIUSD-60-20200720.parquet
+│      │      XTIUSD-60-20200727.parquet
+│      │      XTIUSD-60-20200803.parquet
+│      │      XTIUSD-60-20200810.parquet
+│      │      XTIUSD-60-20200817.parquet
+│      │      XTIUSD-60-20200824.parquet
+│      │      XTIUSD-60-20200831.parquet
+│      │      XTIUSD-60-20200907.parquet
+│      │      XTIUSD-60-20200914.parquet
+│      │      XTIUSD-60-20200921.parquet
+│      │      XTIUSD-60-20200928.parquet
+│      │      XTIUSD-60-20201005.parquet
+│      │      XTIUSD-60-20201012.parquet
+│      │      XTIUSD-60-20201019.parquet
+│      │      XTIUSD-60-20201026.parquet
+│      │      XTIUSD-60-20201102.parquet
+│      │      XTIUSD-60-20201109.parquet
+│      │      XTIUSD-60-20201116.parquet
+│      │      XTIUSD-60-20201123.parquet
+│      │      XTIUSD-60-20201130.parquet
+│      │      XTIUSD-60-20201207.parquet
+│      │      XTIUSD-60-20201214.parquet
+│      │      XTIUSD-60-20201221.parquet
+│      │      XTIUSD-60-20201228.parquet
+│      │      
+│      ├─2021
+│      │      XTIUSD-60-20210104.parquet
+│      │      XTIUSD-60-20210111.parquet
+│      │      XTIUSD-60-20210118.parquet
+│      │      XTIUSD-60-20210125.parquet
+│      │      XTIUSD-60-20210201.parquet
+│      │      XTIUSD-60-20210208.parquet
+│      │      XTIUSD-60-20210215.parquet
+│      │      XTIUSD-60-20210222.parquet
+│      │      XTIUSD-60-20210301.parquet
+│      │      XTIUSD-60-20210308.parquet
+│      │      XTIUSD-60-20210315.parquet
+│      │      XTIUSD-60-20210322.parquet
+│      │      XTIUSD-60-20210329.parquet
+│      │      XTIUSD-60-20210405.parquet
+│      │      XTIUSD-60-20210412.parquet
+│      │      XTIUSD-60-20210419.parquet
+│      │      XTIUSD-60-20210426.parquet
+│      │      XTIUSD-60-20210503.parquet
+│      │      XTIUSD-60-20210510.parquet
+│      │      XTIUSD-60-20210517.parquet
+│      │      XTIUSD-60-20210524.parquet
+│      │      XTIUSD-60-20210531.parquet
+│      │      XTIUSD-60-20210607.parquet
+│      │      XTIUSD-60-20210614.parquet
+│      │      XTIUSD-60-20210621.parquet
+│      │      XTIUSD-60-20210628.parquet
+│      │      XTIUSD-60-20210705.parquet
+│      │      XTIUSD-60-20210712.parquet
+│      │      XTIUSD-60-20210719.parquet
+│      │      XTIUSD-60-20210726.parquet
+│      │      XTIUSD-60-20210802.parquet
+│      │      XTIUSD-60-20210809.parquet
+│      │      XTIUSD-60-20210816.parquet
+│      │      XTIUSD-60-20210823.parquet
+│      │      XTIUSD-60-20210830.parquet
+│      │      XTIUSD-60-20210906.parquet
+│      │      XTIUSD-60-20210913.parquet
+│      │      XTIUSD-60-20210920.parquet
+│      │      XTIUSD-60-20210927.parquet
+│      │      XTIUSD-60-20211004.parquet
+│      │      XTIUSD-60-20211011.parquet
+│      │      XTIUSD-60-20211018.parquet
+│      │      XTIUSD-60-20211025.parquet
+│      │      XTIUSD-60-20211101.parquet
+│      │      XTIUSD-60-20211108.parquet
+│      │      XTIUSD-60-20211115.parquet
+│      │      XTIUSD-60-20211122.parquet
+│      │      XTIUSD-60-20211129.parquet
+│      │      XTIUSD-60-20211206.parquet
+│      │      XTIUSD-60-20211213.parquet
+│      │      XTIUSD-60-20211220.parquet
+│      │      XTIUSD-60-20211227.parquet
+│      │      
+│      ├─2022
+│      │      XTIUSD-60-20220103.parquet
+│      │      XTIUSD-60-20220110.parquet
+│      │      XTIUSD-60-20220117.parquet
+│      │      XTIUSD-60-20220124.parquet
+│      │      XTIUSD-60-20220131.parquet
+│      │      XTIUSD-60-20220207.parquet
+│      │      XTIUSD-60-20220214.parquet
+│      │      XTIUSD-60-20220221.parquet
+│      │      XTIUSD-60-20220228.parquet
+│      │      XTIUSD-60-20220307.parquet
+│      │      XTIUSD-60-20220314.parquet
+│      │      XTIUSD-60-20220321.parquet
+│      │      XTIUSD-60-20220328.parquet
+│      │      XTIUSD-60-20220404.parquet
+│      │      XTIUSD-60-20220411.parquet
+│      │      XTIUSD-60-20220418.parquet
+│      │      XTIUSD-60-20220425.parquet
+│      │      XTIUSD-60-20220502.parquet
+│      │      XTIUSD-60-20220509.parquet
+│      │      XTIUSD-60-20220516.parquet
+│      │      XTIUSD-60-20220523.parquet
+│      │      XTIUSD-60-20220530.parquet
+│      │      XTIUSD-60-20220606.parquet
+│      │      XTIUSD-60-20220613.parquet
+│      │      XTIUSD-60-20220620.parquet
+│      │      XTIUSD-60-20220627.parquet
+│      │      XTIUSD-60-20220704.parquet
+│      │      XTIUSD-60-20220711.parquet
+│      │      XTIUSD-60-20220718.parquet
+│      │      XTIUSD-60-20220725.parquet
+│      │      XTIUSD-60-20220801.parquet
+│      │      XTIUSD-60-20220808.parquet
+│      │      XTIUSD-60-20220815.parquet
+│      │      XTIUSD-60-20220822.parquet
+│      │      XTIUSD-60-20220829.parquet
+│      │      XTIUSD-60-20220905.parquet
+│      │      XTIUSD-60-20220912.parquet
+│      │      XTIUSD-60-20220919.parquet
+│      │      XTIUSD-60-20220926.parquet
+│      │      XTIUSD-60-20221003.parquet
+│      │      XTIUSD-60-20221010.parquet
+│      │      XTIUSD-60-20221017.parquet
+│      │      XTIUSD-60-20221024.parquet
+│      │      XTIUSD-60-20221031.parquet
+│      │      XTIUSD-60-20221107.parquet
+│      │      XTIUSD-60-20221114.parquet
+│      │      XTIUSD-60-20221121.parquet
+│      │      XTIUSD-60-20221128.parquet
+│      │      XTIUSD-60-20221205.parquet
+│      │      XTIUSD-60-20221212.parquet
+│      │      XTIUSD-60-20221219.parquet
+│      │      XTIUSD-60-20221226.parquet
+│      │      
+│      ├─2023
+│      │      XTIUSD-60-20230102.parquet
+│      │      XTIUSD-60-20230109.parquet
+│      │      XTIUSD-60-20230116.parquet
+│      │      XTIUSD-60-20230123.parquet
+│      │      XTIUSD-60-20230130.parquet
+│      │      XTIUSD-60-20230206.parquet
+│      │      XTIUSD-60-20230213.parquet
+│      │      XTIUSD-60-20230220.parquet
+│      │      XTIUSD-60-20230227.parquet
+│      │      XTIUSD-60-20230306.parquet
+│      │      XTIUSD-60-20230313.parquet
+│      │      XTIUSD-60-20230320.parquet
+│      │      XTIUSD-60-20230327.parquet
+│      │      XTIUSD-60-20230403.parquet
+│      │      XTIUSD-60-20230410.parquet
+│      │      XTIUSD-60-20230417.parquet
+│      │      XTIUSD-60-20230424.parquet
+│      │      XTIUSD-60-20230501.parquet
+│      │      XTIUSD-60-20230508.parquet
+│      │      XTIUSD-60-20230515.parquet
+│      │      XTIUSD-60-20230522.parquet
+│      │      XTIUSD-60-20230529.parquet
+│      │      XTIUSD-60-20230605.parquet
+│      │      XTIUSD-60-20230612.parquet
+│      │      XTIUSD-60-20230619.parquet
+│      │      XTIUSD-60-20230626.parquet
+│      │      XTIUSD-60-20230703.parquet
+│      │      XTIUSD-60-20230710.parquet
+│      │      XTIUSD-60-20230717.parquet
+│      │      XTIUSD-60-20230724.parquet
+│      │      XTIUSD-60-20230731.parquet
+│      │      XTIUSD-60-20230807.parquet
+│      │      XTIUSD-60-20230814.parquet
+│      │      XTIUSD-60-20230821.parquet
+│      │      XTIUSD-60-20230828.parquet
+│      │      XTIUSD-60-20230904.parquet
+│      │      XTIUSD-60-20230911.parquet
+│      │      XTIUSD-60-20230918.parquet
+│      │      XTIUSD-60-20230925.parquet
+│      │      XTIUSD-60-20231002.parquet
+│      │      XTIUSD-60-20231009.parquet
+│      │      XTIUSD-60-20231016.parquet
+│      │      XTIUSD-60-20231023.parquet
+│      │      XTIUSD-60-20231030.parquet
+│      │      XTIUSD-60-20231106.parquet
+│      │      XTIUSD-60-20231113.parquet
+│      │      XTIUSD-60-20231120.parquet
+│      │      XTIUSD-60-20231127.parquet
+│      │      XTIUSD-60-20231204.parquet
+│      │      XTIUSD-60-20231211.parquet
+│      │      XTIUSD-60-20231218.parquet
+│      │      XTIUSD-60-20231225.parquet
+│      │      
+│      ├─2024
+│      │      XTIUSD-60-20240101.parquet
+│      │      XTIUSD-60-20240108.parquet
+│      │      XTIUSD-60-20240115.parquet
+│      │      XTIUSD-60-20240122.parquet
+│      │      XTIUSD-60-20240129.parquet
+│      │      XTIUSD-60-20240205.parquet
+│      │      XTIUSD-60-20240212.parquet
+│      │      XTIUSD-60-20240219.parquet
+│      │      XTIUSD-60-20240226.parquet
+│      │      XTIUSD-60-20240304.parquet
+│      │      XTIUSD-60-20240311.parquet
+│      │      XTIUSD-60-20240318.parquet
+│      │      XTIUSD-60-20240325.parquet
+│      │      XTIUSD-60-20240401.parquet
+│      │      XTIUSD-60-20240408.parquet
+│      │      XTIUSD-60-20240415.parquet
+│      │      XTIUSD-60-20240422.parquet
+│      │      XTIUSD-60-20240429.parquet
+│      │      XTIUSD-60-20240506.parquet
+│      │      XTIUSD-60-20240513.parquet
+│      │      XTIUSD-60-20240520.parquet
+│      │      XTIUSD-60-20240527.parquet
+│      │      XTIUSD-60-20240603.parquet
+│      │      XTIUSD-60-20240610.parquet
+│      │      XTIUSD-60-20240617.parquet
+│      │      XTIUSD-60-20240624.parquet
+│      │      XTIUSD-60-20240701.parquet
+│      │      XTIUSD-60-20240708.parquet
+│      │      XTIUSD-60-20240715.parquet
+│      │      XTIUSD-60-20240722.parquet
+│      │      XTIUSD-60-20240729.parquet
+│      │      XTIUSD-60-20240805.parquet
+│      │      XTIUSD-60-20240812.parquet
+│      │      XTIUSD-60-20240819.parquet
+│      │      XTIUSD-60-20240826.parquet
+│      │      XTIUSD-60-20240902.parquet
+│      │      XTIUSD-60-20240909.parquet
+│      │      XTIUSD-60-20240916.parquet
+│      │      XTIUSD-60-20240923.parquet
+│      │      XTIUSD-60-20240930.parquet
+│      │      XTIUSD-60-20241007.parquet
+│      │      XTIUSD-60-20241014.parquet
+│      │      XTIUSD-60-20241021.parquet
+│      │      XTIUSD-60-20241028.parquet
+│      │      XTIUSD-60-20241104.parquet
+│      │      XTIUSD-60-20241111.parquet
+│      │      XTIUSD-60-20241118.parquet
+│      │      XTIUSD-60-20241125.parquet
+│      │      XTIUSD-60-20241202.parquet
+│      │      XTIUSD-60-20241209.parquet
+│      │      XTIUSD-60-20241216.parquet
+│      │      XTIUSD-60-20241223.parquet
+│      │      XTIUSD-60-20241230.parquet
+│      │      
+│      ├─2025
+│      │      XTIUSD-60-20250106.parquet
+│      │      XTIUSD-60-20250113.parquet
+│      │      XTIUSD-60-20250120.parquet
+│      │      XTIUSD-60-20250127.parquet
+│      │      XTIUSD-60-20250203.parquet
+│      │      XTIUSD-60-20250210.parquet
+│      │      XTIUSD-60-20250217.parquet
+│      │      XTIUSD-60-20250224.parquet
+│      │      XTIUSD-60-20250303.parquet
+│      │      XTIUSD-60-20250310.parquet
+│      │      XTIUSD-60-20250317.parquet
+│      │      XTIUSD-60-20250324.parquet
+│      │      XTIUSD-60-20250331.parquet
+│      │      XTIUSD-60-20250407.parquet
+│      │      XTIUSD-60-20250414.parquet
+│      │      XTIUSD-60-20250421.parquet
+│      │      XTIUSD-60-20250428.parquet
+│      │      XTIUSD-60-20250505.parquet
+│      │      XTIUSD-60-20250512.parquet
+│      │      XTIUSD-60-20250519.parquet
+│      │      XTIUSD-60-20250526.parquet
+│      │      XTIUSD-60-20250602.parquet
+│      │      XTIUSD-60-20250609.parquet
+│      │      XTIUSD-60-20250616.parquet
+│      │      XTIUSD-60-20250623.parquet
+│      │      XTIUSD-60-20250630.parquet
+│      │      XTIUSD-60-20250707.parquet
+│      │      XTIUSD-60-20250714.parquet
+│      │      XTIUSD-60-20250721.parquet
+│      │      XTIUSD-60-20250728.parquet
+│      │      XTIUSD-60-20250804.parquet
+│      │      XTIUSD-60-20250811.parquet
+│      │      XTIUSD-60-20250818.parquet
+│      │      XTIUSD-60-20250825.parquet
+│      │      XTIUSD-60-20250901.parquet
+│      │      XTIUSD-60-20250908.parquet
+│      │      XTIUSD-60-20250915.parquet
+│      │      XTIUSD-60-20250922.parquet
+│      │      XTIUSD-60-20250929.parquet
+│      │      XTIUSD-60-20251006.parquet
+│      │      XTIUSD-60-20251013.parquet
+│      │      XTIUSD-60-20251020.parquet
+│      │      XTIUSD-60-20251027.parquet
+│      │      XTIUSD-60-20251103.parquet
+│      │      XTIUSD-60-20251110.parquet
+│      │      XTIUSD-60-20251117.parquet
+│      │      XTIUSD-60-20251124.parquet
+│      │      XTIUSD-60-20251201.parquet
+│      │      XTIUSD-60-20251208.parquet
+│      │      XTIUSD-60-20251215.parquet
+│      │      XTIUSD-60-20251222.parquet
+│      │      XTIUSD-60-20251229.parquet
+│      │      
+│      └─2026
+│              XTIUSD-60-20260105.parquet
+│              XTIUSD-60-20260112.parquet
+│              XTIUSD-60-20260119.parquet
+│              XTIUSD-60-20260126.parquet
+│              XTIUSD-60-20260202.parquet
+│              XTIUSD-60-20260209.parquet
+│              XTIUSD-60-20260216.parquet
+│              XTIUSD-60-20260223.parquet
+│              XTIUSD-60-20260302.parquet
+│              
+├─pdf
+│  └─ShortSelling
+│      ├─2025
+│      │      250303-m.pdf
+│      │      250304-m.pdf
+│      │      250305-m.pdf
+│      │      250306-m.pdf
+│      │      250307-m.pdf
+│      │      250310-m.pdf
+│      │      250311-m.pdf
+│      │      250312-m.pdf
+│      │      250313-m.pdf
+│      │      250314-m.pdf
+│      │      250317-m.pdf
+│      │      250318-m.pdf
+│      │      250319-m.pdf
+│      │      250321-m.pdf
+│      │      250324-m.pdf
+│      │      250325-m.pdf
+│      │      250326-m.pdf
+│      │      250327-m.pdf
+│      │      250328-m.pdf
+│      │      250331-m.pdf
+│      │      250401-m.pdf
+│      │      250402-m.pdf
+│      │      250403-m.pdf
+│      │      250404-m.pdf
+│      │      250407-m.pdf
+│      │      250408-m.pdf
+│      │      250409-m.pdf
+│      │      250410-m.pdf
+│      │      250411-m.pdf
+│      │      250414-m.pdf
+│      │      250415-m.pdf
+│      │      250416-m.pdf
+│      │      250417-m.pdf
+│      │      250418-m.pdf
+│      │      250421-m.pdf
+│      │      250422-m.pdf
+│      │      250423-m.pdf
+│      │      250424-m.pdf
+│      │      250425-m.pdf
+│      │      250428-m.pdf
+│      │      250430-m.pdf
+│      │      250501-m.pdf
+│      │      250502-m.pdf
+│      │      250507-m.pdf
+│      │      250508-m.pdf
+│      │      250509-m.pdf
+│      │      250512-m.pdf
+│      │      250513-m.pdf
+│      │      250514-m.pdf
+│      │      250515-m.pdf
+│      │      250516-m.pdf
+│      │      250519-m.pdf
+│      │      250520-m.pdf
+│      │      250521-m.pdf
+│      │      250522-m.pdf
+│      │      250523-m.pdf
+│      │      250526-m.pdf
+│      │      250527-m.pdf
+│      │      250528-m.pdf
+│      │      250529-m.pdf
+│      │      250530-m.pdf
+│      │      250602-m.pdf
+│      │      250603-m.pdf
+│      │      250604-m.pdf
+│      │      250605-m.pdf
+│      │      250606-m.pdf
+│      │      250609-m.pdf
+│      │      250610-m.pdf
+│      │      250611-m.pdf
+│      │      250612-m.pdf
+│      │      250613-m.pdf
+│      │      250616-m.pdf
+│      │      250617-m.pdf
+│      │      250618-m.pdf
+│      │      250619-m.pdf
+│      │      250620-m.pdf
+│      │      250623-m.pdf
+│      │      250624-m.pdf
+│      │      250625-m.pdf
+│      │      250626-m.pdf
+│      │      250627-m.pdf
+│      │      250630-m.pdf
+│      │      250701-m.pdf
+│      │      250702-m.pdf
+│      │      250703-m.pdf
+│      │      250704-m.pdf
+│      │      250707-m.pdf
+│      │      250708-m.pdf
+│      │      250709-m.pdf
+│      │      250710-m.pdf
+│      │      250711-m.pdf
+│      │      250714-m.pdf
+│      │      250715-m.pdf
+│      │      250716-m.pdf
+│      │      250717-m.pdf
+│      │      250718-m.pdf
+│      │      250722-m.pdf
+│      │      250723-m.pdf
+│      │      250724-m.pdf
+│      │      250725-m.pdf
+│      │      250728-m.pdf
+│      │      250729-m.pdf
+│      │      250730-m.pdf
+│      │      250731-m.pdf
+│      │      250801-m.pdf
+│      │      250804-m.pdf
+│      │      250805-m.pdf
+│      │      250806-m.pdf
+│      │      250807-m.pdf
+│      │      250808-m.pdf
+│      │      250812-m.pdf
+│      │      250813-m.pdf
+│      │      250814-m.pdf
+│      │      250815-m.pdf
+│      │      250818-m.pdf
+│      │      250819-m.pdf
+│      │      250820-m.pdf
+│      │      250821-m.pdf
+│      │      250822-m.pdf
+│      │      250825-m.pdf
+│      │      250826-m.pdf
+│      │      250827-m.pdf
+│      │      250828-m.pdf
+│      │      250829-m.pdf
+│      │      250901-m.pdf
+│      │      250902-m.pdf
+│      │      250903-m.pdf
+│      │      250904-m.pdf
+│      │      250905-m.pdf
+│      │      250908-m.pdf
+│      │      250909-m.pdf
+│      │      250910-m.pdf
+│      │      250911-m.pdf
+│      │      250912-m.pdf
+│      │      250916-m.pdf
+│      │      250917-m.pdf
+│      │      250918-m.pdf
+│      │      250919-m.pdf
+│      │      250922-m.pdf
+│      │      250924-m.pdf
+│      │      250925-m.pdf
+│      │      250926-m.pdf
+│      │      250929-m.pdf
+│      │      250930-m.pdf
+│      │      251001-m.pdf
+│      │      251002-m.pdf
+│      │      251003-m.pdf
+│      │      251006-m.pdf
+│      │      251007-m.pdf
+│      │      251008-m.pdf
+│      │      251009-m.pdf
+│      │      251010-m.pdf
+│      │      251014-m.pdf
+│      │      251015-m.pdf
+│      │      251016-m.pdf
+│      │      251017-m.pdf
+│      │      251020-m.pdf
+│      │      251021-m.pdf
+│      │      251022-m.pdf
+│      │      251023-m.pdf
+│      │      251024-m.pdf
+│      │      251027-m.pdf
+│      │      251028-m.pdf
+│      │      251029-m.pdf
+│      │      251030-m.pdf
+│      │      251031-m.pdf
+│      │      251104-m.pdf
+│      │      251105-m.pdf
+│      │      251106-m.pdf
+│      │      251107-m.pdf
+│      │      251110-m.pdf
+│      │      251111-m.pdf
+│      │      251112-m.pdf
+│      │      251113-m.pdf
+│      │      251114-m.pdf
+│      │      251117-m.pdf
+│      │      251118-m.pdf
+│      │      251119-m.pdf
+│      │      251120-m.pdf
+│      │      251121-m.pdf
+│      │      251125-m.pdf
+│      │      251126-m.pdf
+│      │      251127-m.pdf
+│      │      251128-m.pdf
+│      │      251201-m.pdf
+│      │      251202-m.pdf
+│      │      251203-m.pdf
+│      │      251204-m.pdf
+│      │      251205-m.pdf
+│      │      251208-m.pdf
+│      │      251209-m.pdf
+│      │      251210-m.pdf
+│      │      251211-m.pdf
+│      │      251212-m.pdf
+│      │      251215-m.pdf
+│      │      251216-m.pdf
+│      │      251217-m.pdf
+│      │      251218-m.pdf
+│      │      251219-m.pdf
+│      │      251222-m.pdf
+│      │      251223-m.pdf
+│      │      251224-m.pdf
+│      │      251225-m.pdf
+│      │      251226-m.pdf
+│      │      251229-m.pdf
+│      │      251230-m.pdf
+│      │      
+│      └─2026
+│              260105-m.pdf
+│              260106-m.pdf
+│              260107-m.pdf
+│              260108-m.pdf
+│              260109-m.pdf
+│              260113-m.pdf
+│              260114-m.pdf
+│              260115-m.pdf
+│              260116-m.pdf
+│              260119-m.pdf
+│              260120-m.pdf
+│              260121-m.pdf
+│              260122-m.pdf
+│              260123-m.pdf
+│              260126-m.pdf
+│              260127-m.pdf
+│              260128-m.pdf
+│              260129-m.pdf
+│              260130-m.pdf
+│              260202-m.pdf
+│              260203-m.pdf
+│              260204-m.pdf
+│              260205-m.pdf
+│              260206-m.pdf
+│              260209-m.pdf
+│              260210-m.pdf
+│              260212-m.pdf
+│              260213-m.pdf
+│              260216-m.pdf
+│              260217-m.pdf
+│              260218-m.pdf
+│              260219-m.pdf
+│              260220-m.pdf
+│              260224-m.pdf
+│              260225-m.pdf
+│              260226-m.pdf
+│              260227-m.pdf
+│              260302-m.pdf
+│              260303-m.pdf
+│              260304-m.pdf
+│              260305-m.pdf
+│              260306-m.pdf
+│              260309-m.pdf
+│              260310-m.pdf
+│              
+└─tsv
+    ├─InvestorType
+    │      jpx_investor_type_inventory.tsv
+    │      
+    ├─NK225
+    │  ├─2018
+    │  │      future_tick_19_201801.tsv.gz
+    │  │      future_tick_19_201802.tsv.gz
+    │  │      future_tick_19_201803.tsv.gz
+    │  │      future_tick_19_201804.tsv.gz
+    │  │      future_tick_19_201805.tsv.gz
+    │  │      future_tick_19_201806.tsv.gz
+    │  │      future_tick_19_201807.tsv.gz
+    │  │      future_tick_19_201808.tsv.gz
+    │  │      future_tick_19_201809.tsv.gz
+    │  │      future_tick_19_201810.tsv.gz
+    │  │      future_tick_19_201811.tsv.gz
+    │  │      future_tick_19_201812.tsv.gz
+    │  │      
+    │  ├─2019
+    │  │      future_tick_19_201901.tsv.gz
+    │  │      future_tick_19_201902.tsv.gz
+    │  │      future_tick_19_201903.tsv.gz
+    │  │      future_tick_19_201904.tsv.gz
+    │  │      future_tick_19_201905.tsv.gz
+    │  │      future_tick_19_201906.tsv.gz
+    │  │      future_tick_19_201907.tsv.gz
+    │  │      future_tick_19_201908.tsv.gz
+    │  │      future_tick_19_201909.tsv.gz
+    │  │      future_tick_19_201910.tsv.gz
+    │  │      future_tick_19_201911.tsv.gz
+    │  │      future_tick_19_201912.tsv.gz
+    │  │      
+    │  ├─2020
+    │  │      future_tick_19_202001.tsv.gz
+    │  │      future_tick_19_202002.tsv.gz
+    │  │      future_tick_19_202003.tsv.gz
+    │  │      future_tick_19_202004.tsv.gz
+    │  │      future_tick_19_202005.tsv.gz
+    │  │      future_tick_19_202006.tsv.gz
+    │  │      future_tick_19_202007.tsv.gz
+    │  │      future_tick_19_202008.tsv.gz
+    │  │      future_tick_19_202009.tsv.gz
+    │  │      future_tick_19_202010.tsv.gz
+    │  │      future_tick_19_202011.tsv.gz
+    │  │      future_tick_19_202012.tsv.gz
+    │  │      
+    │  ├─2021
+    │  │      future_tick_19_202101.tsv.gz
+    │  │      future_tick_19_202102.tsv.gz
+    │  │      future_tick_19_202103.tsv.gz
+    │  │      future_tick_19_202104.tsv.gz
+    │  │      future_tick_19_202105.tsv.gz
+    │  │      future_tick_19_202106.tsv.gz
+    │  │      future_tick_19_202107.tsv.gz
+    │  │      future_tick_19_202108.tsv.gz
+    │  │      future_tick_19_202109.tsv.gz
+    │  │      future_tick_19_202110.tsv.gz
+    │  │      future_tick_19_202111.tsv.gz
+    │  │      future_tick_19_202112.tsv.gz
+    │  │      
+    │  ├─2022
+    │  │      future_tick_19_202201.tsv.gz
+    │  │      future_tick_19_202202.tsv.gz
+    │  │      future_tick_19_202203.tsv.gz
+    │  │      future_tick_19_202204.tsv.gz
+    │  │      future_tick_19_202205.tsv.gz
+    │  │      future_tick_19_202206.tsv.gz
+    │  │      future_tick_19_202207.tsv.gz
+    │  │      future_tick_19_202208.tsv.gz
+    │  │      future_tick_19_202209.tsv.gz
+    │  │      future_tick_19_202210.tsv.gz
+    │  │      future_tick_19_202211.tsv.gz
+    │  │      future_tick_19_202212.tsv.gz
+    │  │      
+    │  ├─2023
+    │  │      future_tick_19_202301.tsv.gz
+    │  │      future_tick_19_202302.tsv.gz
+    │  │      future_tick_19_202303.tsv.gz
+    │  │      future_tick_19_202304.tsv.gz
+    │  │      future_tick_19_202305.tsv.gz
+    │  │      future_tick_19_202306.tsv.gz
+    │  │      future_tick_19_202307.tsv.gz
+    │  │      future_tick_19_202308.tsv.gz
+    │  │      future_tick_19_202309.tsv.gz
+    │  │      future_tick_19_202310.tsv.gz
+    │  │      future_tick_19_202311.tsv.gz
+    │  │      future_tick_19_202312.tsv.gz
+    │  │      
+    │  ├─2024
+    │  │      future_tick_19_202401.tsv.gz
+    │  │      future_tick_19_202402.tsv.gz
+    │  │      future_tick_19_202403.tsv.gz
+    │  │      future_tick_19_202404.tsv.gz
+    │  │      future_tick_19_202405.tsv.gz
+    │  │      future_tick_19_202406.tsv.gz
+    │  │      future_tick_19_202407.tsv.gz
+    │  │      future_tick_19_202408.tsv.gz
+    │  │      future_tick_19_202409.tsv.gz
+    │  │      future_tick_19_202410.tsv.gz
+    │  │      future_tick_19_202411.tsv.gz
+    │  │      future_tick_19_202412.tsv.gz
+    │  │      
+    │  ├─2025
+    │  │      future_tick_19_202501.tsv.gz
+    │  │      future_tick_19_202502.tsv.gz
+    │  │      future_tick_19_202503.tsv.gz
+    │  │      future_tick_19_202504.tsv.gz
+    │  │      future_tick_19_202505.tsv.gz
+    │  │      future_tick_19_202506.tsv.gz
+    │  │      future_tick_19_202507.tsv.gz
+    │  │      future_tick_19_202508.tsv.gz
+    │  │      future_tick_19_202509.tsv.gz
+    │  │      future_tick_19_202510.tsv.gz
+    │  │      
+    │  └─2026
+    ├─ShortSelling
+    │      jpx_short_selling_daily.tsv
+    │      
+    ├─US500
+    │  ├─2018
+    │  │      US500-20180101.tsv.gz
+    │  │      US500-20180108.tsv.gz
+    │  │      US500-20180115.tsv.gz
+    │  │      US500-20180122.tsv.gz
+    │  │      US500-20180129.tsv.gz
+    │  │      US500-20180205.tsv.gz
+    │  │      US500-20180212.tsv.gz
+    │  │      US500-20180219.tsv.gz
+    │  │      US500-20180226.tsv.gz
+    │  │      US500-20180305.tsv.gz
+    │  │      US500-20180312.tsv.gz
+    │  │      US500-20180319.tsv.gz
+    │  │      US500-20180326.tsv.gz
+    │  │      US500-20180402.tsv.gz
+    │  │      US500-20180409.tsv.gz
+    │  │      US500-20180416.tsv.gz
+    │  │      US500-20180423.tsv.gz
+    │  │      US500-20180430.tsv.gz
+    │  │      US500-20180507.tsv.gz
+    │  │      US500-20180514.tsv.gz
+    │  │      US500-20180521.tsv.gz
+    │  │      US500-20180528.tsv.gz
+    │  │      US500-20180604.tsv.gz
+    │  │      US500-20180611.tsv.gz
+    │  │      US500-20180618.tsv.gz
+    │  │      US500-20180625.tsv.gz
+    │  │      US500-20180702.tsv.gz
+    │  │      US500-20180709.tsv.gz
+    │  │      US500-20180716.tsv.gz
+    │  │      US500-20180723.tsv.gz
+    │  │      US500-20180730.tsv.gz
+    │  │      US500-20180806.tsv.gz
+    │  │      US500-20180813.tsv.gz
+    │  │      US500-20180820.tsv.gz
+    │  │      US500-20180827.tsv.gz
+    │  │      US500-20180903.tsv.gz
+    │  │      US500-20180910.tsv.gz
+    │  │      US500-20180917.tsv.gz
+    │  │      US500-20180924.tsv.gz
+    │  │      US500-20181001.tsv.gz
+    │  │      US500-20181008.tsv.gz
+    │  │      US500-20181015.tsv.gz
+    │  │      US500-20181022.tsv.gz
+    │  │      US500-20181029.tsv.gz
+    │  │      US500-20181105.tsv.gz
+    │  │      US500-20181112.tsv.gz
+    │  │      US500-20181119.tsv.gz
+    │  │      US500-20181126.tsv.gz
+    │  │      US500-20181203.tsv.gz
+    │  │      US500-20181210.tsv.gz
+    │  │      US500-20181217.tsv.gz
+    │  │      US500-20181224.tsv.gz
+    │  │      US500-20181231.tsv.gz
+    │  │      
+    │  ├─2019
+    │  │      US500-20190107.tsv.gz
+    │  │      US500-20190114.tsv.gz
+    │  │      US500-20190121.tsv.gz
+    │  │      US500-20190128.tsv.gz
+    │  │      US500-20190204.tsv.gz
+    │  │      US500-20190211.tsv.gz
+    │  │      US500-20190218.tsv.gz
+    │  │      US500-20190225.tsv.gz
+    │  │      US500-20190304.tsv.gz
+    │  │      US500-20190311.tsv.gz
+    │  │      US500-20190318.tsv.gz
+    │  │      US500-20190325.tsv.gz
+    │  │      US500-20190401.tsv.gz
+    │  │      US500-20190408.tsv.gz
+    │  │      US500-20190415.tsv.gz
+    │  │      US500-20190422.tsv.gz
+    │  │      US500-20190429.tsv.gz
+    │  │      US500-20190506.tsv.gz
+    │  │      US500-20190513.tsv.gz
+    │  │      US500-20190520.tsv.gz
+    │  │      US500-20190527.tsv.gz
+    │  │      US500-20190603.tsv.gz
+    │  │      US500-20190610.tsv.gz
+    │  │      US500-20190617.tsv.gz
+    │  │      US500-20190624.tsv.gz
+    │  │      US500-20190701.tsv.gz
+    │  │      US500-20190708.tsv.gz
+    │  │      US500-20190715.tsv.gz
+    │  │      US500-20190722.tsv.gz
+    │  │      US500-20190729.tsv.gz
+    │  │      US500-20190805.tsv.gz
+    │  │      US500-20190812.tsv.gz
+    │  │      US500-20190819.tsv.gz
+    │  │      US500-20190826.tsv.gz
+    │  │      US500-20190902.tsv.gz
+    │  │      US500-20190909.tsv.gz
+    │  │      US500-20190916.tsv.gz
+    │  │      US500-20190923.tsv.gz
+    │  │      US500-20190930.tsv.gz
+    │  │      US500-20191007.tsv.gz
+    │  │      US500-20191014.tsv.gz
+    │  │      US500-20191021.tsv.gz
+    │  │      US500-20191028.tsv.gz
+    │  │      US500-20191104.tsv.gz
+    │  │      US500-20191111.tsv.gz
+    │  │      US500-20191118.tsv.gz
+    │  │      US500-20191125.tsv.gz
+    │  │      US500-20191202.tsv.gz
+    │  │      US500-20191209.tsv.gz
+    │  │      US500-20191216.tsv.gz
+    │  │      US500-20191223.tsv.gz
+    │  │      US500-20191230.tsv.gz
+    │  │      
+    │  ├─2020
+    │  │      US500-20200106.tsv.gz
+    │  │      US500-20200113.tsv.gz
+    │  │      US500-20200120.tsv.gz
+    │  │      US500-20200127.tsv.gz
+    │  │      US500-20200203.tsv.gz
+    │  │      US500-20200210.tsv.gz
+    │  │      US500-20200217.tsv.gz
+    │  │      US500-20200224.tsv.gz
+    │  │      US500-20200302.tsv.gz
+    │  │      US500-20200309.tsv.gz
+    │  │      US500-20200316.tsv.gz
+    │  │      US500-20200323.tsv.gz
+    │  │      US500-20200330.tsv.gz
+    │  │      US500-20200406.tsv.gz
+    │  │      US500-20200413.tsv.gz
+    │  │      US500-20200420.tsv.gz
+    │  │      US500-20200427.tsv.gz
+    │  │      US500-20200504.tsv.gz
+    │  │      US500-20200511.tsv.gz
+    │  │      US500-20200518.tsv.gz
+    │  │      US500-20200525.tsv.gz
+    │  │      US500-20200601.tsv.gz
+    │  │      US500-20200608.tsv.gz
+    │  │      US500-20200615.tsv.gz
+    │  │      US500-20200622.tsv.gz
+    │  │      US500-20200629.tsv.gz
+    │  │      US500-20200706.tsv.gz
+    │  │      US500-20200713.tsv.gz
+    │  │      US500-20200720.tsv.gz
+    │  │      US500-20200727.tsv.gz
+    │  │      US500-20200803.tsv.gz
+    │  │      US500-20200810.tsv.gz
+    │  │      US500-20200817.tsv.gz
+    │  │      US500-20200824.tsv.gz
+    │  │      US500-20200831.tsv.gz
+    │  │      US500-20200907.tsv.gz
+    │  │      US500-20200914.tsv.gz
+    │  │      US500-20200921.tsv.gz
+    │  │      US500-20200928.tsv.gz
+    │  │      US500-20201005.tsv.gz
+    │  │      US500-20201012.tsv.gz
+    │  │      US500-20201019.tsv.gz
+    │  │      US500-20201026.tsv.gz
+    │  │      US500-20201102.tsv.gz
+    │  │      US500-20201109.tsv.gz
+    │  │      US500-20201116.tsv.gz
+    │  │      US500-20201123.tsv.gz
+    │  │      US500-20201130.tsv.gz
+    │  │      US500-20201207.tsv.gz
+    │  │      US500-20201214.tsv.gz
+    │  │      US500-20201221.tsv.gz
+    │  │      US500-20201228.tsv.gz
+    │  │      
+    │  ├─2021
+    │  │      US500-20210104.tsv.gz
+    │  │      US500-20210111.tsv.gz
+    │  │      US500-20210118.tsv.gz
+    │  │      US500-20210125.tsv.gz
+    │  │      US500-20210201.tsv.gz
+    │  │      US500-20210208.tsv.gz
+    │  │      US500-20210215.tsv.gz
+    │  │      US500-20210222.tsv.gz
+    │  │      US500-20210301.tsv.gz
+    │  │      US500-20210308.tsv.gz
+    │  │      US500-20210315.tsv.gz
+    │  │      US500-20210322.tsv.gz
+    │  │      US500-20210329.tsv.gz
+    │  │      US500-20210405.tsv.gz
+    │  │      US500-20210412.tsv.gz
+    │  │      US500-20210419.tsv.gz
+    │  │      US500-20210426.tsv.gz
+    │  │      US500-20210503.tsv.gz
+    │  │      US500-20210510.tsv.gz
+    │  │      US500-20210517.tsv.gz
+    │  │      US500-20210524.tsv.gz
+    │  │      US500-20210531.tsv.gz
+    │  │      US500-20210607.tsv.gz
+    │  │      US500-20210614.tsv.gz
+    │  │      US500-20210621.tsv.gz
+    │  │      US500-20210628.tsv.gz
+    │  │      US500-20210705.tsv.gz
+    │  │      US500-20210712.tsv.gz
+    │  │      US500-20210719.tsv.gz
+    │  │      US500-20210726.tsv.gz
+    │  │      US500-20210802.tsv.gz
+    │  │      US500-20210809.tsv.gz
+    │  │      US500-20210816.tsv.gz
+    │  │      US500-20210823.tsv.gz
+    │  │      US500-20210830.tsv.gz
+    │  │      US500-20210906.tsv.gz
+    │  │      US500-20210913.tsv.gz
+    │  │      US500-20210920.tsv.gz
+    │  │      US500-20210927.tsv.gz
+    │  │      US500-20211004.tsv.gz
+    │  │      US500-20211011.tsv.gz
+    │  │      US500-20211018.tsv.gz
+    │  │      US500-20211025.tsv.gz
+    │  │      US500-20211101.tsv.gz
+    │  │      US500-20211108.tsv.gz
+    │  │      US500-20211115.tsv.gz
+    │  │      US500-20211122.tsv.gz
+    │  │      US500-20211129.tsv.gz
+    │  │      US500-20211206.tsv.gz
+    │  │      US500-20211213.tsv.gz
+    │  │      US500-20211220.tsv.gz
+    │  │      US500-20211227.tsv.gz
+    │  │      
+    │  ├─2022
+    │  │      US500-20220103.tsv.gz
+    │  │      US500-20220110.tsv.gz
+    │  │      US500-20220117.tsv.gz
+    │  │      US500-20220124.tsv.gz
+    │  │      US500-20220131.tsv.gz
+    │  │      US500-20220207.tsv.gz
+    │  │      US500-20220214.tsv.gz
+    │  │      US500-20220221.tsv.gz
+    │  │      US500-20220228.tsv.gz
+    │  │      US500-20220307.tsv.gz
+    │  │      US500-20220314.tsv.gz
+    │  │      US500-20220321.tsv.gz
+    │  │      US500-20220328.tsv.gz
+    │  │      US500-20220404.tsv.gz
+    │  │      US500-20220411.tsv.gz
+    │  │      US500-20220418.tsv.gz
+    │  │      US500-20220425.tsv.gz
+    │  │      US500-20220502.tsv.gz
+    │  │      US500-20220509.tsv.gz
+    │  │      US500-20220516.tsv.gz
+    │  │      US500-20220523.tsv.gz
+    │  │      US500-20220530.tsv.gz
+    │  │      US500-20220606.tsv.gz
+    │  │      US500-20220613.tsv.gz
+    │  │      US500-20220620.tsv.gz
+    │  │      US500-20220627.tsv.gz
+    │  │      US500-20220704.tsv.gz
+    │  │      US500-20220711.tsv.gz
+    │  │      US500-20220718.tsv.gz
+    │  │      US500-20220725.tsv.gz
+    │  │      US500-20220801.tsv.gz
+    │  │      US500-20220808.tsv.gz
+    │  │      US500-20220815.tsv.gz
+    │  │      US500-20220822.tsv.gz
+    │  │      US500-20220829.tsv.gz
+    │  │      US500-20220905.tsv.gz
+    │  │      US500-20220912.tsv.gz
+    │  │      US500-20220919.tsv.gz
+    │  │      US500-20220926.tsv.gz
+    │  │      US500-20221003.tsv.gz
+    │  │      US500-20221010.tsv.gz
+    │  │      US500-20221017.tsv.gz
+    │  │      US500-20221024.tsv.gz
+    │  │      US500-20221031.tsv.gz
+    │  │      US500-20221107.tsv.gz
+    │  │      US500-20221114.tsv.gz
+    │  │      US500-20221121.tsv.gz
+    │  │      US500-20221128.tsv.gz
+    │  │      US500-20221205.tsv.gz
+    │  │      US500-20221212.tsv.gz
+    │  │      US500-20221219.tsv.gz
+    │  │      US500-20221226.tsv.gz
+    │  │      
+    │  ├─2023
+    │  │      US500-20230102.tsv.gz
+    │  │      US500-20230109.tsv.gz
+    │  │      US500-20230116.tsv.gz
+    │  │      US500-20230123.tsv.gz
+    │  │      US500-20230130.tsv.gz
+    │  │      US500-20230206.tsv.gz
+    │  │      US500-20230213.tsv.gz
+    │  │      US500-20230220.tsv.gz
+    │  │      US500-20230227.tsv.gz
+    │  │      US500-20230306.tsv.gz
+    │  │      US500-20230313.tsv.gz
+    │  │      US500-20230320.tsv.gz
+    │  │      US500-20230327.tsv.gz
+    │  │      US500-20230403.tsv.gz
+    │  │      US500-20230410.tsv.gz
+    │  │      US500-20230417.tsv.gz
+    │  │      US500-20230424.tsv.gz
+    │  │      US500-20230501.tsv.gz
+    │  │      US500-20230508.tsv.gz
+    │  │      US500-20230515.tsv.gz
+    │  │      US500-20230522.tsv.gz
+    │  │      US500-20230529.tsv.gz
+    │  │      US500-20230605.tsv.gz
+    │  │      US500-20230612.tsv.gz
+    │  │      US500-20230619.tsv.gz
+    │  │      US500-20230626.tsv.gz
+    │  │      US500-20230703.tsv.gz
+    │  │      US500-20230710.tsv.gz
+    │  │      US500-20230717.tsv.gz
+    │  │      US500-20230724.tsv.gz
+    │  │      US500-20230731.tsv.gz
+    │  │      US500-20230807.tsv.gz
+    │  │      US500-20230814.tsv.gz
+    │  │      US500-20230821.tsv.gz
+    │  │      US500-20230828.tsv.gz
+    │  │      US500-20230904.tsv.gz
+    │  │      US500-20230911.tsv.gz
+    │  │      US500-20230918.tsv.gz
+    │  │      US500-20230925.tsv.gz
+    │  │      US500-20231002.tsv.gz
+    │  │      US500-20231009.tsv.gz
+    │  │      US500-20231016.tsv.gz
+    │  │      US500-20231023.tsv.gz
+    │  │      US500-20231030.tsv.gz
+    │  │      US500-20231106.tsv.gz
+    │  │      US500-20231113.tsv.gz
+    │  │      US500-20231120.tsv.gz
+    │  │      US500-20231127.tsv.gz
+    │  │      US500-20231204.tsv.gz
+    │  │      US500-20231211.tsv.gz
+    │  │      US500-20231218.tsv.gz
+    │  │      US500-20231225.tsv.gz
+    │  │      
+    │  ├─2024
+    │  │      US500-20240101.tsv.gz
+    │  │      US500-20240108.tsv.gz
+    │  │      US500-20240115.tsv.gz
+    │  │      US500-20240122.tsv.gz
+    │  │      US500-20240129.tsv.gz
+    │  │      US500-20240205.tsv.gz
+    │  │      US500-20240212.tsv.gz
+    │  │      US500-20240219.tsv.gz
+    │  │      US500-20240226.tsv.gz
+    │  │      US500-20240304.tsv.gz
+    │  │      US500-20240311.tsv.gz
+    │  │      US500-20240318.tsv.gz
+    │  │      US500-20240325.tsv.gz
+    │  │      US500-20240401.tsv.gz
+    │  │      US500-20240408.tsv.gz
+    │  │      US500-20240415.tsv.gz
+    │  │      US500-20240422.tsv.gz
+    │  │      US500-20240429.tsv.gz
+    │  │      US500-20240506.tsv.gz
+    │  │      US500-20240513.tsv.gz
+    │  │      US500-20240520.tsv.gz
+    │  │      US500-20240527.tsv.gz
+    │  │      US500-20240603.tsv.gz
+    │  │      US500-20240610.tsv.gz
+    │  │      US500-20240617.tsv.gz
+    │  │      US500-20240624.tsv.gz
+    │  │      US500-20240701.tsv.gz
+    │  │      US500-20240708.tsv.gz
+    │  │      US500-20240715.tsv.gz
+    │  │      US500-20240722.tsv.gz
+    │  │      US500-20240729.tsv.gz
+    │  │      US500-20240805.tsv.gz
+    │  │      US500-20240812.tsv.gz
+    │  │      US500-20240819.tsv.gz
+    │  │      US500-20240826.tsv.gz
+    │  │      US500-20240902.tsv.gz
+    │  │      US500-20240909.tsv.gz
+    │  │      US500-20240916.tsv.gz
+    │  │      US500-20240923.tsv.gz
+    │  │      US500-20240930.tsv.gz
+    │  │      US500-20241007.tsv.gz
+    │  │      US500-20241014.tsv.gz
+    │  │      US500-20241021.tsv.gz
+    │  │      US500-20241028.tsv.gz
+    │  │      US500-20241104.tsv.gz
+    │  │      US500-20241111.tsv.gz
+    │  │      US500-20241118.tsv.gz
+    │  │      US500-20241125.tsv.gz
+    │  │      US500-20241202.tsv.gz
+    │  │      US500-20241209.tsv.gz
+    │  │      US500-20241216.tsv.gz
+    │  │      US500-20241223.tsv.gz
+    │  │      US500-20241230.tsv.gz
+    │  │      
+    │  ├─2025
+    │  │      US500-20250106.tsv.gz
+    │  │      US500-20250113.tsv.gz
+    │  │      US500-20250120.tsv.gz
+    │  │      US500-20250127.tsv.gz
+    │  │      US500-20250203.tsv.gz
+    │  │      US500-20250210.tsv.gz
+    │  │      US500-20250217.tsv.gz
+    │  │      US500-20250224.tsv.gz
+    │  │      US500-20250303.tsv.gz
+    │  │      US500-20250310.tsv.gz
+    │  │      US500-20250317.tsv.gz
+    │  │      US500-20250324.tsv.gz
+    │  │      US500-20250331.tsv.gz
+    │  │      US500-20250407.tsv.gz
+    │  │      US500-20250414.tsv.gz
+    │  │      US500-20250421.tsv.gz
+    │  │      US500-20250428.tsv.gz
+    │  │      US500-20250505.tsv.gz
+    │  │      US500-20250512.tsv.gz
+    │  │      US500-20250519.tsv.gz
+    │  │      US500-20250526.tsv.gz
+    │  │      US500-20250602.tsv.gz
+    │  │      US500-20250609.tsv.gz
+    │  │      US500-20250616.tsv.gz
+    │  │      US500-20250623.tsv.gz
+    │  │      US500-20250630.tsv.gz
+    │  │      US500-20250707.tsv.gz
+    │  │      US500-20250714.tsv.gz
+    │  │      US500-20250721.tsv.gz
+    │  │      US500-20250728.tsv.gz
+    │  │      US500-20250804.tsv.gz
+    │  │      US500-20250811.tsv.gz
+    │  │      US500-20250818.tsv.gz
+    │  │      US500-20250825.tsv.gz
+    │  │      US500-20250901.tsv.gz
+    │  │      US500-20250908.tsv.gz
+    │  │      US500-20250915.tsv.gz
+    │  │      US500-20250922.tsv.gz
+    │  │      US500-20250929.tsv.gz
+    │  │      US500-20251006.tsv.gz
+    │  │      US500-20251013.tsv.gz
+    │  │      US500-20251020.tsv.gz
+    │  │      US500-20251027.tsv.gz
+    │  │      US500-20251103.tsv.gz
+    │  │      US500-20251110.tsv.gz
+    │  │      US500-20251117.tsv.gz
+    │  │      US500-20251124.tsv.gz
+    │  │      US500-20251201.tsv.gz
+    │  │      US500-20251208.tsv.gz
+    │  │      US500-20251215.tsv.gz
+    │  │      US500-20251222.tsv.gz
+    │  │      US500-20251229.tsv.gz
+    │  │      
+    │  └─2026
+    │          US500-20260105.tsv.gz
+    │          US500-20260112.tsv.gz
+    │          US500-20260119.tsv.gz
+    │          US500-20260126.tsv.gz
+    │          US500-20260202.tsv.gz
+    │          US500-20260209.tsv.gz
+    │          US500-20260216.tsv.gz
+    │          US500-20260223.tsv.gz
+    │          US500-20260302.tsv.gz
+    │          
+    ├─USDJPY
+    │  ├─2018
+    │  │      USDJPY-20180101.tsv.gz
+    │  │      USDJPY-20180108.tsv.gz
+    │  │      USDJPY-20180115.tsv.gz
+    │  │      USDJPY-20180122.tsv.gz
+    │  │      USDJPY-20180129.tsv.gz
+    │  │      USDJPY-20180205.tsv.gz
+    │  │      USDJPY-20180212.tsv.gz
+    │  │      USDJPY-20180219.tsv.gz
+    │  │      USDJPY-20180226.tsv.gz
+    │  │      USDJPY-20180305.tsv.gz
+    │  │      USDJPY-20180312.tsv.gz
+    │  │      USDJPY-20180319.tsv.gz
+    │  │      USDJPY-20180326.tsv.gz
+    │  │      USDJPY-20180402.tsv.gz
+    │  │      USDJPY-20180409.tsv.gz
+    │  │      USDJPY-20180416.tsv.gz
+    │  │      USDJPY-20180423.tsv.gz
+    │  │      USDJPY-20180430.tsv.gz
+    │  │      USDJPY-20180507.tsv.gz
+    │  │      USDJPY-20180514.tsv.gz
+    │  │      USDJPY-20180521.tsv.gz
+    │  │      USDJPY-20180528.tsv.gz
+    │  │      USDJPY-20180604.tsv.gz
+    │  │      USDJPY-20180611.tsv.gz
+    │  │      USDJPY-20180618.tsv.gz
+    │  │      USDJPY-20180625.tsv.gz
+    │  │      USDJPY-20180702.tsv.gz
+    │  │      USDJPY-20180709.tsv.gz
+    │  │      USDJPY-20180716.tsv.gz
+    │  │      USDJPY-20180723.tsv.gz
+    │  │      USDJPY-20180730.tsv.gz
+    │  │      USDJPY-20180806.tsv.gz
+    │  │      USDJPY-20180813.tsv.gz
+    │  │      USDJPY-20180820.tsv.gz
+    │  │      USDJPY-20180827.tsv.gz
+    │  │      USDJPY-20180903.tsv.gz
+    │  │      USDJPY-20180910.tsv.gz
+    │  │      USDJPY-20180917.tsv.gz
+    │  │      USDJPY-20180924.tsv.gz
+    │  │      USDJPY-20181001.tsv.gz
+    │  │      USDJPY-20181008.tsv.gz
+    │  │      USDJPY-20181015.tsv.gz
+    │  │      USDJPY-20181022.tsv.gz
+    │  │      USDJPY-20181029.tsv.gz
+    │  │      USDJPY-20181105.tsv.gz
+    │  │      USDJPY-20181112.tsv.gz
+    │  │      USDJPY-20181119.tsv.gz
+    │  │      USDJPY-20181126.tsv.gz
+    │  │      USDJPY-20181203.tsv.gz
+    │  │      USDJPY-20181210.tsv.gz
+    │  │      USDJPY-20181217.tsv.gz
+    │  │      USDJPY-20181224.tsv.gz
+    │  │      USDJPY-20181231.tsv.gz
+    │  │      
+    │  ├─2019
+    │  │      USDJPY-20190107.tsv.gz
+    │  │      USDJPY-20190114.tsv.gz
+    │  │      USDJPY-20190121.tsv.gz
+    │  │      USDJPY-20190128.tsv.gz
+    │  │      USDJPY-20190204.tsv.gz
+    │  │      USDJPY-20190211.tsv.gz
+    │  │      USDJPY-20190218.tsv.gz
+    │  │      USDJPY-20190225.tsv.gz
+    │  │      USDJPY-20190304.tsv.gz
+    │  │      USDJPY-20190311.tsv.gz
+    │  │      USDJPY-20190318.tsv.gz
+    │  │      USDJPY-20190325.tsv.gz
+    │  │      USDJPY-20190401.tsv.gz
+    │  │      USDJPY-20190408.tsv.gz
+    │  │      USDJPY-20190415.tsv.gz
+    │  │      USDJPY-20190422.tsv.gz
+    │  │      USDJPY-20190429.tsv.gz
+    │  │      USDJPY-20190506.tsv.gz
+    │  │      USDJPY-20190513.tsv.gz
+    │  │      USDJPY-20190520.tsv.gz
+    │  │      USDJPY-20190527.tsv.gz
+    │  │      USDJPY-20190603.tsv.gz
+    │  │      USDJPY-20190610.tsv.gz
+    │  │      USDJPY-20190617.tsv.gz
+    │  │      USDJPY-20190624.tsv.gz
+    │  │      USDJPY-20190701.tsv.gz
+    │  │      USDJPY-20190708.tsv.gz
+    │  │      USDJPY-20190715.tsv.gz
+    │  │      USDJPY-20190722.tsv.gz
+    │  │      USDJPY-20190729.tsv.gz
+    │  │      USDJPY-20190805.tsv.gz
+    │  │      USDJPY-20190812.tsv.gz
+    │  │      USDJPY-20190819.tsv.gz
+    │  │      USDJPY-20190826.tsv.gz
+    │  │      USDJPY-20190902.tsv.gz
+    │  │      USDJPY-20190909.tsv.gz
+    │  │      USDJPY-20190916.tsv.gz
+    │  │      USDJPY-20190923.tsv.gz
+    │  │      USDJPY-20190930.tsv.gz
+    │  │      USDJPY-20191007.tsv.gz
+    │  │      USDJPY-20191014.tsv.gz
+    │  │      USDJPY-20191021.tsv.gz
+    │  │      USDJPY-20191028.tsv.gz
+    │  │      USDJPY-20191104.tsv.gz
+    │  │      USDJPY-20191111.tsv.gz
+    │  │      USDJPY-20191118.tsv.gz
+    │  │      USDJPY-20191125.tsv.gz
+    │  │      USDJPY-20191202.tsv.gz
+    │  │      USDJPY-20191209.tsv.gz
+    │  │      USDJPY-20191216.tsv.gz
+    │  │      USDJPY-20191223.tsv.gz
+    │  │      USDJPY-20191230.tsv.gz
+    │  │      
+    │  ├─2020
+    │  │      USDJPY-20200106.tsv.gz
+    │  │      USDJPY-20200113.tsv.gz
+    │  │      USDJPY-20200120.tsv.gz
+    │  │      USDJPY-20200127.tsv.gz
+    │  │      USDJPY-20200203.tsv.gz
+    │  │      USDJPY-20200210.tsv.gz
+    │  │      USDJPY-20200217.tsv.gz
+    │  │      USDJPY-20200224.tsv.gz
+    │  │      USDJPY-20200302.tsv.gz
+    │  │      USDJPY-20200309.tsv.gz
+    │  │      USDJPY-20200316.tsv.gz
+    │  │      USDJPY-20200323.tsv.gz
+    │  │      USDJPY-20200330.tsv.gz
+    │  │      USDJPY-20200406.tsv.gz
+    │  │      USDJPY-20200413.tsv.gz
+    │  │      USDJPY-20200420.tsv.gz
+    │  │      USDJPY-20200427.tsv.gz
+    │  │      USDJPY-20200504.tsv.gz
+    │  │      USDJPY-20200511.tsv.gz
+    │  │      USDJPY-20200518.tsv.gz
+    │  │      USDJPY-20200525.tsv.gz
+    │  │      USDJPY-20200601.tsv.gz
+    │  │      USDJPY-20200608.tsv.gz
+    │  │      USDJPY-20200615.tsv.gz
+    │  │      USDJPY-20200622.tsv.gz
+    │  │      USDJPY-20200629.tsv.gz
+    │  │      USDJPY-20200706.tsv.gz
+    │  │      USDJPY-20200713.tsv.gz
+    │  │      USDJPY-20200720.tsv.gz
+    │  │      USDJPY-20200727.tsv.gz
+    │  │      USDJPY-20200803.tsv.gz
+    │  │      USDJPY-20200810.tsv.gz
+    │  │      USDJPY-20200817.tsv.gz
+    │  │      USDJPY-20200824.tsv.gz
+    │  │      USDJPY-20200831.tsv.gz
+    │  │      USDJPY-20200907.tsv.gz
+    │  │      USDJPY-20200914.tsv.gz
+    │  │      USDJPY-20200921.tsv.gz
+    │  │      USDJPY-20200928.tsv.gz
+    │  │      USDJPY-20201005.tsv.gz
+    │  │      USDJPY-20201012.tsv.gz
+    │  │      USDJPY-20201019.tsv.gz
+    │  │      USDJPY-20201026.tsv.gz
+    │  │      USDJPY-20201102.tsv.gz
+    │  │      USDJPY-20201109.tsv.gz
+    │  │      USDJPY-20201116.tsv.gz
+    │  │      USDJPY-20201123.tsv.gz
+    │  │      USDJPY-20201130.tsv.gz
+    │  │      USDJPY-20201207.tsv.gz
+    │  │      USDJPY-20201214.tsv.gz
+    │  │      USDJPY-20201221.tsv.gz
+    │  │      USDJPY-20201228.tsv.gz
+    │  │      
+    │  ├─2021
+    │  │      USDJPY-20210104.tsv.gz
+    │  │      USDJPY-20210111.tsv.gz
+    │  │      USDJPY-20210118.tsv.gz
+    │  │      USDJPY-20210125.tsv.gz
+    │  │      USDJPY-20210201.tsv.gz
+    │  │      USDJPY-20210208.tsv.gz
+    │  │      USDJPY-20210215.tsv.gz
+    │  │      USDJPY-20210222.tsv.gz
+    │  │      USDJPY-20210301.tsv.gz
+    │  │      USDJPY-20210308.tsv.gz
+    │  │      USDJPY-20210315.tsv.gz
+    │  │      USDJPY-20210322.tsv.gz
+    │  │      USDJPY-20210329.tsv.gz
+    │  │      USDJPY-20210405.tsv.gz
+    │  │      USDJPY-20210412.tsv.gz
+    │  │      USDJPY-20210419.tsv.gz
+    │  │      USDJPY-20210426.tsv.gz
+    │  │      USDJPY-20210503.tsv.gz
+    │  │      USDJPY-20210510.tsv.gz
+    │  │      USDJPY-20210517.tsv.gz
+    │  │      USDJPY-20210524.tsv.gz
+    │  │      USDJPY-20210531.tsv.gz
+    │  │      USDJPY-20210607.tsv.gz
+    │  │      USDJPY-20210614.tsv.gz
+    │  │      USDJPY-20210621.tsv.gz
+    │  │      USDJPY-20210628.tsv.gz
+    │  │      USDJPY-20210705.tsv.gz
+    │  │      USDJPY-20210712.tsv.gz
+    │  │      USDJPY-20210719.tsv.gz
+    │  │      USDJPY-20210726.tsv.gz
+    │  │      USDJPY-20210802.tsv.gz
+    │  │      USDJPY-20210809.tsv.gz
+    │  │      USDJPY-20210816.tsv.gz
+    │  │      USDJPY-20210823.tsv.gz
+    │  │      USDJPY-20210830.tsv.gz
+    │  │      USDJPY-20210906.tsv.gz
+    │  │      USDJPY-20210913.tsv.gz
+    │  │      USDJPY-20210920.tsv.gz
+    │  │      USDJPY-20210927.tsv.gz
+    │  │      USDJPY-20211004.tsv.gz
+    │  │      USDJPY-20211011.tsv.gz
+    │  │      USDJPY-20211018.tsv.gz
+    │  │      USDJPY-20211025.tsv.gz
+    │  │      USDJPY-20211101.tsv.gz
+    │  │      USDJPY-20211108.tsv.gz
+    │  │      USDJPY-20211115.tsv.gz
+    │  │      USDJPY-20211122.tsv.gz
+    │  │      USDJPY-20211129.tsv.gz
+    │  │      USDJPY-20211206.tsv.gz
+    │  │      USDJPY-20211213.tsv.gz
+    │  │      USDJPY-20211220.tsv.gz
+    │  │      USDJPY-20211227.tsv.gz
+    │  │      
+    │  ├─2022
+    │  │      USDJPY-20220103.tsv.gz
+    │  │      USDJPY-20220110.tsv.gz
+    │  │      USDJPY-20220117.tsv.gz
+    │  │      USDJPY-20220124.tsv.gz
+    │  │      USDJPY-20220131.tsv.gz
+    │  │      USDJPY-20220207.tsv.gz
+    │  │      USDJPY-20220214.tsv.gz
+    │  │      USDJPY-20220221.tsv.gz
+    │  │      USDJPY-20220228.tsv.gz
+    │  │      USDJPY-20220307.tsv.gz
+    │  │      USDJPY-20220314.tsv.gz
+    │  │      USDJPY-20220321.tsv.gz
+    │  │      USDJPY-20220328.tsv.gz
+    │  │      USDJPY-20220404.tsv.gz
+    │  │      USDJPY-20220411.tsv.gz
+    │  │      USDJPY-20220418.tsv.gz
+    │  │      USDJPY-20220425.tsv.gz
+    │  │      USDJPY-20220502.tsv.gz
+    │  │      USDJPY-20220509.tsv.gz
+    │  │      USDJPY-20220516.tsv.gz
+    │  │      USDJPY-20220523.tsv.gz
+    │  │      USDJPY-20220530.tsv.gz
+    │  │      USDJPY-20220606.tsv.gz
+    │  │      USDJPY-20220613.tsv.gz
+    │  │      USDJPY-20220620.tsv.gz
+    │  │      USDJPY-20220627.tsv.gz
+    │  │      USDJPY-20220704.tsv.gz
+    │  │      USDJPY-20220711.tsv.gz
+    │  │      USDJPY-20220718.tsv.gz
+    │  │      USDJPY-20220725.tsv.gz
+    │  │      USDJPY-20220801.tsv.gz
+    │  │      USDJPY-20220808.tsv.gz
+    │  │      USDJPY-20220815.tsv.gz
+    │  │      USDJPY-20220822.tsv.gz
+    │  │      USDJPY-20220829.tsv.gz
+    │  │      USDJPY-20220905.tsv.gz
+    │  │      USDJPY-20220912.tsv.gz
+    │  │      USDJPY-20220919.tsv.gz
+    │  │      USDJPY-20220926.tsv.gz
+    │  │      USDJPY-20221003.tsv.gz
+    │  │      USDJPY-20221010.tsv.gz
+    │  │      USDJPY-20221017.tsv.gz
+    │  │      USDJPY-20221024.tsv.gz
+    │  │      USDJPY-20221031.tsv.gz
+    │  │      USDJPY-20221107.tsv.gz
+    │  │      USDJPY-20221114.tsv.gz
+    │  │      USDJPY-20221121.tsv.gz
+    │  │      USDJPY-20221128.tsv.gz
+    │  │      USDJPY-20221205.tsv.gz
+    │  │      USDJPY-20221212.tsv.gz
+    │  │      USDJPY-20221219.tsv.gz
+    │  │      USDJPY-20221226.tsv.gz
+    │  │      
+    │  ├─2023
+    │  │      USDJPY-20230102.tsv.gz
+    │  │      USDJPY-20230109.tsv.gz
+    │  │      USDJPY-20230116.tsv.gz
+    │  │      USDJPY-20230123.tsv.gz
+    │  │      USDJPY-20230130.tsv.gz
+    │  │      USDJPY-20230206.tsv.gz
+    │  │      USDJPY-20230213.tsv.gz
+    │  │      USDJPY-20230220.tsv.gz
+    │  │      USDJPY-20230227.tsv.gz
+    │  │      USDJPY-20230306.tsv.gz
+    │  │      USDJPY-20230313.tsv.gz
+    │  │      USDJPY-20230320.tsv.gz
+    │  │      USDJPY-20230327.tsv.gz
+    │  │      USDJPY-20230403.tsv.gz
+    │  │      USDJPY-20230410.tsv.gz
+    │  │      USDJPY-20230417.tsv.gz
+    │  │      USDJPY-20230424.tsv.gz
+    │  │      USDJPY-20230501.tsv.gz
+    │  │      USDJPY-20230508.tsv.gz
+    │  │      USDJPY-20230515.tsv.gz
+    │  │      USDJPY-20230522.tsv.gz
+    │  │      USDJPY-20230529.tsv.gz
+    │  │      USDJPY-20230605.tsv.gz
+    │  │      USDJPY-20230612.tsv.gz
+    │  │      USDJPY-20230619.tsv.gz
+    │  │      USDJPY-20230626.tsv.gz
+    │  │      USDJPY-20230703.tsv.gz
+    │  │      USDJPY-20230710.tsv.gz
+    │  │      USDJPY-20230717.tsv.gz
+    │  │      USDJPY-20230724.tsv.gz
+    │  │      USDJPY-20230731.tsv.gz
+    │  │      USDJPY-20230807.tsv.gz
+    │  │      USDJPY-20230814.tsv.gz
+    │  │      USDJPY-20230821.tsv.gz
+    │  │      USDJPY-20230828.tsv.gz
+    │  │      USDJPY-20230904.tsv.gz
+    │  │      USDJPY-20230911.tsv.gz
+    │  │      USDJPY-20230918.tsv.gz
+    │  │      USDJPY-20230925.tsv.gz
+    │  │      USDJPY-20231002.tsv.gz
+    │  │      USDJPY-20231009.tsv.gz
+    │  │      USDJPY-20231016.tsv.gz
+    │  │      USDJPY-20231023.tsv.gz
+    │  │      USDJPY-20231030.tsv.gz
+    │  │      USDJPY-20231106.tsv.gz
+    │  │      USDJPY-20231113.tsv.gz
+    │  │      USDJPY-20231120.tsv.gz
+    │  │      USDJPY-20231127.tsv.gz
+    │  │      USDJPY-20231204.tsv.gz
+    │  │      USDJPY-20231211.tsv.gz
+    │  │      USDJPY-20231218.tsv.gz
+    │  │      USDJPY-20231225.tsv.gz
+    │  │      
+    │  ├─2024
+    │  │      USDJPY-20240101.tsv.gz
+    │  │      USDJPY-20240108.tsv.gz
+    │  │      USDJPY-20240115.tsv.gz
+    │  │      USDJPY-20240122.tsv.gz
+    │  │      USDJPY-20240129.tsv.gz
+    │  │      USDJPY-20240205.tsv.gz
+    │  │      USDJPY-20240212.tsv.gz
+    │  │      USDJPY-20240219.tsv.gz
+    │  │      USDJPY-20240226.tsv.gz
+    │  │      USDJPY-20240304.tsv.gz
+    │  │      USDJPY-20240311.tsv.gz
+    │  │      USDJPY-20240318.tsv.gz
+    │  │      USDJPY-20240325.tsv.gz
+    │  │      USDJPY-20240401.tsv.gz
+    │  │      USDJPY-20240408.tsv.gz
+    │  │      USDJPY-20240415.tsv.gz
+    │  │      USDJPY-20240422.tsv.gz
+    │  │      USDJPY-20240429.tsv.gz
+    │  │      USDJPY-20240506.tsv.gz
+    │  │      USDJPY-20240513.tsv.gz
+    │  │      USDJPY-20240520.tsv.gz
+    │  │      USDJPY-20240527.tsv.gz
+    │  │      USDJPY-20240603.tsv.gz
+    │  │      USDJPY-20240610.tsv.gz
+    │  │      USDJPY-20240617.tsv.gz
+    │  │      USDJPY-20240624.tsv.gz
+    │  │      USDJPY-20240701.tsv.gz
+    │  │      USDJPY-20240708.tsv.gz
+    │  │      USDJPY-20240715.tsv.gz
+    │  │      USDJPY-20240722.tsv.gz
+    │  │      USDJPY-20240729.tsv.gz
+    │  │      USDJPY-20240805.tsv.gz
+    │  │      USDJPY-20240812.tsv.gz
+    │  │      USDJPY-20240819.tsv.gz
+    │  │      USDJPY-20240826.tsv.gz
+    │  │      USDJPY-20240902.tsv.gz
+    │  │      USDJPY-20240909.tsv.gz
+    │  │      USDJPY-20240916.tsv.gz
+    │  │      USDJPY-20240923.tsv.gz
+    │  │      USDJPY-20240930.tsv.gz
+    │  │      USDJPY-20241007.tsv.gz
+    │  │      USDJPY-20241014.tsv.gz
+    │  │      USDJPY-20241021.tsv.gz
+    │  │      USDJPY-20241028.tsv.gz
+    │  │      USDJPY-20241104.tsv.gz
+    │  │      USDJPY-20241111.tsv.gz
+    │  │      USDJPY-20241118.tsv.gz
+    │  │      USDJPY-20241125.tsv.gz
+    │  │      USDJPY-20241202.tsv.gz
+    │  │      USDJPY-20241209.tsv.gz
+    │  │      USDJPY-20241216.tsv.gz
+    │  │      USDJPY-20241223.tsv.gz
+    │  │      USDJPY-20241230.tsv.gz
+    │  │      
+    │  ├─2025
+    │  │      USDJPY-20250106.tsv.gz
+    │  │      USDJPY-20250113.tsv.gz
+    │  │      USDJPY-20250120.tsv.gz
+    │  │      USDJPY-20250127.tsv.gz
+    │  │      USDJPY-20250203.tsv.gz
+    │  │      USDJPY-20250210.tsv.gz
+    │  │      USDJPY-20250217.tsv.gz
+    │  │      USDJPY-20250224.tsv.gz
+    │  │      USDJPY-20250303.tsv.gz
+    │  │      USDJPY-20250310.tsv.gz
+    │  │      USDJPY-20250317.tsv.gz
+    │  │      USDJPY-20250324.tsv.gz
+    │  │      USDJPY-20250331.tsv.gz
+    │  │      USDJPY-20250407.tsv.gz
+    │  │      USDJPY-20250414.tsv.gz
+    │  │      USDJPY-20250421.tsv.gz
+    │  │      USDJPY-20250428.tsv.gz
+    │  │      USDJPY-20250505.tsv.gz
+    │  │      USDJPY-20250512.tsv.gz
+    │  │      USDJPY-20250519.tsv.gz
+    │  │      USDJPY-20250526.tsv.gz
+    │  │      USDJPY-20250602.tsv.gz
+    │  │      USDJPY-20250609.tsv.gz
+    │  │      USDJPY-20250616.tsv.gz
+    │  │      USDJPY-20250623.tsv.gz
+    │  │      USDJPY-20250630.tsv.gz
+    │  │      USDJPY-20250707.tsv.gz
+    │  │      USDJPY-20250714.tsv.gz
+    │  │      USDJPY-20250721.tsv.gz
+    │  │      USDJPY-20250728.tsv.gz
+    │  │      USDJPY-20250804.tsv.gz
+    │  │      USDJPY-20250811.tsv.gz
+    │  │      USDJPY-20250818.tsv.gz
+    │  │      USDJPY-20250825.tsv.gz
+    │  │      USDJPY-20250901.tsv.gz
+    │  │      USDJPY-20250908.tsv.gz
+    │  │      USDJPY-20250915.tsv.gz
+    │  │      USDJPY-20250922.tsv.gz
+    │  │      USDJPY-20250929.tsv.gz
+    │  │      USDJPY-20251006.tsv.gz
+    │  │      USDJPY-20251013.tsv.gz
+    │  │      USDJPY-20251020.tsv.gz
+    │  │      USDJPY-20251027.tsv.gz
+    │  │      USDJPY-20251103.tsv.gz
+    │  │      USDJPY-20251110.tsv.gz
+    │  │      USDJPY-20251117.tsv.gz
+    │  │      USDJPY-20251124.tsv.gz
+    │  │      USDJPY-20251201.tsv.gz
+    │  │      USDJPY-20251208.tsv.gz
+    │  │      USDJPY-20251215.tsv.gz
+    │  │      USDJPY-20251222.tsv.gz
+    │  │      USDJPY-20251229.tsv.gz
+    │  │      
+    │  └─2026
+    │          USDJPY-20260105.tsv.gz
+    │          USDJPY-20260112.tsv.gz
+    │          USDJPY-20260119.tsv.gz
+    │          USDJPY-20260126.tsv.gz
+    │          USDJPY-20260202.tsv.gz
+    │          USDJPY-20260209.tsv.gz
+    │          USDJPY-20260216.tsv.gz
+    │          USDJPY-20260223.tsv.gz
+    │          USDJPY-20260302.tsv.gz
+    │          USDJPY-20260309.tsv.gz
+    │          
+    ├─XAUUSD
+    │  ├─2018
+    │  │      XAUUSD-20180101.tsv.gz
+    │  │      XAUUSD-20180108.tsv.gz
+    │  │      XAUUSD-20180115.tsv.gz
+    │  │      XAUUSD-20180122.tsv.gz
+    │  │      XAUUSD-20180129.tsv.gz
+    │  │      XAUUSD-20180205.tsv.gz
+    │  │      XAUUSD-20180212.tsv.gz
+    │  │      XAUUSD-20180219.tsv.gz
+    │  │      XAUUSD-20180226.tsv.gz
+    │  │      XAUUSD-20180305.tsv.gz
+    │  │      XAUUSD-20180312.tsv.gz
+    │  │      XAUUSD-20180319.tsv.gz
+    │  │      XAUUSD-20180326.tsv.gz
+    │  │      XAUUSD-20180402.tsv.gz
+    │  │      XAUUSD-20180409.tsv.gz
+    │  │      XAUUSD-20180416.tsv.gz
+    │  │      XAUUSD-20180423.tsv.gz
+    │  │      XAUUSD-20180430.tsv.gz
+    │  │      XAUUSD-20180507.tsv.gz
+    │  │      XAUUSD-20180514.tsv.gz
+    │  │      XAUUSD-20180521.tsv.gz
+    │  │      XAUUSD-20180528.tsv.gz
+    │  │      XAUUSD-20180604.tsv.gz
+    │  │      XAUUSD-20180611.tsv.gz
+    │  │      XAUUSD-20180618.tsv.gz
+    │  │      XAUUSD-20180625.tsv.gz
+    │  │      XAUUSD-20180702.tsv.gz
+    │  │      XAUUSD-20180709.tsv.gz
+    │  │      XAUUSD-20180716.tsv.gz
+    │  │      XAUUSD-20180723.tsv.gz
+    │  │      XAUUSD-20180730.tsv.gz
+    │  │      XAUUSD-20180806.tsv.gz
+    │  │      XAUUSD-20180813.tsv.gz
+    │  │      XAUUSD-20180820.tsv.gz
+    │  │      XAUUSD-20180827.tsv.gz
+    │  │      XAUUSD-20180903.tsv.gz
+    │  │      XAUUSD-20180910.tsv.gz
+    │  │      XAUUSD-20180917.tsv.gz
+    │  │      XAUUSD-20180924.tsv.gz
+    │  │      XAUUSD-20181001.tsv.gz
+    │  │      XAUUSD-20181008.tsv.gz
+    │  │      XAUUSD-20181015.tsv.gz
+    │  │      XAUUSD-20181022.tsv.gz
+    │  │      XAUUSD-20181029.tsv.gz
+    │  │      XAUUSD-20181105.tsv.gz
+    │  │      XAUUSD-20181112.tsv.gz
+    │  │      XAUUSD-20181119.tsv.gz
+    │  │      XAUUSD-20181126.tsv.gz
+    │  │      XAUUSD-20181203.tsv.gz
+    │  │      XAUUSD-20181210.tsv.gz
+    │  │      XAUUSD-20181217.tsv.gz
+    │  │      XAUUSD-20181224.tsv.gz
+    │  │      XAUUSD-20181231.tsv.gz
+    │  │      
+    │  ├─2019
+    │  │      XAUUSD-20190107.tsv.gz
+    │  │      XAUUSD-20190114.tsv.gz
+    │  │      XAUUSD-20190121.tsv.gz
+    │  │      XAUUSD-20190128.tsv.gz
+    │  │      XAUUSD-20190204.tsv.gz
+    │  │      XAUUSD-20190211.tsv.gz
+    │  │      XAUUSD-20190218.tsv.gz
+    │  │      XAUUSD-20190225.tsv.gz
+    │  │      XAUUSD-20190304.tsv.gz
+    │  │      XAUUSD-20190311.tsv.gz
+    │  │      XAUUSD-20190318.tsv.gz
+    │  │      XAUUSD-20190325.tsv.gz
+    │  │      XAUUSD-20190401.tsv.gz
+    │  │      XAUUSD-20190408.tsv.gz
+    │  │      XAUUSD-20190415.tsv.gz
+    │  │      XAUUSD-20190422.tsv.gz
+    │  │      XAUUSD-20190429.tsv.gz
+    │  │      XAUUSD-20190506.tsv.gz
+    │  │      XAUUSD-20190513.tsv.gz
+    │  │      XAUUSD-20190520.tsv.gz
+    │  │      XAUUSD-20190527.tsv.gz
+    │  │      XAUUSD-20190603.tsv.gz
+    │  │      XAUUSD-20190610.tsv.gz
+    │  │      XAUUSD-20190617.tsv.gz
+    │  │      XAUUSD-20190624.tsv.gz
+    │  │      XAUUSD-20190701.tsv.gz
+    │  │      XAUUSD-20190708.tsv.gz
+    │  │      XAUUSD-20190715.tsv.gz
+    │  │      XAUUSD-20190722.tsv.gz
+    │  │      XAUUSD-20190729.tsv.gz
+    │  │      XAUUSD-20190805.tsv.gz
+    │  │      XAUUSD-20190812.tsv.gz
+    │  │      XAUUSD-20190819.tsv.gz
+    │  │      XAUUSD-20190826.tsv.gz
+    │  │      XAUUSD-20190902.tsv.gz
+    │  │      XAUUSD-20190909.tsv.gz
+    │  │      XAUUSD-20190916.tsv.gz
+    │  │      XAUUSD-20190923.tsv.gz
+    │  │      XAUUSD-20190930.tsv.gz
+    │  │      XAUUSD-20191007.tsv.gz
+    │  │      XAUUSD-20191014.tsv.gz
+    │  │      XAUUSD-20191021.tsv.gz
+    │  │      XAUUSD-20191028.tsv.gz
+    │  │      XAUUSD-20191104.tsv.gz
+    │  │      XAUUSD-20191111.tsv.gz
+    │  │      XAUUSD-20191118.tsv.gz
+    │  │      XAUUSD-20191125.tsv.gz
+    │  │      XAUUSD-20191202.tsv.gz
+    │  │      XAUUSD-20191209.tsv.gz
+    │  │      XAUUSD-20191216.tsv.gz
+    │  │      XAUUSD-20191223.tsv.gz
+    │  │      XAUUSD-20191230.tsv.gz
+    │  │      
+    │  ├─2020
+    │  │      XAUUSD-20200106.tsv.gz
+    │  │      XAUUSD-20200113.tsv.gz
+    │  │      XAUUSD-20200120.tsv.gz
+    │  │      XAUUSD-20200127.tsv.gz
+    │  │      XAUUSD-20200203.tsv.gz
+    │  │      XAUUSD-20200210.tsv.gz
+    │  │      XAUUSD-20200217.tsv.gz
+    │  │      XAUUSD-20200224.tsv.gz
+    │  │      XAUUSD-20200302.tsv.gz
+    │  │      XAUUSD-20200309.tsv.gz
+    │  │      XAUUSD-20200316.tsv.gz
+    │  │      XAUUSD-20200323.tsv.gz
+    │  │      XAUUSD-20200330.tsv.gz
+    │  │      XAUUSD-20200406.tsv.gz
+    │  │      XAUUSD-20200413.tsv.gz
+    │  │      XAUUSD-20200420.tsv.gz
+    │  │      XAUUSD-20200427.tsv.gz
+    │  │      XAUUSD-20200504.tsv.gz
+    │  │      XAUUSD-20200511.tsv.gz
+    │  │      XAUUSD-20200518.tsv.gz
+    │  │      XAUUSD-20200525.tsv.gz
+    │  │      XAUUSD-20200601.tsv.gz
+    │  │      XAUUSD-20200608.tsv.gz
+    │  │      XAUUSD-20200615.tsv.gz
+    │  │      XAUUSD-20200622.tsv.gz
+    │  │      XAUUSD-20200629.tsv.gz
+    │  │      XAUUSD-20200706.tsv.gz
+    │  │      XAUUSD-20200713.tsv.gz
+    │  │      XAUUSD-20200720.tsv.gz
+    │  │      XAUUSD-20200727.tsv.gz
+    │  │      XAUUSD-20200803.tsv.gz
+    │  │      XAUUSD-20200810.tsv.gz
+    │  │      XAUUSD-20200817.tsv.gz
+    │  │      XAUUSD-20200824.tsv.gz
+    │  │      XAUUSD-20200831.tsv.gz
+    │  │      XAUUSD-20200907.tsv.gz
+    │  │      XAUUSD-20200914.tsv.gz
+    │  │      XAUUSD-20200921.tsv.gz
+    │  │      XAUUSD-20200928.tsv.gz
+    │  │      XAUUSD-20201005.tsv.gz
+    │  │      XAUUSD-20201012.tsv.gz
+    │  │      XAUUSD-20201019.tsv.gz
+    │  │      XAUUSD-20201026.tsv.gz
+    │  │      XAUUSD-20201102.tsv.gz
+    │  │      XAUUSD-20201109.tsv.gz
+    │  │      XAUUSD-20201116.tsv.gz
+    │  │      XAUUSD-20201123.tsv.gz
+    │  │      XAUUSD-20201130.tsv.gz
+    │  │      XAUUSD-20201207.tsv.gz
+    │  │      XAUUSD-20201214.tsv.gz
+    │  │      XAUUSD-20201221.tsv.gz
+    │  │      XAUUSD-20201228.tsv.gz
+    │  │      
+    │  ├─2021
+    │  │      XAUUSD-20210104.tsv.gz
+    │  │      XAUUSD-20210111.tsv.gz
+    │  │      XAUUSD-20210118.tsv.gz
+    │  │      XAUUSD-20210125.tsv.gz
+    │  │      XAUUSD-20210201.tsv.gz
+    │  │      XAUUSD-20210208.tsv.gz
+    │  │      XAUUSD-20210215.tsv.gz
+    │  │      XAUUSD-20210222.tsv.gz
+    │  │      XAUUSD-20210301.tsv.gz
+    │  │      XAUUSD-20210308.tsv.gz
+    │  │      XAUUSD-20210315.tsv.gz
+    │  │      XAUUSD-20210322.tsv.gz
+    │  │      XAUUSD-20210329.tsv.gz
+    │  │      XAUUSD-20210405.tsv.gz
+    │  │      XAUUSD-20210412.tsv.gz
+    │  │      XAUUSD-20210419.tsv.gz
+    │  │      XAUUSD-20210426.tsv.gz
+    │  │      XAUUSD-20210503.tsv.gz
+    │  │      XAUUSD-20210510.tsv.gz
+    │  │      XAUUSD-20210517.tsv.gz
+    │  │      XAUUSD-20210524.tsv.gz
+    │  │      XAUUSD-20210531.tsv.gz
+    │  │      XAUUSD-20210607.tsv.gz
+    │  │      XAUUSD-20210614.tsv.gz
+    │  │      XAUUSD-20210621.tsv.gz
+    │  │      XAUUSD-20210628.tsv.gz
+    │  │      XAUUSD-20210705.tsv.gz
+    │  │      XAUUSD-20210712.tsv.gz
+    │  │      XAUUSD-20210719.tsv.gz
+    │  │      XAUUSD-20210726.tsv.gz
+    │  │      XAUUSD-20210802.tsv.gz
+    │  │      XAUUSD-20210809.tsv.gz
+    │  │      XAUUSD-20210816.tsv.gz
+    │  │      XAUUSD-20210823.tsv.gz
+    │  │      XAUUSD-20210830.tsv.gz
+    │  │      XAUUSD-20210906.tsv.gz
+    │  │      XAUUSD-20210913.tsv.gz
+    │  │      XAUUSD-20210920.tsv.gz
+    │  │      XAUUSD-20210927.tsv.gz
+    │  │      XAUUSD-20211004.tsv.gz
+    │  │      XAUUSD-20211011.tsv.gz
+    │  │      XAUUSD-20211018.tsv.gz
+    │  │      XAUUSD-20211025.tsv.gz
+    │  │      XAUUSD-20211101.tsv.gz
+    │  │      XAUUSD-20211108.tsv.gz
+    │  │      XAUUSD-20211115.tsv.gz
+    │  │      XAUUSD-20211122.tsv.gz
+    │  │      XAUUSD-20211129.tsv.gz
+    │  │      XAUUSD-20211206.tsv.gz
+    │  │      XAUUSD-20211213.tsv.gz
+    │  │      XAUUSD-20211220.tsv.gz
+    │  │      XAUUSD-20211227.tsv.gz
+    │  │      
+    │  ├─2022
+    │  │      XAUUSD-20220103.tsv.gz
+    │  │      XAUUSD-20220110.tsv.gz
+    │  │      XAUUSD-20220117.tsv.gz
+    │  │      XAUUSD-20220124.tsv.gz
+    │  │      XAUUSD-20220131.tsv.gz
+    │  │      XAUUSD-20220207.tsv.gz
+    │  │      XAUUSD-20220214.tsv.gz
+    │  │      XAUUSD-20220221.tsv.gz
+    │  │      XAUUSD-20220228.tsv.gz
+    │  │      XAUUSD-20220307.tsv.gz
+    │  │      XAUUSD-20220314.tsv.gz
+    │  │      XAUUSD-20220321.tsv.gz
+    │  │      XAUUSD-20220328.tsv.gz
+    │  │      XAUUSD-20220404.tsv.gz
+    │  │      XAUUSD-20220411.tsv.gz
+    │  │      XAUUSD-20220418.tsv.gz
+    │  │      XAUUSD-20220425.tsv.gz
+    │  │      XAUUSD-20220502.tsv.gz
+    │  │      XAUUSD-20220509.tsv.gz
+    │  │      XAUUSD-20220516.tsv.gz
+    │  │      XAUUSD-20220523.tsv.gz
+    │  │      XAUUSD-20220530.tsv.gz
+    │  │      XAUUSD-20220606.tsv.gz
+    │  │      XAUUSD-20220613.tsv.gz
+    │  │      XAUUSD-20220620.tsv.gz
+    │  │      XAUUSD-20220627.tsv.gz
+    │  │      XAUUSD-20220704.tsv.gz
+    │  │      XAUUSD-20220711.tsv.gz
+    │  │      XAUUSD-20220718.tsv.gz
+    │  │      XAUUSD-20220725.tsv.gz
+    │  │      XAUUSD-20220801.tsv.gz
+    │  │      XAUUSD-20220808.tsv.gz
+    │  │      XAUUSD-20220815.tsv.gz
+    │  │      XAUUSD-20220822.tsv.gz
+    │  │      XAUUSD-20220829.tsv.gz
+    │  │      XAUUSD-20220905.tsv.gz
+    │  │      XAUUSD-20220912.tsv.gz
+    │  │      XAUUSD-20220919.tsv.gz
+    │  │      XAUUSD-20220926.tsv.gz
+    │  │      XAUUSD-20221003.tsv.gz
+    │  │      XAUUSD-20221010.tsv.gz
+    │  │      XAUUSD-20221017.tsv.gz
+    │  │      XAUUSD-20221024.tsv.gz
+    │  │      XAUUSD-20221031.tsv.gz
+    │  │      XAUUSD-20221107.tsv.gz
+    │  │      XAUUSD-20221114.tsv.gz
+    │  │      XAUUSD-20221121.tsv.gz
+    │  │      XAUUSD-20221128.tsv.gz
+    │  │      XAUUSD-20221205.tsv.gz
+    │  │      XAUUSD-20221212.tsv.gz
+    │  │      XAUUSD-20221219.tsv.gz
+    │  │      XAUUSD-20221226.tsv.gz
+    │  │      
+    │  ├─2023
+    │  │      XAUUSD-20230102.tsv.gz
+    │  │      XAUUSD-20230109.tsv.gz
+    │  │      XAUUSD-20230116.tsv.gz
+    │  │      XAUUSD-20230123.tsv.gz
+    │  │      XAUUSD-20230130.tsv.gz
+    │  │      XAUUSD-20230206.tsv.gz
+    │  │      XAUUSD-20230213.tsv.gz
+    │  │      XAUUSD-20230220.tsv.gz
+    │  │      XAUUSD-20230227.tsv.gz
+    │  │      XAUUSD-20230306.tsv.gz
+    │  │      XAUUSD-20230313.tsv.gz
+    │  │      XAUUSD-20230320.tsv.gz
+    │  │      XAUUSD-20230327.tsv.gz
+    │  │      XAUUSD-20230403.tsv.gz
+    │  │      XAUUSD-20230410.tsv.gz
+    │  │      XAUUSD-20230417.tsv.gz
+    │  │      XAUUSD-20230424.tsv.gz
+    │  │      XAUUSD-20230501.tsv.gz
+    │  │      XAUUSD-20230508.tsv.gz
+    │  │      XAUUSD-20230515.tsv.gz
+    │  │      XAUUSD-20230522.tsv.gz
+    │  │      XAUUSD-20230529.tsv.gz
+    │  │      XAUUSD-20230605.tsv.gz
+    │  │      XAUUSD-20230612.tsv.gz
+    │  │      XAUUSD-20230619.tsv.gz
+    │  │      XAUUSD-20230626.tsv.gz
+    │  │      XAUUSD-20230703.tsv.gz
+    │  │      XAUUSD-20230710.tsv.gz
+    │  │      XAUUSD-20230717.tsv.gz
+    │  │      XAUUSD-20230724.tsv.gz
+    │  │      XAUUSD-20230731.tsv.gz
+    │  │      XAUUSD-20230807.tsv.gz
+    │  │      XAUUSD-20230814.tsv.gz
+    │  │      XAUUSD-20230821.tsv.gz
+    │  │      XAUUSD-20230828.tsv.gz
+    │  │      XAUUSD-20230904.tsv.gz
+    │  │      XAUUSD-20230911.tsv.gz
+    │  │      XAUUSD-20230918.tsv.gz
+    │  │      XAUUSD-20230925.tsv.gz
+    │  │      XAUUSD-20231002.tsv.gz
+    │  │      XAUUSD-20231009.tsv.gz
+    │  │      XAUUSD-20231016.tsv.gz
+    │  │      XAUUSD-20231023.tsv.gz
+    │  │      XAUUSD-20231030.tsv.gz
+    │  │      XAUUSD-20231106.tsv.gz
+    │  │      XAUUSD-20231113.tsv.gz
+    │  │      XAUUSD-20231120.tsv.gz
+    │  │      XAUUSD-20231127.tsv.gz
+    │  │      XAUUSD-20231204.tsv.gz
+    │  │      XAUUSD-20231211.tsv.gz
+    │  │      XAUUSD-20231218.tsv.gz
+    │  │      XAUUSD-20231225.tsv.gz
+    │  │      
+    │  ├─2024
+    │  │      XAUUSD-20240101.tsv.gz
+    │  │      XAUUSD-20240108.tsv.gz
+    │  │      XAUUSD-20240115.tsv.gz
+    │  │      XAUUSD-20240122.tsv.gz
+    │  │      XAUUSD-20240129.tsv.gz
+    │  │      XAUUSD-20240205.tsv.gz
+    │  │      XAUUSD-20240212.tsv.gz
+    │  │      XAUUSD-20240219.tsv.gz
+    │  │      XAUUSD-20240226.tsv.gz
+    │  │      XAUUSD-20240304.tsv.gz
+    │  │      XAUUSD-20240311.tsv.gz
+    │  │      XAUUSD-20240318.tsv.gz
+    │  │      XAUUSD-20240325.tsv.gz
+    │  │      XAUUSD-20240401.tsv.gz
+    │  │      XAUUSD-20240408.tsv.gz
+    │  │      XAUUSD-20240415.tsv.gz
+    │  │      XAUUSD-20240422.tsv.gz
+    │  │      XAUUSD-20240429.tsv.gz
+    │  │      XAUUSD-20240506.tsv.gz
+    │  │      XAUUSD-20240513.tsv.gz
+    │  │      XAUUSD-20240520.tsv.gz
+    │  │      XAUUSD-20240527.tsv.gz
+    │  │      XAUUSD-20240603.tsv.gz
+    │  │      XAUUSD-20240610.tsv.gz
+    │  │      XAUUSD-20240617.tsv.gz
+    │  │      XAUUSD-20240624.tsv.gz
+    │  │      XAUUSD-20240701.tsv.gz
+    │  │      XAUUSD-20240708.tsv.gz
+    │  │      XAUUSD-20240715.tsv.gz
+    │  │      XAUUSD-20240722.tsv.gz
+    │  │      XAUUSD-20240729.tsv.gz
+    │  │      XAUUSD-20240805.tsv.gz
+    │  │      XAUUSD-20240812.tsv.gz
+    │  │      XAUUSD-20240819.tsv.gz
+    │  │      XAUUSD-20240826.tsv.gz
+    │  │      XAUUSD-20240902.tsv.gz
+    │  │      XAUUSD-20240909.tsv.gz
+    │  │      XAUUSD-20240916.tsv.gz
+    │  │      XAUUSD-20240923.tsv.gz
+    │  │      XAUUSD-20240930.tsv.gz
+    │  │      XAUUSD-20241007.tsv.gz
+    │  │      XAUUSD-20241014.tsv.gz
+    │  │      XAUUSD-20241021.tsv.gz
+    │  │      XAUUSD-20241028.tsv.gz
+    │  │      XAUUSD-20241104.tsv.gz
+    │  │      XAUUSD-20241111.tsv.gz
+    │  │      XAUUSD-20241118.tsv.gz
+    │  │      XAUUSD-20241125.tsv.gz
+    │  │      XAUUSD-20241202.tsv.gz
+    │  │      XAUUSD-20241209.tsv.gz
+    │  │      XAUUSD-20241216.tsv.gz
+    │  │      XAUUSD-20241223.tsv.gz
+    │  │      XAUUSD-20241230.tsv.gz
+    │  │      
+    │  ├─2025
+    │  │      XAUUSD-20250106.tsv.gz
+    │  │      XAUUSD-20250113.tsv.gz
+    │  │      XAUUSD-20250120.tsv.gz
+    │  │      XAUUSD-20250127.tsv.gz
+    │  │      XAUUSD-20250203.tsv.gz
+    │  │      XAUUSD-20250210.tsv.gz
+    │  │      XAUUSD-20250217.tsv.gz
+    │  │      XAUUSD-20250224.tsv.gz
+    │  │      XAUUSD-20250303.tsv.gz
+    │  │      XAUUSD-20250310.tsv.gz
+    │  │      XAUUSD-20250317.tsv.gz
+    │  │      XAUUSD-20250324.tsv.gz
+    │  │      XAUUSD-20250331.tsv.gz
+    │  │      XAUUSD-20250407.tsv.gz
+    │  │      XAUUSD-20250414.tsv.gz
+    │  │      XAUUSD-20250421.tsv.gz
+    │  │      XAUUSD-20250428.tsv.gz
+    │  │      XAUUSD-20250505.tsv.gz
+    │  │      XAUUSD-20250512.tsv.gz
+    │  │      XAUUSD-20250519.tsv.gz
+    │  │      XAUUSD-20250526.tsv.gz
+    │  │      XAUUSD-20250602.tsv.gz
+    │  │      XAUUSD-20250609.tsv.gz
+    │  │      XAUUSD-20250616.tsv.gz
+    │  │      XAUUSD-20250623.tsv.gz
+    │  │      XAUUSD-20250630.tsv.gz
+    │  │      XAUUSD-20250707.tsv.gz
+    │  │      XAUUSD-20250714.tsv.gz
+    │  │      XAUUSD-20250721.tsv.gz
+    │  │      XAUUSD-20250728.tsv.gz
+    │  │      XAUUSD-20250804.tsv.gz
+    │  │      XAUUSD-20250811.tsv.gz
+    │  │      XAUUSD-20250818.tsv.gz
+    │  │      XAUUSD-20250825.tsv.gz
+    │  │      XAUUSD-20250901.tsv.gz
+    │  │      XAUUSD-20250908.tsv.gz
+    │  │      XAUUSD-20250915.tsv.gz
+    │  │      XAUUSD-20250922.tsv.gz
+    │  │      XAUUSD-20250929.tsv.gz
+    │  │      XAUUSD-20251006.tsv.gz
+    │  │      XAUUSD-20251013.tsv.gz
+    │  │      XAUUSD-20251020.tsv.gz
+    │  │      XAUUSD-20251027.tsv.gz
+    │  │      XAUUSD-20251103.tsv.gz
+    │  │      XAUUSD-20251110.tsv.gz
+    │  │      XAUUSD-20251117.tsv.gz
+    │  │      XAUUSD-20251124.tsv.gz
+    │  │      XAUUSD-20251201.tsv.gz
+    │  │      XAUUSD-20251208.tsv.gz
+    │  │      XAUUSD-20251215.tsv.gz
+    │  │      XAUUSD-20251222.tsv.gz
+    │  │      XAUUSD-20251229.tsv.gz
+    │  │      
+    │  └─2026
+    │          XAUUSD-20260105.tsv.gz
+    │          XAUUSD-20260112.tsv.gz
+    │          XAUUSD-20260119.tsv.gz
+    │          XAUUSD-20260126.tsv.gz
+    │          XAUUSD-20260202.tsv.gz
+    │          XAUUSD-20260209.tsv.gz
+    │          XAUUSD-20260216.tsv.gz
+    │          XAUUSD-20260223.tsv.gz
+    │          XAUUSD-20260302.tsv.gz
+    │          
+    └─XTIUSD
+        ├─2018
+        │      XTIUSD-20180101.tsv.gz
+        │      XTIUSD-20180108.tsv.gz
+        │      XTIUSD-20180115.tsv.gz
+        │      XTIUSD-20180122.tsv.gz
+        │      XTIUSD-20180129.tsv.gz
+        │      XTIUSD-20180205.tsv.gz
+        │      XTIUSD-20180212.tsv.gz
+        │      XTIUSD-20180219.tsv.gz
+        │      XTIUSD-20180226.tsv.gz
+        │      XTIUSD-20180305.tsv.gz
+        │      XTIUSD-20180312.tsv.gz
+        │      XTIUSD-20180319.tsv.gz
+        │      XTIUSD-20180326.tsv.gz
+        │      XTIUSD-20180402.tsv.gz
+        │      XTIUSD-20180409.tsv.gz
+        │      XTIUSD-20180416.tsv.gz
+        │      XTIUSD-20180423.tsv.gz
+        │      XTIUSD-20180430.tsv.gz
+        │      XTIUSD-20180507.tsv.gz
+        │      XTIUSD-20180514.tsv.gz
+        │      XTIUSD-20180521.tsv.gz
+        │      XTIUSD-20180528.tsv.gz
+        │      XTIUSD-20180604.tsv.gz
+        │      XTIUSD-20180611.tsv.gz
+        │      XTIUSD-20180618.tsv.gz
+        │      XTIUSD-20180625.tsv.gz
+        │      XTIUSD-20180702.tsv.gz
+        │      XTIUSD-20180709.tsv.gz
+        │      XTIUSD-20180716.tsv.gz
+        │      XTIUSD-20180723.tsv.gz
+        │      XTIUSD-20180730.tsv.gz
+        │      XTIUSD-20180806.tsv.gz
+        │      XTIUSD-20180813.tsv.gz
+        │      XTIUSD-20180820.tsv.gz
+        │      XTIUSD-20180827.tsv.gz
+        │      XTIUSD-20180903.tsv.gz
+        │      XTIUSD-20180910.tsv.gz
+        │      XTIUSD-20180917.tsv.gz
+        │      XTIUSD-20180924.tsv.gz
+        │      XTIUSD-20181001.tsv.gz
+        │      XTIUSD-20181008.tsv.gz
+        │      XTIUSD-20181015.tsv.gz
+        │      XTIUSD-20181022.tsv.gz
+        │      XTIUSD-20181029.tsv.gz
+        │      XTIUSD-20181105.tsv.gz
+        │      XTIUSD-20181112.tsv.gz
+        │      XTIUSD-20181119.tsv.gz
+        │      XTIUSD-20181126.tsv.gz
+        │      XTIUSD-20181203.tsv.gz
+        │      XTIUSD-20181210.tsv.gz
+        │      XTIUSD-20181217.tsv.gz
+        │      XTIUSD-20181224.tsv.gz
+        │      XTIUSD-20181231.tsv.gz
+        │      
+        ├─2019
+        │      XTIUSD-20190107.tsv.gz
+        │      XTIUSD-20190114.tsv.gz
+        │      XTIUSD-20190121.tsv.gz
+        │      XTIUSD-20190128.tsv.gz
+        │      XTIUSD-20190204.tsv.gz
+        │      XTIUSD-20190211.tsv.gz
+        │      XTIUSD-20190218.tsv.gz
+        │      XTIUSD-20190225.tsv.gz
+        │      XTIUSD-20190304.tsv.gz
+        │      XTIUSD-20190311.tsv.gz
+        │      XTIUSD-20190318.tsv.gz
+        │      XTIUSD-20190325.tsv.gz
+        │      XTIUSD-20190401.tsv.gz
+        │      XTIUSD-20190408.tsv.gz
+        │      XTIUSD-20190415.tsv.gz
+        │      XTIUSD-20190422.tsv.gz
+        │      XTIUSD-20190429.tsv.gz
+        │      XTIUSD-20190506.tsv.gz
+        │      XTIUSD-20190513.tsv.gz
+        │      XTIUSD-20190520.tsv.gz
+        │      XTIUSD-20190527.tsv.gz
+        │      XTIUSD-20190603.tsv.gz
+        │      XTIUSD-20190610.tsv.gz
+        │      XTIUSD-20190617.tsv.gz
+        │      XTIUSD-20190624.tsv.gz
+        │      XTIUSD-20190701.tsv.gz
+        │      XTIUSD-20190708.tsv.gz
+        │      XTIUSD-20190715.tsv.gz
+        │      XTIUSD-20190722.tsv.gz
+        │      XTIUSD-20190729.tsv.gz
+        │      XTIUSD-20190805.tsv.gz
+        │      XTIUSD-20190812.tsv.gz
+        │      XTIUSD-20190819.tsv.gz
+        │      XTIUSD-20190826.tsv.gz
+        │      XTIUSD-20190902.tsv.gz
+        │      XTIUSD-20190909.tsv.gz
+        │      XTIUSD-20190916.tsv.gz
+        │      XTIUSD-20190923.tsv.gz
+        │      XTIUSD-20190930.tsv.gz
+        │      XTIUSD-20191007.tsv.gz
+        │      XTIUSD-20191014.tsv.gz
+        │      XTIUSD-20191021.tsv.gz
+        │      XTIUSD-20191028.tsv.gz
+        │      XTIUSD-20191104.tsv.gz
+        │      XTIUSD-20191111.tsv.gz
+        │      XTIUSD-20191118.tsv.gz
+        │      XTIUSD-20191125.tsv.gz
+        │      XTIUSD-20191202.tsv.gz
+        │      XTIUSD-20191209.tsv.gz
+        │      XTIUSD-20191216.tsv.gz
+        │      XTIUSD-20191223.tsv.gz
+        │      XTIUSD-20191230.tsv.gz
+        │      
+        ├─2020
+        │      XTIUSD-20200106.tsv.gz
+        │      XTIUSD-20200113.tsv.gz
+        │      XTIUSD-20200120.tsv.gz
+        │      XTIUSD-20200127.tsv.gz
+        │      XTIUSD-20200203.tsv.gz
+        │      XTIUSD-20200210.tsv.gz
+        │      XTIUSD-20200217.tsv.gz
+        │      XTIUSD-20200224.tsv.gz
+        │      XTIUSD-20200302.tsv.gz
+        │      XTIUSD-20200309.tsv.gz
+        │      XTIUSD-20200316.tsv.gz
+        │      XTIUSD-20200323.tsv.gz
+        │      XTIUSD-20200330.tsv.gz
+        │      XTIUSD-20200406.tsv.gz
+        │      XTIUSD-20200413.tsv.gz
+        │      XTIUSD-20200420.tsv.gz
+        │      XTIUSD-20200427.tsv.gz
+        │      XTIUSD-20200504.tsv.gz
+        │      XTIUSD-20200511.tsv.gz
+        │      XTIUSD-20200518.tsv.gz
+        │      XTIUSD-20200525.tsv.gz
+        │      XTIUSD-20200601.tsv.gz
+        │      XTIUSD-20200608.tsv.gz
+        │      XTIUSD-20200615.tsv.gz
+        │      XTIUSD-20200622.tsv.gz
+        │      XTIUSD-20200629.tsv.gz
+        │      XTIUSD-20200706.tsv.gz
+        │      XTIUSD-20200713.tsv.gz
+        │      XTIUSD-20200720.tsv.gz
+        │      XTIUSD-20200727.tsv.gz
+        │      XTIUSD-20200803.tsv.gz
+        │      XTIUSD-20200810.tsv.gz
+        │      XTIUSD-20200817.tsv.gz
+        │      XTIUSD-20200824.tsv.gz
+        │      XTIUSD-20200831.tsv.gz
+        │      XTIUSD-20200907.tsv.gz
+        │      XTIUSD-20200914.tsv.gz
+        │      XTIUSD-20200921.tsv.gz
+        │      XTIUSD-20200928.tsv.gz
+        │      XTIUSD-20201005.tsv.gz
+        │      XTIUSD-20201012.tsv.gz
+        │      XTIUSD-20201019.tsv.gz
+        │      XTIUSD-20201026.tsv.gz
+        │      XTIUSD-20201102.tsv.gz
+        │      XTIUSD-20201109.tsv.gz
+        │      XTIUSD-20201116.tsv.gz
+        │      XTIUSD-20201123.tsv.gz
+        │      XTIUSD-20201130.tsv.gz
+        │      XTIUSD-20201207.tsv.gz
+        │      XTIUSD-20201214.tsv.gz
+        │      XTIUSD-20201221.tsv.gz
+        │      XTIUSD-20201228.tsv.gz
+        │      
+        ├─2021
+        │      XTIUSD-20210104.tsv.gz
+        │      XTIUSD-20210111.tsv.gz
+        │      XTIUSD-20210118.tsv.gz
+        │      XTIUSD-20210125.tsv.gz
+        │      XTIUSD-20210201.tsv.gz
+        │      XTIUSD-20210208.tsv.gz
+        │      XTIUSD-20210215.tsv.gz
+        │      XTIUSD-20210222.tsv.gz
+        │      XTIUSD-20210301.tsv.gz
+        │      XTIUSD-20210308.tsv.gz
+        │      XTIUSD-20210315.tsv.gz
+        │      XTIUSD-20210322.tsv.gz
+        │      XTIUSD-20210329.tsv.gz
+        │      XTIUSD-20210405.tsv.gz
+        │      XTIUSD-20210412.tsv.gz
+        │      XTIUSD-20210419.tsv.gz
+        │      XTIUSD-20210426.tsv.gz
+        │      XTIUSD-20210503.tsv.gz
+        │      XTIUSD-20210510.tsv.gz
+        │      XTIUSD-20210517.tsv.gz
+        │      XTIUSD-20210524.tsv.gz
+        │      XTIUSD-20210531.tsv.gz
+        │      XTIUSD-20210607.tsv.gz
+        │      XTIUSD-20210614.tsv.gz
+        │      XTIUSD-20210621.tsv.gz
+        │      XTIUSD-20210628.tsv.gz
+        │      XTIUSD-20210705.tsv.gz
+        │      XTIUSD-20210712.tsv.gz
+        │      XTIUSD-20210719.tsv.gz
+        │      XTIUSD-20210726.tsv.gz
+        │      XTIUSD-20210802.tsv.gz
+        │      XTIUSD-20210809.tsv.gz
+        │      XTIUSD-20210816.tsv.gz
+        │      XTIUSD-20210823.tsv.gz
+        │      XTIUSD-20210830.tsv.gz
+        │      XTIUSD-20210906.tsv.gz
+        │      XTIUSD-20210913.tsv.gz
+        │      XTIUSD-20210920.tsv.gz
+        │      XTIUSD-20210927.tsv.gz
+        │      XTIUSD-20211004.tsv.gz
+        │      XTIUSD-20211011.tsv.gz
+        │      XTIUSD-20211018.tsv.gz
+        │      XTIUSD-20211025.tsv.gz
+        │      XTIUSD-20211101.tsv.gz
+        │      XTIUSD-20211108.tsv.gz
+        │      XTIUSD-20211115.tsv.gz
+        │      XTIUSD-20211122.tsv.gz
+        │      XTIUSD-20211129.tsv.gz
+        │      XTIUSD-20211206.tsv.gz
+        │      XTIUSD-20211213.tsv.gz
+        │      XTIUSD-20211220.tsv.gz
+        │      XTIUSD-20211227.tsv.gz
+        │      
+        ├─2022
+        │      XTIUSD-20220103.tsv.gz
+        │      XTIUSD-20220110.tsv.gz
+        │      XTIUSD-20220117.tsv.gz
+        │      XTIUSD-20220124.tsv.gz
+        │      XTIUSD-20220131.tsv.gz
+        │      XTIUSD-20220207.tsv.gz
+        │      XTIUSD-20220214.tsv.gz
+        │      XTIUSD-20220221.tsv.gz
+        │      XTIUSD-20220228.tsv.gz
+        │      XTIUSD-20220307.tsv.gz
+        │      XTIUSD-20220314.tsv.gz
+        │      XTIUSD-20220321.tsv.gz
+        │      XTIUSD-20220328.tsv.gz
+        │      XTIUSD-20220404.tsv.gz
+        │      XTIUSD-20220411.tsv.gz
+        │      XTIUSD-20220418.tsv.gz
+        │      XTIUSD-20220425.tsv.gz
+        │      XTIUSD-20220502.tsv.gz
+        │      XTIUSD-20220509.tsv.gz
+        │      XTIUSD-20220516.tsv.gz
+        │      XTIUSD-20220523.tsv.gz
+        │      XTIUSD-20220530.tsv.gz
+        │      XTIUSD-20220606.tsv.gz
+        │      XTIUSD-20220613.tsv.gz
+        │      XTIUSD-20220620.tsv.gz
+        │      XTIUSD-20220627.tsv.gz
+        │      XTIUSD-20220704.tsv.gz
+        │      XTIUSD-20220711.tsv.gz
+        │      XTIUSD-20220718.tsv.gz
+        │      XTIUSD-20220725.tsv.gz
+        │      XTIUSD-20220801.tsv.gz
+        │      XTIUSD-20220808.tsv.gz
+        │      XTIUSD-20220815.tsv.gz
+        │      XTIUSD-20220822.tsv.gz
+        │      XTIUSD-20220829.tsv.gz
+        │      XTIUSD-20220905.tsv.gz
+        │      XTIUSD-20220912.tsv.gz
+        │      XTIUSD-20220919.tsv.gz
+        │      XTIUSD-20220926.tsv.gz
+        │      XTIUSD-20221003.tsv.gz
+        │      XTIUSD-20221010.tsv.gz
+        │      XTIUSD-20221017.tsv.gz
+        │      XTIUSD-20221024.tsv.gz
+        │      XTIUSD-20221031.tsv.gz
+        │      XTIUSD-20221107.tsv.gz
+        │      XTIUSD-20221114.tsv.gz
+        │      XTIUSD-20221121.tsv.gz
+        │      XTIUSD-20221128.tsv.gz
+        │      XTIUSD-20221205.tsv.gz
+        │      XTIUSD-20221212.tsv.gz
+        │      XTIUSD-20221219.tsv.gz
+        │      XTIUSD-20221226.tsv.gz
+        │      
+        ├─2023
+        │      XTIUSD-20230102.tsv.gz
+        │      XTIUSD-20230109.tsv.gz
+        │      XTIUSD-20230116.tsv.gz
+        │      XTIUSD-20230123.tsv.gz
+        │      XTIUSD-20230130.tsv.gz
+        │      XTIUSD-20230206.tsv.gz
+        │      XTIUSD-20230213.tsv.gz
+        │      XTIUSD-20230220.tsv.gz
+        │      XTIUSD-20230227.tsv.gz
+        │      XTIUSD-20230306.tsv.gz
+        │      XTIUSD-20230313.tsv.gz
+        │      XTIUSD-20230320.tsv.gz
+        │      XTIUSD-20230327.tsv.gz
+        │      XTIUSD-20230403.tsv.gz
+        │      XTIUSD-20230410.tsv.gz
+        │      XTIUSD-20230417.tsv.gz
+        │      XTIUSD-20230424.tsv.gz
+        │      XTIUSD-20230501.tsv.gz
+        │      XTIUSD-20230508.tsv.gz
+        │      XTIUSD-20230515.tsv.gz
+        │      XTIUSD-20230522.tsv.gz
+        │      XTIUSD-20230529.tsv.gz
+        │      XTIUSD-20230605.tsv.gz
+        │      XTIUSD-20230612.tsv.gz
+        │      XTIUSD-20230619.tsv.gz
+        │      XTIUSD-20230626.tsv.gz
+        │      XTIUSD-20230703.tsv.gz
+        │      XTIUSD-20230710.tsv.gz
+        │      XTIUSD-20230717.tsv.gz
+        │      XTIUSD-20230724.tsv.gz
+        │      XTIUSD-20230731.tsv.gz
+        │      XTIUSD-20230807.tsv.gz
+        │      XTIUSD-20230814.tsv.gz
+        │      XTIUSD-20230821.tsv.gz
+        │      XTIUSD-20230828.tsv.gz
+        │      XTIUSD-20230904.tsv.gz
+        │      XTIUSD-20230911.tsv.gz
+        │      XTIUSD-20230918.tsv.gz
+        │      XTIUSD-20230925.tsv.gz
+        │      XTIUSD-20231002.tsv.gz
+        │      XTIUSD-20231009.tsv.gz
+        │      XTIUSD-20231016.tsv.gz
+        │      XTIUSD-20231023.tsv.gz
+        │      XTIUSD-20231030.tsv.gz
+        │      XTIUSD-20231106.tsv.gz
+        │      XTIUSD-20231113.tsv.gz
+        │      XTIUSD-20231120.tsv.gz
+        │      XTIUSD-20231127.tsv.gz
+        │      XTIUSD-20231204.tsv.gz
+        │      XTIUSD-20231211.tsv.gz
+        │      XTIUSD-20231218.tsv.gz
+        │      XTIUSD-20231225.tsv.gz
+        │      
+        ├─2024
+        │      XTIUSD-20240101.tsv.gz
+        │      XTIUSD-20240108.tsv.gz
+        │      XTIUSD-20240115.tsv.gz
+        │      XTIUSD-20240122.tsv.gz
+        │      XTIUSD-20240129.tsv.gz
+        │      XTIUSD-20240205.tsv.gz
+        │      XTIUSD-20240212.tsv.gz
+        │      XTIUSD-20240219.tsv.gz
+        │      XTIUSD-20240226.tsv.gz
+        │      XTIUSD-20240304.tsv.gz
+        │      XTIUSD-20240311.tsv.gz
+        │      XTIUSD-20240318.tsv.gz
+        │      XTIUSD-20240325.tsv.gz
+        │      XTIUSD-20240401.tsv.gz
+        │      XTIUSD-20240408.tsv.gz
+        │      XTIUSD-20240415.tsv.gz
+        │      XTIUSD-20240422.tsv.gz
+        │      XTIUSD-20240429.tsv.gz
+        │      XTIUSD-20240506.tsv.gz
+        │      XTIUSD-20240513.tsv.gz
+        │      XTIUSD-20240520.tsv.gz
+        │      XTIUSD-20240527.tsv.gz
+        │      XTIUSD-20240603.tsv.gz
+        │      XTIUSD-20240610.tsv.gz
+        │      XTIUSD-20240617.tsv.gz
+        │      XTIUSD-20240624.tsv.gz
+        │      XTIUSD-20240701.tsv.gz
+        │      XTIUSD-20240708.tsv.gz
+        │      XTIUSD-20240715.tsv.gz
+        │      XTIUSD-20240722.tsv.gz
+        │      XTIUSD-20240729.tsv.gz
+        │      XTIUSD-20240805.tsv.gz
+        │      XTIUSD-20240812.tsv.gz
+        │      XTIUSD-20240819.tsv.gz
+        │      XTIUSD-20240826.tsv.gz
+        │      XTIUSD-20240902.tsv.gz
+        │      XTIUSD-20240909.tsv.gz
+        │      XTIUSD-20240916.tsv.gz
+        │      XTIUSD-20240923.tsv.gz
+        │      XTIUSD-20240930.tsv.gz
+        │      XTIUSD-20241007.tsv.gz
+        │      XTIUSD-20241014.tsv.gz
+        │      XTIUSD-20241021.tsv.gz
+        │      XTIUSD-20241028.tsv.gz
+        │      XTIUSD-20241104.tsv.gz
+        │      XTIUSD-20241111.tsv.gz
+        │      XTIUSD-20241118.tsv.gz
+        │      XTIUSD-20241125.tsv.gz
+        │      XTIUSD-20241202.tsv.gz
+        │      XTIUSD-20241209.tsv.gz
+        │      XTIUSD-20241216.tsv.gz
+        │      XTIUSD-20241223.tsv.gz
+        │      XTIUSD-20241230.tsv.gz
+        │      
+        ├─2025
+        │      XTIUSD-20250106.tsv.gz
+        │      XTIUSD-20250113.tsv.gz
+        │      XTIUSD-20250120.tsv.gz
+        │      XTIUSD-20250127.tsv.gz
+        │      XTIUSD-20250203.tsv.gz
+        │      XTIUSD-20250210.tsv.gz
+        │      XTIUSD-20250217.tsv.gz
+        │      XTIUSD-20250224.tsv.gz
+        │      XTIUSD-20250303.tsv.gz
+        │      XTIUSD-20250310.tsv.gz
+        │      XTIUSD-20250317.tsv.gz
+        │      XTIUSD-20250324.tsv.gz
+        │      XTIUSD-20250331.tsv.gz
+        │      XTIUSD-20250407.tsv.gz
+        │      XTIUSD-20250414.tsv.gz
+        │      XTIUSD-20250421.tsv.gz
+        │      XTIUSD-20250428.tsv.gz
+        │      XTIUSD-20250505.tsv.gz
+        │      XTIUSD-20250512.tsv.gz
+        │      XTIUSD-20250519.tsv.gz
+        │      XTIUSD-20250526.tsv.gz
+        │      XTIUSD-20250602.tsv.gz
+        │      XTIUSD-20250609.tsv.gz
+        │      XTIUSD-20250616.tsv.gz
+        │      XTIUSD-20250623.tsv.gz
+        │      XTIUSD-20250630.tsv.gz
+        │      XTIUSD-20250707.tsv.gz
+        │      XTIUSD-20250714.tsv.gz
+        │      XTIUSD-20250721.tsv.gz
+        │      XTIUSD-20250728.tsv.gz
+        │      XTIUSD-20250804.tsv.gz
+        │      XTIUSD-20250811.tsv.gz
+        │      XTIUSD-20250818.tsv.gz
+        │      XTIUSD-20250825.tsv.gz
+        │      XTIUSD-20250901.tsv.gz
+        │      XTIUSD-20250908.tsv.gz
+        │      XTIUSD-20250915.tsv.gz
+        │      XTIUSD-20250922.tsv.gz
+        │      XTIUSD-20250929.tsv.gz
+        │      XTIUSD-20251006.tsv.gz
+        │      XTIUSD-20251013.tsv.gz
+        │      XTIUSD-20251020.tsv.gz
+        │      XTIUSD-20251027.tsv.gz
+        │      XTIUSD-20251103.tsv.gz
+        │      XTIUSD-20251110.tsv.gz
+        │      XTIUSD-20251117.tsv.gz
+        │      XTIUSD-20251124.tsv.gz
+        │      XTIUSD-20251201.tsv.gz
+        │      XTIUSD-20251208.tsv.gz
+        │      XTIUSD-20251215.tsv.gz
+        │      XTIUSD-20251222.tsv.gz
+        │      XTIUSD-20251229.tsv.gz
+        │      
+        └─2026
+                XTIUSD-20260105.tsv.gz
+                XTIUSD-20260112.tsv.gz
+                XTIUSD-20260119.tsv.gz
+                XTIUSD-20260126.tsv.gz
+                XTIUSD-20260202.tsv.gz
+                XTIUSD-20260209.tsv.gz
+                XTIUSD-20260216.tsv.gz
+                XTIUSD-20260223.tsv.gz
+                XTIUSD-20260302.tsv.gz
+                
