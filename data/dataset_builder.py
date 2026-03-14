@@ -5,7 +5,8 @@ File: data/dataset_builder.py
 ソースコードの役割:
 本モジュールは、特徴量計算済みのDataFrameを受け取り、モデルに入力可能なNumPy配列への変換、
 ウォークフォワード検証用の期間分割、およびPyTorchの TimeSeriesDataset を構築する
-DatasetBuilderクラスを提供します。
+DatasetBuilderクラスを提供します。1分足ベースのデイトレードシステムにおいて、
+学習・推論パイプラインへシームレスにデータを供給する役割を担います。
 """
 
 import logging
@@ -24,6 +25,8 @@ from features.pipeline import FeaturePipeline
 class DatasetBuilder:
     """
     特徴量からPyTorch Datasetへの変換と、学習/検証期間の分割を行うクラス。
+    ミリ秒オーダーの歩み値から集計された1分足データを処理し、
+    数時間単位のポジションホールドを前提としたモデル入力データを構築します。
     """
 
     def __init__(self):
@@ -34,7 +37,7 @@ class DatasetBuilder:
         self.continuous_cols = cfg.features.continuous_cols
         self.static_cols = cfg.features.static_cols
 
-        # 期間分割の設定
+        # 期間分割の設定（ウォークフォワード検証用）
         self.train_days = cfg.train_days
         self.val_days = cfg.val_days
         self.step_days = cfg.step_days
@@ -46,14 +49,15 @@ class DatasetBuilder:
         データフレームをNumPy配列に変換し、モデルの入力形式に整えます。
 
         Args:
-            df (pl.DataFrame): 特徴量計算済みのデータフレーム
+            df (pl.DataFrame): 特徴量計算済みのPolars DataFrame
 
         Returns:
             Tuple[np.ndarray, np.ndarray, np.ndarray]:
-                - cont: 連続値特徴量のNumPy配列
-                - static: 静的特徴量のNumPy配列
-                - target: ターゲット変数のNumPy配列
+                - cont: 連続値特徴量のNumPy配列 (2D)
+                - static: 静的特徴量のNumPy配列 (2D)
+                - target: ターゲット変数のNumPy配列 (2D)
         """
+        # 連続値特徴量の欠損列を0.0で安全に補完
         missing = [c for c in self.continuous_cols if c not in df.columns]
         if missing:
             df = df.with_columns([pl.lit(0.0).alias(c) for c in missing])
@@ -65,25 +69,28 @@ class DatasetBuilder:
             neginf=-1e6,
         )
 
+        # 静的特徴量の取得
         static = np.nan_to_num(
             df.select(self.static_cols).to_numpy().astype(np.float32), nan=0.0
         )
 
-        # Target列: [Close, High, Low, TickSpeed, MinutesToClose, Open]
-        target = (
-            df.select(
-                [
-                    pl.col("close"),
-                    pl.col("high"),
-                    pl.col("low"),
-                    pl.col("tick_speed_ratio"),
-                    pl.col("minutes_to_close"),
-                    pl.col("open"),
-                ]
-            )
-            .to_numpy()
-            .astype(np.float32)
-        )
+        # ターゲット変数として抽出する列名のリスト
+        target_cols = [
+            "close",
+            "high",
+            "low",
+            "tick_speed_ratio",
+            "minutes_to_close",
+            "open",
+        ]
+
+        # DataFrameに存在しないターゲット列があれば、0.0で安全に補完するフェイルセーフ
+        missing_targets = [c for c in target_cols if c not in df.columns]
+        if missing_targets:
+            df = df.with_columns([pl.lit(0.0).alias(c) for c in missing_targets])
+
+        # Target列の抽出
+        target = df.select(target_cols).to_numpy().astype(np.float32)
 
         return cont, static, target
 
@@ -96,7 +103,8 @@ class DatasetBuilder:
         np.ndarray,
         np.ndarray,
     ]:
-        """データフレームからPyTorch/TFTDatasetの学習・推論用NumPy配列一式を生成します。
+        """
+        データフレームからPyTorch/TFTDatasetの学習・推論用NumPy配列一式を生成します。
 
         `data/builder.py` から呼び出され、モデル入力に必要な特徴量行列と、
         Triple Barrier メソッド（バックテスト）に必要な価格・時間情報などを一括で抽出します。
@@ -128,7 +136,7 @@ class DatasetBuilder:
                 empty_1d_i,
             )
 
-        # 1. 基本となる特徴量とターゲットの抽出（既存メソッドの再利用）
+        # 1. 基本となる特徴量とターゲットの抽出（フェイルセーフ付きメソッドの再利用）
         c_feat, s_feat, y = self.prepare_numpy_data(df)
 
         # 2. トリプルバリアやバックテスト用の個別価格列の抽出
@@ -217,14 +225,20 @@ class DatasetBuilder:
         start_dt = dates[0]
         end_dt = dates[-1] + timedelta(days=1)
 
+        # チャンク単位での遅延評価読み込み
         lf = data_loader.load_lazy_chunk(start_dt, end_dt)
         df = lf.collect()
 
+        # 特徴量パイプラインの実行
         df_features = pipeline.compute_features(df)
         cont, static, target = self.prepare_numpy_data(df_features)
 
-        # ATR抽出 (推論用Datasetビルド時)
-        atr_data = df_features["atr"].to_numpy().astype(np.float32)
+        # ATR抽出 (推論用Datasetビルド時等のボラティリティスケーリング用)
+        atr_data = (
+            df_features["atr"].to_numpy().astype(np.float32)
+            if "atr" in df_features.columns
+            else np.zeros(len(df_features), dtype=np.float32)
+        )
 
         return TimeSeriesDataset(
             cont,
