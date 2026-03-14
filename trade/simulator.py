@@ -6,6 +6,7 @@ File: trade/simulator.py
 本モジュールは、設定（GlobalConfig）や状態（self.data）を管理し、データ準備から
 推論結果の統計処理までの一連のバックテストパイプラインを実行するシミュレーション実行層です。
 内部の純粋な計算ロジックについては trade.metrics_core モジュールに委譲しています。
+引数オブジェクト（MarketPaths, TradeParams）を利用して、クリーンなインターフェースを保ちます。
 """
 
 import numpy as np
@@ -15,7 +16,12 @@ from typing import Dict, Any, Tuple
 
 from config import GlobalConfig, BAR_SECONDS
 from backtest.fast_sim import simulate_fast
-from trade.metrics_core import calculate_position_size, evaluate_tp_sl
+from trade.metrics_core import (
+    calculate_position_size,
+    evaluate_tp_sl,
+    MarketPaths,
+    TradeParams,
+)
 
 
 class BacktestSimulator:
@@ -290,7 +296,6 @@ class BacktestSimulator:
         )
 
         # トレードが発生しなかった場合の早期リターン
-        # 完全に -inf にすると最適化が停滞するため、微小な負のスコアを与えて区別可能にする
         if entry_mask.sum() == 0:
             return {
                 "n_trades": 0,
@@ -318,27 +323,30 @@ class BacktestSimulator:
         # 2. TP/SL配列の構築
         tp_arr, sl_arr, total_cost = self._build_tp_sl_arrays(entry_mask, pe)
 
-        # 3. 利確・損切・PnLの評価
+        # 3. 利確・損切・PnLの評価のためのデータクラス構築
         is_short = executed_preds == 2
-        pnl = evaluate_tp_sl(
-            self.cfg,
-            pe,
-            fh,
-            fl,
-            px,
-            act_horizon,
-            tp_arr,
-            sl_arr,
-            self.data["atrs"],
-            entry_mask,
-            is_short,
-            total_cost,
-            min_hold_bars,
-            min_exit_idx,
-            int(self.cfg.features.predict_horizon),
-            opt_trailing_act,
-            opt_trailing_drop,
+
+        paths = MarketPaths(
+            pe=pe,
+            fh=fh,
+            fl=fl,
+            px=px,
+            act_horizon=act_horizon,
+            tp_arr=tp_arr,
+            sl_arr=sl_arr,
+            atr_e=self.data["atrs"][entry_mask],
         )
+
+        params = TradeParams(
+            total_cost=total_cost,
+            min_hold_bars=min_hold_bars,
+            min_exit_idx=min_exit_idx,
+            horizon=int(self.cfg.features.predict_horizon),
+            trailing_act_mult=opt_trailing_act,
+            trailing_drop_mult=opt_trailing_drop,
+        )
+
+        pnl = evaluate_tp_sl(self.cfg, paths, params, is_short)
 
         # 4. ロット計算と統計処理
         lots = calculate_position_size(
