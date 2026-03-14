@@ -585,6 +585,10 @@ class BacktestSimulator:
         # 少数トレードの過学習を抑えるため、20件未満はスコアを減衰
         score *= min(1.0, n_trades / 20.0)
 
+        # 極端に少ないトレードでの高スコア採用を防ぐ
+        if n_trades < 10:
+            score = min(score, -0.5)
+
         return {
             "n_trades": n_trades,
             "win_rate": win_rate,
