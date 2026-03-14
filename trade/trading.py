@@ -21,7 +21,7 @@ from util.utils import PerfTimer
 
 # 分割された各コンポーネントのインポート
 from data.inference import extract_inference_data
-from trade_simulator import BacktestSimulator
+from trade.simulator import BacktestSimulator
 from util.trade_log import write_trade_log, log_backtest_summary
 
 

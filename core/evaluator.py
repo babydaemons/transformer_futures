@@ -19,7 +19,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 
 from util.utils import PerfTimer
-from trade import run_vectorized_backtest
+from trade.trading import run_vectorized_backtest
 
 
 class Evaluator:

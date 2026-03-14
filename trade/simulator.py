@@ -1,6 +1,6 @@
-# trade_simulator.py
+# trade/simulator.py
 """
-File: trade_simulator.py
+File: trade/simulator.py
 
 ソースコードの役割:
 本モジュールは、Transformerモデルの推論結果（売買確率）に基づき、日経平均先物ミニの
