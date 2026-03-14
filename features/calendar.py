@@ -3,119 +3,140 @@
 File: features/calendar.py
 
 ソースコードの役割:
-本モジュールは、Polars DataFrameに対して時刻、曜日、セッション情報（日中/夜間フラグ）などの
-カレンダーおよび時間に関連する周期的な特徴量エンジニアリングを提供します。
+本モジュールは、タイムスタンプからカレンダー情報（曜日、時間帯など）や
+セッション情報（日中、夜間、昼休みなど）を抽出・計算し、Polarsの遅延評価(Lazy API)を用いて
+モデルが時間的文脈を理解するための特徴量を生成します。
 """
 
 import polars as pl
 import numpy as np
-import math
+from typing import Any
 
 
-def compute_calendar_features(df: pl.DataFrame) -> pl.DataFrame:
+class CalendarFeature:
     """
-    データフレームに対してカレンダー特徴量とセッションフラグを追加します。
-
-    Args:
-        df (pl.DataFrame): 入力となるデータフレーム（`timestamp` カラムが必須）
-
-    Returns:
-        pl.DataFrame: カレンダー特徴量とセッションフラグが追加されたデータフレーム
+    カレンダー情報（曜日、時間、セッション状態など）の特徴量を計算するクラス。
+    pipeline.py から呼び出される統一インターフェース (compute メソッド) を提供します。
     """
-    pi = np.pi
 
-    # 時刻の分換算（0〜1440）
-    total_minutes = df["timestamp"].dt.hour().cast(pl.Int32) * 60 + df[
-        "timestamp"
-    ].dt.minute().cast(pl.Int32)
-    minute_of_day_f = total_minutes.cast(pl.Float64)
+    def __init__(self, cfg: Any):
+        self.cfg = cfg
 
-    # 1. セッションフラグと引けまでの時間
-    df = df.with_columns(
-        pl.when((total_minutes >= 525) & (total_minutes < 915))
-        .then(915 - total_minutes)
-        .when(total_minutes >= 990)
-        .then((24 * 60 + 360) - total_minutes)
-        .when(total_minutes < 360)
-        .then(360 - total_minutes)
-        .otherwise(0)
-        .cast(pl.Float32)
-        .alias("minutes_to_close")
-    )
+    def compute(self, df: pl.LazyFrame) -> pl.LazyFrame:
+        """
+        カレンダー特徴量の計算を順次実行します。
 
-    df = df.with_columns(
-        [
-            ((total_minutes >= 525) & (total_minutes < 915))
-            .cast(pl.Float32)
-            .alias("is_day_session"),
-            ((total_minutes >= 990) | (total_minutes < 360))
-            .cast(pl.Float32)
-            .alias("is_night_session"),
-            ((total_minutes >= 990) & (total_minutes < 1050))
-            .cast(pl.Float32)
-            .alias("is_night_open"),
-            ((total_minutes >= 1380) | (total_minutes < 360))
-            .cast(pl.Float32)
-            .alias("is_night_late"),
-        ]
-    )
+        Args:
+            df (pl.LazyFrame): 計算対象のデータフレーム
 
-    # 2. 周期的な時間特徴量と特定イベントフラグ
-    df = df.with_columns(
-        [
-            (2 * pi * pl.col("timestamp").dt.weekday() / 7)
-            .sin()
-            .alias("day_of_week_sin"),
-            (2 * pi * pl.col("timestamp").dt.weekday() / 7)
-            .cos()
-            .alias("day_of_week_cos"),
-            (2 * pi * pl.col("timestamp").dt.hour() / 24)
-            .sin()
-            .alias("hour_of_day_sin"),
-            (2 * pi * pl.col("timestamp").dt.hour() / 24)
-            .cos()
-            .alias("hour_of_day_cos"),
-            (
-                (pl.col("timestamp").dt.hour() == 9)
-                & (pl.col("timestamp").dt.minute() < 30)
-            )
-            .cast(pl.Float32)
-            .alias("is_market_open"),
-            (
-                (pl.col("timestamp").dt.hour() == 11)
-                & (pl.col("timestamp").dt.minute() >= 30)
-                | (pl.col("timestamp").dt.hour() == 12)
-                & (pl.col("timestamp").dt.minute() < 30)
-            )
-            .cast(pl.Float32)
-            .alias("is_lunch_break"),
-            (
-                (pl.col("timestamp").dt.hour() == 14)
-                & (pl.col("timestamp").dt.minute() >= 30)
-                | (pl.col("timestamp").dt.hour() == 15)
-            )
-            .cast(pl.Float32)
-            .alias("is_closing_auction"),
-            (2 * math.pi * minute_of_day_f / 1440).sin().alias("minute_of_day_sin"),
-            (2 * math.pi * minute_of_day_f / 1440).cos().alias("minute_of_day_cos"),
-            (2 * math.pi * minute_of_day_f / 1440).sin().alias("tod_sin"),
-            (2 * math.pi * minute_of_day_f / 1440).cos().alias("tod_cos"),
-            pl.when((total_minutes >= 525) & (total_minutes < 915))
-            .then(total_minutes - 525)
-            .when(total_minutes >= 990)
-            .then(total_minutes - 990)
-            .when(total_minutes < 360)
-            .then(total_minutes + 450)
-            .otherwise(0)
-            .cast(pl.Float32)
-            .alias("minutes_from_open"),
-            (
-                ((total_minutes >= 525) & (total_minutes <= 555))
-                | ((total_minutes >= 1290) & (total_minutes <= 1410))
-            )
-            .cast(pl.Float32)
-            .alias("is_high_vol_window"),
-        ]
-    )
+        Returns:
+            pl.LazyFrame: 特徴量が追加されたデータフレーム
+        """
+        df = self._compute_calendar_features(df)
+        df = self._compute_session_features(df)
+        return df
 
-    return df
+    def _compute_calendar_features(self, df: pl.LazyFrame) -> pl.LazyFrame:
+        """
+        タイムスタンプから曜日や時間のサイン/コサイン特徴量を計算します。
+        （周期的な時間情報を連続値としてモデルに与えるため）
+        """
+        ts_col = getattr(self.cfg.features, "ts_col", "trade_ts")
+        schema_names = df.collect_schema().names()
+
+        if ts_col not in schema_names:
+            if "timestamp" in schema_names:
+                ts_col = "timestamp"
+            else:
+                return df
+
+        # 曜日 (月曜=1, 日曜=7)
+        day_of_week = pl.col(ts_col).dt.weekday()
+        # 時間 (0-23)
+        hour = pl.col(ts_col).dt.hour()
+        # 分 (0-59)
+        minute = pl.col(ts_col).dt.minute()
+
+        # 1日のうちの分数 (0-1439)
+        minute_of_day = hour * 60 + minute
+
+        return df.with_columns(
+            [
+                # 曜日の周期特徴量
+                (np.sin(2 * np.pi * day_of_week / 7)).alias("day_of_week_sin"),
+                (np.cos(2 * np.pi * day_of_week / 7)).alias("day_of_week_cos"),
+                # 時間の周期特徴量
+                (np.sin(2 * np.pi * hour / 24)).alias("hour_of_day_sin"),
+                (np.cos(2 * np.pi * hour / 24)).alias("hour_of_day_cos"),
+                # Time of Day (1日の周期)
+                (np.sin(2 * np.pi * minute_of_day / 1440)).alias("tod_sin"),
+                (np.cos(2 * np.pi * minute_of_day / 1440)).alias("tod_cos"),
+            ]
+        )
+
+    def _compute_session_features(self, df: pl.LazyFrame) -> pl.LazyFrame:
+        """
+        日本の取引時間に基づくセッション情報（フラグ）を計算します。
+        """
+        ts_col = getattr(self.cfg.features, "ts_col", "trade_ts")
+        schema_names = df.collect_schema().names()
+
+        if ts_col not in schema_names:
+            if "timestamp" in schema_names:
+                ts_col = "timestamp"
+            else:
+                return df
+
+        hour = pl.col(ts_col).dt.hour()
+        minute = pl.col(ts_col).dt.minute()
+        time_hm = hour * 100 + minute  # HHMM形式 (例: 8時45分 -> 845)
+
+        return df.with_columns(
+            [
+                # 日中セッション (08:45 - 15:15)
+                pl.when((time_hm >= 845) & (time_hm < 1515))
+                .then(1.0)
+                .otherwise(0.0)
+                .alias("is_day_session"),
+                # 夜間セッション (16:30 - 翌06:00)
+                pl.when((time_hm >= 1630) | (time_hm < 600))
+                .then(1.0)
+                .otherwise(0.0)
+                .alias("is_night_session"),
+                # 夜間オープン付近 (16:30 - 17:30)
+                pl.when((time_hm >= 1630) & (time_hm < 1730))
+                .then(1.0)
+                .otherwise(0.0)
+                .alias("is_night_open"),
+                # 夜間遅く (00:00 - 06:00)
+                pl.when(time_hm < 600).then(1.0).otherwise(0.0).alias("is_night_late"),
+                # 昼休み (11:30 - 12:30) 現物市場の昼休み
+                pl.when((time_hm >= 1130) & (time_hm < 1230))
+                .then(1.0)
+                .otherwise(0.0)
+                .alias("is_lunch_break"),
+                # オープン直後の高ボラティリティ時間 (08:45 - 09:30)
+                pl.when((time_hm >= 845) & (time_hm < 930))
+                .then(1.0)
+                .otherwise(0.0)
+                .alias("is_high_vol_window"),
+                # クロージングオークション付近 (15:00 - 15:15)
+                pl.when((time_hm >= 1500) & (time_hm < 1515))
+                .then(1.0)
+                .otherwise(0.0)
+                .alias("is_closing_auction"),
+                # オープンからの経過分数 (08:45を起点とする、日中セッションのみ計算)
+                pl.when((time_hm >= 845) & (time_hm < 1515))
+                .then((hour - 8) * 60 + minute - 45)
+                .otherwise(0.0)
+                .alias("minutes_from_open"),
+                # マーケットオープンフラグ (日中または夜間セッション中)
+                pl.when(
+                    ((time_hm >= 845) & (time_hm < 1515))
+                    | ((time_hm >= 1630) | (time_hm < 600))
+                )
+                .then(1.0)
+                .otherwise(0.0)
+                .alias("is_market_open"),
+            ]
+        )

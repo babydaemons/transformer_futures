@@ -159,7 +159,7 @@ def train_main(target_year: Optional[int] = None) -> None:
     
     # 分割された各コンポーネントを初期化
     data_loader = MarketDataLoader(cfg)
-    pipeline = FeaturePipeline()
+    pipeline = FeaturePipeline(cfg)
     ds_builder = DatasetBuilder()
 
     logging.info("Scanning dataset for dates...")
