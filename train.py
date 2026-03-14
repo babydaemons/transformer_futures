@@ -4,7 +4,10 @@ File: train.py
 
 ソースコードの役割:
 本モジュールは、日経平均先物ミニのモデル学習メインエントリーポイントです。
-引数処理、データセット全体の分割（Walk Forward/Target Year）、各Foldでのモジュール呼び出し、および最終結果の集計を行います。
+引数処理、データセット全体の分割（Walk Forward/Target Year）、各Foldでのモジュール呼び出し、
+および最終結果の集計を行います。
+ミリ秒精度の歩み値から構成された1分足データを用い、USDJPYやS&P500などの外部指標を
+特徴量として取り込んだTemporal Fusion Transformer (TFT) モデルの学習を制御します。
 """
 
 import random
@@ -120,6 +123,7 @@ def save_trades_to_tsv(trades: list, output_path: str) -> None:
         trades.sort(key=lambda x: x["entry_ts_ns"])
 
         def _ts_jst_iso(x: int) -> str:
+            """ナノ秒タイムスタンプをJSTのISO形式文字列に変換します。"""
             try:
                 dt_utc = datetime.datetime.fromtimestamp(
                     int(x) / 1e9, tz=datetime.timezone.utc
@@ -139,7 +143,9 @@ def save_trades_to_tsv(trades: list, output_path: str) -> None:
             for t in trades:
                 cum_pnl += t["pnl"]
                 f.write(
-                    f"{_ts_jst_iso(t['entry_ts_ns'])}\t{t['entry_price']:.1f}\t{t['hold_sec']}\t{t['exit_price']:.1f}\t{t['pnl']:.1f}\t{t['dir']}\t{t['reason']}\t{cum_pnl:.1f}\n"
+                    f"{_ts_jst_iso(t['entry_ts_ns'])}\t{t['entry_price']:.1f}\t"
+                    f"{t['hold_sec']}\t{t['exit_price']:.1f}\t{t['pnl']:.1f}\t"
+                    f"{t['dir']}\t{t['reason']}\t{cum_pnl:.1f}\n"
                 )
         logging.info(
             f"Successfully saved all trades to {output_path} (Total trades: {len(trades)})"
@@ -193,11 +199,12 @@ def train_main(target_year: Optional[int] = None) -> None:
             break
 
         logging.info(
-            f"=== Fold {fold} === Train: {train_dates[0]}~{train_dates[-1]} | Val: {val_dates[0]}~{val_dates[-1]} | Test: {test_dates[0] if test_dates else 'N/A'}~{test_dates[-1] if test_dates else 'N/A'}"
+            f"=== Fold {fold} === Train: {train_dates[0]}~{train_dates[-1]} | "
+            f"Val: {val_dates[0]}~{val_dates[-1]} | "
+            f"Test: {test_dates[0] if test_dates else 'N/A'}~{test_dates[-1] if test_dates else 'N/A'}"
         )
 
         # 1. DataLoaderの構築
-        # 引数の順番間違いやシグネチャ変更によるエラーを防ぐため、キーワード引数で明示的に渡します
         loader_train, loader_val, loader_test, y_labels_tr = build_fold_dataloaders(
             data_loader=data_loader,
             pipeline=pipeline,
@@ -212,6 +219,7 @@ def train_main(target_year: Optional[int] = None) -> None:
         )
 
         # 2. Modelの初期化
+        # Pydanticモデル(cfg)の属性に直接アクセス
         atr_idx = (
             cfg.features.continuous_cols.index("atr")
             if "atr" in cfg.features.continuous_cols

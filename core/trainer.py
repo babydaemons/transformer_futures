@@ -37,7 +37,7 @@ def split_two_stage_targets(
     Returns:
         Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
             - trade_y: 取引の有無 (0 or 1)
-            - dir_y: 取引方向 (0: Long, 1: Short)
+            - dir_y: 取引方向 (0: Long, 1: Short) ※Neutralの場合も計算上の便宜のため値が残るがマスクで無視される
             - dir_mask: 方向損失を計算するためのブールマスク
     """
     trade_y = (y_3cls != 0).long()
@@ -86,8 +86,7 @@ class Trainer:
         device: torch.device,
         logger: logging.Logger,
     ):
-        """
-        Trainerの初期化。
+        """Trainerの初期化。
 
         Args:
             model (nn.Module): 学習対象のPyTorchモデル
@@ -119,7 +118,11 @@ class Trainer:
         )
 
     def _setup_optimizer_and_scheduler(self, loader_train: DataLoader):
-        """AdamWオプティマイザとOneCycleLRスケジューラの初期化を行います。"""
+        """AdamWオプティマイザとOneCycleLRスケジューラの初期化を行います。
+
+        Args:
+            loader_train (DataLoader): 学習データのデータローダー。1エポックあたりのステップ数計算に使用します。
+        """
         self.optimizer = optim.AdamW(
             self.model.parameters(),
             lr=self.cfg.train.learning_rate,
@@ -158,9 +161,10 @@ class Trainer:
         self.logger.info(
             f"Label Dist -- Neutral: {n_neutral} ({n_neutral/n_total:.1%}), Trade: {n_trade} ({n_trade/n_total:.1%})"
         )
-        if n_neutral / n_total < 0.1:
+        if n_neutral / n_total < 0.3:
             self.logger.warning(
-                "WARNING: Extreme Class Imbalance detected! Trade labels are dominant. Consider shortening predict_horizon or increasing label_min_limit."
+                "WARNING: Trade labels are dominant (Neutral < 30%). "
+                "Consider shortening predict_horizon or increasing label_min_limit."
             )
 
         raw_ratio = n_neutral / (n_trade + 1e-8)
@@ -220,9 +224,27 @@ class Trainer:
         criterion_trade: nn.Module,
         criterion_dir: nn.Module,
     ) -> torch.Tensor:
+        """バッチデータに対する順伝播および損失関数の計算を行います。
+
+        Trade(取引有無)とDirection(方向)のTwo-Stage分類の損失に加え、
+        設定に応じて方向性ペナルティおよびPnLベースの損失を合算して返します。
+
+        Args:
+            batch (Tuple): DataLoaderから取得したバッチデータのタプル。
+            is_train (bool): 訓練モードかどうかのフラグ。
+            criterion_trade (nn.Module): Trade予測用損失関数。
+            criterion_dir (nn.Module): Direction予測用損失関数。
+
+        Returns:
+            torch.Tensor: 計算された総合損失（スカラー値）。
         """
-        バッチデータに対する順伝播および損失関数の計算を行います。
-        """
+        # バッチデータのアンパック
+        # xc: 連続値特徴量 (Continuous features)
+        # xs: 静的特徴量 (Static features)
+        # y: 正解ラベル (0: Neutral, 1: Long, 2: Short)
+        # p_curr: 現在の価格
+        # p_next_open: 次の足の始値 (スリッページ考慮のエントリー価格用)
+        # f_closes: 未来の終値シーケンス (Exitシミュレーション用)
         xc, xs, y, p_curr, p_next_open, f_closes = batch[0:6]
         curr_atr = batch[10]
 
@@ -249,6 +271,7 @@ class Trainer:
             trade_logits, dir_logits = out
             sltp_preds = None
 
+        # ロジットの差分からSigmoid確率を算出 (0: Neutral/Long, 1: Action/Short を想定)
         trade_logit_diff = trade_logits[:, 1] - trade_logits[:, 0]
         dir_logit_diff = dir_logits[:, 1] - dir_logits[:, 0]
         probs_action = torch.sigmoid(trade_logit_diff)
@@ -380,6 +403,7 @@ class Trainer:
                         criterion_dir=criterion_dir,
                     )
 
+                # Mixed Precision (AMP) による勾配スケーリングと逆伝播
                 self.scaler.scale(loss).backward()
 
                 if self.cfg.train.grad_clip > 0.0:
@@ -399,7 +423,7 @@ class Trainer:
                 steps += 1
 
             self.logger.info(
-                f"Fold {fold_idx} Ep {epoch}: TrainLoss={total_loss/max(steps,1):.4f}"
+                f"Fold {fold_idx} Ep {epoch}: TrainLoss={total_loss / max(steps, 1):.4f}"
             )
 
             # --- Validation & Early Stopping via Evaluator ---

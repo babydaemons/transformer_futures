@@ -5,14 +5,15 @@ File: core/evaluator.py
 ソースコードの役割:
 本モジュールは、モデルの検証(Validation)およびOut-of-Sample(OOS)テストの評価プロセスを担当する `Evaluator` クラスを提供します。
 Lossの計算や、バックテストシミュレーションを通じたスコアの算出、ベストモデルの追跡・管理を行います。
-`Trainer` クラスから評価ロジックを分離し、各クラスの責務を明確化することで可読性と保守性を高めます。
+特に、トレードが発生しない初期段階やエッジケースにおいて、スコアだけでなくLossの改善度を併用して
+モデルのポテンシャルを評価するロジックを備えています。
 """
 
 import math
 import copy
 import logging
 import os
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Callable
 
 import torch
 import torch.nn as nn
@@ -25,6 +26,17 @@ from trade.trading import run_vectorized_backtest
 class Evaluator:
     """
     モデルの評価、バックテストの実行、およびベストスコア・ベストモデルの管理を行うクラス。
+
+    Attributes:
+        model (nn.Module): 評価対象のPyTorchモデル。
+        cfg (Any): 設定オブジェクト。
+        device (torch.device): 実行デバイス (CPU/GPU)。
+        logger (logging.Logger): ログ出力用インスタンス。
+        compute_loss_fn (Callable): 損失計算用関数。
+        best_val_loss (float): 記録された最小の検証損失。
+        best_val_score (float): 記録された最大のバックテストスコア。
+        best_model_state (Optional[Dict]): 最良スコア時のモデル重み。
+        bad_epochs (int): スコアが改善しない連続エポック数。
     """
 
     def __init__(
@@ -33,17 +45,17 @@ class Evaluator:
         cfg: Any,
         device: torch.device,
         logger: logging.Logger,
-        compute_loss_fn: callable,
+        compute_loss_fn: Callable,
     ):
         """
         Evaluatorの初期化。
 
         Args:
-            model (nn.Module): 評価対象のPyTorchモデル
-            cfg (Any): 設定オブジェクト
-            device (torch.device): 実行デバイス (CPU/GPU)
-            logger (logging.Logger): ロガーインスタンス
-            compute_loss_fn (callable): 損失を計算するためのコールバック関数（Trainerから渡される）
+            model (nn.Module): 評価対象のPyTorchモデル。
+            cfg (Any): 設定オブジェクト。
+            device (torch.device): 実行デバイス。
+            logger (logging.Logger): ロガーインスタンス。
+            compute_loss_fn (Callable): 損失を計算するためのコールバック関数。
         """
         self.model = model
         self.cfg = cfg
@@ -64,12 +76,12 @@ class Evaluator:
         検証用データでのLoss計算を行います。
 
         Args:
-            loader (DataLoader): 検証用データローダー
-            criterion_trade (nn.Module): 取引有無のLoss関数
-            criterion_dir (nn.Module): 取引方向のLoss関数
+            loader (DataLoader): 検証用データローダー。
+            criterion_trade (nn.Module): 取引有無のLoss関数。
+            criterion_dir (nn.Module): 取引方向のLoss関数。
 
         Returns:
-            float: 平均損失値
+            float: 平均損失値。
         """
         self.model.eval()
         total_sum = None
@@ -105,15 +117,15 @@ class Evaluator:
         検証セットの評価とバックテストを実行し、ベストモデルの更新とEarly Stoppingの判定を行います。
 
         Args:
-            epoch (int): 現在のエポック数
-            fold_idx (int): 現在のFold番号
-            loader_val (DataLoader): 検証用データローダー
-            criterion_trade (nn.Module): 取引有無のLoss関数
-            criterion_dir (nn.Module): 取引方向のLoss関数
-            ema (Optional[Any]): EMAオブジェクト（適用・復元用）
+            epoch (int): 現在のエポック数。
+            fold_idx (int): 現在のFold番号。
+            loader_val (DataLoader): 検証用データローダー。
+            criterion_trade (nn.Module): 取引有無のLoss関数。
+            criterion_dir (nn.Module): 取引方向のLoss関数。
+            ema (Optional[Any]): EMAオブジェクト（適用・復元用）。
 
         Returns:
-            bool: Early Stopping条件に達した場合は True、それ以外は False を返します。
+            bool: Early Stopping条件に達した場合は True、それ以外は False。
         """
         if ema is not None:
             ema.apply_shadow(self.model)
@@ -136,6 +148,8 @@ class Evaluator:
         )
         n_trades_val = int(backtest_res.get("n_trades", 0)) if backtest_res else 0
 
+        # OOSにおいてトレードが発生しなかった場合、スコアは -inf となります。
+        # このとき、モデルはLoss（交差エントロピー等）の改善にフォールバックして評価されます。
         self.logger.info(
             f"Fold {fold_idx} Ep {epoch}: ValLoss={val_loss:.4f} | ValScore={val_score:.4f} (Trades: {n_trades_val})"
         )
@@ -149,7 +163,7 @@ class Evaluator:
         elif math.isinf(val_score) and math.isinf(self.best_val_score):
             score_equal = val_score == self.best_val_score
 
-        # スコアが同等ならLossが大きく改善しているかをチェック
+        # スコアが同等（両方 -inf 等）なら、Lossが基準値以上に改善しているかをチェック
         loss_improved_at_same_score = (
             score_equal
             and val_loss < self.best_val_loss - self.cfg.train.early_stopping_min_delta
@@ -172,6 +186,7 @@ class Evaluator:
             self.bad_epochs = 0
         else:
             self.bad_epochs += 1
+            # 一定エポック経過後、改善が見られなければEarly Stopping
             if self.bad_epochs >= self.cfg.train.patience and epoch > 5:
                 self.logger.info(
                     f"Early stopping at epoch {epoch} (Best Score: {self.best_val_score:.4f})"
@@ -191,13 +206,13 @@ class Evaluator:
         学習完了後にベストモデルを復元し、Out-of-Sample（OOS）テストを実行します。
 
         Args:
-            fold_idx (int): 現在のFold番号
-            loader_val (DataLoader): 検証用データローダー
-            loader_test (Optional[DataLoader]): テスト用データローダー
-            test_dates (List[Any]): テスト期間の日付リスト
+            fold_idx (int): 現在のFold番号。
+            loader_val (DataLoader): 検証用データローダー。
+            loader_test (Optional[DataLoader]): テスト用データローダー。
+            test_dates (List[Any]): テスト期間の日付リスト。
 
         Returns:
-            List[Dict[str, Any]]: OOS期間でのトレード履歴のリスト
+            List[Dict[str, Any]]: OOS期間でのトレード履歴のリスト。
         """
         oos_trades = []
         if self.best_model_state is not None:

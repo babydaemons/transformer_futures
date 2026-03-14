@@ -62,8 +62,8 @@ class FeatureConfig:
     # カラム定義
     ts_col: str = "trade_ts"
     price_col: str = "trade_price"
-    label_threshold_scale: float = 1.2  # 1.5から1.2へ下げてハードルを緩和
-    label_min_limit: float = 40.0  # 75.0から40.0へ下げ、より小さな波をターゲットにする
+    label_threshold_scale: float = 1.5  # ノイズを拾いすぎないよう1.5へ戻す
+    label_min_limit: float = 60.0  # Tradeラベルが50%を超えるのを防ぐため引き上げ
 
     # ラベルの最小値適用ロジック
     label_min_limit_mode: str = "cost"
@@ -307,8 +307,8 @@ class BacktestConfig:
     prob_threshold: float = 0.505
 
     # 2段階しきい値
-    threshold_trade: float = 0.505
-    threshold_dir: float = 0.55
+    threshold_trade: float = 0.505  # トレード実行確率のベースライン
+    threshold_dir: float = 0.52     # 0.55では厳しすぎるため緩和（52%の確信度でエントリー）
 
     # --- Dynamic Thresholding ---
     use_vol_regime_scaling: bool = True  # レジームによる閾値の動的変更
