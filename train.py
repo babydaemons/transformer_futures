@@ -250,6 +250,12 @@ def train_main(target_year: Optional[int] = None) -> None:
         oos_trades = trainer.train_fold(
             loader_train, loader_val, loader_test, y_labels_tr, fold, test_dates
         )
+
+        # ベストモデルの重みをディスクに保存
+        best_model_path = os.path.join(cfg.output_dir, f"best_model_fold{fold}.pth")
+        torch.save(model.state_dict(), best_model_path)
+        logger.info(f"Saved best model for Fold {fold} to {best_model_path}")
+
         all_oos_trades.extend(oos_trades)
 
         # 4. クリーンアップ
