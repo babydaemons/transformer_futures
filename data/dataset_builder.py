@@ -87,6 +87,81 @@ class DatasetBuilder:
 
         return cont, static, target
 
+    def prepare_data(self, df: pl.DataFrame) -> Tuple[
+        np.ndarray,
+        np.ndarray,
+        np.ndarray,
+        np.ndarray,
+        np.ndarray,
+        np.ndarray,
+        np.ndarray,
+    ]:
+        """データフレームからPyTorch/TFTDatasetの学習・推論用NumPy配列一式を生成します。
+
+        `data/builder.py` から呼び出され、モデル入力に必要な特徴量行列と、
+        Triple Barrier メソッド（バックテスト）に必要な価格・時間情報などを一括で抽出します。
+
+        Args:
+            df (pl.DataFrame): 特徴量計算済みのPolars DataFrame。
+
+        Returns:
+            Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+                - c_feat: 連続値特徴量の配列 (2D)
+                - s_feat: 状態特徴量の配列 (2D)
+                - y: ターゲット変数ベース配列 [Close, High, Low, TickSpeed, MinutesToClose, Open] (2D)
+                - p_high: 高値の配列 (1D)
+                - p_low: 安値の配列 (1D)
+                - p_close: 終値の配列 (1D)
+                - ts: タイムスタンプ配列 (ナノ秒エポック, 1D)
+        """
+        if len(df) == 0:
+            empty_1d_f = np.array([], dtype=np.float32)
+            empty_1d_i = np.array([], dtype=np.int64)
+            empty_2d_f = np.empty((0, 0), dtype=np.float32)
+            return (
+                empty_2d_f,
+                empty_2d_f,
+                empty_2d_f,
+                empty_1d_f,
+                empty_1d_f,
+                empty_1d_f,
+                empty_1d_i,
+            )
+
+        # 1. 基本となる特徴量とターゲットの抽出（既存メソッドの再利用）
+        c_feat, s_feat, y = self.prepare_numpy_data(df)
+
+        # 2. トリプルバリアやバックテスト用の個別価格列の抽出
+        p_high = (
+            df["high"].to_numpy().astype(np.float32)
+            if "high" in df.columns
+            else np.zeros(len(df), dtype=np.float32)
+        )
+        p_low = (
+            df["low"].to_numpy().astype(np.float32)
+            if "low" in df.columns
+            else np.zeros(len(df), dtype=np.float32)
+        )
+        p_close = (
+            df["close"].to_numpy().astype(np.float32)
+            if "close" in df.columns
+            else np.zeros(len(df), dtype=np.float32)
+        )
+
+        # 3. タイムスタンプ列の抽出 (ナノ秒単位のエポック秒として取得)
+        ts_col = cfg.features.ts_col
+        if ts_col in df.columns:
+            try:
+                # PolarsのDatetime型からナノ秒エポックへの変換を試行
+                ts = df[ts_col].dt.timestamp("ns").to_numpy().astype(np.int64)
+            except Exception:
+                # バージョン差異や既に数値型である場合のフォールバック
+                ts = df[ts_col].cast(pl.Int64).to_numpy()
+        else:
+            ts = np.zeros(len(df), dtype=np.int64)
+
+        return c_feat, s_feat, y, p_high, p_low, p_close, ts
+
     def walk_forward_split(
         self, dates: List[datetime]
     ) -> Iterator[Tuple[List[datetime], List[datetime], List[datetime]]]:
