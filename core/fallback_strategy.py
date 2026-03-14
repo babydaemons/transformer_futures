@@ -27,6 +27,7 @@ def resolve_oos_fallback(
     initial_dir_th: float,
     trade_log_path: str,
     logger: logging.Logger,
+    min_fallback_trades: int = 1,
 ) -> Optional[Dict[str, Any]]:
     """
     OOSテストでトレードが発生しない場合に、段階的に閾値を緩和して再評価を行います。
@@ -42,12 +43,17 @@ def resolve_oos_fallback(
         initial_dir_th (float): 初期の取引方向の閾値。
         trade_log_path (str): トレードログの出力パス。
         logger (logging.Logger): ロガーインスタンス。
+        min_fallback_trades (int): フォールバック採用に必要な最小トレード数。
 
     Returns:
         Optional[Dict[str, Any]]: フォールバックによりトレードが発生した場合のバックテスト結果。
                                   すべての緩和を試しても発生しなかった場合は None。
     """
     fallback_candidates = []
+
+    logger.warning(
+        "OOS fallback triggered: no trades with restored val thresholds."
+    )
 
     # 1. 方向閾値を0.50（ニュートラル）まで緩和
     if initial_dir_th > 0.50:
@@ -98,9 +104,30 @@ def resolve_oos_fallback(
             trade_log_path=trade_log_path,
         )
 
-        if candidate_oos.get("n_trades", 0) > 0:
-            logger.info("OOS fallback adopted: %s", reason)
+        candidate_n_trades = int(candidate_oos.get("n_trades", 0))
+        if candidate_n_trades <= 0:
+            continue
+
+        if candidate_n_trades >= int(min_fallback_trades):
+            candidate_oos["fallback_reason"] = reason
+            logger.info(
+                "OOS fallback adopted: %s (n_trades=%d)",
+                reason,
+                candidate_n_trades,
+            )
             best_oos = candidate_oos
             break
+
+        logger.info(
+            "OOS fallback rejected: %s (n_trades=%d < min_fallback_trades=%d)",
+            reason,
+            candidate_n_trades,
+            int(min_fallback_trades),
+        )
+
+    if best_oos is None:
+        logger.info(
+            "OOS fallback abandoned: no candidate satisfied adoption criteria."
+        )
 
     return best_oos

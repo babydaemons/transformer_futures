@@ -377,18 +377,13 @@ class OutofSampleRunner:
 
             # OOSでトレードが発生しなかった場合のフォールバックロジック
             if best_oos.get("n_trades", 0) == 0:
-                self.logger.warning(
-                    "OOS fallback triggered: no trades with restored val thresholds."
-                )
-
-                min_fallback_trades = 3
-
                 fallback_res = resolve_oos_fallback(
                     model=self.model,
                     loader_test=loader_test,
                     device=self.device,
                     cfg=self.cfg,
                     fold_idx=fold_idx,
+                    min_fallback_trades=3,
                     initial_trade_th=val_th_trade_f,
                     initial_dir_th=val_th_dir_f,
                     trade_log_path=trade_log_path,
@@ -396,31 +391,7 @@ class OutofSampleRunner:
                 )
 
                 if fallback_res is not None:
-                    candidate_n_trades = int(fallback_res.get("n_trades", 0))
-                    reason = fallback_res.get("fallback_reason", "resolved_by_module")
-
-                    if candidate_n_trades >= min_fallback_trades:
-                        self.logger.info(
-                            "OOS fallback adopted: %s (n_trades=%d)",
-                            reason,
-                            candidate_n_trades,
-                        )
-                        best_oos = fallback_res
-                    elif candidate_n_trades > 0:
-                        self.logger.info(
-                            "OOS fallback rejected: %s (n_trades=%d < min_fallback_trades=%d)",
-                            reason,
-                            candidate_n_trades,
-                            min_fallback_trades,
-                        )
-                    else:
-                        self.logger.info(
-                            "OOS fallback abandoned: no candidate satisfied adoption criteria."
-                        )
-                else:
-                    self.logger.info(
-                        "OOS fallback abandoned: no candidate satisfied adoption criteria."
-                    )
+                    best_oos = fallback_res
 
             if "trades" in best_oos:
                 oos_trades = best_oos["trades"]
