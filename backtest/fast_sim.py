@@ -4,7 +4,7 @@ File: backtest/fast_sim.py
 
 ソースコードの役割:
 本モジュールは、日経225ミニなどのデイトレードに対応したバックテストシミュレーターを提供します。
-Numbaを用いた高速なシグナル判定（_simulate_fast）や、ボラティリティレジームを考慮した動的な閾値の調整、
+Numbaを用いた高速なシグナル判定（simulate_fast）や、ボラティリティレジームを考慮した動的な閾値の調整、
 動的・静的なストップロス(SL)・テイクプロフィット(TP)の計算などのポートフォリオ管理・取引シミュレーションを実行します。
 USDJPYやS&P500といった外部環境認識用データを将来的に統合可能な構造を想定しています。
 """
@@ -103,14 +103,11 @@ def simulate_fast(
 
                         entry_mask[i] = True
 
-                        # クールダウンは「基本ホライゾン」と「残り時間」の短い方
-                        act_h = min(base_horizon, int(t_rem))
-                        cooldown_counter = act_h
+                        # クールダウンは保持ホライゾンとは独立した固定バー数
+                        cooldown_counter = cooldown_bars
                 else:
                     entry_mask[i] = True
-                    t_rem = time_to_closes[i]
-                    act_h = min(base_horizon, int(t_rem))
-                    cooldown_counter = act_h
+                    cooldown_counter = cooldown_bars
 
         # クールダウンの消化
         if cooldown_counter > 0:

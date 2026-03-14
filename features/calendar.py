@@ -41,7 +41,8 @@ class CalendarFeature:
         タイムスタンプから曜日や時間のサイン/コサイン特徴量を計算します。
         （周期的な時間情報を連続値としてモデルに与えるため）
         """
-        ts_col = getattr(self.cfg.features, "ts_col", "trade_ts")
+        # Pydanticで属性参照の安全性が保障されているため直接参照に変更
+        ts_col = self.cfg.features.ts_col
         schema_names = df.collect_schema().names()
 
         if ts_col not in schema_names:
@@ -78,7 +79,8 @@ class CalendarFeature:
         """
         日本の取引時間に基づくセッション情報（フラグ）を計算します。
         """
-        ts_col = getattr(self.cfg.features, "ts_col", "trade_ts")
+        # Pydanticで属性参照の安全性が保障されているため直接参照に変更
+        ts_col = self.cfg.features.ts_col
         schema_names = df.collect_schema().names()
 
         if ts_col not in schema_names:
@@ -90,9 +92,31 @@ class CalendarFeature:
         hour = pl.col(ts_col).dt.hour()
         minute = pl.col(ts_col).dt.minute()
         time_hm = hour * 100 + minute  # HHMM形式 (例: 8時45分 -> 845)
+        minute_of_day = hour * 60 + minute
+
+        # セッション終了までの残り分数
+        # 現行システムのセッション定義に合わせて、
+        # 日中: 08:45 - 15:15
+        # 夜間: 16:30 - 翌 06:00
+        # を採用する。
+        #
+        # BAR_SECONDS=60 の現行構成では「残り分数」と「残りバー数」が一致するため、
+        # バックテスト側の time_to_closes としてそのまま利用できる。
+        minutes_to_close = (
+            pl.when((time_hm >= 845) & (time_hm < 1515))
+            .then((15 * 60 + 15) - minute_of_day)
+            .when(time_hm < 600)
+            .then((6 * 60) - minute_of_day)
+            .when(time_hm >= 1630)
+            .then(((24 * 60) - minute_of_day) + (6 * 60))
+            .otherwise(0)
+            .cast(pl.Float32)
+            .alias("minutes_to_close")
+        )
 
         return df.with_columns(
             [
+                minutes_to_close,
                 # 日中セッション (08:45 - 15:15)
                 pl.when((time_hm >= 845) & (time_hm < 1515))
                 .then(1.0)

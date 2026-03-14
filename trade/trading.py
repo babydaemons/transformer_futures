@@ -1,6 +1,6 @@
-# trade.py
+# trade/trading.py
 """
-File: trade.py
+File: trade/trading.py
 
 ソースコードの役割:
 本モジュールは、学習済みモデルを用いた推論結果に基づき、バックテストの実行および
@@ -36,14 +36,14 @@ def _evaluate_and_update_best(
     シミュレーション結果を評価し、各種制約を満たしつつスコアが向上していれば最良結果を更新する。
 
     Args:
-        best: 現在の最良結果の辞書（未設定の場合はNone）
-        current_result: 今回のシミュレーション結果
-        min_trades: 許容する最小取引回数
-        max_signal_rate: 許容する最大シグナル発生率
-        total_samples: 評価対象の全サンプル数（シグナル発生率の計算に使用）
+        best (Optional[Dict[str, Any]]): 現在の最良結果の辞書（未設定の場合はNone）
+        current_result (Dict[str, Any]): 今回のシミュレーション結果
+        min_trades (int): 許容する最小取引回数
+        max_signal_rate (float): 許容する最大シグナル発生率
+        total_samples (int): 評価対象の全サンプル数（シグナル発生率の計算に使用）
 
     Returns:
-        更新された最良結果の辞書（条件未達やスコアが低い場合は元のbestを返す）
+        Optional[Dict[str, Any]]: 更新された最良結果の辞書（条件未達やスコアが低い場合は元のbestを返す）
     """
     # 最小取引数を満たさない場合はスキップ
     if current_result["n_trades"] < min_trades:
@@ -74,15 +74,15 @@ def optimize_backtest_parameters(
     トレード閾値、方向判定閾値、トレイリングストップ等のバックテストパラメータを探索・最適化する。
 
     Args:
-        simulator: バックテスト実行用シミュレータ
-        data: 推論結果を含むデータ辞書
-        cfg: 全体設定オブジェクト
-        fold_idx: クロスバリデーションのフォールド番号
-        fixed_threshold_trade: 固定のエントリー閾値（指定時は最適化スキップ）
-        fixed_threshold_dir: 固定の方向判定閾値（指定時は最適化スキップ）
+        simulator (BacktestSimulator): バックテスト実行用シミュレータ
+        data (Dict[str, np.ndarray]): 推論結果を含むデータ辞書
+        cfg (GlobalConfig): 全体設定オブジェクト
+        fold_idx (int): クロスバリデーションのフォールド番号
+        fixed_threshold_trade (Optional[float]): 固定のエントリー閾値（指定時は最適化スキップ）
+        fixed_threshold_dir (Optional[float]): 固定の方向判定閾値（指定時は最適化スキップ）
 
     Returns:
-        最適化された（あるいは指定された）パラメータでのシミュレーション結果
+        Dict[str, Any]: 最適化された（あるいは指定された）パラメータでのシミュレーション結果
     """
     logger = logging.getLogger(__name__)
     probs_action = data["probs_action"]
@@ -117,7 +117,14 @@ def optimize_backtest_parameters(
 
     # 方向判定閾値のチューニング候補生成
     cand_dir_thresholds = sorted(
-        set([cfg.backtest.threshold_dir, 0.55, 0.60, 0.65, 0.70, 0.75])
+        set(
+            [
+                0.50,
+                0.52,
+                0.55,
+                float(cfg.backtest.threshold_dir),
+            ]
+        )
     )
 
     # トレイリングストップ(TS)パラメータの最適化候補設定

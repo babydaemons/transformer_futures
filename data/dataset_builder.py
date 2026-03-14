@@ -87,6 +87,10 @@ class DatasetBuilder:
         # DataFrameに存在しないターゲット列があれば、0.0で安全に補完するフェイルセーフ
         missing_targets = [c for c in target_cols if c not in df.columns]
         if missing_targets:
+            logging.warning(
+                "Missing target columns were filled with 0.0: %s",
+                ", ".join(missing_targets),
+            )
             df = df.with_columns([pl.lit(0.0).alias(c) for c in missing_targets])
 
         # Target列の抽出

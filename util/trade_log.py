@@ -1,6 +1,6 @@
-# trade_log.py
+# util/trade_log.py
 """
-File: trade_log.py
+File: util/trade_log.py
 
 ソースコードの役割:
 本モジュールは、バックテスト実行後のトレードごとの詳細な損益（PnL）、エントリー・エグジットのタイミング、
@@ -505,11 +505,28 @@ def write_trade_log(
         hold_horizon_bars = max(
             1, min(predict_horizon, max_hold_bars, int(fc.shape[1]))
         )
-        t_rem = np.clip(
-            data["time_to_closes"][idx_entry].astype(np.int32, copy=False), 0, None
-        )
-        # 実効ホライゾンを計算（残り時間と保持可能ホライゾンを考慮）
-        act_h = np.clip(t_rem, 1, hold_horizon_bars).astype(np.int32)
+        t_rem_raw = data["time_to_closes"][idx_entry].astype(np.float32, copy=False)
+
+        # minutes_to_close が 0〜1 系に潰れている場合は、
+        # そのまま int 化すると全件 1 バー保持になるため保険を入れる
+        if len(idx_entry) == 0:
+            act_h = np.empty(0, dtype=np.int32)
+        elif float(np.nanmax(t_rem_raw)) <= 1.5 and hold_horizon_bars > 1:
+            logger.warning(
+                "time_to_closes looks normalized or compressed "
+                "(max=%.4f). Falling back to hold_horizon_bars=%d for trade log.",
+                float(np.nanmax(t_rem_raw)),
+                int(hold_horizon_bars),
+            )
+            act_h = np.full(len(idx_entry), hold_horizon_bars, dtype=np.int32)
+        else:
+            t_rem = np.clip(
+                np.floor(t_rem_raw).astype(np.int32, copy=False),
+                0,
+                None,
+            )
+            # 実効ホライゾンを計算（残り時間と保持可能ホライゾンを考慮）
+            act_h = np.clip(t_rem, 1, hold_horizon_bars).astype(np.int32)
 
         # col_idxはact_hに基づいて算出するため、act_hより後方で評価
         col_idx = np.minimum(act_h, horizon).astype(np.int32) - 1
