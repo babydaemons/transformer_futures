@@ -143,7 +143,7 @@ class ModelConfig:
     d_model: int = 64
     hidden_size: int = 64
     n_heads: int = 2
-    dropout: float = 0.50  # 過学習(Overfitting)対策でさらに強化
+    dropout: float = 0.60  # 過学習(Overfitting)対策でさらに強化
 
     num_layers: int = 2
 
@@ -194,9 +194,7 @@ class TrainConfig:
     neutral_logit_margin: float = 1.0
     neutral_logit_penalty: float = 0.30
 
-    pnl_loss_weight: float = (
-        0.10  # PnL Lossによる未来情報の過剰学習を防ぐため比重を下げる
-    )
+    pnl_loss_weight: float = 0.0
 
     action_logit_margin: float = 0.75
     action_logit_penalty: float = 0.10
@@ -316,7 +314,7 @@ class GlobalConfig:
 
     n_folds: int = 20 * 12 * 7
     train_days: int = 30
-    val_days: int = 5
+    val_days: int = 15
     test_days: int = 1
     step_days: int = 1
 
