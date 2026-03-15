@@ -75,7 +75,7 @@ def calculate_train_pnl_loss(
         directed_return = direction * raw_return
         clipped_return = torch.clamp(directed_return, min=-sl_amt, max=tp_amt)
         expected_pnl = position * clipped_return - probs_action * total_cost
-        
+
         # SL/TP予測に対する正則化（極端な値の抑制）
         sltp_reg = (
             torch.mean((m_sl - 2.0) ** 2 + (raw_m_tp - 2.0) ** 2) * 0.05
@@ -139,7 +139,7 @@ def calculate_eval_pnl_loss(
     pred_dir_vec = 1.0 - 2.0 * probs_short
     return_curve = pred_dir_vec.unsqueeze(1) * (f_closes - p_next_open.unsqueeze(1))
     horizon_len = f_closes.size(1)
-    
+
     # 時間減衰ファクターの適用（遠い未来の利益ほど割り引く）
     time_decay = (
         1.0
@@ -147,15 +147,18 @@ def calculate_eval_pnl_loss(
         * 0.5
     )
     decayed_returns = return_curve * time_decay.unsqueeze(0)
-    
+
     # 上位パーセンタイルの平均を取得（Soft-Maximum的なアプローチ）
     top_k = max(1, horizon_len // 10)
     raw_return = torch.topk(decayed_returns, k=top_k, dim=1).values.mean(dim=1)
 
+    # スリッページを含めたトータルコストの計算
+    total_cost_val = cost + slippage_tick * 5.0
+
     if use_dynamic_sl_tp and (sltp_preds is not None):
         m_sl = torch.clamp(sltp_preds[:, 0], min=0.5, max=5.0)
         raw_m_tp = sltp_preds[:, 1]
-        total_cost_val = cost + slippage_tick * 5.0
+
         tp_floor_val = total_cost_val + tp_min_after_cost
         m_tp_floor = (tp_floor_val / curr_atr.clamp(min=1e-6)).to(raw_m_tp.dtype)
         m_tp = torch.clamp(raw_m_tp + m_tp_floor, min=0.5, max=10.0)
@@ -163,10 +166,10 @@ def calculate_eval_pnl_loss(
         sl_amt = m_sl * curr_atr
         tp_amt = m_tp * curr_atr
         clipped_return = torch.clamp(raw_return, min=-sl_amt, max=tp_amt)
-        expected_pnl = probs_action * (clipped_return - cost)
+        expected_pnl = probs_action * (clipped_return - total_cost_val)
         sltp_reg = torch.mean((m_sl - 2.0) ** 2 + (raw_m_tp - 2.0) ** 2) * 0.05
     else:
-        expected_pnl = probs_action * (raw_return - cost)
+        expected_pnl = probs_action * (raw_return - total_cost_val)
 
     scaled_pnl = expected_pnl / 100.0
     batch_std = torch.std(scaled_pnl).clamp(min=1e-6)
