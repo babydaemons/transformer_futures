@@ -63,76 +63,36 @@ class FeatureConfig:
     ts_col: str = "trade_ts"
     price_col: str = "trade_price"
     label_threshold_scale: float = 1.5  # ノイズを拾いすぎないよう1.5へ戻す
-    label_min_limit: float = (
-        90.0  # Tradeラベルをさらに絞り込み、コスト超えの値幅だけを残しやすくする
-    )
+    label_min_limit: float = 50.0
 
     # ラベルの最小値適用ロジック
     label_min_limit_mode: str = "cost"
-    label_cost_buffer: float = (
-        35.0  # コスト負け回避バッファを拡大し、薄いエッジのTradeラベルを減らす
-    )
+    label_cost_buffer: float = 20.0
 
     # ===== 特徴量定義 =====
     continuous_cols: List[str] = field(
         default_factory=lambda: [
-            "log_ret",
-            "log_vol",
-            "ret_div_vol",  # Sharpe-like momentum
-            "rel_vol",  # 相対出来高
-            "buy_pressure",  # 需給圧力
-            "log_buy_vol",
-            "log_sell_vol",
-            "day_cum_delta_norm",  # 日次累積デルタ(正規化)
-            "ofi_signal",
-            "volume_pressure",
-            "price_spread",
-            "trade_freq_accel",
-            "amihud_illiquidity",
+            # --- 1. ボラティリティ＆レジーム (Top Contributors) ---
             "realized_vol",
-            "parkinson_vol",
             "garman_klass_vol",
-            "shadow_range",
-            # --- Size Imbalance ---
-            "size_imb_1bar",
-            "vol_size_std",
-            "max_trade_size",
-            "tick_speed_ratio",
-            "delta_volume",
-            # --- MTF / Cross Asset ---
-            "dist_15m",
-            "dist_1h",
-            "dist_4h",
-            "dist_1d",
-            "dist_vwap_1m",
-            "dist_vwap_4h",
-            "dist_vwap_1d",
-            "rs_sp500_1h",
-            "beta_sp500_1h",  # 対S&P500 ローリング・ベータ
+            "parkinson_vol",
             "vol_regime",
-            "dist_prev_poc_1d",
-            "dist_prev_poc_1w",
-            "vol_skew_1h",
-            "vol_skew_1d",
-            # --- Technical ---
+            # --- 2. モメンタム＆価格推移 ---
+            "log_ret",
+            "price_spread",
             "rsi",
-            "macd",
             "bb_b",
-            "atr",
+            "macd",
             "adx",
             "efficiency_ratio",
             "efficiency_ratio_1h",
-            # --- Macro / Cross Asset Additions ---
-            "usdjpy_ret_lag1",
-            "sp500_ret_lag1",
-            "corr_usdjpy",
-            "usdjpy_lead_spread",
-            "usdjpy_bb_score",
-            "usdjpy_cum_divergence_1h",
-            "xauusd_ret_lag1",
-            "xtiusd_ret_lag1",
-            "short_selling_ratio",
-            "foreigners_balance_norm",
+            "dist_vwap_1d",
+            # --- 3. ボリューム＆オーダーフロー (基礎的なもののみ) ---
+            "log_sell_vol",
+            "log_buy_vol",
+            "vol_skew_1h",
+            "max_trade_size",
+            "size_imb_1bar",
         ]
     )
 
@@ -199,7 +159,7 @@ class TrainConfig:
     learning_rate: float = 1e-4
     weight_decay: float = 1e-3  # L2正則化を強める
 
-    batch_size: int = 256
+    batch_size: int = 1024
     epochs: int = 30
     patience: int = 3  # Early Stoppingを早くして過剰なカーブフィットを防ぐ
     early_stopping_min_delta: float = 1e-4
@@ -244,8 +204,8 @@ class TrainConfig:
     use_amp: bool = True
 
     # DataLoader
-    num_workers: int = 2
-    prefetch_factor: int = 2
+    num_workers: int = 4
+    prefetch_factor: int = 4
     persistent_workers: bool = False
     pin_memory: bool = True
 
@@ -288,7 +248,7 @@ class BacktestConfig:
     sl_price: float = 100.0
     tp_price: float = 0.0
 
-    use_dynamic_sl_tp: bool = False
+    use_dynamic_sl_tp: bool = True
     use_take_profit: bool = True  # 微益撤退を防ぎつつ確実に利益を確保するためTPを復活
     tp_min_atr_mult: float = 2.0  # ATRの2倍を最低利確ラインに設定
 
@@ -308,10 +268,10 @@ class BacktestConfig:
     edge_threshold: float = 0.02
     edge_margin: float = 0.01
 
-    prob_threshold: float = 0.505
+    prob_threshold: float = 0.45
 
     # 2段階しきい値
-    threshold_trade: float = 0.505  # トレード実行確率のベースライン
+    threshold_trade: float = 0.45 # トレード実行確率のベースライン
     threshold_dir: float = (
         0.50  # direction gate で全滅しないよう、まずは50%まで緩和して様子を見る
     )
