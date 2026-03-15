@@ -179,7 +179,9 @@ def _evaluate_positions(
         act_amt = act_m * atr_pos
         drop_amt = drop_m * atr_pos
 
-        time_decay_factor = 1.0 - (np.arange(horizon) / horizon) * 0.5
+        # 実際の価格パスの長さ（h_len）に合わせて時間減衰配列を生成し、ブロードキャスエラーを防ぐ
+        h_len = fh_pos.shape[1]
+        time_decay_factor = 1.0 - (np.arange(h_len) / horizon) * 0.5
         drop_amt_decayed = drop_amt[:, None] * time_decay_factor[None, :]
 
         if target_pred == 1:
