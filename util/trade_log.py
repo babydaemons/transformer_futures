@@ -168,7 +168,8 @@ def _evaluate_positions(
 
     # TP到達判定: (Long: fh > pe + tp) / (Short: fl < pe - tp) -> dir_multを活用
     fav_px = fh_pos if target_pred == 1 else fl_pos
-    hit_tp = (dir_mult * fav_px > dir_mult * pe_pos + tp_pos[:, None]) & (
+    # 【修正1】ジャストタッチ（ピッタリ到達）を判定に含めるため >= に修正
+    hit_tp = (dir_mult * fav_px >= dir_mult * pe_pos + tp_pos[:, None]) & (
         tp_pos[:, None] > 0.0
     )
 
@@ -196,7 +197,8 @@ def _evaluate_positions(
             dyn_sl = np.maximum.accumulate(dyn_sl, axis=1)
             dyn_sl = np.maximum(dyn_sl, pe_pos[:, None] - sl_pos[:, None])
             dyn_sl = np.floor(dyn_sl / 5.0) * 5.0  # 安全のため下方向に5円丸め
-            hit_sl = (fl_pos < dyn_sl) & (sl_pos[:, None] > 0.0)
+            # 【修正1】ジャストタッチを判定に含めるため <= に修正
+            hit_sl = (fl_pos <= dyn_sl) & (sl_pos[:, None] > 0.0)
         else:
             fav_cum = np.minimum.accumulate(fl_pos, axis=1)
             act_mask = (pe_pos[:, None] - fav_cum) >= act_amt[:, None]
@@ -209,14 +211,17 @@ def _evaluate_positions(
             dyn_sl = np.minimum.accumulate(dyn_sl, axis=1)
             dyn_sl = np.minimum(dyn_sl, pe_pos[:, None] + sl_pos[:, None])
             dyn_sl = np.ceil(dyn_sl / 5.0) * 5.0  # 安全のため上方向に5円丸め
-            hit_sl = (fh_pos > dyn_sl) & (sl_pos[:, None] > 0.0)
+            # 【修正1】ジャストタッチを判定に含めるため >= に修正
+            hit_sl = (fh_pos >= dyn_sl) & (sl_pos[:, None] > 0.0)
     else:
         if target_pred == 1:
-            hit_sl = (fl_pos < (pe_pos[:, None] - sl_pos[:, None])) & (
+            # 【修正1】ジャストタッチを判定に含めるため <= に修正
+            hit_sl = (fl_pos <= (pe_pos[:, None] - sl_pos[:, None])) & (
                 sl_pos[:, None] > 0.0
             )
         else:
-            hit_sl = (fh_pos > (pe_pos[:, None] + sl_pos[:, None])) & (
+            # 【修正1】ジャストタッチを判定に含めるため >= に修正
+            hit_sl = (fh_pos >= (pe_pos[:, None] + sl_pos[:, None])) & (
                 sl_pos[:, None] > 0.0
             )
 
@@ -240,8 +245,9 @@ def _evaluate_positions(
         idx_tp = np.where(idx_tp >= min_hold_bars, idx_tp, inf)
         idx_sl = np.where(idx_sl >= min_hold_bars, idx_sl, inf)
 
+    # 【修正3】同一バー内でTP/SL両方に到達した場合、保守的にSL優先（<=）とする
     tp_first = idx_tp < idx_sl
-    sl_first = idx_sl < idx_tp
+    sl_first = (idx_sl <= idx_tp) & (idx_sl < inf)
 
     pos_idx = np.flatnonzero(m_pos)
 
