@@ -62,6 +62,45 @@ def _evaluate_and_update_best(
     return best
 
 
+def _generate_tuning_candidates(
+    probs_action: np.ndarray, cfg: GlobalConfig
+) -> tuple[list[float], list[float], list[tuple[float, float]]]:
+    """
+    バックテストの自動チューニングに使用するパラメータ候補リストを生成する。
+
+    Args:
+        probs_action (np.ndarray): 推論結果のアクション確率配列
+        cfg (GlobalConfig): 全体設定オブジェクト
+
+    Returns:
+        tuple[list[float], list[float], list[tuple[float, float]]]:
+            - エントリー閾値の候補リスト
+            - 方向判定閾値の候補リスト
+            - トレイリングストップ(TS)パラメータの候補リスト (ts_act, ts_drop)のタプルのリスト
+    """
+    # エントリー閾値のチューニング候補生成（パーセンタイルに基づく）
+    cand_trade_percentiles = [70, 75, 80, 85, 90, 92, 94, 96, 98, 99]
+    cand_trade_thresholds = sorted(
+        set(float(np.percentile(probs_action, p)) for p in cand_trade_percentiles)
+    )
+    cand_trade_thresholds.append(cfg.backtest.threshold_trade)
+    cand_trade_thresholds = sorted(set(cand_trade_thresholds))
+
+    # 方向判定閾値のチューニング候補生成
+    cand_dir_thresholds = sorted(
+        set([0.50, 0.52, 0.55, float(cfg.backtest.threshold_dir)])
+    )
+
+    # トレイリングストップ(TS)パラメータの最適化候補設定
+    cand_ts_params = [(cfg.backtest.trailing_act_mult, cfg.backtest.trailing_drop_mult)]
+    if cfg.backtest.use_trailing_stop:
+        cand_ts_params = sorted(
+            list(set(cand_ts_params + [(0.8, 1.2), (1.0, 1.5), (1.5, 2.0), (2.0, 3.0)]))
+        )
+
+    return cand_trade_thresholds, cand_dir_thresholds, cand_ts_params
+
+
 def optimize_backtest_parameters(
     simulator: BacktestSimulator,
     data: Dict[str, np.ndarray],
@@ -107,32 +146,10 @@ def optimize_backtest_parameters(
         cfg.backtest.min_trades_for_tuning,
     )
 
-    # エントリー閾値のチューニング候補生成（パーセンタイルに基づく）
-    cand_trade_percentiles = [70, 75, 80, 85, 90, 92, 94, 96, 98, 99]
-    cand_trade_thresholds = sorted(
-        set(float(np.percentile(probs_action, p)) for p in cand_trade_percentiles)
+    # パラメータのチューニング候補リストの生成
+    cand_trade_thresholds, cand_dir_thresholds, cand_ts_params = (
+        _generate_tuning_candidates(probs_action, cfg)
     )
-    cand_trade_thresholds.append(cfg.backtest.threshold_trade)
-    cand_trade_thresholds = sorted(set(cand_trade_thresholds))
-
-    # 方向判定閾値のチューニング候補生成
-    cand_dir_thresholds = sorted(
-        set(
-            [
-                0.50,
-                0.52,
-                0.55,
-                float(cfg.backtest.threshold_dir),
-            ]
-        )
-    )
-
-    # トレイリングストップ(TS)パラメータの最適化候補設定
-    cand_ts_params = [(cfg.backtest.trailing_act_mult, cfg.backtest.trailing_drop_mult)]
-    if cfg.backtest.use_trailing_stop:
-        cand_ts_params = sorted(
-            list(set(cand_ts_params + [(0.8, 1.2), (1.0, 1.5), (1.5, 2.0), (2.0, 3.0)]))
-        )
 
     best = None
     n_eval = 0
