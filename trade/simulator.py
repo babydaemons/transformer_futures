@@ -100,6 +100,9 @@ def _calculate_dynamic_sl(
         )
         dynamic_sl = np.maximum.accumulate(dynamic_sl, axis=1)
         dynamic_sl = np.maximum(dynamic_sl, initial_sl_px[:, None])
+
+        # 日経225ミニの呼値(5円)に合わせて下方向(不利な方向)に丸める
+        dynamic_sl = np.floor(dynamic_sl / 5.0) * 5.0
     else:
         # Short: 安値更新（MFE）を追跡
         fav_cum = np.minimum.accumulate(fav_px_path, axis=1)
@@ -109,6 +112,9 @@ def _calculate_dynamic_sl(
         )
         dynamic_sl = np.minimum.accumulate(dynamic_sl, axis=1)
         dynamic_sl = np.minimum(dynamic_sl, initial_sl_px[:, None])
+
+        # 日経225ミニの呼値(5円)に合わせて上方向(不利な方向)に丸める
+        dynamic_sl = np.ceil(dynamic_sl / 5.0) * 5.0
 
     return dynamic_sl
 
@@ -227,8 +233,9 @@ def _calculate_directional_pnl(
     idx_tp = np.where(idx_tp < h_eff, idx_tp, inf)
     idx_sl = np.where(idx_sl < h_eff, idx_sl, inf)
 
+    # 同一バー内でTP/SL両方に到達した場合、保守的にSL優先（<=）とする
     tp_first = idx_tp < idx_sl
-    sl_first = idx_sl < idx_tp
+    sl_first = (idx_sl <= idx_tp) & (idx_sl < inf)
 
     # PnLの算出（決済価格の決定）
     if not is_short:

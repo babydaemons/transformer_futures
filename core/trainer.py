@@ -294,11 +294,15 @@ class Trainer:
             Tuple[torch.Tensor, torch.Tensor]: (PnL損失, SL/TP正則化項)
         """
         if is_train:
+            # 次の足の始値でエントリーするかどうかの設定に基づいてエントリー価格を決定
+            entry_price = (
+                p_next_open if bool(self.cfg.backtest.use_next_bar_entry) else p_curr
+            )
             pnl_loss, sltp_reg, self.global_pnl_var = calculate_train_pnl_loss(
                 probs_short=probs_short,
                 probs_action=probs_action,
                 p_exit=p_exit,
-                p_curr=p_curr,
+                p_curr=entry_price,
                 curr_atr=curr_atr,
                 sltp_preds=sltp_preds,
                 cost=float(self.cfg.backtest.cost),

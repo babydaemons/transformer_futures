@@ -23,13 +23,12 @@ logger = logging.getLogger(__name__)
 def log_backtest_summary(
     best: Dict[str, Any], fold_idx: int, probs_action: np.ndarray
 ) -> None:
-    """
-    バックテストのパフォーマンスサマリーを標準出力(ログ)に記録する。
+    """バックテストのパフォーマンスサマリーを標準出力(ログ)に記録する。
 
     Args:
-        best (Dict[str, Any]): 最適化されたバックテスト結果
-        fold_idx (int): クロスバリデーションのフォールドインデックス
-        probs_action (np.ndarray): アクション予測確率の配列（統計情報出力用）
+        best (Dict[str, Any]): 最適化されたバックテスト結果の辞書。
+        fold_idx (int): クロスバリデーションのフォールドインデックス。
+        probs_action (np.ndarray): アクション予測確率の配列（統計情報出力用）。
     """
     p_stats = np.percentile(probs_action, [50, 75, 90, 95, 99])
     stats_msg = (
@@ -38,7 +37,7 @@ def log_backtest_summary(
     )
 
     # トレードが0回の場合は簡易ログを出力して終了
-    if best["n_trades"] == 0:
+    if best.get("n_trades", 0) == 0:
         logging.info(
             f"[Fold {fold_idx} OOS] No trades executed. "
             f"(Raw Signals > {best.get('threshold_trade', 0.0):.3f}: {best.get('raw_signals_count', 0)}) | "
@@ -65,8 +64,7 @@ def log_backtest_summary(
 def _calculate_sl_tp(
     cfg: GlobalConfig, data: Dict[str, np.ndarray], idx_entry: np.ndarray
 ) -> Tuple[np.ndarray, np.ndarray, float]:
-    """
-    設定に基づいてストップロス(SL)とテイクプロフィット(TP)、および合計コストを計算する。
+    """設定に基づいてストップロス(SL)とテイクプロフィット(TP)、および合計コストを計算する。
 
     Args:
         cfg (GlobalConfig): グローバル設定オブジェクト。
@@ -74,7 +72,10 @@ def _calculate_sl_tp(
         idx_entry (np.ndarray): エントリーインデックスの配列。
 
     Returns:
-        Tuple[np.ndarray, np.ndarray, float]: TPの配列、SLの配列、合計コスト。
+        Tuple[np.ndarray, np.ndarray, float]:
+            - tp_e (np.ndarray): 各エントリーのTP値配列。
+            - sl_e (np.ndarray): 各エントリーのSL値配列。
+            - total_cost (float): 取引の合計コスト(手数料 + スリッページ)。
     """
     use_dyn = bool(cfg.backtest.use_dynamic_sl_tp)
     use_tp = bool(cfg.backtest.use_take_profit)
@@ -84,7 +85,7 @@ def _calculate_sl_tp(
         m_sl_e = np.clip(data["m_sl_arr"][idx_entry], 0.5, 5.0)
         atr_e = data["atrs"][idx_entry]
         sl_e = (m_sl_e * atr_e).astype(np.float32, copy=False)
-        sl_e = np.round(sl_e / 5.0) * 5.0  # 5円単位に丸める
+        sl_e = np.round(sl_e / 5.0) * 5.0  # 日経225ミニの呼値(5円単位)に丸める
 
         if use_tp:
             m_tp_base = np.maximum(
@@ -92,7 +93,7 @@ def _calculate_sl_tp(
             )
             m_tp_e = np.clip(m_tp_base, 0.5, 10.0)
             tp_e = (m_tp_e * atr_e).astype(np.float32, copy=False)
-            tp_e = np.round(tp_e / 5.0) * 5.0  # 5円単位に丸める
+            tp_e = np.round(tp_e / 5.0) * 5.0
         else:
             tp_e = np.zeros(len(idx_entry), dtype=np.float32)
     else:
@@ -138,11 +139,33 @@ def _evaluate_positions(
     exit_reason: np.ndarray,
     exit_px: np.ndarray,
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """
-    指定された方向（Long: 1 または Short: 2）のポジションの出口（TP/SL/Horizon到達）と決済価格を計算する。
+    """指定された方向（Long: 1 または Short: 2）のポジションの出口と決済価格を計算する。
+
+    マトリクス演算を用いて、ポジションホールド期間中のTP、SL、または
+    トレーリングストップ(TS)への到達を評価します。
+
+    Args:
+        preds_e (np.ndarray): 予測されたポジション方向の配列。
+        target_pred (int): 評価対象の方向 (1=Long, 2=Short)。
+        pe (np.ndarray): エントリー価格の配列。
+        fh (np.ndarray): 将来の高値マトリクス。
+        fl (np.ndarray): 将来の安値マトリクス。
+        act_h (np.ndarray): 各トレードの有効ホールド期間(バー数)。
+        tp_e (np.ndarray): 各トレードのTP値。
+        sl_e (np.ndarray): 各トレードのSL値。
+        atr_e (np.ndarray): 各トレード時点のATR。
+        cfg (GlobalConfig): グローバル設定。
+        best (Dict[str, Any]): 実行中のバックテスト構成（TSパラメータ等を含む）。
+        horizon (int): 最大予測ホライズン。
+        min_exit_idx (int): 決済が許可される最小インデックス。
+        min_hold_bars (int): 最小ホールドバー数。
+        exit_off (np.ndarray): 更新用：決済オフセットインデックス。
+        exit_reason (np.ndarray): 更新用：決済理由("TP", "SL", "HORIZON")。
+        exit_px (np.ndarray): 更新用：決済価格。
 
     Returns:
-        Tuple[np.ndarray, np.ndarray, np.ndarray]: 更新された (exit_off, exit_reason, exit_px)
+        Tuple[np.ndarray, np.ndarray, np.ndarray]:
+            更新された (exit_off, exit_reason, exit_px) のタプル。
     """
     out_off = exit_off.copy()
     out_reason = exit_reason.copy()
@@ -168,7 +191,7 @@ def _evaluate_positions(
 
     # TP到達判定: (Long: fh > pe + tp) / (Short: fl < pe - tp) -> dir_multを活用
     fav_px = fh_pos if target_pred == 1 else fl_pos
-    # 【修正1】ジャストタッチ（ピッタリ到達）を判定に含めるため >= に修正
+    # 【修正1】ジャストタッチ（ピッタリ到達）を判定に含めるため >= に修正済み
     hit_tp = (dir_mult * fav_px >= dir_mult * pe_pos + tp_pos[:, None]) & (
         tp_pos[:, None] > 0.0
     )
@@ -180,7 +203,7 @@ def _evaluate_positions(
         act_amt = act_m * atr_pos
         drop_amt = drop_m * atr_pos
 
-        # 実際の価格パスの長さ（h_len）に合わせて時間減衰配列を生成し、ブロードキャスエラーを防ぐ
+        # 【修正】実際の価格パスの長さ（h_len）に合わせて時間減衰配列を生成し、ブロードキャストエラーを防ぐ
         h_len = fh_pos.shape[1]
         time_decay_factor = 1.0 - (np.arange(h_len) / horizon) * 0.5
         drop_amt_decayed = drop_amt[:, None] * time_decay_factor[None, :]
@@ -196,8 +219,9 @@ def _evaluate_positions(
             )
             dyn_sl = np.maximum.accumulate(dyn_sl, axis=1)
             dyn_sl = np.maximum(dyn_sl, pe_pos[:, None] - sl_pos[:, None])
-            dyn_sl = np.floor(dyn_sl / 5.0) * 5.0  # 安全のため下方向に5円丸め
-            # 【修正1】ジャストタッチを判定に含めるため <= に修正
+            # 【修正2】日経225ミニの呼値(5円)に合わせて下方向(不利な方向)に丸める
+            dyn_sl = np.floor(dyn_sl / 5.0) * 5.0
+            # 【修正1】ジャストタッチを判定に含めるため <= に修正済み
             hit_sl = (fl_pos <= dyn_sl) & (sl_pos[:, None] > 0.0)
         else:
             fav_cum = np.minimum.accumulate(fl_pos, axis=1)
@@ -210,17 +234,18 @@ def _evaluate_positions(
             )
             dyn_sl = np.minimum.accumulate(dyn_sl, axis=1)
             dyn_sl = np.minimum(dyn_sl, pe_pos[:, None] + sl_pos[:, None])
-            dyn_sl = np.ceil(dyn_sl / 5.0) * 5.0  # 安全のため上方向に5円丸め
-            # 【修正1】ジャストタッチを判定に含めるため >= に修正
+            # 【修正2】日経225ミニの呼値(5円)に合わせて上方向(不利な方向)に丸める
+            dyn_sl = np.ceil(dyn_sl / 5.0) * 5.0
+            # 【修正1】ジャストタッチを判定に含めるため >= に修正済み
             hit_sl = (fh_pos >= dyn_sl) & (sl_pos[:, None] > 0.0)
     else:
         if target_pred == 1:
-            # 【修正1】ジャストタッチを判定に含めるため <= に修正
+            # 【修正1】ジャストタッチを判定に含めるため <= に修正済み
             hit_sl = (fl_pos <= (pe_pos[:, None] - sl_pos[:, None])) & (
                 sl_pos[:, None] > 0.0
             )
         else:
-            # 【修正1】ジャストタッチを判定に含めるため >= に修正
+            # 【修正1】ジャストタッチを判定に含めるため >= に修正済み
             hit_sl = (fh_pos >= (pe_pos[:, None] + sl_pos[:, None])) & (
                 sl_pos[:, None] > 0.0
             )
@@ -286,8 +311,20 @@ def _export_trades_to_tsv(
     total_cost: float,
     multiplier: float,
 ) -> List[Dict[str, Any]]:
-    """
-    最終的な損益（PNL）の計算と、TSVファイルへの書き込み処理を担当する。
+    """最終的な損益（PNL）の計算と、TSVファイルへの書き込み処理を担当する。
+
+    Args:
+        trade_log_path (str): 出力先ファイルパス。
+        preds_e (np.ndarray): ポジション方向 (1=Long, 2=Short)。
+        pe (np.ndarray): エントリー価格。
+        exit_px (np.ndarray): 決済価格。
+        entry_ts (np.ndarray): エントリータイムスタンプ(ns)。
+        exit_ts (np.ndarray): エクジットタイムスタンプ(ns)。
+        exit_off (np.ndarray): 決済オフセット。
+        exit_reason (np.ndarray): 決済理由。
+        lots (np.ndarray): ロット数。
+        total_cost (float): 往復取引コスト。
+        multiplier (float): 契約乗数 (例: ミニなら100)。
 
     Returns:
         List[Dict[str, Any]]: 各トレードの詳細を格納した辞書のリスト。
@@ -351,8 +388,8 @@ def write_trade_log(
     cfg: GlobalConfig,
     data: Dict[str, np.ndarray],
 ) -> List[Dict[str, Any]]:
-    """
-    詳細な決済理由を含むTSVトレードログを出力する。
+    """詳細な決済理由を含むTSVトレードログを出力する。
+
     メイン関数として各ヘルパー関数を呼び出し、処理をコーディネートする。
 
     Args:
@@ -461,7 +498,7 @@ def write_trade_log(
         min_exit_idx = max(0, min_hold_bars - 1)
 
         # =====================================================
-        # ポジションの評価 (リファクタリング適用箇所)
+        # ポジションの評価
         # =====================================================
         # Long positions (target_pred = 1)
         exit_off, exit_reason, exit_px = _evaluate_positions(

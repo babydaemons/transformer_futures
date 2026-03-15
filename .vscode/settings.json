@@ -3,6 +3,7 @@
         "atrs",
         "autocast",
         "backtest",
+        "cand",
         "cooldown",
         "cudnn",
         "financials",
