@@ -6,6 +6,7 @@ File: trade/pnl_calculator.py
 本モジュールは、トレードの純粋な計算ロジック（PnL計算、TP/SL判定、
 トレイリングストップ計算）を担当します。Numpy配列に対する純粋関数群として実装され、
 ロング・ショートそれぞれの方向に応じた価格推移の評価と損益の算出を行います。
+日経225ミニ先物の仕様に合わせ、動的ストップロスやTP/SL幅は5円刻みに丸められます。
 """
 
 import numpy as np
@@ -25,7 +26,6 @@ def _calculate_dynamic_sl(
 ) -> np.ndarray:
     """トレイリングストップ（動的SL）の価格パスを計算する。
 
-
     Args:
         pe (np.ndarray): エントリー価格。
         fav_px_path (np.ndarray): 有利な方向の価格推移（LongならHigh, ShortならLow）。
@@ -34,10 +34,10 @@ def _calculate_dynamic_sl(
         horizon (int): 最大保持バー数。
         act_mult (float): トレイリング開始マルチプライヤー。
         drop_mult (float): トレイリングドロップマルチプライヤー。
-        is_short (bool): ショートポジションフラグ。
+        is_short (bool, optional): ショートポジションの場合はTrue。デフォルトはFalse。
 
     Returns:
-        np.ndarray: 各バーにおける動的SL価格の行列。
+        np.ndarray: 各バーにおける動的SL価格の行列（日経225ミニ用に5円刻みで丸め済み）。
     """
     act_amt = act_mult * atr_e
     drop_amt = drop_mult * atr_e
@@ -55,6 +55,9 @@ def _calculate_dynamic_sl(
         )
         dynamic_sl = np.maximum.accumulate(dynamic_sl, axis=1)
         dynamic_sl = np.maximum(dynamic_sl, initial_sl_px[:, None])
+        dynamic_sl = (
+            np.floor(dynamic_sl / 5.0) * 5.0
+        )  # 5円丸め（切り捨てでSLを安全側に）
     else:
         # Short: 安値更新（MFE）を追跡
         fav_cum = np.minimum.accumulate(fav_px_path, axis=1)
@@ -64,6 +67,9 @@ def _calculate_dynamic_sl(
         )
         dynamic_sl = np.minimum.accumulate(dynamic_sl, axis=1)
         dynamic_sl = np.minimum(dynamic_sl, initial_sl_px[:, None])
+        dynamic_sl = (
+            np.ceil(dynamic_sl / 5.0) * 5.0
+        )  # 5円丸め（切り上げでSLを安全側に）
 
     return dynamic_sl
 
@@ -103,8 +109,8 @@ def _calculate_directional_pnl(
         min_hold_bars (int): 最小保持バー数。
         min_exit_idx (int): 最小エグジットインデックス。
         horizon (int): 最大ホライゾン期間。
-        trailing_act_mult (Optional[float]): トレイリング開始マルチプライヤー。
-        trailing_drop_mult (Optional[float]): トレイリングドロップマルチプライヤー。
+        trailing_act_mult (Optional[float], optional): トレイリング開始マルチプライヤー。
+        trailing_drop_mult (Optional[float], optional): トレイリングドロップマルチプライヤー。
 
     Returns:
         np.ndarray: 計算されたPnLの配列。
@@ -114,14 +120,16 @@ def _calculate_directional_pnl(
     idx = np.arange(h, dtype=np.int32)[None, :]
     inf = h + 1
 
+    # ★ upper_px / lower_px を計算する前に、まずSL/TPの幅を5円刻みに丸める
+    tp_arr = np.round(tp_arr / 5.0) * 5.0
+    sl_arr = np.round(sl_arr / 5.0) * 5.0
+
     if not is_short:
-        # Long
         upper_px = pe + tp_arr
         lower_px = pe - sl_arr
         fav_px_path = fh
         unfav_px_path = fl
     else:
-        # Short
         upper_px = pe + sl_arr
         lower_px = pe - tp_arr
         fav_px_path = fl
@@ -228,8 +236,8 @@ def evaluate_tp_sl(
     min_hold_bars: int,
     min_exit_idx: int,
     horizon: int,
-    trailing_act_mult: float = None,
-    trailing_drop_mult: float = None,
+    trailing_act_mult: Optional[float] = None,
+    trailing_drop_mult: Optional[float] = None,
 ) -> np.ndarray:
     """Take Profit (TP) と Stop Loss (SL) の判定を行い、PnLを計算する。
 

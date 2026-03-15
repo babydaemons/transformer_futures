@@ -138,13 +138,13 @@ def save_trades_to_tsv(trades: list, output_path: str) -> None:
         cum_pnl = 0.0
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(
-                "entry_ts_jst\tentry_price\thold_sec\texit_price\tpnl\tdir\treason\tcum_pnl\n"
+                "entry_ts_jst\tentry_price\thold_sec\texit_price\tlots\tpnl\tdir\treason\tcum_pnl\n"
             )
             for t in trades:
                 cum_pnl += t["pnl"]
                 f.write(
                     f"{_ts_jst_iso(t['entry_ts_ns'])}\t{t['entry_price']:.1f}\t"
-                    f"{t['hold_sec']}\t{t['exit_price']:.1f}\t{t['pnl']:.1f}\t"
+                    f"{t['hold_sec']}\t{t['exit_price']:.1f}\t{t['lots']}\t{t['pnl']:.1f}\t"
                     f"{t['dir']}\t{t['reason']}\t{cum_pnl:.1f}\n"
                 )
         logging.info(

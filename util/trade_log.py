@@ -84,6 +84,7 @@ def _calculate_sl_tp(
         m_sl_e = np.clip(data["m_sl_arr"][idx_entry], 0.5, 5.0)
         atr_e = data["atrs"][idx_entry]
         sl_e = (m_sl_e * atr_e).astype(np.float32, copy=False)
+        sl_e = np.round(sl_e / 5.0) * 5.0  # 5円単位に丸める
 
         if use_tp:
             m_tp_base = np.maximum(
@@ -91,6 +92,7 @@ def _calculate_sl_tp(
             )
             m_tp_e = np.clip(m_tp_base, 0.5, 10.0)
             tp_e = (m_tp_e * atr_e).astype(np.float32, copy=False)
+            tp_e = np.round(tp_e / 5.0) * 5.0  # 5円単位に丸める
         else:
             tp_e = np.zeros(len(idx_entry), dtype=np.float32)
     else:
@@ -117,8 +119,9 @@ def _calculate_sl_tp(
     return tp_e, sl_e, total_cost
 
 
-def _evaluate_long_positions(
+def _evaluate_positions(
     preds_e: np.ndarray,
+    target_pred: int,
     pe: np.ndarray,
     fh: np.ndarray,
     fl: np.ndarray,
@@ -136,7 +139,7 @@ def _evaluate_long_positions(
     exit_px: np.ndarray,
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
-    Longポジションの出口（TP/SL/Horizon到達）と決済価格を計算する。副作用を防ぐため新しい配列を返す。
+    指定された方向（Long: 1 または Short: 2）のポジションの出口（TP/SL/Horizon到達）と決済価格を計算する。
 
     Returns:
         Tuple[np.ndarray, np.ndarray, np.ndarray]: 更新された (exit_off, exit_reason, exit_px)
@@ -145,8 +148,7 @@ def _evaluate_long_positions(
     out_reason = exit_reason.copy()
     out_px = exit_px.copy()
 
-    # ロングポジションのマスク
-    m_pos = preds_e == 1
+    m_pos = preds_e == target_pred
     if not m_pos.any():
         return out_off, out_reason, out_px
 
@@ -161,8 +163,14 @@ def _evaluate_long_positions(
     use_dyn = bool(cfg.backtest.use_dynamic_sl_tp)
     use_ts = cfg.backtest.use_trailing_stop
 
-    # TP到達判定
-    hit_tp = (fh_pos > (pe_pos[:, None] + tp_pos[:, None])) & (tp_pos[:, None] > 0.0)
+    # Long時は1.0, Short時は-1.0を乗算することで計算式を共通化
+    dir_mult = 1.0 if target_pred == 1 else -1.0
+
+    # TP到達判定: (Long: fh > pe + tp) / (Short: fl < pe - tp) -> dir_multを活用
+    fav_px = fh_pos if target_pred == 1 else fl_pos
+    hit_tp = (dir_mult * fav_px > dir_mult * pe_pos + tp_pos[:, None]) & (
+        tp_pos[:, None] > 0.0
+    )
 
     # トレーリングストップ(TS)または通常のSL判定
     if use_ts and use_dyn:
@@ -174,24 +182,43 @@ def _evaluate_long_positions(
         time_decay_factor = 1.0 - (np.arange(horizon) / horizon) * 0.5
         drop_amt_decayed = drop_amt[:, None] * time_decay_factor[None, :]
 
-        fh_cummax = np.maximum.accumulate(fh_pos, axis=1)
-        act_mask = (fh_cummax - pe_pos[:, None]) >= act_amt[:, None]
+        if target_pred == 1:
+            fav_cum = np.maximum.accumulate(fh_pos, axis=1)
+            act_mask = (fav_cum - pe_pos[:, None]) >= act_amt[:, None]
 
-        # TS発動条件を満たせば価格を引き上げ
-        dyn_sl = np.where(
-            act_mask,
-            fh_cummax - drop_amt_decayed,
-            pe_pos[:, None] - sl_pos[:, None],
-        )
-        dyn_sl = np.maximum.accumulate(dyn_sl, axis=1)
-        dyn_sl = np.maximum(dyn_sl, pe_pos[:, None] - sl_pos[:, None])
-        hit_sl = (fl_pos < dyn_sl) & (sl_pos[:, None] > 0.0)
+            dyn_sl = np.where(
+                act_mask,
+                fav_cum - drop_amt_decayed,
+                pe_pos[:, None] - sl_pos[:, None],
+            )
+            dyn_sl = np.maximum.accumulate(dyn_sl, axis=1)
+            dyn_sl = np.maximum(dyn_sl, pe_pos[:, None] - sl_pos[:, None])
+            dyn_sl = np.floor(dyn_sl / 5.0) * 5.0  # 安全のため下方向に5円丸め
+            hit_sl = (fl_pos < dyn_sl) & (sl_pos[:, None] > 0.0)
+        else:
+            fav_cum = np.minimum.accumulate(fl_pos, axis=1)
+            act_mask = (pe_pos[:, None] - fav_cum) >= act_amt[:, None]
+
+            dyn_sl = np.where(
+                act_mask,
+                fav_cum + drop_amt_decayed,
+                pe_pos[:, None] + sl_pos[:, None],
+            )
+            dyn_sl = np.minimum.accumulate(dyn_sl, axis=1)
+            dyn_sl = np.minimum(dyn_sl, pe_pos[:, None] + sl_pos[:, None])
+            dyn_sl = np.ceil(dyn_sl / 5.0) * 5.0  # 安全のため上方向に5円丸め
+            hit_sl = (fh_pos > dyn_sl) & (sl_pos[:, None] > 0.0)
     else:
-        hit_sl = (fl_pos < (pe_pos[:, None] - sl_pos[:, None])) & (
-            sl_pos[:, None] > 0.0
-        )
+        if target_pred == 1:
+            hit_sl = (fl_pos < (pe_pos[:, None] - sl_pos[:, None])) & (
+                sl_pos[:, None] > 0.0
+            )
+        else:
+            hit_sl = (fh_pos > (pe_pos[:, None] + sl_pos[:, None])) & (
+                sl_pos[:, None] > 0.0
+            )
 
-    # 決済タイミングの評価
+    # 決済タイミングの評価 (Long/Short共通)
     idx = np.arange(horizon, dtype=np.int32)[None, :]
     inf = horizon + 1
     tp_mat = np.where(hit_tp, idx, inf)
@@ -221,7 +248,7 @@ def _evaluate_long_positions(
         j = pos_idx[tp_first]
         out_off[j] = idx_tp[tp_first]
         out_reason[j] = "TP"
-        out_px[j] = pe_pos[tp_first] + tp_pos[tp_first]
+        out_px[j] = pe_pos[tp_first] + (dir_mult * tp_pos[tp_first])
 
     # SL到達が先の場合の更新
     if sl_first.any():
@@ -233,128 +260,7 @@ def _evaluate_long_positions(
             row_idx_m = np.arange(len(pe_pos))[sl_first]
             out_px[j] = dyn_sl[row_idx_m, idx_for_sl]
         else:
-            out_px[j] = pe_pos[sl_first] - sl_pos[sl_first]
-
-    return out_off, out_reason, out_px
-
-
-def _evaluate_short_positions(
-    preds_e: np.ndarray,
-    pe: np.ndarray,
-    fh: np.ndarray,
-    fl: np.ndarray,
-    act_h: np.ndarray,
-    tp_e: np.ndarray,
-    sl_e: np.ndarray,
-    atr_e: np.ndarray,
-    cfg: GlobalConfig,
-    best: Dict[str, Any],
-    horizon: int,
-    min_exit_idx: int,
-    min_hold_bars: int,
-    exit_off: np.ndarray,
-    exit_reason: np.ndarray,
-    exit_px: np.ndarray,
-) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """
-    Shortポジションの出口（TP/SL/Horizon到達）と決済価格を計算する。副作用を防ぐため新しい配列を返す。
-
-    Returns:
-        Tuple[np.ndarray, np.ndarray, np.ndarray]: 更新された (exit_off, exit_reason, exit_px)
-    """
-    out_off = exit_off.copy()
-    out_reason = exit_reason.copy()
-    out_px = exit_px.copy()
-
-    # ショートポジションのマスク
-    m_pos = preds_e == 2
-    if not m_pos.any():
-        return out_off, out_reason, out_px
-
-    pe_pos = pe[m_pos]
-    fh_pos = fh[m_pos]
-    fl_pos = fl[m_pos]
-    h_eff = act_h[m_pos]
-    tp_pos = tp_e[m_pos]
-    sl_pos = sl_e[m_pos]
-    atr_pos = atr_e[m_pos]
-
-    use_dyn = bool(cfg.backtest.use_dynamic_sl_tp)
-    use_ts = cfg.backtest.use_trailing_stop
-
-    # TP到達判定
-    hit_tp = (fl_pos < (pe_pos[:, None] - tp_pos[:, None])) & (tp_pos[:, None] > 0.0)
-
-    # トレーリングストップ(TS)または通常のSL判定
-    if use_ts and use_dyn:
-        act_m = best.get("trailing_act_mult", cfg.backtest.trailing_act_mult)
-        drop_m = best.get("trailing_drop_mult", cfg.backtest.trailing_drop_mult)
-        act_amt = act_m * atr_pos
-        drop_amt = drop_m * atr_pos
-
-        time_decay_factor = 1.0 - (np.arange(horizon) / horizon) * 0.5
-        drop_amt_decayed = drop_amt[:, None] * time_decay_factor[None, :]
-
-        fl_cummin = np.minimum.accumulate(fl_pos, axis=1)
-        act_mask = (pe_pos[:, None] - fl_cummin) >= act_amt[:, None]
-
-        # TS発動条件を満たせば価格を引き下げ
-        dyn_sl = np.where(
-            act_mask,
-            fl_cummin + drop_amt_decayed,
-            pe_pos[:, None] + sl_pos[:, None],
-        )
-        dyn_sl = np.minimum.accumulate(dyn_sl, axis=1)
-        dyn_sl = np.minimum(dyn_sl, pe_pos[:, None] + sl_pos[:, None])
-        hit_sl = (fh_pos > dyn_sl) & (sl_pos[:, None] > 0.0)
-    else:
-        hit_sl = (fh_pos > (pe_pos[:, None] + sl_pos[:, None])) & (
-            sl_pos[:, None] > 0.0
-        )
-
-    # 決済タイミングの評価
-    idx = np.arange(horizon, dtype=np.int32)[None, :]
-    inf = horizon + 1
-    tp_mat = np.where(hit_tp, idx, inf)
-    sl_mat = np.where(hit_sl, idx, inf)
-
-    if min_exit_idx > 0:
-        tp_mat = np.where(idx < min_exit_idx, inf, tp_mat)
-        sl_mat = np.where(idx < min_exit_idx, inf, sl_mat)
-
-    idx_tp = tp_mat.min(axis=1)
-    idx_sl = sl_mat.min(axis=1)
-
-    idx_tp = np.where(idx_tp < h_eff, idx_tp, inf)
-    idx_sl = np.where(idx_sl < h_eff, idx_sl, inf)
-
-    if min_hold_bars > 0:
-        idx_tp = np.where(idx_tp >= min_hold_bars, idx_tp, inf)
-        idx_sl = np.where(idx_sl >= min_hold_bars, idx_sl, inf)
-
-    tp_first = idx_tp < idx_sl
-    sl_first = idx_sl < idx_tp
-
-    pos_idx = np.flatnonzero(m_pos)
-
-    # TP到達が先の場合の更新
-    if tp_first.any():
-        j = pos_idx[tp_first]
-        out_off[j] = idx_tp[tp_first]
-        out_reason[j] = "TP"
-        out_px[j] = pe_pos[tp_first] - tp_pos[tp_first]
-
-    # SL到達が先の場合の更新
-    if sl_first.any():
-        j = pos_idx[sl_first]
-        out_off[j] = idx_sl[sl_first]
-        out_reason[j] = "TRAILING_SL" if use_ts and use_dyn else "SL"
-        if use_ts and use_dyn:
-            idx_for_sl = idx_sl[sl_first]
-            row_idx_m = np.arange(len(pe_pos))[sl_first]
-            out_px[j] = dyn_sl[row_idx_m, idx_for_sl]
-        else:
-            out_px[j] = pe_pos[sl_first] + sl_pos[sl_first]
+            out_px[j] = pe_pos[sl_first] - (dir_mult * sl_pos[sl_first])
 
     return out_off, out_reason, out_px
 
@@ -378,6 +284,8 @@ def _export_trades_to_tsv(
     Returns:
         List[Dict[str, Any]]: 各トレードの詳細を格納した辞書のリスト。
     """
+    # 日経225ミニの呼値(5円)単位に決済価格を丸める
+    exit_px = np.round(exit_px / 5.0) * 5.0
     pnl = np.zeros(len(preds_e), dtype=np.float32)
     m_long = preds_e == 1
     m_short = preds_e == 2
@@ -488,7 +396,7 @@ def write_trade_log(
         atr_e = data["atrs"][idx_entry]
 
         # -----------------------------------------------------
-        # 実効ホライゾン計算の更新 (Diff適用箇所)
+        # 実効ホライゾン計算
         # -----------------------------------------------------
         predict_horizon = max(1, int(cfg.features.predict_horizon))
         max_hold_bars = (
@@ -501,14 +409,12 @@ def write_trade_log(
             if cfg.backtest.max_holding_sec
             else predict_horizon
         )
-        # 実際に保持可能なホライゾン（バー数）を計算
+
         hold_horizon_bars = max(
             1, min(predict_horizon, max_hold_bars, int(fc.shape[1]))
         )
         t_rem_raw = data["time_to_closes"][idx_entry].astype(np.float32, copy=False)
 
-        # minutes_to_close が 0〜1 系に潰れている場合は、
-        # そのまま int 化すると全件 1 バー保持になるため保険を入れる
         if len(idx_entry) == 0:
             act_h = np.empty(0, dtype=np.int32)
         elif float(np.nanmax(t_rem_raw)) <= 1.5 and hold_horizon_bars > 1:
@@ -525,10 +431,8 @@ def write_trade_log(
                 0,
                 None,
             )
-            # 実効ホライゾンを計算（残り時間と保持可能ホライゾンを考慮）
             act_h = np.clip(t_rem, 1, hold_horizon_bars).astype(np.int32)
 
-        # col_idxはact_hに基づいて算出するため、act_hより後方で評価
         col_idx = np.minimum(act_h, horizon).astype(np.int32) - 1
         row_idx = np.arange(len(idx_entry), dtype=np.int32)
 
@@ -548,9 +452,13 @@ def write_trade_log(
         min_hold_bars = max(min_hold_bars, 0)
         min_exit_idx = max(0, min_hold_bars - 1)
 
-        # Long positions tracking
-        exit_off, exit_reason, exit_px = _evaluate_long_positions(
+        # =====================================================
+        # ポジションの評価 (リファクタリング適用箇所)
+        # =====================================================
+        # Long positions (target_pred = 1)
+        exit_off, exit_reason, exit_px = _evaluate_positions(
             preds_e,
+            1,
             pe,
             fh,
             fl,
@@ -568,9 +476,10 @@ def write_trade_log(
             exit_px,
         )
 
-        # Short positions tracking
-        exit_off, exit_reason, exit_px = _evaluate_short_positions(
+        # Short positions (target_pred = 2)
+        exit_off, exit_reason, exit_px = _evaluate_positions(
             preds_e,
+            2,
             pe,
             fh,
             fl,

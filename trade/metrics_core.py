@@ -121,6 +121,7 @@ def _calculate_dynamic_sl(
         # SLは切り上がりのみ（下がることはない）
         dynamic_sl = np.maximum.accumulate(dynamic_sl, axis=1)
         dynamic_sl = np.maximum(dynamic_sl, initial_sl_px[:, None])
+        dynamic_sl = np.floor(dynamic_sl / 5.0) * 5.0  # 5円丸め
     else:
         fav_cum = np.minimum.accumulate(fav_px_path, axis=1)
         act_mask = (pe[:, None] - fav_cum) >= act_amt[:, None]
@@ -130,6 +131,7 @@ def _calculate_dynamic_sl(
         # SLは切り下がりのみ（上がることはない）
         dynamic_sl = np.minimum.accumulate(dynamic_sl, axis=1)
         dynamic_sl = np.minimum(dynamic_sl, initial_sl_px[:, None])
+        dynamic_sl = np.ceil(dynamic_sl / 5.0) * 5.0  # 5円丸め
 
     return dynamic_sl
 
@@ -166,6 +168,10 @@ def _calculate_directional_pnl(
         lower_px = paths.pe - paths.tp_arr
         fav_px_path = paths.fl
         unfav_px_path = paths.fh
+
+    # ここで元の配列を書き換えないよう、新しい変数で5円丸め
+    tp_arr_rounded = np.round(paths.tp_arr / 5.0) * 5.0
+    sl_arr_rounded = np.round(paths.sl_arr / 5.0) * 5.0
 
     use_ts = cfg.backtest.use_trailing_stop and cfg.backtest.use_dynamic_sl_tp
     if use_ts:
@@ -230,19 +236,19 @@ def _calculate_directional_pnl(
         sl_exit_val = (
             (lambda idx_s: dynamic_sl[np.arange(n_samples), idx_s] - paths.pe)
             if use_ts
-            else (lambda _: -paths.sl_arr)
+            else (lambda _: -sl_arr_rounded)
         )
     else:
         pnl_base = (paths.pe - paths.px) - params.total_cost
         sl_exit_val = (
             (lambda idx_s: paths.pe - dynamic_sl[np.arange(n_samples), idx_s])
             if use_ts
-            else (lambda _: -paths.sl_arr)
+            else (lambda _: -sl_arr_rounded)
         )
 
-    pnl = pnl_base
+    pnl = pnl_base.copy()
     # TP到達時のPnL上書き
-    pnl[tp_first] = paths.tp_arr[tp_first] - params.total_cost
+    pnl[tp_first] = tp_arr_rounded[tp_first] - params.total_cost
     # SL到達時のPnL上書き
     if sl_first.any():
         idx_for_sl = np.where(sl_first, idx_sl, 0)

@@ -206,6 +206,12 @@ def run_vectorized_backtest(
     # 1. DataLoaderからの推論データ抽出と集約 (推論フェーズ)
     data = extract_inference_data(model, loader, device, cfg, fold_idx)
 
+    # ブロードキャストの次元爆発 (N, 1) * (N,) -> (N, N) を防ぐため、
+    # 推論結果の 2次元カラムベクトルをすべて 1次元配列に平坦化(Flatten)する
+    for k, v in data.items():
+        if isinstance(v, np.ndarray) and v.ndim == 2 and v.shape[1] == 1:
+            data[k] = v.flatten()
+
     # 2. シミュレーターの初期化
     simulator = BacktestSimulator(data, cfg)
 
